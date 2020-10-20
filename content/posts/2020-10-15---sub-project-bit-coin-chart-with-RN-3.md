@@ -17,6 +17,4 @@ socialImage: "/media/rn_bit_coin_logo.png"
 - [개인 프로젝트 - Bit Coin Chart App 만들기_#2](/posts/bit-coin-chart-with-react-native-2)
 - [개인 프로젝트 - Bit Coin Chart App 만들기_#3](/posts/bit-coin-chart-with-react-native-3)
 
-// native base 소개
-
-// 폴더 구분한거
+앱 / 웹을 개발할 시 디자인은 빠지면 안돼는 존재이다.
