@@ -233,8 +233,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.chill-bi.com',
-        sitemap: 'https://www.chill-bi.com/sitemap.xml',
+        host: siteConfig.url,
+        sitemap: `${siteConfig.url}/sitemap.xml`,
         policy: [{ userAgent: '*', allow: '/' }]
       }
     }
