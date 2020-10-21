@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://www.chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Oct 2020 15:07:16 GMT</lastBuildDate><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#3]]></title><description><![CDATA[Native Base를 통해 UI 컴포넌트 활용하기.]]></description><link>https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-3</link><guid isPermaLink="false">https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-3</guid><pubDate>Thu, 15 Oct 2020 04:19:51 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://www.chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 21 Oct 2020 16:04:06 GMT</lastBuildDate><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#3]]></title><description><![CDATA[Native Base를 통해 UI 컴포넌트 활용하기.]]></description><link>https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-3</link><guid isPermaLink="false">https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-3</guid><pubDate>Thu, 15 Oct 2020 04:19:51 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-1&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-2&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-3&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#3&lt;/a&gt;&lt;/li&gt;
@@ -16,7 +16,57 @@
 // &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;yarn&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; native-base&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;주의&lt;/strong&gt;: 리액트 버전이 0.60 이하의 경우 다음 명령어를 실행한다.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;react-native &lt;span class=&quot;token function&quot;&gt;link&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#2]]></title><description><![CDATA[리액트 네이티브 프로젝트 생성과 비트코인 정보 가져오기.]]></description><link>https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-2</link><guid isPermaLink="false">https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-2</guid><pubDate>Tue, 13 Oct 2020 03:01:52 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;react-native &lt;span class=&quot;token function&quot;&gt;link&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;예제-코드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C&quot; aria-label=&quot;예제 코드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;예제 코드&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/34651be697042335b3c25a9786850240/a3767/native_base_code.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 81.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAAAsSAAALEgHS3X78AAACMklEQVQoz42TW08TQRSA+1ek9rZrL7sz29mZ2d3u9goSw4ONbyU+SNQ3HlpN9IGCkdLG0AQTCKix0paEUluIpheaEKn+MM92E6xWxOTLyZzZ82XnnJ11nQzGrf64Pfh+0h//L8MfttIfu1r9y0+f+5Xdj6W37zd33t0IlFV2a7V2/7h36TrufXtV3U+zmLmkugn1y9SHqM+J1+DHbGN7rwVy82z0crMakElAIR5Z9USIR7K5HYk60UYCYO1g7794vQ2iq949L6yXw2qC8EXFTJP4vMzSYWbSTEokmhCdgLWAwgTCRcJEwn1ILRTL9e4Q5GG+WJJokuiLYc2kqbs8cw/FUmpyQdYTsAjRWJhYECOGLhkGMmN+RPNrpXp3YMvP1rcERUc8rSWXiDWvWBnZSAgKF1UjSGOTLpwWyFXMr20ddkDugFyGx15EQ1hn2NCxFpGoe9ItRK+s/gayI8j1Kxlyj6R6ZCIiShU9pVqImQLRg6rhx/RPf0Ymzq5bJjBYRgwrviBNeoaBwTn/JTufByYhY25GjXjUECTVOfmsOSXbAyvD9P0KFxBDmGPMJcw8M8K1shjVBUXzY+5FzAbzAKQKh8v010tWKE6m3Tg9f75RCUhaULFEbESicUGJCWpcpMk7LO3D2lwIzYXwNLeCCN7XOB25GmejN3u15aerDx4+zuZWsrlH9ydkp/iVLq9AWe7JKvxIILqOvl7U2r2DRmfnQ7O6f3gTdSg7aHZAOfpy8RMJEFX3Av459QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/34651be697042335b3c25a9786850240/8ac56/native_base_code.webp 240w,
+/static/34651be697042335b3c25a9786850240/d3be9/native_base_code.webp 480w,
+/static/34651be697042335b3c25a9786850240/e46b2/native_base_code.webp 960w,
+/static/34651be697042335b3c25a9786850240/efe91/native_base_code.webp 1210w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/34651be697042335b3c25a9786850240/8ff5a/native_base_code.png 240w,
+/static/34651be697042335b3c25a9786850240/e85cb/native_base_code.png 480w,
+/static/34651be697042335b3c25a9786850240/d9199/native_base_code.png 960w,
+/static/34651be697042335b3c25a9786850240/a3767/native_base_code.png 1210w&quot;
+          sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/34651be697042335b3c25a9786850240/d9199/native_base_code.png&quot;
+          alt=&quot;native_base_code.png&quot;
+          title=&quot;native_base_code.png&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;Native Base 기본 코드&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;이제 이전에 비트코인 리스트를 가져왔던 코드에 네이티브 베이스를 접목시켜 디자인(?)을 해보자.&lt;/p&gt;
+&lt;p&gt;우선 앱의 헤더부분과 바디부분으로 나누어 헤더부분에는 앱의 이름, 현제 뷰의 명칭(메인 화면인 경우 메인) 등을 표시해서 보여주지만… 딱히 표시할 내용이 없어서 현재 시간을 보여주기로 했다.&lt;/p&gt;
+&lt;p&gt;직접 시간 변환하는 건 너무 귀찮으니 moment.js 날짜/시간 관련 라이브러리를 사용해서 간편하게 표시한다.&lt;/p&gt;
+&lt;p&gt;비트코인 정보를 가져오는 API 통신은 Redux에서 관리 할 수 있도록 작성 했다. &lt;del&gt;&lt;em&gt;추후 Redux 관련 포스트 예정&lt;/em&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;gist:Chill-bi/f1c40f2bb20df0028fb7455c4982bbed#MainScreen.js&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#2]]></title><description><![CDATA[리액트 네이티브 프로젝트 생성과 비트코인 정보 가져오기.]]></description><link>https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-2</link><guid isPermaLink="false">https://www.chill-bi.com/posts/bit-coin-chart-with-react-native-2</guid><pubDate>Tue, 13 Oct 2020 03:01:52 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-1&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-2&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-3&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#3&lt;/a&gt;&lt;/li&gt;
