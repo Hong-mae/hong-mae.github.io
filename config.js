@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://www.chill-bi.com',
+  url: 'https://chill-bi.com',
   pathPrefix: '/',
   title: `Chill-bi's Dev.log`,
   subtitle: 'Chill-bi의 개발 스터디 블로그.',
