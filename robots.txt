@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.chill-bi.com/sitemap.xml
-Host: https://www.chill-bi.com
+Sitemap: https://chill-bi.com/sitemap.xml
+Host: https://chill-bi.com
