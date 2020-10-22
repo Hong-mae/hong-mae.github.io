@@ -1,4 +1,273 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 22 Oct 2020 14:17:05 GMT</lastBuildDate><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#3]]></title><description><![CDATA[Native Base를 통해 UI 컴포넌트 활용하기.]]></description><link>https://chill-bi.com/posts/bit-coin-chart-with-react-native-3</link><guid isPermaLink="false">https://chill-bi.com/posts/bit-coin-chart-with-react-native-3</guid><pubDate>Thu, 15 Oct 2020 04:19:51 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 22 Oct 2020 16:25:12 GMT</lastBuildDate><item><title><![CDATA[Redux(리덕스)란 무엇인가? (feat. React and React Native) #1]]></title><description><![CDATA[Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자 #1]]></description><link>https://chill-bi.com/posts/what-is-redux-with-feat-react-and-react-native-1</link><guid isPermaLink="false">https://chill-bi.com/posts/what-is-redux-with-feat-react-and-react-native-1</guid><pubDate>Thu, 22 Oct 2020 23:38:21 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/what-is-redux-with-feat-react-and-react-native-1&quot;&gt;Redux(리덕스)란 무엇인가? (feat. React and React Native) #1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;리액트에는 state(상태)라는 것이 존재한다. 동적인 데이터를 사용할때 state를 통해 사용한다.&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist106035069&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-counter-js&quot; class=&quot;file my-2&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-v&gt;React&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;useState&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s&gt;&amp;#39;react&amp;#39;&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-v&gt;Counter&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;number&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;setNumber&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-en&gt;useState&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-c1&gt;0&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;handleIncrease&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-en&gt;setNumber&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;number&lt;/span&gt; &lt;span class=pl-c1&gt;+&lt;/span&gt; &lt;span class=pl-c1&gt;1&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;   &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;handlerDecrease&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-en&gt;setNumber&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;number&lt;/span&gt; &lt;span class=pl-c1&gt;-&lt;/span&gt; &lt;span class=pl-c1&gt;1&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;  &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;return&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;div&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;h1&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;counter&lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;h1&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;p&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;span class=pl-s1&gt;number&lt;/span&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;p&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;button&lt;/span&gt; &lt;span class=pl-c1&gt;onClick&lt;/span&gt;&lt;span class=pl-c1&gt;=&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;span class=pl-s1&gt;handleIncrease&lt;/span&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;+&lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;button&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;button&lt;/span&gt; &lt;span class=pl-c1&gt;onClick&lt;/span&gt;&lt;span class=pl-c1&gt;=&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;span class=pl-s1&gt;handleDecrease&lt;/span&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;-&lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;button&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;div&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-counter-js-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-counter-js-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;export&lt;/span&gt; &lt;span class=pl-k&gt;default&lt;/span&gt; &lt;span class=pl-v&gt;Counter&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/625d6e1c8128623aef51a06cee53116c/raw/5216fb0150bcbb02c755e7bdedff824d66a84dbc/Counter.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/625d6e1c8128623aef51a06cee53116c#file-counter-js&quot;&gt;Counter.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;이렇게 아주 간단한 컴포넌트의 state는 다루기가 엄청 쉽다. 허나 여러 컴포넌트가 이용된다면, 또 글로벌한 state가 필요하다면 위와 같은 방식으로는 사용하기 힘들다.&lt;/p&gt;
+&lt;p&gt;그래서 사용하는 것이 Redux(리덕스)이다.&lt;/p&gt;
+&lt;h3 id=&quot;redux리덕스란-무엇인가&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#redux%EB%A6%AC%EB%8D%95%EC%8A%A4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80&quot; aria-label=&quot;redux리덕스란 무엇인가 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Redux(리덕스)란 무엇인가?&lt;/h3&gt;
+&lt;p&gt;리덕스란 클라이언트 state를 관리하는 라이브러리이다. &lt;del&gt;&lt;em&gt;비슷한 방법으로 ContextAPI라는 것이 있다.&lt;/em&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;리덕스는 React에서 사용률이 가장 높다. 그리고 state관련 로직들을 각각 파일로 나눠서 효율적으로 관리할 수 있다. 또한 컴포넌트에서 state에 손쉽게 접근 가능하다.&lt;/p&gt;
+&lt;h3 id=&quot;리덕스를-왜-사용하는-걸까&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%EB%8D%95%EC%8A%A4%EB%A5%BC-%EC%99%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EA%B1%B8%EA%B9%8C&quot; aria-label=&quot;리덕스를 왜 사용하는 걸까 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리덕스를 왜 사용하는 걸까?&lt;/h3&gt;
+&lt;p&gt;다음과 같은 컴포넌트들이 존재한다고 하자.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/08ff9847f5d572f692bf1f9df06f7b55/0b533/state_1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAChElEQVQ4y51Uy2sTQRhfz+Jf4MWrZ/EiqCcPehMviuBBkKpQhZ49i1eL+Dj5KFUvSmqhFqqlKlIN2JinWK3VJCS0ySbZJLvZ3ZmdnzO7M/tIF6R+MPvtfvPNb37fazWkCGMs0NQDbLUoMKJgLl+BU+gXFy0JIpwkEBdSaeDjuVv4MnEHm9cfoXRhGv1XueiyFNBUQCoB3VwVi0em8Pz4NcwcvYoXh67AmF0N9giNIomBaslQ/af6grXVhbFcRmelDH2lBP1NAebPRsJnPOoQ0JMMmy5wOt/D5XwLPccBk8fVOcujuFHaxkS5h7obgHpxhn7O+INKwB+EG58Wsf9tHSPhwcP3+PJzRil4aXBg/hu0JzmsOQEgjeVSUy9U6iHPzXyti/etIYi0CwZM5krol00TD3510aPx6IJ9LZlUCqtvCBfAsXh8w0QrMb8YBEzYic23B2O5ZBHD2S0XkyUd6yYNQTKcye3aCA03KhbhYAJUyMCyUDcdDDzVlzxkRfdYtg3tcQGvDQQMuRx+V4N27xMWJZGLBR1nc220aHDBGg9i39w6zhSMMPSQYaZNcHNziD92VNO71SEuFTvYsIPvvZnv0OY28JsEgJ+HDHsWqjhZNMM6aOONqW6iwuTn0Audl7oUC7rLWyfwd7lu822DRnlMVJl4sZ5iBK5l+pVWPRobgRgJlizKODMhX02G8/kOHjbs8DImNWXRYaZaarxtlBDJZEbn1Kc/4FR227fbNBqxtD9M6ujFx6/qMNyvmVhq9hOD9y+wHYA7DlEHFX2AosVgUrZ7hspZMLVlJU+sNqE9K2NpEM3trhmqZAuZrHRxcLmGrPmfgPG5FZWg/oQj9WeaJn8BgyD55tbJ6fsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/08ff9847f5d572f692bf1f9df06f7b55/8ac56/state_1.webp 240w,
+/static/08ff9847f5d572f692bf1f9df06f7b55/d3be9/state_1.webp 480w,
+/static/08ff9847f5d572f692bf1f9df06f7b55/b0a15/state_1.webp 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/08ff9847f5d572f692bf1f9df06f7b55/8ff5a/state_1.png 240w,
+/static/08ff9847f5d572f692bf1f9df06f7b55/e85cb/state_1.png 480w,
+/static/08ff9847f5d572f692bf1f9df06f7b55/0b533/state_1.png 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/08ff9847f5d572f692bf1f9df06f7b55/0b533/state_1.png&quot;
+          alt=&quot;state_1.png&quot;
+          title=&quot;state_1.png&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;F에서 어떠한 값(state)을 변경 하고 그 값을 H에게 전달하려면 Root -&gt; B -&gt; F, Root -&gt; A -&gt; D -&gt; G -&gt; H 이런 절차를 거쳐서 값을 전달해야한다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/03163f489f43cf1689d5c7f74786e988/0b533/state_2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAChklEQVQ4y5VUTWvUQBiOZ8E/4MX/IB4U/Dh40pM3RfEgyKqgglc9eBJvYhG1Jz9KRRBltVALValKaSnqul9K262Lu3WXdjeb/UiySWYyj5PJ5GsbxL4wmWTy5pnned53oiAlGGP+TF3ACgYFhhTM4cNPCvPioSRBvCQJxIP8aGD+1G18zdxD9epjlM6Oof8mF22WApoKSCWgk6th5sA1PD98BRMHL+Hl3ovoTS747wiNlMRAlaRUcQ2eYG5o6H0oozNXhjpXgvquAKPSSOSMqg4BXcmw6QAn8l1cyLfQtW0w+XnwnelS3ChtIlPuYt3xQd04Q+EZv1AJuEr44rMidr9fx9DL4PJdPoRnlIKXBnumfkJ5msM32wekMS+V4IbKWefeTNU1fGrpIHLdY8CkV978qmlg/JeGrrDaTXipJE2lMPs9kQTb5Pr0RCsxUQwC5q0Ti7/WY3b4foYMJzccXC6pWDFoCJLlTO7Wh2g4UbEIBxOgnp/mALZV53f9sKBKYOihpTaUJwW87fkyvNj3sQ7lwSJmBv4G5woqTuba6LhSEfuCSnEHBq3jUgWNGGbbBLeqOn5bkYj7NR3nix2sWf7zzuwylNdrqEkRLl3AnxUFQ+1IBDjamEELUaFJD9l6xZnVKKZVB0M3KILnRYvfdCPJ8SoTN9ZTjMAxDVHpoEdTzzsbKcooMy++Gwyn8x08aljhZkzO8Z4TlWeuGIm2CYJIJhMq32nsM44tbYp1m6af27RIYchQsxke1g3MNnupMv8bcMtHlKDaWkWttwyLmNtnGCR7TG35C7s+fQb77+xCoT0v39HtM2Ti/PqA44s3kXlxFBUtLwHd7QFu+Xt7h3/kB/Cv+AtsivgVAA/7HQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/03163f489f43cf1689d5c7f74786e988/8ac56/state_2.webp 240w,
+/static/03163f489f43cf1689d5c7f74786e988/d3be9/state_2.webp 480w,
+/static/03163f489f43cf1689d5c7f74786e988/b0a15/state_2.webp 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/03163f489f43cf1689d5c7f74786e988/8ff5a/state_2.png 240w,
+/static/03163f489f43cf1689d5c7f74786e988/e85cb/state_2.png 480w,
+/static/03163f489f43cf1689d5c7f74786e988/0b533/state_2.png 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/03163f489f43cf1689d5c7f74786e988/0b533/state_2.png&quot;
+          alt=&quot;state_2.png&quot;
+          title=&quot;state_2.png&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이 방법은 완전히 비효율 적이다. 해결방법으로 Redux를 사용한다면 F가 Redux Store에게 어떠한 값 변경에 대한 이벤트를 던지고 H는 Redux Store에서 변경된 어떠한 값을 가지고 올 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/82cdcb573f13e27491b51d5b119f5b23/0b533/state_3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAADOElEQVQ4y3VU20sUURweoocgEOxBCy2E/AuKXoRuUFD21EsURQ9BWEEWRhBoGD1EL0WKlRp2UbSL5RVMUMOKUEQz193ysrq5Y27uxb3OXmbOnK8z191x7Qdnzsw5Z77zfd/vdw6HDYJSqvVEBpJGI0CCgIqsaYvMdZnBWUGURToQC+nnCr6duY+Jsjq4rr2E/XwtIj2T6c02AN0QkOiA4qQb/SUVeHOwHC37r+DD3ssIt45ocxJJK8kA5axS1afxhfhqEOFPDqwNOxAYtiMwaIPgXLGsWa/aBJR1hh4RODkVwqUpH0KpFKj+u/FfXCaosntR5ghhWdRA5UyGqmfsQXTAeYkNtk2jYGgZCWUFky+zpnpGCFhqUNT7C1zzJL6nNECS4SVnvBC9jzFvevkgvvhikPRxhQHVvVL6Do+AhsUgQqrVssVLzmoqQTwSVhchFWf6YpZSomoyJFBlXEqy6ViGHZqfJsPWVRFX7QHMCcQE6WJMavgEVsR0siQGpoIqfsajSCV59hYxE8oZhh4Y84N7ZcPHsCZDiX2feXBPR9Ef1Ta4YAvg9KQfa7KuiI7DOb0JUd8JXQVJM+zyS7jnimEpmRbxxB3Dxek1LCS1761ds+C6F+DWRchkBH/mOCSCh9KA6wvTKCGiaoqZbJXkDAQJ+gIiBFktDTbDpAsuUDkIdUiRnJllSc6oKSpBjAtqpo0azQplryixJI5bz0yJHwLF2ak1vFhJmptRnbUoy/CROLxyAqtCEH+jfqwSASGSzD56ks6kJcAmar+idMyrjqdYQUtUk94ensUOx2MUzzRi98JzFDubULTYhD3OZvBiZCOGFO4URT0vYMATNueMwq+L2LClvwrbn5Uj7/VN5L+7hfzu2yicb4Qj4bMCZiWISHD55uFmrAQmU7Gx3juO3Oka7GqvREFPNQp7q7Fz+D5j24SZZGD9bUNNpin9CqvsO4eSRzmY4AehHO6HnhFsdjzAtrYbyGmrQE7zdeQO3UWesx72/zGk6vnVABtG76Cs/QhmfBPq90DsNw673qJ0uRPH+A4c5ztxdOk9Trl74JWEbMCs21s5/GqD5RKQ2DUmsYwT1oyEKfEP0VLFYCRV34gAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/82cdcb573f13e27491b51d5b119f5b23/8ac56/state_3.webp 240w,
+/static/82cdcb573f13e27491b51d5b119f5b23/d3be9/state_3.webp 480w,
+/static/82cdcb573f13e27491b51d5b119f5b23/b0a15/state_3.webp 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/82cdcb573f13e27491b51d5b119f5b23/8ff5a/state_3.png 240w,
+/static/82cdcb573f13e27491b51d5b119f5b23/e85cb/state_3.png 480w,
+/static/82cdcb573f13e27491b51d5b119f5b23/0b533/state_3.png 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/82cdcb573f13e27491b51d5b119f5b23/0b533/state_3.png&quot;
+          alt=&quot;state_3.png&quot;
+          title=&quot;state_3.png&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;이것으로 리덕스에 대해 간략하게 알아봤다.&lt;/p&gt;
+&lt;h3 id=&quot;출처-및-참조&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%9C%EC%B2%98-%EB%B0%8F-%EC%B0%B8%EC%A1%B0&quot; aria-label=&quot;출처 및 참조 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;출처 및 참조&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/78233628?OzSrank=1&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;책 - 리엑트를 다루는 기술(VELOPERT)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/velopert/learning-react&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Github - 리액트를 다루는 기술 코드(VELOPERT)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://velog.io/@velopert/Redux-1-%EC%86%8C%EA%B0%9C-%EB%B0%8F-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC-zxjlta8ywt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Blog - Minjun Kim(VELOPERT) : Redux (1) 소개 및 개념정리&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.naver.com/yjdev/222123299620&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Blog - Jaden : 리덕스란?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#3]]></title><description><![CDATA[Native Base를 통해 UI 컴포넌트 활용하기.]]></description><link>https://chill-bi.com/posts/bit-coin-chart-with-react-native-3</link><guid isPermaLink="false">https://chill-bi.com/posts/bit-coin-chart-with-react-native-3</guid><pubDate>Thu, 15 Oct 2020 04:19:51 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-1&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-2&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-3&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#3&lt;/a&gt;&lt;/li&gt;
