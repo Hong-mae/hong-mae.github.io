@@ -1,9 +1,9 @@
 ---
-title: "Redux(리덕스)란 무엇인가? (feat. React and React Native) #1"
+title: "Redux(리덕스)란 무엇인가? (feat. React and React Native)"
 date: "2020-10-22T23:38:21.000Z"
 template: "post"
 draft: false
-slug: "what-is-redux-with-feat-react-and-react-native-1"
+slug: "what-is-redux-with-feat-react-and-react-native"
 category: "Redux"
 tags:
   - "Redux"
@@ -11,11 +11,12 @@ tags:
   - "React Native"
   - "React Redux"
   - "Redux Saga"
-description: "Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자 #1"
+description: "Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자"
 socialImage: "/media/react_redux_logo.png"
 ---
 
-- [Redux(리덕스)란 무엇인가? (feat. React and React Native) #1](/posts/what-is-redux-with-feat-react-and-react-native-1)
+- [Redux(리덕스)란 무엇인가? (feat. React and React Native)](/posts/what-is-redux-with-feat-react-and-react-native)
+- [Redux(리덕스) 사용법 (with. Redux-Saga)](/posts/how-to-use-redux-with-redux-saga)
 
 리액트에는 state(상태)라는 것이 존재한다. 동적인 데이터를 사용할때 state를 통해 사용한다.
 
