@@ -11,7 +11,7 @@ tags:
   - "React Native"
   - "React Redux"
   - "Redux Saga"
-description: "Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자"
+description: "React의 상태관리를 위해 Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자"
 socialImage: "/media/react_redux_logo.png"
 ---
 
