@@ -30,7 +30,7 @@ Redux Saga는 다음과 같은 상황에서 유리하게 작용된다.
 
 Redux Saga를 사용하기 위해서는 ES6의 제네레이터(Generator) 함수라는 문법을 알고 있어야 한다. 일반적인 상황에서는 사용되지 않음으로 이해하기 너무 어렵다. <del>*필자도 마찬가지로 이해하기가 너무 힘들다.*</del>
 
-제네레이터 함수에 대해서는 [Generator Function(제네레이션 함수)란 무엇인가?](/posts/what-is-generator-function)에서 정리되어 있다.
+제네레이터 함수에 대해서는 [Generator Function(제네레이터 함수)란 무엇인가?](/posts/what-is-generator-function)에서 정리되어 있다.
 
 ### Redux Saga 사용법
 [개인 프로젝트](https://github.com/Chill-bi/bit_chart)에서 사용했던 방법으로 설명하겠다. 우선 이 프로젝트는 비트코인의 정보들을 실시간으로 가져오는 프로젝트이기 때문에 API 요청을 해야한다.

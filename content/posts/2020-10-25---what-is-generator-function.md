@@ -1,5 +1,5 @@
 ---
-title: "Generator Function(제네레이션 함수)란 무엇인가?"
+title: "Generator Function(제네레이터 함수)란 무엇인가?"
 date: "2020-10-25T23:11:14.000Z"
 template: "post"
 draft: false
@@ -10,7 +10,7 @@ tags:
   - "ES6"
   - "Generator Function"
   - "제네레이션 함수"
-description: "ES6 문법 중 Generator Function(제네레이션 함수)에 대해 무엇인지 그리고 사용법을 알아보자"
+description: "ES6 문법 중 Generator Function(제네레이터 함수)에 대해 무엇인지 그리고 사용법을 알아보자"
 socialImage: "/media/generator_js_logo.png"
 ---
 
