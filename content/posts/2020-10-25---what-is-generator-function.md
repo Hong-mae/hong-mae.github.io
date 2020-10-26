@@ -40,10 +40,10 @@ socialImage: "/media/generator_js_logo.png"
 
 이건 필자의 생각이지만 제일 처음 next()는 아무리 값을 넣어도 yield에 값이 들어가지 않고 그 자리에서 멈추는 것 같다.
 
-다음 next(200);을 실행하면 멈춘 자리 yield에 100을 넣고 다음 yield까지 이동하고 멈추는 것 같고
+다음 next(200);을 실행하면 멈춘 자리 yield에 200을 넣고 다음 yield까지 이동하고 멈추는 것 같고
 
-그 다음 next(300);을 넣으면 똑같이 멈춘 yield에 200을 넣고 다음 yield까지 이동하는데 **마지막으로 넣은 yield 다음에는 a + b 라는 것이 있어 200 + 300을 더한 500이란 값이 value에 들어오는 것 같다.**
+그 다음 next(300);을 넣으면 똑같이 멈춘 yield에 300을 넣고 다음 yield까지 이동하는데 **마지막으로 넣은 yield 다음에는 a + b 라는 것이 있어 200 + 300을 더한 500이란 값이 value에 들어오는 것 같다.**
 
 `gist:Chill-bi/c6cc0e89c68c824d96b0159b26e5bb87#GeneratorTest_solve.js`
 
-참 신가한 함수인 것 같다.
+참 신기한 함수인 것 같다.
