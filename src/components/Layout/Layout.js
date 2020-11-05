@@ -37,6 +37,7 @@ const Layout = ({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={metaImageUrl} />
         <meta name="naver-site-verification" content="aff1b116090b170e03b95f3bf7d786878d4e2dd6" />
+        <meta name="google-site-verification" content="K5Cd2j5bPI-TSMjDNzgqDHTWc0Eatkp71NxQOtJa1FA" />
       </Helmet>
 
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
