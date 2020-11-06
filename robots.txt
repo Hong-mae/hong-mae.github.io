@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tags/
+Disallow: /categories/
 Sitemap: https://chill-bi.com/sitemap.xml
 Host: https://chill-bi.com
