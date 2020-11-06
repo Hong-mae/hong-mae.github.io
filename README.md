@@ -1,9 +1,11 @@
 # Chill-bi's Dev.log
-
-site: https://chill-bi.com
-about_me: https://chill-bi.com/pages/about
-contact_me: qkrgksqls9@gmail.com
 ---
+site: https://chill-bi.com
+
+about_me: https://chill-bi.com/pages/about
+
+contact_me: qkrgksqls9@gmail.com
+
 
 개발 상황 / 개발 이야기 등을 기록하는 개발 블로그입니다.
 
