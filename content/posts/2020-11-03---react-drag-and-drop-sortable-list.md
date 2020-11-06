@@ -13,6 +13,9 @@ description: "드래그 앤 드롭이 가능한 리스트를 라이브러리 없
 socialImage: "/media/drag_and_drop_list.png"
 ---
 
+- [React로 Drag and Drop List 만들기 #1](/posts/react-drag-and-drop-list)
+- [React로 Drag and Drop List 만들기(Swap) #2](/posts/react-drag-and-drop-list-2)
+
 두번째 어떤 프로젝트를 할까 고민중에 드래그 앤 드롭이 되는 리스트를 만들기로 했다.
 
 React 라이브러리로 좋은 라이브러리들이 있었지만 [html drag and drop api](https://developer.mozilla.org/ko/docs/Web/API/HTML_%EB%93%9C%EB%9E%98%EA%B7%B8_%EC%95%A4_%EB%93%9C%EB%A1%AD_API)을 이용해서 라이브리러리 없이 만들고 싶었다.
