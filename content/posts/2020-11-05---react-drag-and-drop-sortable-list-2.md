@@ -45,4 +45,4 @@ Drag and Drop API를 이용해서 Drag 한 요소와 Drop 한 위치의 요소�
 다음 포스트는 원하는 위치에 drop 할 경우 그 이외의 요소들이 자동적으로 정렬(?)되는 리스트를 포스팅하겠다.
 
 ### 미리보기
-![drag_and_drop_list_sortable.gif](/media/drag_and_drop_list_sortable.gif)
+![drag_and_drop_list_sortable.gif](/media/drag_and_drop_list_sortable.gif) *Sortable List*
