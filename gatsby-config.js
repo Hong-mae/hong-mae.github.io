@@ -241,7 +241,7 @@ module.exports = {
       options: {
         host: siteConfig.url,
         sitemap: `${siteConfig.url}/sitemap.xml`,
-        policy: [{ userAgent: '*', allow: '/' }]
+        policy: [{ userAgent: '*', allow: '/', disallow: ['/tags/', '/categories/'] }]
       }
     },
   ]
