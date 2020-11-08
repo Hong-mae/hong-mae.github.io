@@ -15,7 +15,7 @@ socialImage: "/media/drag_and_drop_list.png"
 
 - [React로 Drag and Drop List 만들기 #1](/posts/react-drag-and-drop-list)
 - [React로 Drag and Drop List 만들기(Swap) #2](/posts/react-drag-and-drop-list-2)
-- [React로 Drag and Drop List 만들기(Sortable) #2](/posts/react-drag-and-drop-list-sortable)
+- [React로 Drag and Drop List 만들기(Sortable) #3](/posts/react-drag-and-drop-list-sortable)
 
 드디어 마지막 목적지 Sortable list를 만들어 보자.
 
@@ -58,9 +58,29 @@ socialImage: "/media/drag_and_drop_list.png"
 3. 따라서 선택한 요소의 정보가 필요하며 이동시 곂쳐지는 요소가 위에 있는지, 밑에 있는지 판단할 수 있어야한다.
 4. 만약 움직였다가 Drop하지 않고 다시 원래 위치로 이동할 경우 움직였던 요소들도 원래대로 돌아와야한다.
 
-1, 2, 4번을 해결하기 위에서 Drag and Drop API에 있는 ondragenter와 ondragleave를 이용하면 된다.
+1, 2, 4번을 해결하기 위에서는 현재 선택한 요소 정보(DragData)와 선택한 요소가 다른 요소위에 있을 경우 해당 요소의 정보(TargetData)가 필요하다. TargetData를 이탈 할 경우도 체크해야하니 Drag and Drop API에서 다음과 같은 API를 사용할 예정이다.
 
-ondragenter에서 파라미터로 리스트 요소와 선택된 요소를 확인 해야하기 때문에
+- DragData를 가져올 수 있는 ondragstart
+- TargetData를 가져올 수 있는 ondragenter
+- TargetData를 이탈했을 경우 정보를 가져올 수 있는 ondragleave
+
+간단히 말해 Twitter를 잡아서(e.target = Twitter) Github 위에 지나갈 경우(e.target = Github)와 Github를 이탈할 경우(e.target = Github)를 체크하면 된다.
+
+``` js
+const onDragStart = e => {
+    console.log(e.target) // e.target is Twitter
+}
+
+const onDragEnter = e => {
+    console.log(e.target) // e.target is Github
+}
+
+const onDragLeave = e => {
+    console.log(e.target) // e.target is Github
+}
+```
+
+
 
 
 ### 결과

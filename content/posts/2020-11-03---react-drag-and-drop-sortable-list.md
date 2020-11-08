@@ -15,7 +15,7 @@ socialImage: "/media/drag_and_drop_list.png"
 
 - [React로 Drag and Drop List 만들기 #1](/posts/react-drag-and-drop-list)
 - [React로 Drag and Drop List 만들기(Swap) #2](/posts/react-drag-and-drop-list-2)
-- [React로 Drag and Drop List 만들기(Sortable) #2](/posts/react-drag-and-drop-list-sortable)
+- [React로 Drag and Drop List 만들기(Sortable) #3](/posts/react-drag-and-drop-list-sortable)
 
 두번째 어떤 프로젝트를 할까 고민중에 드래그 앤 드롭이 되는 리스트를 만들기로 했다.
 

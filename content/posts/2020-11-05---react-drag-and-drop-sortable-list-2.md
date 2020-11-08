@@ -15,7 +15,7 @@ socialImage: "/media/drag_and_drop_list.png"
 
 - [React로 Drag and Drop List 만들기 #1](/posts/react-drag-and-drop-list)
 - [React로 Drag and Drop List 만들기(Swap) #2](/posts/react-drag-and-drop-list-2)
-- [React로 Drag and Drop List 만들기(Sortable) #2](/posts/react-drag-and-drop-list-sortable)
+- [React로 Drag and Drop List 만들기(Sortable) #3](/posts/react-drag-and-drop-list-sortable)
 
 지난 포스트에서 state를 이용해 리스트를 보여줬다.
 
