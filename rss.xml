@@ -1,6 +1,1102 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 06 Nov 2020 15:36:32 GMT</lastBuildDate><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Swap) #2]]></title><description><![CDATA[드래그 앤 드롭이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://chill-bi.com/posts/react-drag-and-drop-list-2</link><guid isPermaLink="false">https://chill-bi.com/posts/react-drag-and-drop-list-2</guid><pubDate>Thu, 05 Nov 2020 00:09:28 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 09 Nov 2020 19:09:58 GMT</lastBuildDate><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Sortable) #3]]></title><description><![CDATA[드래그 앤 드롭 - Sortable이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://chill-bi.com/posts/react-drag-and-drop-list-sortable</link><guid isPermaLink="false">https://chill-bi.com/posts/react-drag-and-drop-list-sortable</guid><pubDate>Mon, 09 Nov 2020 19:54:05 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list&quot;&gt;React로 Drag and Drop List 만들기 #1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-2&quot;&gt;React로 Drag and Drop List 만들기(Swap) #2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-sortable&quot;&gt;React로 Drag and Drop List 만들기(Sortable) #3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;드디어 마지막 목적지 Sortable list를 만들어 보자.&lt;/p&gt;
+&lt;p&gt;우선 css부터 한번 작성해보자.&lt;/p&gt;
+&lt;p&gt;위아래로 움직이는 애니메이션을 주기 위해 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/CSS/transform&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;transform&lt;/a&gt;과 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/CSS/transition&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;transition&lt;/a&gt;을 사용한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;transform : 해당 요소의 크기, 위치 등을 조정한다.&lt;/li&gt;
+&lt;li&gt;transition : 변화(width, height, transform 등의 변화)에 대한 딜레이(?)를 조정한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;transform-사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#transform-%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;transform 사용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;transform 사용&lt;/h3&gt;
+&lt;p&gt;선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move_up 클래스를, 밑으로 내려갈 경우 move_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-app-scss&quot; class=&quot;file my-2&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-scss  &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ent&quot;&gt;li&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;cursor&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;grab&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;padding&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;10&lt;span class=&quot;pl-k&quot;&gt;px&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;15&lt;span class=&quot;pl-k&quot;&gt;px&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;transition&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;transform&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;200&lt;span class=&quot;pl-k&quot;&gt;ms&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;ease&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;0&lt;span class=&quot;pl-k&quot;&gt;s&lt;/span&gt;&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;pl-e&quot;&gt;.grabbing&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-ent&quot;&gt;cursor&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;grabbing&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;pl-e&quot;&gt;.move_up&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;transform&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;translate&lt;/span&gt;(&lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;pl-c1&quot;&gt;-41&lt;span class=&quot;pl-k&quot;&gt;px&lt;/span&gt;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;pl-e&quot;&gt;.move_down&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;transform&lt;/span&gt;&lt;/span&gt; : &lt;span class=&quot;pl-c1&quot;&gt;translate&lt;/span&gt;(&lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;pl-c1&quot;&gt;41&lt;span class=&quot;pl-k&quot;&gt;px&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L33&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;33&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC33&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-scss-L34&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;34&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC34&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/App.scss&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-scss&quot;&gt;App.scss&lt;/a&gt;
+        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;생각해야하는-내용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%9D%EA%B0%81%ED%95%B4%EC%95%BC%ED%95%98%EB%8A%94-%EB%82%B4%EC%9A%A9&quot; aria-label=&quot;생각해야하는 내용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;생각해야하는 내용&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/9b968fd45fe6e760b00687123a9c694d/drag_and_drop_list_sortable.gif&quot; alt=&quot;drag_and_drop_list_sortable.gif&quot;&gt; &lt;/p&gt;
+&lt;p&gt;위의 작업을 하려면 다음과 같은 조건이 필요하다. 위의 코드는 필자의 깃허브에 있다. &lt;a href=&quot;https://github.com/Chill-bi/drag_and_drop&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;자세히 보기&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;선택한 요소보다 위에 있는 요소는 밑으로 내려와야한다.&lt;/li&gt;
+&lt;li&gt;선택한 요소보다 아래에 있는 요소는 위로 내려와야한다.&lt;/li&gt;
+&lt;li&gt;따라서 선택한 요소의 정보가 필요하며 이동시 곂쳐지는 요소가 위에 있는지, 밑에 있는지 판단할 수 있어야한다.&lt;/li&gt;
+&lt;li&gt;만약 움직였다가 Drop하지 않고 다시 원래 위치로 이동할 경우 움직였던 요소들도 원래대로 돌아와야한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;1, 2, 4번을 해결하기 위에서는 현재 선택한 요소 정보(GrabData)와 선택한 요소가 다른 요소위에 있을 경우 해당 요소의 정보(TargetData)가 필요하다. TargetData를 이탈 할 경우도 체크해야하니 Drag and Drop API에서 다음과 같은 API를 사용할 예정이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GrabData를 가져올 수 있는 ondragstart&lt;/li&gt;
+&lt;li&gt;TargetData를 가져올 수 있는 ondragenter&lt;/li&gt;
+&lt;li&gt;TargetData를 이탈했을 경우 정보를 가져올 수 있는 ondragleave&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;간단히 말해 Twitter를 잡아서(e.target = Twitter) Github 위에 지나갈 경우와 Github를 이탈할 경우(e.target = Github)를 체크하면 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; GrabData &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragStart&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Twitter&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragEnter&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Github&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragLeave&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Github&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetData를 확인 할 수 있기에 이를 어떻게 활용해야하나 하다가 onDragStart에서 GrabData를 state로 저장하고, onDragEnter 에서 GrabData와 TargetData의 상하관계를 판단해서 transform을 추가하고, onDragLeave에서 추가된 transform을 지우기로 했다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-app-js&quot; class=&quot;file my-2&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L58&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;58&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC58&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;_onDragEnter&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L59&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;59&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC59&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grab&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L60&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;60&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC60&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L61&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;61&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC61&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L62&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;62&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC62&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_up&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L63&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;63&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC63&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_down&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L64&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;64&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC64&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L65&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;65&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC65&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;_onDragLeave&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L66&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;66&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC66&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_up&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L67&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;67&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC67&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_down&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-app-js-L68&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;68&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC68&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/App.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-js&quot;&gt;App.js&lt;/a&gt;
+        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;문제점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C%EC%A0%90&quot; aria-label=&quot;문제점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제점&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;GrabData가 TargetData위에 올라가면(onDragEnter) 움직이는데 움직이면서 위치가 한칸 위/아래로 움직여서 이탈처리가 된다.
+이탈이 되면 onDragLeave가 되니 원래대로 돌아온다. 이걸 계속 반복하니 이상하게 된다.&lt;/li&gt;
+&lt;li&gt;어느순간 Drop을 하면 뭔가 빈 리스트가 생긴다.&lt;/li&gt;
+&lt;li&gt;뭔가 순차적으로 위/아래로 이동해야 하는데 안된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/aqzsvk04/116/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;h3 id=&quot;생각해보기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%9D%EA%B0%81%ED%95%B4%EB%B3%B4%EA%B8%B0&quot; aria-label=&quot;생각해보기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;생각해보기&lt;/h3&gt;
+&lt;p&gt;우선 onDragEnter와 onDragLeave에서 transform 클래스를 추가/제거 하는 코드를 지우고 다르게 transform을 적용할 수 있는 방법을 찾다가 move_up, move_down의 정보를 따로 저장하고 return()에서 해당 값을 확인해서 랜더링 할 수 있는 방법을 생각했다.&lt;/p&gt;
+&lt;h3 id=&quot;결과&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B2%B0%EA%B3%BC&quot; aria-label=&quot;결과 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;결과&lt;/h3&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/aqzsvk04/268/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;h3 id=&quot;설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EB%AA%85&quot; aria-label=&quot;설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;설명&lt;/h3&gt;
+&lt;p&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-complete_app-js&quot; class=&quot;file my-2&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-s1&gt;_SocialNetworks&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Twitter&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Red&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Facebook&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;black&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Orange&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Line&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;black&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Yellow&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Instagram&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Green&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Telegram&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Blue&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;KaKao&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;DarkBlue&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;title&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;LinkedIn&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;Purple&amp;quot;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-s1&gt;_initGrabData&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-c1&gt;target&lt;/span&gt;: &lt;span class=pl-c1&gt;null&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-c1&gt;position&lt;/span&gt;: &lt;span class=pl-c1&gt;null&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-c1&gt;move_up&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-c1&gt;move_down&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-c1&gt;updateList&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-v&gt;App&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;lists&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;setLists&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;React&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;useState&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;_SocialNetworks&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;setGrab&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;React&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;useState&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;_initGrabData&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;isDrag&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;setIsDrag&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;React&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;useState&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-c1&gt;false&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-v&gt;React&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;useEffect&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-en&gt;_onDragOver&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;preventDefault&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-en&gt;_onDragStart&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;setIsDrag&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-c1&gt;true&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;setGrab&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      ...&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;target&lt;/span&gt;: &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L33&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;33&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC33&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;position&lt;/span&gt;: &lt;span class=pl-v&gt;Number&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dataset&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;position&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L34&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;34&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC34&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;updateList&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;...&lt;span class=pl-s1&gt;lists&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L35&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;35&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC35&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L36&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;36&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC36&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L37&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;37&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;classList&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;add&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;grabbing&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L38&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dataTransfer&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;effectAllowed&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;move&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L39&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;39&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC39&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dataTransfer&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;setData&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;text/html&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L40&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;40&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC40&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L41&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;41&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC41&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L42&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;42&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC42&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-en&gt;_onDragEnd&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L43&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;43&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC43&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;setIsDrag&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-c1&gt;false&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L44&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;44&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC44&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;classList&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;remove&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;grabbing&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L45&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;45&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC45&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dataTransfer&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dropEffect&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;move&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L46&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC46&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L47&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;47&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC47&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;setLists&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;...&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;updateList&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L48&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;48&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC48&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L49&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;49&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC49&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;setGrab&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L50&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;50&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC50&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;target&lt;/span&gt;: &lt;span class=pl-c1&gt;null&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L51&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;51&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC51&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;move_up&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L52&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;52&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC52&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;move_down&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L53&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;53&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC53&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;updateList&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L54&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;54&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC54&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L55&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;55&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC55&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L56&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;56&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC56&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;style&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;visibility&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;visible&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L57&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;57&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC57&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L58&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;58&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC58&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L59&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;59&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC59&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-en&gt;_onDragEnter&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L60&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;60&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC60&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;grabPosition&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;Number&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dataset&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;position&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L61&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;61&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC61&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;listPosition&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;position&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L62&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;62&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC62&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;targetPosition&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;Number&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;dataset&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;position&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L63&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;63&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC63&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L64&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;64&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC64&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;move_up&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;...&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;move_up&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L65&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;65&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC65&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;move_down&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;...&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;move_down&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L66&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;66&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC66&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L67&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;67&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC67&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;data&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;...&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;updateList&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L68&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;68&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC68&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-s1&gt;data&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;grabPosition&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;data&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;splice&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-c1&gt;1&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;data&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;grabPosition&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-c1&gt;0&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L69&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;69&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC69&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L70&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;70&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC70&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;if&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;listPosition&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt; &lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L71&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;71&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC71&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-s1&gt;move_down&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;includes&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; ? &lt;span class=pl-s1&gt;move_down&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;pop&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; : &lt;span class=pl-s1&gt;move_down&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;push&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L72&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;72&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC72&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-k&gt;else&lt;/span&gt; &lt;span class=pl-k&gt;if&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;listPosition&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt; &lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L73&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;73&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC73&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-s1&gt;move_up&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;includes&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; ? &lt;span class=pl-s1&gt;move_up&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;pop&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; : &lt;span class=pl-s1&gt;move_up&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;push&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L74&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;74&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC74&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-k&gt;else&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L75&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;75&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC75&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-s1&gt;move_down&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L76&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;76&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC76&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-s1&gt;move_up&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L77&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;77&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC77&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L78&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;78&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC78&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L79&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;79&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC79&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-en&gt;setGrab&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L80&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;80&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC80&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      ...&lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L81&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;81&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC81&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      move_up&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L82&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;82&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC82&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      move_down&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L83&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;83&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC83&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;updateList&lt;/span&gt;: &lt;span class=pl-s1&gt;data&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L84&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;84&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC84&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;position&lt;/span&gt;: &lt;span class=pl-s1&gt;targetPosition&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L85&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;85&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC85&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L86&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;86&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC86&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L87&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;87&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC87&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-en&gt;_onDragLeave&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;e&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L88&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;88&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC88&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;if&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt; &lt;span class=pl-c1&gt;===&lt;/span&gt; &lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L89&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;89&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC89&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-s1&gt;e&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;style&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;visibility&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L90&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;90&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC90&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L91&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;91&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC91&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L92&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;92&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC92&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L93&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;93&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC93&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-k&gt;return&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L94&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;94&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC94&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;Contaier&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L95&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;95&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC95&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;List&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L96&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;96&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC96&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;onDragOver&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L97&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;97&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC97&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-en&gt;_onDragOver&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L98&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;98&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC98&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L99&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;99&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC99&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L100&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;100&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC100&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L101&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;101&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC101&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;          &lt;span class=pl-s1&gt;lists&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;map&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;sns&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;index&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L102&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;102&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC102&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-k&gt;let&lt;/span&gt; &lt;span class=pl-s1&gt;classNames&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L103&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;103&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC103&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L104&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;104&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC104&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;move_up&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;includes&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;index&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;classNames&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;move_up&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L105&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;105&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC105&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;move_down&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;includes&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;index&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;classNames&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;move_down&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L106&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;106&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC106&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L107&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;107&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC107&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-k&gt;return&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L108&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;108&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC108&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;              &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;ListItem&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L109&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;109&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC109&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;key&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;index&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L110&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;110&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC110&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;data-position&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;index&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L111&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;111&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC111&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;className&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;classNames&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L112&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;112&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC112&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;isDrag&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;isDrag&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L113&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;113&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC113&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L114&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;114&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC114&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;onDragStart&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-en&gt;_onDragStart&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L115&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;115&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC115&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;onDragEnd&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-en&gt;_onDragEnd&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L116&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;116&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC116&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;onDragEnter&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-en&gt;_onDragEnter&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L117&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;117&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC117&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;onDragLeave&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-en&gt;_onDragLeave&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L118&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;118&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC118&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L119&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;119&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC119&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;draggable&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L120&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;120&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC120&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-c1&gt;style&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L121&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;121&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC121&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                  &lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;: &lt;span class=pl-s1&gt;sns&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;backgroundColor&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L122&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;122&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC122&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                  &lt;span class=pl-c1&gt;color&lt;/span&gt;: &lt;span class=pl-s1&gt;sns&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;color&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L123&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;123&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC123&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                  &lt;span class=pl-c1&gt;fontSize&lt;/span&gt;: &lt;span class=pl-s&gt;&amp;quot;bold&amp;quot;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L124&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;124&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC124&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L125&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;125&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC125&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;              &lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L126&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;126&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC126&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L127&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;127&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC127&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                  &lt;span class=pl-s1&gt;sns&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;title&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L128&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;128&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC128&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L129&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;129&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC129&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;              &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;ListItem&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L130&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;130&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC130&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L131&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;131&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC131&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;          &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L132&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;132&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC132&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L133&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;133&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC133&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;List&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L134&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;134&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC134&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;div&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt; MoveUp: &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;move_up&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;div&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt; &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L135&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;135&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC135&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;&lt;span class=pl-ent&gt;div&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt; MoveDown: &lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-s1&gt;grab&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;move_down&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;div&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L136&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;136&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC136&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt;/&lt;span class=pl-ent&gt;Contaier&lt;/span&gt;&lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L137&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;137&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC137&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L138&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;138&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC138&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L139&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;139&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC139&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L140&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;140&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC140&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-v&gt;Contaier&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-smi&gt;window&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;styled&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;div&lt;/span&gt; &lt;span class=pl-s&gt;`&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L141&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;141&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC141&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;		background-color: black;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L142&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;142&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC142&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    width: 100vw;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L143&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;143&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC143&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    height: 100vh;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L144&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;144&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC144&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    display: flex;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L145&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;145&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC145&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    justify-content: center;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L146&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;146&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC146&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    align-items: center;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L147&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;147&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC147&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    flex-direction: column;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L148&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;148&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC148&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;`&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L149&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;149&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC149&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L150&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;150&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC150&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-v&gt;List&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-smi&gt;window&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;styled&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;ul&lt;/span&gt; &lt;span class=pl-s&gt;`&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L151&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;151&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC151&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    width: 300px;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L152&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;152&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC152&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    list-style: none;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L153&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;153&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC153&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;`&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L154&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;154&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC154&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L155&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;155&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC155&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-v&gt;ListItem&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-smi&gt;window&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;styled&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;li&lt;/span&gt; &lt;span class=pl-s&gt;`&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L156&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;156&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC156&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    cursor: grab;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L157&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;157&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC157&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    padding: 10px 15px;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L158&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;158&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC158&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    &lt;span class=pl-s1&gt;&lt;span class=pl-kos&gt;${&lt;/span&gt;&lt;span class=pl-s1&gt;props&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-s1&gt;props&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;isDrag&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;transition: transform 200ms ease 0s&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/span&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L159&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;159&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC159&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L160&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;160&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC160&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    &amp;amp;.grabbing {&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L161&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;161&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC161&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    		cursor: grabbing;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L162&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;162&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC162&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    }&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L163&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;163&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC163&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L164&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;164&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC164&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    &amp;amp;.move_up {&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L165&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;165&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC165&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    		transform: translate(0, -41px)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L166&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;166&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC166&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    }&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L167&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;167&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC167&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L168&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;168&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC168&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    &amp;amp;.move_down {&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L169&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;169&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC169&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    		transform : translate(0, 41px);&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L170&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;170&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC170&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;    }&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L171&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;171&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC171&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s&gt;`&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L172&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;172&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC172&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-complete_app-js-L173&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;173&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-complete_app-js-LC173&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-v&gt;ReactDOM&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;render&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt; &lt;span class=pl-c1&gt;&amp;lt;&lt;/span&gt; &lt;span class=pl-v&gt;App&lt;/span&gt; / &lt;span class=pl-c1&gt;&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-smi&gt;document&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;querySelector&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;#root&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/complete_app.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-complete_app-js&quot;&gt;complete_app.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[11-17] _initGrabData : 좀 더 상세화 된 grab 정보를 state로 저장하기 위한 기본 틀&lt;/li&gt;
+&lt;li&gt;[22] isDrag : 현재 드래그 중인지 아닌지의 정보를 담은 state&lt;/li&gt;
+&lt;li&gt;[28-40] _onDragStart : 드래그를 시작하기 때문에 isDrag를 true로 변경하고, 현재 선택된 요소 정보(li tag, position 정보)를 저장하고 현재 리스트 정보를 다음 리스트(updateList)로 판단하여 저장한다.&lt;/li&gt;
+&lt;li&gt;[42-57] _onDragEnd : 드래그가 끝났기 때문에 isDrag를 false로 변경하고, 다음 리스트(updateList)를 현재 리스트로 변경한다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[59-86] _onDragEnter : 필요한 정보를 가져오고 필요에 맞게 설정한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;선택된 요소의 position 정보(grabPosition)&lt;/li&gt;
+&lt;li&gt;상하관계를 가지는 타겟 요소의 position 정보(targetPosition)&lt;/li&gt;
+&lt;li&gt;updateList에서 선택된 요소의 position 정보(listPosition)&lt;/li&gt;
+&lt;li&gt;현재 리스트 중 move_up, move_down 클래스를 적용시킬 index 배열(move_up, move_down)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;[102-105, 111] move_up, move_down 배열과 index의 포함관계에 따라 클래스 적용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;마치면서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C&quot; aria-label=&quot;마치면서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치면서&lt;/h3&gt;
+&lt;p&gt;좋은 라이브러리를 사용하지 않고 오로지 나의 힘으로 해당 기능을 완성했다. 처음엔 뭐가 잘못됐는지 뭐가 다른지를 찾는것에 오래 걸렸다. 하지만 아직 부족한 것이 많은 기능이기에 조금씩 더 보완하면서 지식을 다듬고 싶다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Swap) #2]]></title><description><![CDATA[드래그 앤 드롭 - Swap이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://chill-bi.com/posts/react-drag-and-drop-list-2</link><guid isPermaLink="false">https://chill-bi.com/posts/react-drag-and-drop-list-2</guid><pubDate>Thu, 05 Nov 2020 00:09:28 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list&quot;&gt;React로 Drag and Drop List 만들기 #1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-2&quot;&gt;React로 Drag and Drop List 만들기(Swap) #2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-sortable&quot;&gt;React로 Drag and Drop List 만들기(Sortable) #3&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;지난 포스트에서 state를 이용해 리스트를 보여줬다.&lt;/p&gt;
 &lt;p&gt;Drag and Drop API를 이용해서 Drag 한 요소와 Drop 한 위치의 요소를 서로 변경(Swap)하는 코드를 먼저 작성해보기로 했다.&lt;/p&gt;
@@ -213,6 +1309,7 @@
 &lt;p&gt;&lt;img src=&quot;/9b968fd45fe6e760b00687123a9c694d/drag_and_drop_list_sortable.gif&quot; alt=&quot;drag_and_drop_list_sortable.gif&quot;&gt; &lt;em&gt;Sortable List&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기 #1]]></title><description><![CDATA[드래그 앤 드롭이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://chill-bi.com/posts/react-drag-and-drop-list</link><guid isPermaLink="false">https://chill-bi.com/posts/react-drag-and-drop-list</guid><pubDate>Tue, 03 Nov 2020 17:36:57 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list&quot;&gt;React로 Drag and Drop List 만들기 #1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-2&quot;&gt;React로 Drag and Drop List 만들기(Swap) #2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-sortable&quot;&gt;React로 Drag and Drop List 만들기(Sortable) #3&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;두번째 어떤 프로젝트를 할까 고민중에 드래그 앤 드롭이 되는 리스트를 만들기로 했다.&lt;/p&gt;
 &lt;p&gt;React 라이브러리로 좋은 라이브러리들이 있었지만 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/HTML_%EB%93%9C%EB%9E%98%EA%B7%B8_%EC%95%A4_%EB%93%9C%EB%A1%AD_API&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;html drag and drop api&lt;/a&gt;을 이용해서 라이브리러리 없이 만들고 싶었다.&lt;/p&gt;
