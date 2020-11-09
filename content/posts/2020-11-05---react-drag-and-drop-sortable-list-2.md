@@ -9,7 +9,7 @@ tags:
   - "React"
   - "Drag and Drop"
   - "List"
-description: "드래그 앤 드롭이 가능한 리스트를 라이브러리 없이 만들어보자."
+description: "드래그 앤 드롭 - Swap이 가능한 리스트를 라이브러리 없이 만들어보자."
 socialImage: "/media/drag_and_drop_list.png"
 ---
 

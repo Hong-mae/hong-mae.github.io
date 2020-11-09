@@ -9,7 +9,7 @@ tags:
   - "React"
   - "Drag and Drop"
   - "List"
-description: "드래그 앤 드롭이 가능한 리스트를 라이브러리 없이 만들어보자."
+description: "드래그 앤 드롭 - Sortable이 가능한 리스트를 라이브러리 없이 만들어보자."
 socialImage: "/media/drag_and_drop_list.png"
 ---
 
@@ -29,24 +29,7 @@ socialImage: "/media/drag_and_drop_list.png"
 ### transform 사용
 선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move\_up 클래스를, 밑으로 내려갈 경우 move\_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.
 
-``` scss
-// index.scss
-...생략
-
-.list_item{
-    ...생략
-    transition: transform 200ms ease 0s;
-
-    &.move_up {
-        transform: translate(0, 41px)
-    }
-
-    &.move_down {
-        transform: translate(0, -41px)
-    }
-}
-...생략
-```
+`gist:Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.scss?lines=18-34`
 
 ### 생각해야하는 내용
 ![drag_and_drop_list_sortable.gif](/media/drag_and_drop_list_sortable.gif) 
@@ -58,15 +41,17 @@ socialImage: "/media/drag_and_drop_list.png"
 3. 따라서 선택한 요소의 정보가 필요하며 이동시 곂쳐지는 요소가 위에 있는지, 밑에 있는지 판단할 수 있어야한다.
 4. 만약 움직였다가 Drop하지 않고 다시 원래 위치로 이동할 경우 움직였던 요소들도 원래대로 돌아와야한다.
 
-1, 2, 4번을 해결하기 위에서는 현재 선택한 요소 정보(DragData)와 선택한 요소가 다른 요소위에 있을 경우 해당 요소의 정보(TargetData)가 필요하다. TargetData를 이탈 할 경우도 체크해야하니 Drag and Drop API에서 다음과 같은 API를 사용할 예정이다.
+1, 2, 4번을 해결하기 위에서는 현재 선택한 요소 정보(GrabData)와 선택한 요소가 다른 요소위에 있을 경우 해당 요소의 정보(TargetData)가 필요하다. TargetData를 이탈 할 경우도 체크해야하니 Drag and Drop API에서 다음과 같은 API를 사용할 예정이다.
 
-- DragData를 가져올 수 있는 ondragstart
+- GrabData를 가져올 수 있는 ondragstart
 - TargetData를 가져올 수 있는 ondragenter
 - TargetData를 이탈했을 경우 정보를 가져올 수 있는 ondragleave
 
-간단히 말해 Twitter를 잡아서(e.target = Twitter) Github 위에 지나갈 경우(e.target = Github)와 Github를 이탈할 경우(e.target = Github)를 체크하면 된다.
+간단히 말해 Twitter를 잡아서(e.target = Twitter) Github 위에 지나갈 경우와 Github를 이탈할 경우(e.target = Github)를 체크하면 된다.
 
 ``` js
+let GrabData = null;
+
 const onDragStart = e => {
     console.log(e.target) // e.target is Twitter
 }
@@ -80,7 +65,18 @@ const onDragLeave = e => {
 }
 ```
 
+onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetData를 확인 할 수 있기에 이를 어떻게 활용해야하나 하다가 onDragStart에서 GrabData를 state로 저장하고, onDragEnter 에서 GrabData와 TargetData의 상하관계를 판단해서 transform을 추가하고, onDragLeave에서 추가된 transform을 지우기로 했다.
+
+`gist:Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.js?lines=58-68`
+
+### 문제점
+1. GrabData가 TargetData위에 올라가면(onDragEnter) 움직이는데 움직이면서 위치가 한칸 위/아래로 움직여서 이탈처리가 된다.
+이탈이 되면 onDragLeave가 되니 원래대로 돌아온다. 이걸 계속 반복하니 이상하게 된다.
+2. 어느순간 Drop을 하면 뭔가 빈 리스트가 생긴다.
+3. 뭔가 순차적으로 위/아래로 이동해야 하는데 안된다.
 
 
+<iframe width="100%" height="500" style="display:block" src="//jsfiddle.net/Chill_bi/aqzsvk04/116/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-### 결과
+### 생각해보기
+우선 onDragEnter와 onDragLeave에서 transform 클래스를 추가/제거 하는 코드를 지우고 다르게 transform을 적용할 수 있는 방법을 찾다가 move\_up, move\_down의 정보를 따로 저장하고 return()에서 해당 값을 확인해서 랜더링 할 수 있는 방법을 생각했다.
