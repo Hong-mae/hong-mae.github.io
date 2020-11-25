@@ -231,10 +231,10 @@ module.exports = {
     'gatsby-plugin-optimize-svgs',
     `gatsby-plugin-netlify-cms-paths`,
     {
-      resolve: `gatsby-plugin-google-adsense`,
+      resolve: `@isamrish/gatsby-plugin-google-adsense`,
       options: {
-        publisherId: `ca-pub-8178483925350112`
-      },
+        googleAdClientId: "ca-pub-8178483925350112"
+      }
     },
     {
       resolve: 'gatsby-plugin-robots-txt',

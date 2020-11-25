@@ -16,7 +16,7 @@ socialImage: "/media/set_up_chat_app_plan.jpg"
 <summary>목차</summary>
 <p>
 
-- [리액트 네이티브 채팅 앱 만들기 - 기획](react-native-chat-app-plan)
+- [리액트 네이티브 채팅 앱 만들기 - 기획](/posts/react-native-chat-app-plan)
 </p>
 </details>
 
