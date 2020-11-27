@@ -4,7 +4,6 @@ import Author from './Author';
 import Contacts from './Contacts';
 import Copyright from './Copyright';
 import Menu from './Menu';
-import Adsense from 'react-adsense';
 import styles from './Sidebar.module.scss';
 import { useSiteMetadata } from '../../hooks';
 
@@ -22,13 +21,6 @@ const Sidebar = ({ isIndex }: Props) => {
         <Menu menu={menu} />
         <Contacts contacts={author.contacts} />
         <Copyright copyright={copyright} />
-        <Adsense.Google
-          client="ca-pub-8178483925350112"
-          slot="6352070642"
-          format='auto'
-          style={{ display: 'block' }}
-          responsive='true'
-        />
       </div>
     </div>
   );

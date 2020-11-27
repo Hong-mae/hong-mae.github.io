@@ -6,7 +6,6 @@ import Comments from './Comments';
 import Content from './Content';
 import Meta from './Meta';
 import Tags from './Tags';
-import Adsense from 'react-adsense';
 import styles from './Post.module.scss';
 import type { Node } from '../../types';
 
@@ -32,15 +31,6 @@ const Post = ({ post }: Props) => {
         {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
         <Author />
       </div>
-
-      <Adsense.Google
-        client="ca-pub-8178483925350112"
-        slot="9944008900"
-        format='auto'
-        style={{ display: 'block' }}
-        responsive='true'
-        className={styles['post__adsense']}
-      />
 
       <div className={styles['post__comments']}>
         <Comments postSlug={slug} postTitle={post.frontmatter.title} />
