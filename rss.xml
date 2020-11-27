@@ -1,4 +1,219 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 27 Nov 2020 06:31:28 GMT</lastBuildDate><item><title><![CDATA[리엑트 네이티브 채팅 앱 만들기 - 기획]]></title><description><![CDATA[개인 프로젝트로 진행하는 퀄리티 있는 채팅 앱 만들기 기획편]]></description><link>https://chill-bi.com/posts/react-native-chat-app-plan</link><guid isPermaLink="false">https://chill-bi.com/posts/react-native-chat-app-plan</guid><pubDate>Sun, 15 Nov 2020 18:14:00 GMT</pubDate><content:encoded>&lt;details markdown=&quot;1&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Chill-bi's Dev.log]]></title><description><![CDATA[Chill-bi의 개발 스터디 블로그.]]></description><link>https://chill-bi.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 27 Nov 2020 08:37:50 GMT</lastBuildDate><item><title><![CDATA[프로그래머스 - 크레인 인형뽑기 게임]]></title><description><![CDATA[프로그래머스에 있는 2019 카카오 개발자 겨울 인턴쉽 문제 크레인 인형뽑기 게임을 풀어보자.]]></description><link>https://chill-bi.com/posts/programmers-claw-machine-game</link><guid isPermaLink="false">https://chill-bi.com/posts/programmers-claw-machine-game</guid><pubDate>Fri, 27 Nov 2020 15:43:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+&lt;p&gt;게임개발자인 죠르디는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.
+죠르디는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/85f3edaab791c9ecf6f0a2ee2318c1d3/0b533/crane_game_img.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAADhUlEQVQ4y51V624bVRD2WwShijjxZe8X73pv9tqb2Ikd6jgldnzZS3CN05RCqiDoLS2qBEWAVAkhEBIPgMQz8Aw81MecYzutSoVEf4zOaHbON9+Z+c7ZnKRoKIkKRjcjNOsuiuSzmKSoq/X/WU5RVby3aeL3BxtIegXc2DbAYqKsvRtgUdDRbRbx3cMAXy1UqKq0Ans7Q1H+b+a5AgEedUqoujp6HQFuVUJZfEdA+pYTySlT3zRVhqqpEKQlGNv4NpN4vsz99XrtM4aCpMD1a6jYLgdWNJ0nyKrON6/Xtc/ya2ETummh1mhex+uNiO/LFcsiev1baES7YD5LZJtU3eSJ4uqY6yLFsoDBaAyvFmKSpNeA0zRbDYVADnp9RK0231SxHWJpwKjY0I0KNAJWV6YZFkoFBcPBmJ9qNIkpVuG542nyiuGHBNjcafE+mFaVV9QYU9OFoNurY+swbBPC3EbvPIbnEOA05sVZsX8BsiOXBIlXLJQV+qigObwLZ28AQRQhyDpqgYlPHxsYXUzg2EtAVowBjt4E3G3vLxse1HGz24Lj+hj1Qxy0fUiqyQux/m5vFTEcTuAGNc7q+shx+ibDHWzmy9jpBPj7rzqO+nX8cC/ERezjg6ICWSHWmgX3MMNH8Qyu5+OEesilRCzHcfJqKByQeigIMozQx+1FhLDuYce3UXMqEKh/Cm0ySVphJ8U0W8DxPM6KsTYtm6Z8ugRkg4jouC+efY3nD55gNwrw529tdIjpt1ffYJ7OkE2m+PnF97CqVfzxi4/nT+fQKgEBxhyEDWYSLyWUY4Nodw/w5b1L3E/uoNry8NNLA71ugId37yMbnmBwOMDV2SWMwMHLH3U8e5RBt2oEkqzkVCFNrnUokA67fewlETaOFURNH1eLBnyvivcFE/mygUpLQT4zUNItbBRsHA5INn5APUygrPQ5ibM1QxH7BHhxuY+jz1Q0Ww5+/aKBwNWwNzmH1z7G0S0F2RMLolPFQfI5prfP+FCmacrvv6ZrSE5PuVYJUEUUWThPy5gdb2J2soXZcAsfj7bwSSpiHpcolsd8kMdstI1FJuAs0yFrJrKxgTtpnls6MvkrlWM0i1zQVZqiR6KW6dLv0h02aAg+N1ExEUZtbJckhM0WSWX5SJQEhYMwYz57pXLrJ0lWl8aC7P6ylb08zNh3VTd4jK3LPO21X4W6eis1/ANlN5dTZdiODAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/85f3edaab791c9ecf6f0a2ee2318c1d3/8ac56/crane_game_img.webp 240w,
+/static/85f3edaab791c9ecf6f0a2ee2318c1d3/d3be9/crane_game_img.webp 480w,
+/static/85f3edaab791c9ecf6f0a2ee2318c1d3/b0a15/crane_game_img.webp 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/85f3edaab791c9ecf6f0a2ee2318c1d3/8ff5a/crane_game_img.png 240w,
+/static/85f3edaab791c9ecf6f0a2ee2318c1d3/e85cb/crane_game_img.png 480w,
+/static/85f3edaab791c9ecf6f0a2ee2318c1d3/0b533/crane_game_img.png 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/85f3edaab791c9ecf6f0a2ee2318c1d3/0b533/crane_game_img.png&quot;
+          alt=&quot;crane_game_img.png&quot;
+          title=&quot;crane_game_img.png&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. &lt;/p&gt;
+&lt;p&gt;모든 인형은 1 x 1 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ba3ff32daf32719c2af0f7e697036f99/0b533/crane_game_102.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAADhElEQVQ4y51U647bVBDOWxRViGQ3cWzH1zhObOfi3DbZS5LdxokTOzGb3e6qqN1ykaCIBQmWiwCpPyggJB4AiWfgGXiojzknl0q0QqI/Rmc8nvlmzjdzJiUrGgRJQXjShF+rIEc6s8mKujn/n6QUVcVbaRO/f3IPi0EWb+8bYDapoL0ZYE7Ucejn8N0zDx9fqVBVeQP2+gqlwn9XnsoS4GlfgF3RMeiLqNgy8tIbAtK/lERKnnjT1AJUTYUor8FY4OtE5v4Frm/Pnc4qFGUFFbeKYqnCgRVN5w4FVefB23OrM/9q3YduWqg2/J291mjyuFQuL2EwOkOj2QbTmSMLUnVzB7atgn1nBRHBdAanWsd8sdwBRstk0xQCORqM0Ox0eVCxVKYqDRjFEjSjyIG3sk0WhDN+qzCKuQ/znUWLlxUeE6Df6nAeTMvmGVmwZpicAvbNhIEKoozxNFwDzmOenNlfAWRXZs4s475Q4I6CpEOQX/LIbCIlHU/WgNMNIIsJ/w3Y6h6sCfdqODnsoOy4CE4c9NtlyCpdl4J0s4R0ljgMIw44j5cQFUqmmZzPHSDjsN5sIZ3Jo9Vz8fdfNZyOavjhiY+nsYt3cgoKigJJs+AMEzyIz+G4HlU6RaU3gdOfcl7ZTXYVtrs9yLIKs1HFxcMm6jUXLZdGo1zkVSjkbNJo1fpLRMkVv0E4i1Bun8DtjjCnBslbwCPelDYyORHddg1//tZBv+fhm9uvcblcIZlHePHt97BsG3/84uLLzy+hWx7CaQz/3IT22MZkvqQKN2NzPBzRYHaRS8sotR389NwkHj08e+99JHStYBjg9vpDGF4Zz3/U8cWnCQyrislsgXCs4TjUEETvbgBFCYf9IQYXB8hEFlpND7dXDbiOjfuiiUzeQLGjIJNQ13UL97IlDIMYrlfFGXX7ASWbjELeKM6hQIC9o1PcfHCA0WMFfqeMXz9qwKtoOJg/gtMd4/RMQfKZBals42hxg+jimjclCEP8fHeHF3dfYRbHW0AVzaaFR8s8VuM0VtM9rCZ7OA/38HAp4TIWyJbBZZDBKtzHVSLiOqFBp1FJZgaenGdxs8piERr0MAiQDWyOD7RNXXSQzRfo0bdpcxjUBJeLpJg0Vl0aeBl1v0Pztl4SgqhQrMqF6WxLpbYriRHKhBk1ekrsZM+OCfuv6ga3sXPtt9lAG1kvEQ3/AFm0l1nSqPakAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/ba3ff32daf32719c2af0f7e697036f99/8ac56/crane_game_102.webp 240w,
+/static/ba3ff32daf32719c2af0f7e697036f99/d3be9/crane_game_102.webp 480w,
+/static/ba3ff32daf32719c2af0f7e697036f99/b0a15/crane_game_102.webp 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/ba3ff32daf32719c2af0f7e697036f99/8ff5a/crane_game_102.png 240w,
+/static/ba3ff32daf32719c2af0f7e697036f99/e85cb/crane_game_102.png 480w,
+/static/ba3ff32daf32719c2af0f7e697036f99/0b533/crane_game_102.png 500w&quot;
+          sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          src=&quot;/static/ba3ff32daf32719c2af0f7e697036f99/0b533/crane_game_102.png&quot;
+          alt=&quot;crane_game_102.png&quot;
+          title=&quot;crane_game_102.png&quot;
+          loading=&quot;lazy&quot;
+          style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        /&gt;
+      &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/bb66573d0de119e32fbca8f773cc9ee6/crane_game_103.gif&quot; alt=&quot;crane_game_103.gif&quot;&gt;&lt;/p&gt;
+&lt;p&gt;크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)&lt;/p&gt;
+&lt;p&gt;게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.&lt;/p&gt;
+&lt;h3 id=&quot;나의-풀이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%82%98%EC%9D%98-%ED%92%80%EC%9D%B4&quot; aria-label=&quot;나의 풀이 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;나의 풀이&lt;/h3&gt;
+&lt;p&gt;&lt;div id=&quot;gist106647159&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-crane_game_answer-js&quot; class=&quot;file my-2&quot;&gt;
+    
+
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-en&gt;solution&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;board&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-s1&gt;moves&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;var&lt;/span&gt; &lt;span class=pl-s1&gt;answer&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;var&lt;/span&gt; &lt;span class=pl-s1&gt;count&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-c1&gt;0&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;for&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-k&gt;var&lt;/span&gt; &lt;span class=pl-s1&gt;move&lt;/span&gt; &lt;span class=pl-k&gt;of&lt;/span&gt; &lt;span class=pl-s1&gt;moves&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-k&gt;var&lt;/span&gt; &lt;span class=pl-s1&gt;target&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;move&lt;/span&gt; &lt;span class=pl-c1&gt;-&lt;/span&gt; &lt;span class=pl-c1&gt;1&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-k&gt;for&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-k&gt;var&lt;/span&gt; &lt;span class=pl-s1&gt;verticalLine&lt;/span&gt; &lt;span class=pl-k&gt;of&lt;/span&gt; &lt;span class=pl-s1&gt;board&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-k&gt;if&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;verticalLine&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; != &lt;span class=pl-c1&gt;0&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-k&gt;if&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;answer&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;answer&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;length&lt;/span&gt;&lt;span class=pl-c1&gt;-&lt;/span&gt;&lt;span class=pl-c1&gt;1&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;===&lt;/span&gt; &lt;span class=pl-s1&gt;verticalLine&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                    &lt;span class=pl-s1&gt;answer&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;pop&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                    &lt;span class=pl-s1&gt;count&lt;/span&gt;&lt;span class=pl-c1&gt;+=&lt;/span&gt;&lt;span class=pl-c1&gt;2&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-k&gt;else&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                    &lt;span class=pl-s1&gt;answer&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;push&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;verticalLine&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-s1&gt;verticalLine&lt;/span&gt;&lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-s1&gt;target&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-c1&gt;0&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=pl-k&gt;break&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=pl-k&gt;return&lt;/span&gt; &lt;span class=pl-s1&gt;count&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-crane_game_answer-js-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/222aa313588e183361cb76af28d42c7a/raw/76693a47f950d4c9d0fbaa777837a2238b616db1/crane_game_answer.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Chill-bi/222aa313588e183361cb76af28d42c7a#file-crane_game_answer-js&quot;&gt;crane_game_answer.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;위의 코드를 시각화 하면 다음과 같다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/4a71052209eb0432aed4cda569ba4ac9/crane_game_solve.gif&quot; alt=&quot;crane_game_solve.gif&quot;&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리엑트 네이티브 채팅 앱 만들기 - 기획]]></title><description><![CDATA[개인 프로젝트로 진행하는 퀄리티 있는 채팅 앱 만들기 기획편]]></description><link>https://chill-bi.com/posts/react-native-chat-app-plan</link><guid isPermaLink="false">https://chill-bi.com/posts/react-native-chat-app-plan</guid><pubDate>Sun, 15 Nov 2020 18:14:00 GMT</pubDate><content:encoded>&lt;details markdown=&quot;1&quot;&gt;
 &lt;summary&gt;목차&lt;/summary&gt;
 &lt;p&gt;
 &lt;ul&gt;
