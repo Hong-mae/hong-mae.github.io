@@ -38,6 +38,11 @@ const Layout = ({
         <meta name="twitter:image" content={metaImageUrl} />
         <meta name="naver-site-verification" content="aff1b116090b170e03b95f3bf7d786878d4e2dd6" />
         <meta name="google-site-verification" content="K5Cd2j5bPI-TSMjDNzgqDHTWc0Eatkp71NxQOtJa1FA" />
+        <link href="https://chill-bi.com" rel="canonical" />
+        <meta name="NaverBot" content="All" />
+        <meta name="NaverBot" content="index,follow" />
+        <meta name="Yeti" content="All" />
+        <meta name="Yeti" content="index,follow" />
       </Helmet>
 
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

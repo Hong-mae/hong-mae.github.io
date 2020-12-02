@@ -14,7 +14,7 @@ const Feed = ({ edges }: Props) => (
     {edges.map((edge) => (
       <div className={styles['feed__item']} key={edge.node.fields.slug}>
         <div className={styles['feed__item-thumbnail']}>
-          <img src={edge.node.frontmatter.socialImage.publicURL} />
+          <img src={edge.node.frontmatter.socialImage.publicURL} alt={edge.node.frontmatter.title} />
         </div>
         <div className={styles['feed__item-cont']}>
           <div className={styles['feed__item-meta']}>
