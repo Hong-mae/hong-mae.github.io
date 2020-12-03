@@ -11,11 +11,11 @@
 		"prefix": "mdHeader",
 		"body": [
 			"---",
-			"title: $1",
+			"title: \"$1\"",
 			"date: \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}.000Z\"",
 			"template: \"post\"",
 			"draft: false",
-			"slug: \"$2\"",
+			"slug: \"${TM_FILENAME_BASE/[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}\\-\\-\\-//g}\"",
 			"category: \"$3\"",
 			"tags:",
 			"  - \"$6\"",
