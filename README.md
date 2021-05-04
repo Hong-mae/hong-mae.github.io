@@ -1,8 +1,8 @@
-# Chill-bi's Dev.log
+# Moong Bee's Dev.log
 ---
-site: https://chill-bi.com
+site: https://blog.moong-bee.com
 
-about_me: https://chill-bi.com/pages/about
+about_me: https://blog.moong-bee.com/pages/about
 
 contact_me: qkrgksqls9@gmail.com
 
