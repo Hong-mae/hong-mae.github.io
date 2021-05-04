@@ -36,9 +36,9 @@ const Layout = ({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={metaImageUrl} />
-        <meta name="naver-site-verification" content="aff1b116090b170e03b95f3bf7d786878d4e2dd6" />
+        <meta name="naver-site-verification" content="e4c037e41efdac1f43a38f583a8afdcab956bce0" />
         <meta name="google-site-verification" content="K5Cd2j5bPI-TSMjDNzgqDHTWc0Eatkp71NxQOtJa1FA" />
-        <link href="https://chill-bi.com" rel="canonical" />
+        <link href="https://Moong-bee.com" rel="canonical" />
         <meta name="NaverBot" content="All" />
         <meta name="NaverBot" content="index,follow" />
         <meta name="Yeti" content="All" />

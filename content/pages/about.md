@@ -9,7 +9,7 @@ socialImage: "/media/image-2.jpg"
 <table class='about_table'>
     <tr>
         <td>Name</td>
-        <td>박한빈 (Colin Park, Chill-bi)</td>
+        <td>박한빈 (Colin Park, Moong-bee)</td>
     </tr>
     <tr>
         <td>Birth</td>
@@ -23,10 +23,10 @@ socialImage: "/media/image-2.jpg"
                     <a target="_blank" rel="noopener noreferrer"  href='mailto:qkrgksqls9@gmail.com'>email - qkrgksqls9@gmail.com</a></br>
                 </li>
                 <li>
-                    <a target="_blank" rel="noopener noreferrer"  href='https://www.instagram.com/dev.__bin'>instagrem - dev.__bin</a><br>
+                    <a target="_blank" rel="noopener noreferrer"  href='https://www.instagram.com/h.____bin'>instagrem - dev.__bin</a><br>
                 </li>
                 <li>
-                    <a target="_blank" rel="noopener noreferrer"  href='https://github.com/Chill-bi'>github - Chill-bi</a>
+                    <a target="_blank" rel="noopener noreferrer"  href='https://github.com/Moong-bee'>github - Moong-bee</a>
                 </li>
             </ul>
         </td>

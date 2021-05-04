@@ -105,8 +105,8 @@ module.exports = {
 {
     resolve: 'gatsby-plugin-robots-txt',
     options: {
-        host: 'https://www.chill-bi.com',
-        sitemap: 'https://www.chill-bi.com/sitemap.xml',
+        host: 'https://www.Moong-bee.com',
+        sitemap: 'https://www.Moong-bee.com/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
     }
 }

@@ -48,7 +48,7 @@ socialImage: "/media/reverse_ternary_numeral.png"
 
 ### 나의 풀이
 
-`gist:Chill-bi/be6b3e0585e1932c483541a5ecf20ca5#calc.js`
+`gist:Moong-bee/be6b3e0585e1932c483541a5ecf20ca5#calc.js`
 
 1. n을 3진수 문자열로 변경 = n.toString(3)
 2. 문자열을 각각 자름 (배열로 변경) = ~.split("")

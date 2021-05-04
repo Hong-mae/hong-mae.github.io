@@ -132,7 +132,7 @@ module.exports = {
           {
             resolve: "gatsby-remark-embed-gist",
             options: {
-              username: "Chill-bi",
+              username: "Moong-bee",
             }
           },
           'gatsby-remark-autolink-headers',
@@ -241,7 +241,7 @@ module.exports = {
       options: {
         host: siteConfig.url,
         sitemap: `${siteConfig.url}/sitemap.xml`,
-        policy: [{ userAgent: '*', allow: '/', disallow: ['/tags/', '/categories/'] }]
+        policy: [{ userAgent: '*', allow: '/', disallow: ['/tags/', '/categories/'] }],
       }
     },
   ]

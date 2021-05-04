@@ -36,7 +36,7 @@ socialImage: "/media/crane_game_img.png"
 
 ### 나의 풀이
 
-`gist:Chill-bi/222aa313588e183361cb76af28d42c7a#crane_game_answer.js`
+`gist:Moong-bee/222aa313588e183361cb76af28d42c7a#crane_game_answer.js`
 
 위의 코드를 시각화 하면 다음과 같다.
 

@@ -29,12 +29,12 @@ socialImage: "/media/drag_and_drop_list.png"
 ### transform 사용
 선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move\_up 클래스를, 밑으로 내려갈 경우 move\_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.
 
-`gist:Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.scss?lines=18-34`
+`gist:Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.scss?lines=18-34`
 
 ### 생각해야하는 내용
 ![drag_and_drop_list_sortable.gif](/media/drag_and_drop_list_sortable.gif) 
 
-위의 작업을 하려면 다음과 같은 조건이 필요하다. 위의 코드는 필자의 깃허브에 있다. [자세히 보기](https://github.com/Chill-bi/drag_and_drop)
+위의 작업을 하려면 다음과 같은 조건이 필요하다. 위의 코드는 필자의 깃허브에 있다. [자세히 보기](https://github.com/Moong-bee/drag_and_drop)
 
 1. 선택한 요소보다 위에 있는 요소는 밑으로 내려와야한다.
 2. 선택한 요소보다 아래에 있는 요소는 위로 내려와야한다.
@@ -67,7 +67,7 @@ const onDragLeave = e => {
 
 onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetData를 확인 할 수 있기에 이를 어떻게 활용해야하나 하다가 onDragStart에서 GrabData를 state로 저장하고, onDragEnter 에서 GrabData와 TargetData의 상하관계를 판단해서 transform을 추가하고, onDragLeave에서 추가된 transform을 지우기로 했다.
 
-`gist:Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.js?lines=58-68`
+`gist:Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.js?lines=58-68`
 
 ### 문제점
 1. GrabData가 TargetData위에 올라가면(onDragEnter) 움직이는데 움직이면서 위치가 한칸 위/아래로 움직여서 이탈처리가 된다.
@@ -85,7 +85,7 @@ onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetDat
 <iframe width="100%" height="500" style="display:block" src="//jsfiddle.net/Chill_bi/aqzsvk04/268/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ### 설명
-`gist:Chill-bi/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#complete_app.js?lines`
+`gist:Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#complete_app.js?lines`
 
 - [11-17] _initGrabData : 좀 더 상세화 된 grab 정보를 state로 저장하기 위한 기본 틀
 - [22] isDrag : 현재 드래그 중인지 아닌지의 정보를 담은 state

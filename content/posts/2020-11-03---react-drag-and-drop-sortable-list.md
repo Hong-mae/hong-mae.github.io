@@ -33,14 +33,14 @@ html에서 제공하는 drag and drop api에서 유심히 본 api는 다음과 �
 
 그리고 드래그 앤 드롭을 할 요소에 **draggable**을 추가하고 드래그 요소를 클릭하고 이동시 grab한 효과가 추가된다.
 
-`gist:Chill-bi/28b1b6fca6dba6c11c8cbf3214a6d013#drag_and_drop_list.js#highlights=8`
+`gist:Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#drag_and_drop_list.js#highlights=8`
 
 ### 코딩하기
 React Hooks API중 하나인 useState를 이용해 기본 리스트 및 변경된 리스트를 저장한다.
 
 설정한 state를 바탕으로 html을 보여준다.
 
-`gist:Chill-bi/28b1b6fca6dba6c11c8cbf3214a6d013#drag_and_drop_list_2.js#highlights=14,19-32`
+`gist:Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#drag_and_drop_list_2.js#highlights=14,19-32`
 
 
 ### 결과

@@ -50,6 +50,6 @@ socialImage: "/media/programmers_select_two_number_add.png"
 
 ### 나의 풀이
 
-`gist:Chill-bi/da3a093f172f915963346c187e99a2e1#calc.js?highlights=10`
+`gist:Moong-bee/da3a093f172f915963346c187e99a2e1#calc.js?highlights=10`
 
 그냥 간단히 처음 수 부터 순차적으로 탐색하여 다음 수를 더해 배열에 저장하고 혹시 모를 중복을 대비해서 중복을 제거했다(10번째 줄).

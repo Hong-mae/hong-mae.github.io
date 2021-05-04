@@ -20,7 +20,7 @@ socialImage: "/media/react_redux_logo.png"
 
 리액트에는 state(상태)라는 것이 존재한다. 동적인 데이터를 사용할때 state를 통해 사용한다.
 
-`gist:Chill-bi/625d6e1c8128623aef51a06cee53116c#Counter.js`
+`gist:Moong-bee/625d6e1c8128623aef51a06cee53116c#Counter.js`
 
 이렇게 아주 간단한 컴포넌트의 state는 다루기가 엄청 쉽다. 허나 여러 컴포넌트가 이용된다면, 또 글로벌한 state가 필요하다면 위와 같은 방식으로는 사용하기 힘들다.
 

@@ -56,7 +56,7 @@ solution 함수의 매개변수로 다리 길이 bridge\_length, 다리가 견�
 
 ### 나의 풀이
 
-`gist:Chill-bi/059b099bf35bc57f6d80e7f1b5cd381c#move_truck.js`
+`gist:Moong-bee/059b099bf35bc57f6d80e7f1b5cd381c#move_truck.js`
 
 0. 움직이는 트럭의 번호(weight)와 움직임(move)를 하나의 트럭으로 취급하기로 함.
 ``` js

@@ -23,7 +23,7 @@ Drag and Drop API를 이용해서 Drag 한 요소와 Drop 한 위치의 요소�
 
 <iframe width="100%" height="500" style="display:block" src="//jsfiddle.net/Chill_bi/vt3c802w/62/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-`gist:Chill-bi/fe59b01412daea0807dd39c45cf52fd8#drag_and_drop_list_swap.js?lines=13,15-40`
+`gist:Moong-bee/fe59b01412daea0807dd39c45cf52fd8#drag_and_drop_list_swap.js?lines=13,15-40`
 
 ### 설명
 우선 함수는 다음과 같다
