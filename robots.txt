@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /tags/
 Disallow: /categories/
-Sitemap: https://blog.moong-bee.com/sitemap.xml
-Host: https://blog.moong-bee.com
+Sitemap: https://www.moong-bee.com/sitemap.xml
+Host: https://www.moong-bee.com
+#DaumWebMasterTool:56777a206048aec5ad537f5fc128940c8b05c89606f8af9a616cff29c3372312:Owq24e8TrxmnLzOHW5QNCw==
