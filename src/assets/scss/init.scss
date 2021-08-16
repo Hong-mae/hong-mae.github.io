@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+@import "variables";
+@import "mixins";
+@import "base";
+
+@font-face {
+    font-family: 'MapleFont';
+    font-weight: normal;
+    src: 
+        url('/fonts/MaplestoryTTFLight.ttf') format('truetype'),
+        url('/fonts/MaplestoryOTFLight.woff') format('woff');
+}
+  
+@font-face {
+    font-family: 'MapleFont';
+    font-weight: bold;
+    src:
+        url('/fonts/MaplestoryTTFBold.ttf') format('truetype'),
+        url('/fonts/MaplestoryOTFBold.woff') format('woff');
+}
+  
+* {
+    font-family: 'MapleFont' !important;
+}
+
+span + em, img + em {
+    text-align: center;
+    display: block;
+}
+
+.about_table {
+    * {
+        margin: 0;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+
+        * {
+            padding: 0;
+        }
+    }
+
+    tr {
+        td + td {
+            padding: 0 15px;
+        }
+    }
+}
+
+.table_line {
+    // border: 1px solid;
+    border-collapse: collapse;
+
+    th, td {
+        border: 1px solid;
+
+        ul, ol {
+            padding: 0;
+            list-style: none;
+        }
+    }
+}
+
+del {
+    color: #bbb;
+}
+
+.warning {
+    color: red;
+}
+
+.sort_algorithm {
+    th {
+        padding: 0 1em;
+        text-align: left;
+    }
+
+    td {
+        padding: 0 1em;
+        text-align: left;
+    }
+}

@@ -1,3 +1,11 @@
 node_modules/
 .cache/
-public
+public/
+npm-debug.log
+.eslintcache
+.gatsby-context.js
+.idea
+gatsby-starter-lumen.iml
+AutoPull.sh
+
+**/.DS_store
