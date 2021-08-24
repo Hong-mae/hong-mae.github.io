@@ -1,50 +1,55 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
-  pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-  copyright: '© All rights reserved.',
-  disqusShortname: '',
+  url: "https://www.moong-bee.com",
+  pathPrefix: "/",
+  title: `Moong bee's Dev.log`,
+  subtitle: "Moong bee의 개발 스터디 블로그.",
+  copyright: "© All rights reserved.",
+  disqusShortname: "moong-bee-dev-log",
   postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  googleAnalyticsId: "UA-179329350-1",
   useKatex: false,
   menu: [
     {
-      label: 'Articles',
-      path: '/'
+      label: "Posts",
+      path: "/",
     },
     {
-      label: 'About me',
-      path: '/pages/about'
+      label: "Tags",
+      path: "/tags",
     },
     {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
+      label: "Categories",
+      path: "/categories",
+    },
+    {
+      label: "About me",
+      path: "/pages/about",
+    },
   ],
   author: {
-    name: 'John Doe',
-    photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    name: "Colin Park (Moong bee)",
+    photo: "static/photo.jpg",
+    bio: "Nothing great was ever achieved without enthusiasm. - 랠프 월도 에머슨",
+    socialDefaultImg: "static/default_og_img.png",
     contacts: {
-      email: '',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
-      rss: '',
-      vkontakte: '',
-      linkedin: '#',
-      instagram: '#',
-      line: '',
-      gitlab: '',
-      weibo: '',
-      codepen: '',
-      youtube: '',
-      soundcloud: '',
-      medium: '',
-    }
-  }
+      email: "qkrgksqls9@gmail.com",
+      facebook: "",
+      telegram: "",
+      twitter: "",
+      github: "Moong bee",
+      rss: "",
+      vkontakte: "",
+      linkedin: "",
+      instagram: "h.___bin",
+      line: "",
+      gitlab: "",
+      weibo: "",
+      codepen: "",
+      youtube: "",
+      soundcloud: "",
+      medium: "",
+    },
+  },
 };

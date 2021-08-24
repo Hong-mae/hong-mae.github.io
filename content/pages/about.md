@@ -4,10 +4,63 @@ template: "page"
 socialImage: "/media/image-2.jpg"
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+### Infomation
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](/media/image-2.jpg)
+<table class='about_table'>
+    <tr>
+        <td>Name</td>
+        <td>박한빈 (Colin Park, Moong-bee)</td>
+    </tr>
+    <tr>
+        <td>Birth</td>
+        <td>1995.12.22 (Age. 26)</td>
+    </tr>
+    <tr>
+        <td>Site</td>
+        <td>
+            <ul>
+                <li>
+                    <a target="_blank" rel="noopener noreferrer"  href='mailto:qkrgksqls9@gmail.com'>email - qkrgksqls9@gmail.com</a></br>
+                </li>
+                <li>
+                    <a target="_blank" rel="noopener noreferrer"  href='https://www.instagram.com/h.____bin'>instagrem - dev.__bin</a><br>
+                </li>
+                <li>
+                    <a target="_blank" rel="noopener noreferrer"  href='https://github.com/Moong-bee'>github - Moong-bee</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+### Experiences
+- 오더온(주) 2020.04 ~ 2020.07
+    - 서비스 웹 제작 (express, nodejs 사용)
+    - Rest API (mysql, express, nodejs, nginx, AWS EC2 사용) 서버 구축
+    - 서비스 웹 API 제작 (express, nodejs 사용)
+    - 관리자 웹 API 제작 (express, nodejs 사용)
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
+- (주)캔슬마켓 2018.08 ~ 2020.03 
+    - 서비스 웹 사이트 버전 1 제작 (express, nodejs, 사용) / 2018.09 ~ 2019.01
+    - 회사 내부 관리자 웹 제작 (codeigniter, php 사용) / 2018.10
+    - 안드로이드 네이티브 앱 제작 (java 사용) / 2018.11 ~ 2019.01
+    - 호텔 전용 웹 사이트 개발 (codeigniter, php 사용) / 2019.01 ~ 2019.04
+    - 서비스 웹 사이트 버전 2 제작 (codeigniter, php 사용) / 2019.04 ~ 2019.09
+    - 안드로이드 네이티브 > 하이브리드 앱 전환 (java 사용) / 2019.09
+    - iOS 하이브리드 앱 제작 (swift 사용) / 2019.09
+    - 여행사/랜드사 전용(호텔 통합) 웹 사이트 개발 (codeigniter, php 사용) / 2019.12
+
+### Education
+동서대학교 2014.02 ~ ing
+- 컴퓨터공학부 소프트웨어 공학 전공
+- 4학년 2학기 휴학 2020.06
+
+### Skills
+- Strong Skills
+    - HTML, css, js, jquery
+    - node.js, react, react-native
+    - MySQL, MongoDB
+    - C, C++, Java, Java/Android, Swift
+- Knowledgeable
+    - AWS EC2, Route 53, Linux(Shell Scripting), Nginx
+    - PHP, Python, Python/Crawling C#, MSSQL, Cosmos DB,
