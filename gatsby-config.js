@@ -25,6 +25,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: `${__dirname}/static`,
+        name: "fonts",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         path: `${__dirname}/static/media`,
         name: "media",
       },
@@ -120,6 +127,12 @@ module.exports = {
           {
             resolve: "gatsby-remark-responsive-iframe",
             options: { wrapperStyle: "margin-bottom: 1.0725rem" },
+          },
+          {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              username: "Moong-bee",
+            },
           },
           "gatsby-remark-autolink-headers",
           "gatsby-remark-prismjs",
@@ -244,5 +257,15 @@ module.exports = {
     },
     "gatsby-plugin-flow",
     "gatsby-plugin-optimize-svgs",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: siteConfig.url,
+        sitemap: `${siteConfig.url}/sitemap.xml`,
+        policy: [
+          { userAgent: "*", allow: "/", disallow: ["/tags/", "/categories/"] },
+        ],
+      },
+    },
   ],
 };

@@ -30,15 +30,15 @@ module.exports = {
   ],
   author: {
     name: "Colin Park (Moong bee)",
-    photo: "static/photo.jpg",
+    photo: "/photo.jpg",
     bio: "Nothing great was ever achieved without enthusiasm. - 랠프 월도 에머슨",
-    socialDefaultImg: "static/default_og_img.png",
+    socialDefaultImg: "/static/default_og_img.png",
     contacts: {
       email: "qkrgksqls9@gmail.com",
       facebook: "",
       telegram: "",
       twitter: "",
-      github: "Moong bee",
+      github: "Moong-bee",
       rss: "",
       vkontakte: "",
       linkedin: "",
