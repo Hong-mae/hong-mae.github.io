@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee's Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 09 May 2021 09:51:54 GMT</lastBuildDate><item><title><![CDATA[프로그래머스 - 다리를 지나는 트럭]]></title><description><![CDATA[프로그래머스 level 2 다리를 지나는 트럭을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</guid><pubDate>Sun, 31 Jan 2021 01:33:04 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee's Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Sep 2021 06:32:33 GMT</lastBuildDate><item><title><![CDATA[프로그래머스 - 다리를 지나는 트럭]]></title><description><![CDATA[프로그래머스 level 2 다리를 지나는 트럭을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</guid><pubDate>Sun, 31 Jan 2021 01:33:04 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;트럭 여러 대가 강을 가로지르는 일 차선 다리를 정해진 순으로 건너려 합니다. 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다. 트럭은 1초에 1만큼 움직이며, 다리 길이는 bridge_length이고 다리는 무게 weight까지 견딥니다.
 ※ 트럭이 다리에 완전히 오르지 않은 경우, 이 트럭의 무게는 고려하지 않습니다.&lt;/p&gt;
 &lt;p&gt;예를 들어, 길이가 2이고 10kg 무게를 견디는 다리가 있습니다. 무게가 [7, 4, 5, 6]kg인 트럭이 순서대로 최단 시간 안에 다리를 건너려면 다음과 같이 건너야 합니다.&lt;/p&gt;
@@ -103,12 +103,13 @@
 &lt;/ul&gt;
 &lt;h3 id=&quot;나의-풀이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%82%98%EC%9D%98-%ED%92%80%EC%9D%B4&quot; aria-label=&quot;나의 풀이 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;나의 풀이&lt;/h3&gt;
 &lt;p&gt;&lt;div id=&quot;gist108461524&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-move_truck-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -346,12 +347,13 @@
 &lt;/table&gt;
 &lt;h3 id=&quot;나의-풀이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%82%98%EC%9D%98-%ED%92%80%EC%9D%B4&quot; aria-label=&quot;나의 풀이 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;나의 풀이&lt;/h3&gt;
 &lt;p&gt;&lt;div id=&quot;gist106932902&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-calc-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -441,14 +443,15 @@
 &lt;/ul&gt;
 &lt;h3 id=&quot;나의-풀이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%82%98%EC%9D%98-%ED%92%80%EC%9D%B4&quot; aria-label=&quot;나의 풀이 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;나의 풀이&lt;/h3&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106713308&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-calc-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-calc-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-calc-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
@@ -513,7 +516,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/da3a093f172f915963346c187e99a2e1/raw/94fd24fc074e57fb4a881cb2c9f8405ad60d55cd/calc.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/da3a093f172f915963346c187e99a2e1#file-calc-js&quot;&gt;calc.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -611,12 +614,13 @@
 &lt;p&gt;게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.&lt;/p&gt;
 &lt;h3 id=&quot;나의-풀이&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%82%98%EC%9D%98-%ED%92%80%EC%9D%B4&quot; aria-label=&quot;나의 풀이 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;나의 풀이&lt;/h3&gt;
 &lt;p&gt;&lt;div id=&quot;gist106647159&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-crane_game_answer-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -793,14 +797,15 @@
 &lt;h3 id=&quot;transform-사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#transform-%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;transform 사용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;transform 사용&lt;/h3&gt;
 &lt;p&gt;선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move_up 클래스를, 밑으로 내려갈 경우 move_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-app-scss&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-scss  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -900,7 +905,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/App.scss&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-scss&quot;&gt;App.scss&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -936,14 +941,15 @@
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetData를 확인 할 수 있기에 이를 어떻게 활용해야하나 하다가 onDragStart에서 GrabData를 state로 저장하고, onDragEnter 에서 GrabData와 TargetData의 상하관계를 판단해서 transform을 추가하고, onDragLeave에서 추가된 transform을 지우기로 했다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-app-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -1020,11 +1026,11 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-js-L62&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;62&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-app-js-LC62&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_up&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC62&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;move_up&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-js-L63&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;63&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-app-js-LC63&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_down&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC63&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;grabPosition&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;targetPosition&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;move_down&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-js-L64&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;64&quot;&gt;&lt;/td&gt;
@@ -1036,11 +1042,11 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-js-L66&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;66&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-app-js-LC66&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_up&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC66&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;move_up&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-js-L67&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;67&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-app-js-LC67&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move_down&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-app-js-LC67&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;move_down&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-js-L68&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;68&quot;&gt;&lt;/td&gt;
@@ -1094,7 +1100,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/App.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-js&quot;&gt;App.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -1113,12 +1119,13 @@
 &lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/aqzsvk04/268/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 &lt;h3 id=&quot;설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EB%AA%85&quot; aria-label=&quot;설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;설명&lt;/h3&gt;
 &lt;p&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-complete_app-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -1879,14 +1886,15 @@
 &lt;p&gt;Drag and Drop API를 이용해서 Drag 한 요소와 Drop 한 위치의 요소를 서로 변경(Swap)하는 코드를 먼저 작성해보기로 했다.&lt;/p&gt;
 &lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/vt3c802w/62/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106309433&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-drag_and_drop_list_swap-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -1931,15 +1939,15 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;grabbing&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;grabbing&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;effectAllowed&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;effectAllowed&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;move&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;setData&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;text/html&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;setData&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;text/html&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
@@ -1956,7 +1964,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;grabbing&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;grabbing&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
@@ -1965,7 +1973,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dropEffect&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;move&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_swap-js-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s1&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;dropEffect&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;move&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_swap-js-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
@@ -2058,7 +2066,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/fe59b01412daea0807dd39c45cf52fd8/raw/114de9f948ff8083e2c411513ff36d9ed3b8ff43/drag_and_drop_list_swap.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/fe59b01412daea0807dd39c45cf52fd8#file-drag_and_drop_list_swap-js&quot;&gt;drag_and_drop_list_swap.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -2101,14 +2109,15 @@
 &lt;/ul&gt;
 &lt;p&gt;그리고 드래그 앤 드롭을 할 요소에 &lt;strong&gt;draggable&lt;/strong&gt;을 추가하고 드래그 요소를 클릭하고 이동시 grab한 효과가 추가된다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106265902&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-drag_and_drop_list-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
@@ -2119,11 +2128,11 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;App&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;App&apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;List&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;List&apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
@@ -2131,7 +2140,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;          &lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Orange&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Yellow&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Blue&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;DarkBlue&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Purple&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;          &lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;Red&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;Orange&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;Yellow&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;Green&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;Blue&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;DarkBlue&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;Purple&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
@@ -2151,7 +2160,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
@@ -2214,7 +2223,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013/raw/480e58c5853effc3791cd347de687bfb2741150c/drag_and_drop_list.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#file-drag_and_drop_list-js&quot;&gt;drag_and_drop_list.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -2223,17 +2232,18 @@
 &lt;p&gt;React Hooks API중 하나인 useState를 이용해 기본 리스트 및 변경된 리스트를 저장한다.&lt;/p&gt;
 &lt;p&gt;설정한 state를 바탕으로 html을 보여준다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106265902&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-drag_and_drop_list_2-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useState&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;react&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt; &lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useState&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;react&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt; &lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
@@ -2246,31 +2256,31 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Twitter&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Twitter&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Red&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Facebook&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;black&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Orange&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Facebook&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;black&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Orange&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Line&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;black&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Yellow&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Line&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;black&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Yellow&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Instagram&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Instagram&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Green&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Telegram&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Blue&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Telegram&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Blue&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;KaKao&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;DarkBlue&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;KaKao&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;DarkBlue&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;LinkedIn&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;white&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;Purple&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;title&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;LinkedIn&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;backgroundColor&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;Purple&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
@@ -2299,11 +2309,11 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;App&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;App&apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;List&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;List&apos;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
@@ -2335,7 +2345,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;                &lt;span class=&quot;pl-c1&quot;&gt;fontSize&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;bold&amp;quot;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-drag_and_drop_list_2-js-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;                &lt;span class=&quot;pl-c1&quot;&gt;fontSize&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;bold&quot;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-drag_and_drop_list_2-js-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
@@ -2398,7 +2408,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013/raw/480e58c5853effc3791cd347de687bfb2741150c/drag_and_drop_list_2.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#file-drag_and_drop_list_2-js&quot;&gt;drag_and_drop_list_2.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -2642,12 +2652,13 @@
 &lt;li&gt;맨 처음 위치를 뺀 나머지 리스트를 같은 방법으로 교체한다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;div id=&quot;gist106106006&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-selection_sorting-cpp&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -2846,12 +2857,13 @@
 &lt;li&gt;만약 선택된 원소가 이전 원소보다 작으면 교체한다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;div id=&quot;gist106106006&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-insertion_sorting-cpp&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -3015,12 +3027,13 @@
 &lt;li&gt;n+1번째 원소가 작으면 서로 교체한다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;div id=&quot;gist106106006&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-bubble_sorting-cpp&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -3203,14 +3216,15 @@
 &lt;p&gt;제네레이터 함수는 사용자의 요구에 따라 특정 구간에서 함수를 멈춰 놓을 수 있고(yield), 다시 시작(next) 할 수도 있다.&lt;/p&gt;
 &lt;p&gt;아래와 같은 함수가 있다고 생각해보자&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-generatorfunction-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
@@ -3294,21 +3308,22 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
 &lt;p&gt;위의 코드를 실행하면 당연히 1이 반환된다. 우리가 배운 코딩에서는 말이다. 하지만 위의 함수를 통해 순차적으로 1, 2, 3 … 을 받고 싶을 경우는 어떻게 처리해야할까? 바로 제네레이터 함수를 이용하면 된다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -3322,7 +3337,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-generatorfunction-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;Apple&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-generatorfunction-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;Apple&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
@@ -3330,7 +3345,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-generatorfunction-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;Banana&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-generatorfunction-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;Banana&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
@@ -3338,7 +3353,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-generatorfunction-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;Candy&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-generatorfunction-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;Candy&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
@@ -3401,21 +3416,22 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
 &lt;p&gt;제네레이터 함수는 function* 키워드를 사용한다. 위의 코드를 실행하면 다음과 같은 결과를 얻는다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -3527,21 +3543,22 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
 &lt;p&gt;함수가 처음 생성되었을 경우 함수는 멈춰있는 상태이다. next()를 호출할 경우 다음 yield가 있는 곳 까지 이동하고 다시 멈춘다. next() 파라미터를 넣으면 yield를 통해 값을 확인 할 수 있다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -3583,7 +3600,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L37&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;37&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-generatorfunction-js-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;quot;sumGenerator is created&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-generatorfunction-js-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;sumGenerator is created&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-generatorfunction-js-L38&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
@@ -3663,7 +3680,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -3671,12 +3688,13 @@
 &lt;h3 id=&quot;이해가-안되는-것&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%ED%95%B4%EA%B0%80-%EC%95%88%EB%90%98%EB%8A%94-%EA%B2%83&quot; aria-label=&quot;이해가 안되는 것 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이해가 안되는 것..&lt;/h3&gt;
 &lt;p&gt;하지만 이해가 안된다. yield를 만나면 멈추는데 next(100)을 넣으면 yield에 값이 전달된다는데 value는 undefined다. 그럼 제일 처음 next(100)을 넣으면 어떻게 되는 걸까? 결과는 undefined 다&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090082&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-generatortest-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -3760,12 +3778,13 @@
 &lt;p&gt;다음 next(200);을 실행하면 멈춘 자리 yield에 200을 넣고 다음 yield까지 이동하고 멈추는 것 같고&lt;/p&gt;
 &lt;p&gt;그 다음 next(300);을 넣으면 똑같이 멈춘 yield에 300을 넣고 다음 yield까지 이동하는데 &lt;strong&gt;마지막으로 넣은 yield 다음에는 a + b 라는 것이 있어 200 + 300을 더한 500이란 값이 value에 들어오는 것 같다.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090176&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-generatortest_solve-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -3864,12 +3883,13 @@
 &lt;h3 id=&quot;redux-saga-사용법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#redux-saga-%EC%82%AC%EC%9A%A9%EB%B2%95&quot; aria-label=&quot;redux saga 사용법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Redux Saga 사용법&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/Moong-bee/bit_chart&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;개인 프로젝트&lt;/a&gt;에서 사용했던 방법으로 설명하겠다. 우선 이 프로젝트는 비트코인의 정보들을 실시간으로 가져오는 프로젝트이기 때문에 API 요청을 해야한다.&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-client-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -3917,12 +3937,13 @@
 &lt;p&gt;axios에서 추가로 header나 무엇인가를 넣어야한다면 &lt;em&gt;export default client&lt;/em&gt;위에 &lt;em&gt;client.default.~~~&lt;/em&gt; 로 작업하면 된다.&lt;/p&gt;
 &lt;p&gt;그 다음 비트코인 거래소인 빗썸의 API를 불러올 코드를 작성한다.&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-bitcoins-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -3968,12 +3989,13 @@
 &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;이제 Redux와 Redux Saga를 가지고 Actions를 작성한다&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-bitcoincharts-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -4172,12 +4194,13 @@
 &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;추가로 Actions에 대해 캡슐화와 API 호출 / 종료에 대한 로직을 확인하기 위해 아래의 2개의 파일을 추가로 작업했다.&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-createrequestsaga-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -4338,12 +4361,13 @@
     &lt;/div&gt;
 &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-loading-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -4473,33 +4497,34 @@
 &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;그 다음 이 Redux들을 통합으로 관리할 RootReducer를 작성한다&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-index-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-index-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-index-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;// ./modules/index.js&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-index-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-index-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;combineReducers&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;redux&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;combineReducers&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;redux&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-index-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-index-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;redux-saga/effects&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;redux-saga/effects&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-index-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-index-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;bitCoinCharts&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;bitCoinsSaga&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;./bitCoinCharts&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;bitCoinCharts&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;bitCoinsSaga&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;./bitCoinCharts&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-index-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-index-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;loading&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;./loading&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;loading&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;./loading&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-index-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
@@ -4560,7 +4585,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-index-js&quot;&gt;index.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -4569,12 +4594,13 @@
 &lt;p&gt;takeLatest는 가장 마지막에 호출된 요청만 처리한다. 그 외에도 takeEvery도 있는데 이건 여러번의 호출 전부다 처리한다. 처리량이 많으면 안될 경우 takeLatest를 사용하길 바란다.&lt;/p&gt;
 &lt;p&gt;마지막으로 Redux는 Store라는 것을 통해 state를 관리한다. 그에 관련된 코드는 App.js에서 작업한다.&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-app-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -4730,29 +4756,30 @@
 &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;API를 호출하고 state 값을 가지고 올때는 dispatch를 통해 호출하고 useSelector를 통해 state 값을 가지고 온다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-mainscreen-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-mainscreen-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;// ./components/main/MainScreen.js&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useRef&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;react&amp;apos;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useRef&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;react&apos;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Container&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Header&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Body&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Spinner&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Icon&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;CardItem&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;native-base&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Container&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Header&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Body&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Spinner&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Icon&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Content&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Right&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;CardItem&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;native-base&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Dimensions&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Alert&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;react-native&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Dimensions&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Alert&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;react-native&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
@@ -4761,19 +4788,19 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useDispatch&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useSelector&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;react-redux&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useDispatch&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;useSelector&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;react-redux&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;bitCoinsChart&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;../../modules/bitCoinCharts&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;bitCoinsChart&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;../../modules/bitCoinCharts&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;moment&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;moment&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;moment&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;moment&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;ChartItem&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;apos;../chart/ChartItem&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;ChartItem&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&apos;../chart/ChartItem&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
@@ -4794,7 +4821,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        ...&lt;span class=&quot;pl-s1&quot;&gt;&amp;#xC0DD;&amp;#xB7B5;&lt;/span&gt;   &lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        ...&lt;span class=&quot;pl-s1&quot;&gt;생략&lt;/span&gt;   &lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
@@ -4819,7 +4846,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;#xC0DD;&amp;#xB7B5;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;생략&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
@@ -4846,7 +4873,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/MainScreen.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-mainscreen-js&quot;&gt;MainScreen.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -4862,12 +4889,13 @@
 &lt;/ul&gt;
 &lt;p&gt;리액트에는 state(상태)라는 것이 존재한다. 동적인 데이터를 사용할때 state를 통해 사용한다.&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106035069&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-counter-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
       &lt;tr&gt;
@@ -5194,14 +5222,15 @@
 &lt;p&gt;직접 시간 변환하는 건 너무 귀찮으니 moment.js 날짜/시간 관련 라이브러리를 사용해서 간편하게 표시한다.&lt;/p&gt;
 &lt;p&gt;비트코인 정보를 가져오는 API 통신은 Redux에서 관리 할 수 있도록 작성 했다.
 &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106016441&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-mainscreen-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -5237,7 +5266,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;lll&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;lll&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
@@ -5245,15 +5274,15 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-v&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;datas&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;date&amp;quot;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;charts&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;symbol&lt;/span&gt;: &lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;data&lt;/span&gt;: &lt;span class=&quot;pl-s1&quot;&gt;datas&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-v&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;datas&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;date&quot;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;charts&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;symbol&lt;/span&gt;: &lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;data&lt;/span&gt;: &lt;span class=&quot;pl-s1&quot;&gt;datas&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-c&quot;&gt;// date = moment(datas.date).format(&amp;apos;LLLL&amp;apos;);&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-c&quot;&gt;// date = moment(datas.date).format(&apos;LLLL&apos;);&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-s1&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;datas&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;lll&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-s1&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;datas&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;lll&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
@@ -5286,7 +5315,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-mainscreen-js-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-c1&quot;&gt;loading&lt;/span&gt;: &lt;span class=&quot;pl-s1&quot;&gt;loading&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;bitCoins/GET_BIT_COINS_CHART&amp;apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-mainscreen-js-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                &lt;span class=&quot;pl-c1&quot;&gt;loading&lt;/span&gt;: &lt;span class=&quot;pl-s1&quot;&gt;loading&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;bitCoins/GET_BIT_COINS_CHART&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-mainscreen-js-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
@@ -5395,7 +5424,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498/raw/976d2df3e57d7b5a9983e1e09d5387315f908045/MainScreen.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498#file-mainscreen-js&quot;&gt;MainScreen.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -5403,14 +5432,15 @@
 &lt;p&gt;추후 Redux에 관련된 포스트를 작성하겠다.&lt;/p&gt;
 &lt;p&gt;디자인은 네이티브 베이스의 &lt;a href=&quot;https://docs.nativebase.io/Components.html#card-list-headref&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Card List&lt;/a&gt;를 사용했다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106016441&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-mainscreen-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -5594,20 +5624,21 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498/raw/976d2df3e57d7b5a9983e1e09d5387315f908045/MainScreen.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498#file-mainscreen-js&quot;&gt;MainScreen.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106016581&quot; class=&quot;gist&quot;&gt;
-    &lt;div class=&quot;gist-file&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
         &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
   &lt;div id=&quot;file-chartitem-js&quot; class=&quot;file my-2&quot;&gt;
     
   &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
       
-&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;
       
       
@@ -5636,7 +5667,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-chartitem-js-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-chartitem-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;CardItem&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;bordered&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;onPress&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;setVisibility&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;visibility&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;flexDirection&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&amp;quot;column&amp;quot;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-chartitem-js-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;CardItem&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;bordered&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;onPress&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;setVisibility&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;visibility&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;flexDirection&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&quot;column&quot;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-chartitem-js-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
@@ -5676,7 +5707,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-chartitem-js-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-chartitem-js-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                        &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;Icon&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;MaterialIcons&amp;apos;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&amp;apos;swap-vert&amp;apos;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-chartitem-js-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;                        &lt;span class=&quot;pl-c1&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;pl-ent&quot;&gt;Icon&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;MaterialIcons&apos;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;swap-vert&apos;&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-chartitem-js-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
@@ -5754,7 +5785,7 @@
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/e5b97239cb06ec1103b2bbc9921fad2b/raw/4792b92c23f780ed4352158c2e788e0894f6aa42/ChartItem.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/e5b97239cb06ec1103b2bbc9921fad2b#file-chartitem-js&quot;&gt;ChartItem.js&lt;/a&gt;
-        hosted with &amp;#x2764; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -7641,11 +7672,11 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;이게 뭔지 모르겠지만 쿠키를 다 지워주는거같다. 하지만 웹뷰에서 쿠키를 확인했을때는 쿠키가 삭제되거나 그런일은 없다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Android&iOS FCM을 Rest API를 통해 보내기]]></title><description><![CDATA[안드로이드 및 iOS 앱으로 푸시알림을 보낼 때 RestAPI 활용하기]]></description><link>https://www.moong-bee.com/posts/fcm-push-send-structure</link><guid isPermaLink="false">https://www.moong-bee.com/posts/fcm-push-send-structure</guid><pubDate>Wed, 02 Sep 2020 09:12:01 GMT</pubDate><content:encoded>&lt;p&gt;fcm 가이드에서는 다음과 같이 쓰라고 되어있다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &apos;to&apos; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &apos;FireBase Device Token&apos;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &apos;notification&apos;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-        &apos;title&apos; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &apos;Title&apos;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &apos;body&apos; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &apos;Body&apos;
-    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;to&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;FireBase Device Token&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;notification&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Title&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;body&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Body&quot;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;이 예제를 그대로 사용할 경우 디바이스 토큰을 가진 사용자 한명에게만 보낸다. 여러명에게 보낼려면 아래의 코드로 테스트 가능하다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
