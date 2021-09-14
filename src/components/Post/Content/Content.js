@@ -26,6 +26,15 @@ const Content = ({ body, title, image, date }: Props) => {
           {``}
         </div>
       </div>
+      <div className={styles["content__adfit"]}>
+        <ins
+          className="kakao_ad_area"
+          style={{ display: "none" }}
+          data-ad-unit="DAN-Fieee4hRo1VGYbEx"
+          data-ad-width="728"
+          data-ad-height="90"
+        ></ins>
+      </div>
       <div
         className={styles["content__body"]}
         dangerouslySetInnerHTML={{ __html: body }}

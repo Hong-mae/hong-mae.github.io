@@ -16,6 +16,10 @@
       text-decoration: underline;
     }
   }
+
+  &__adfit {
+    text-align: center;
+  }
 }
 
 @include breakpoint-sm {

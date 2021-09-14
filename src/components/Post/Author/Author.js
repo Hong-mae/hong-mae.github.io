@@ -9,6 +9,15 @@ const Author = () => {
 
   return (
     <div className={styles["author"]}>
+      <div className={styles["author__adfit"]}>
+        <ins
+          class="kakao_ad_area"
+          style={{ display: "none" }}
+          data-ad-unit="DAN-de34DVhFQLvzGVdF"
+          data-ad-width="728"
+          data-ad-height="90"
+        ></ins>
+      </div>
       <p className={styles["author__bio"]}>
         {author.bio}
         <a
