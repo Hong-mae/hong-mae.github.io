@@ -1,17 +1,23 @@
-@import '../../assets/scss/variables';
-@import '../../assets/scss/mixins';
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
 
 .post {
-  &__footer {
-    max-width: $layout-post-width;
-    margin: 0 auto;
+  &__content {
+    max-width: $layout-post-single-width;
     padding: 0 15px;
+    margin: 0 auto;
+  }
+
+  &__footer {
+    max-width: $layout-post-single-width;
+    padding: 0 15px;
+    margin: 0 auto;
   }
 
   &__comments {
-    max-width: $layout-post-width;
-    margin: 0 auto;
+    max-width: $layout-post-single-width;
     padding: 0 15px;
+    margin: 0 auto;
   }
 
   &__home-button {
@@ -34,9 +40,7 @@
     &:focus {
       color: $color-primary;
     }
-
   }
-
 }
 
 @include breakpoint-md {
@@ -54,9 +58,7 @@
       max-width: auto;
       margin: 0;
       top: 30px;
-      left: 30px
+      left: 30px;
     }
-
   }
-
 }

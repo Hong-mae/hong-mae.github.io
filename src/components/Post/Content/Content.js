@@ -1,20 +1,37 @@
 // @flow strict
 import React from "react";
 import styles from "./Content.module.scss";
+import { useSiteMetadata } from "../../../hooks";
 
 type Props = {
   body: string,
   title: string,
 };
 
-const Content = ({ body, title, image }: Props) => (
-  <div className={styles["content"]}>
-    <h1 className={styles["content__title"]}>{title}</h1>
-    <div
-      className={styles["content__body"]}
-      dangerouslySetInnerHTML={{ __html: body }}
-    />
-  </div>
-);
+const Content = ({ body, title, image, date }: Props) => {
+  const { author } = useSiteMetadata();
+
+  return (
+    <div className={styles["content"]}>
+      <div className={styles["content__header"]}>
+        <h1 className={styles["content__title"]}>{title}</h1>
+        <div className={styles["content__author"]}>
+          {author.name}
+          <span className={styles["content__bar"]} />
+          {new Date(date).toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+          {``}
+        </div>
+      </div>
+      <div
+        className={styles["content__body"]}
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
+    </div>
+  );
+};
 
 export default Content;
