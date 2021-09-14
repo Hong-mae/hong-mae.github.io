@@ -1,6 +1,6 @@
 ---
 title: "프로그래머스 - 다리를 지나는 트럭"
-date: "2021-01-31 01:33:04 GTM+0900"
+date: "2021-01-31 01:33:04 GMT+0900"
 template: "post"
 draft: false
 slug: "programmers-truck-passing-the-bridge"

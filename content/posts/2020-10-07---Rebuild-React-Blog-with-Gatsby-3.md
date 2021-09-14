@@ -1,6 +1,6 @@
 ---
 title: 리액트 + Gatsby 를 이용한 블로그 만들기_#3
-date: "2020-10-07 00:55:12 GTM+0900"
+date: "2020-10-07 00:55:12 GMT+0900"
 template: "post"
 draft: false
 slug: "create-react-blog-with-gatsby-template-3"

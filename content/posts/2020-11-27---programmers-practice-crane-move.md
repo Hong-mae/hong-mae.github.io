@@ -1,6 +1,6 @@
 ---
 title: "프로그래머스 - 크레인 인형뽑기 게임"
-date: "2020-11-27 15:43:14 GTM+0900"
+date: "2020-11-27 15:43:14 GMT+0900"
 template: "post"
 draft: false
 slug: "programmers-claw-machine-game"

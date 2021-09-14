@@ -1,6 +1,6 @@
 ---
 title: 2020년 웹 개발자 로드맵 by.kamranahmedse
-date: "2020-09-27 16:15:50 GTM+0900"
+date: "2020-09-27 16:15:50 GMT+0900"
 template: "post"
 draft: false
 slug: "2020-web-developer-road-map"

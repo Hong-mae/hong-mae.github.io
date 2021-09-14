@@ -1,6 +1,6 @@
 ---
 title: "개인 프로젝트 - React로 Drag and Drop List 만들기 #1"
-date: "2020-11-03 17:36:57 GTM+0900"
+date: "2020-11-03 17:36:57 GMT+0900"
 template: "post"
 draft: false
 slug: "react-drag-and-drop-list"

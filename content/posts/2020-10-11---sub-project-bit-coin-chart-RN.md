@@ -1,6 +1,6 @@
 ---
 title: 개인 프로젝트 - Bit Coin Chart App 만들기_#1
-date: "2020-10-11 02:17:02 GTM+0900"
+date: "2020-10-11 02:17:02 GMT+0900"
 template: "post"
 draft: false
 slug: "bit-coin-chart-with-react-native-1"

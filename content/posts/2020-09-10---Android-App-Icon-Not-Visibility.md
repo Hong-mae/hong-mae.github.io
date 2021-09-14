@@ -1,6 +1,6 @@
 ---
 title: 안드로이드 에뮬레이터에서 앱 아이콘이 안보일 때
-date: "2020-09-10 21:36:05 GTM+0900"
+date: "2020-09-10 21:36:05 GMT+0900"
 template: "post"
 draft: false
 slug: "android-emulator-app-icon-not-visibility"

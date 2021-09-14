@@ -1,6 +1,6 @@
 ---
 title: "Redux(리덕스)란 무엇인가? (feat. React and React Native)"
-date: "2020-10-22 23:38:21 GTM+0900"
+date: "2020-10-22 23:38:21 GMT+0900"
 template: "post"
 draft: false
 slug: "what-is-redux-with-feat-react-and-react-native"

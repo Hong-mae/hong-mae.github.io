@@ -1,6 +1,6 @@
 ---
 title: "프로그래머스 - 두 개 뽑아서 더하기"
-date: "2020-12-02 01:05:29 GTM+0900"
+date: "2020-12-02 01:05:29 GMT+0900"
 template: "post"
 draft: false
 slug: "programmers-select-two-number-add"

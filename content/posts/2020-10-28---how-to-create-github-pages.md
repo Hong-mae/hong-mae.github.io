@@ -1,6 +1,6 @@
 ---
 title: "Github Pages로 블로그 운영하기"
-date: "2020-10-28 11:05:57 GTM+0900"
+date: "2020-10-28 11:05:57 GMT+0900"
 template: "post"
 draft: false
 slug: "how-to-create-github-pages"

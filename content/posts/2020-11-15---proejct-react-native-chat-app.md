@@ -1,6 +1,6 @@
 ---
 title: "리엑트 네이티브 채팅 앱 만들기 - 기획"
-date: "2020-11-15 18:14:00 GTM+0900"
+date: "2020-11-15 18:14:00 GMT+0900"
 template: "post"
 draft: false
 slug: "react-native-chat-app-plan"

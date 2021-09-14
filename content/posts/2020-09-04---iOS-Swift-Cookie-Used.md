@@ -1,6 +1,6 @@
 ---
 title: iOS/Swift - WKWebView에서 쿠키 사용법 중 하나!
-date: "2020-09-04 16:55:34 GTM+0900"
+date: "2020-09-04 16:55:34 GMT+0900"
 template: "post"
 draft: false
 slug: "ios-swift-Cookie-used"

@@ -1,6 +1,6 @@
 ---
 title: "기본 정렬 알고리즘 #1"
-date: "2020-10-27 09:15:07 GTM+0900"
+date: "2020-10-27 09:15:07 GMT+0900"
 template: "post"
 draft: false
 slug: "basic-sorting-algorithm-1"

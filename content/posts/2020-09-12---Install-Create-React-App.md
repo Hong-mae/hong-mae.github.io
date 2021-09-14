@@ -1,6 +1,6 @@
 ---
 title: CRA(Create React App)으로 시작하는 React.
-date: "2020-09-12 13:15:19 GTM+0900"
+date: "2020-09-12 13:15:19 GMT+0900"
 template: "post"
 draft: false
 slug: "install-create-react-app"

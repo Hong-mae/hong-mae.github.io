@@ -1,6 +1,6 @@
 ---
 title: 소수 찾기 알고리즘 (feat. 에라토스테네스의 체)
-date: "2020-10-03 00:22:23 GTM+0900"
+date: "2020-10-03 00:22:23 GMT+0900"
 template: "post"
 draft: false
 slug: "sieve-of-eratosthenes-algorithm"

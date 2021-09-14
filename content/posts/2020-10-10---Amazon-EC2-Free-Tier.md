@@ -1,6 +1,6 @@
 ---
 title: AWS EC2 프리티어를 이용해보자
-date: "2020-10-11 11:16:07 GTM+0900"
+date: "2020-10-11 11:16:07 GMT+0900"
 template: "post"
 draft: false
 slug: "how-to-use-aws-ec2-free-tier"

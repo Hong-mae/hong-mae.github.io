@@ -1,6 +1,6 @@
 ---
 title: "Generator Function(제네레이터 함수)란 무엇인가?"
-date: "2020-10-25 23:11:14 GTM+0900"
+date: "2020-10-25 23:11:14 GMT+0900"
 template: "post"
 draft: false
 slug: "what-is-generator-function"

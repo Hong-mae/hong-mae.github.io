@@ -1,6 +1,6 @@
 ---
 title: "Redux(리덕스) 사용법 (with. Redux-Saga)"
-date: "2020-10-24 13:57:29 GTM+0900"
+date: "2020-10-24 13:57:29 GMT+0900"
 template: "post"
 draft: false
 slug: "how-to-use-redux-with-redux-saga"

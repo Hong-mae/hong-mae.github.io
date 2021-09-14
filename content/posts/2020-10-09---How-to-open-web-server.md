@@ -1,6 +1,6 @@
 ---
 title: cafe24? 닷홈? AWS EC2? 호스팅 서비스들의 장단점
-date: "2020-10-09 13:01:57 GTM+0900"
+date: "2020-10-09 13:01:57 GMT+0900"
 template: "post"
 draft: false
 slug: "differences-between-server-hosting-and-cloud-server"

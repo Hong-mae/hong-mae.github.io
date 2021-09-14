@@ -1,6 +1,6 @@
 ---
 title: Shell Script(.sh)랑 npm 명령어랑 같이 쓰는법(?)
-date: "2020-10-05 13:23:09 GTM+0900"
+date: "2020-10-05 13:23:09 GMT+0900"
 template: "post"
 draft: false
 slug: "shell-script-and-npm-command"
