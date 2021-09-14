@@ -1,4 +1,382 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee's Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Sep 2021 06:37:04 GMT</lastBuildDate><item><title><![CDATA[프로그래머스 - 다리를 지나는 트럭]]></title><description><![CDATA[프로그래머스 level 2 다리를 지나는 트럭을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</guid><pubDate>Sun, 31 Jan 2021 01:33:04 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee's Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 14 Sep 2021 16:48:41 GMT</lastBuildDate><item><title><![CDATA[Discord.js를 이용한 디스코드 봇 만들기 #1]]></title><description><![CDATA[요즘 자주하는 로스트아크용 디스코드 봇 만들기!]]></description><link>https://www.moong-bee.com/posts/create-a-discord-bot-using-discord-js</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-a-discord-bot-using-discord-js</guid><pubDate>Mon, 13 Sep 2021 13:51:58 GMT</pubDate><content:encoded>&lt;p&gt;최근 근무 후 귀찮음과 스트레스로 인해 개발은 안하고 게임만 주구장창 했다.&lt;/p&gt;
+&lt;p&gt;허나 이번년도 초 내가 하는 게임에 문제가 생겨 &lt;del&gt;메XX 스XX, 일명 버섯 게임&lt;/del&gt; 어떤 게임을 할지 고민중에 &lt;strong&gt;로스트아크&lt;/strong&gt;라는 국산 RPG게임을 찍먹해보기로 했다.&lt;/p&gt;
+&lt;p&gt;첫 시작을 이벤트로 진행한 슈퍼 익스프레스로 진행해 게임 컨텐츠인 &lt;strong&gt;아르고스 레이드&lt;/strong&gt;, &lt;strong&gt;발탄 노말 레이드&lt;/strong&gt;등을 진행 할 수 있었고 특히 레이드의 경우 공개파티(매칭)을 플레이를 했다. 하지만 매칭을 통한 플레이의 경우 클리어가 불확실하며 유저간의 소통이 잘 안돼 기믹 수행에 문제가 많았다.&lt;/p&gt;
+&lt;p&gt;그러다 길드를 구하고 길드파티를 통해 레이드를 진행해 기믹을 배우면서 플레이를 할 수 있었다. 그때 상호간의 소통을 위해 디스코드(Discord)라는 것을 이용하여 소통을 했다.&lt;/p&gt;
+&lt;p&gt;디스코드에는 봇이라는 시스템이 존재한다. 이는 프로그래밍을 하여 유저가 특정 명령어를 채팅하면 봇이 해당 명령어에 맞는 결과를 처리하는데 큰 문제없이 편하게 해당 기능을 이용할 수 있었다.&lt;/p&gt;
+&lt;h3 id=&quot;디스코드discord&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9Cdiscord&quot; aria-label=&quot;디스코드discord permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드(Discord)&lt;/h3&gt;
+&lt;p&gt;Def: 디스코드는 게이밍부터, 교육과 비즈니스영역의 커뮤니티 생성을 목적으로 설계된 VoIP 응용 소프트웨어의 하나이다. 디스코드는 채팅 채널에 있는 유저 사이의 텍스트, 이미지, 비디오, 음성 커뮤니케이션에 특화되어있다&lt;/p&gt;
+&lt;h3 id=&quot;디스코드-봇&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B4%87&quot; aria-label=&quot;디스코드 봇 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 봇&lt;/h3&gt;
+&lt;p&gt;여러 언어를 지원하는 것 같았다. 그 중 가장 많이 접할 수 있는 언어는 파이썬(Python), JS(javascript)였다. 나는 둘 다 개발하다가 MongoDB를 좀 쉽게 다룰 수 있는 JS를 통해 제작하기로 했다.&lt;/p&gt;
+&lt;h3 id=&quot;디스코드-봇-제작하기에-앞서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B4%87-%EC%A0%9C%EC%9E%91%ED%95%98%EA%B8%B0%EC%97%90-%EC%95%9E%EC%84%9C&quot; aria-label=&quot;디스코드 봇 제작하기에 앞서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 봇 제작하기에 앞서&lt;/h3&gt;
+&lt;p&gt;디스코드 봇을 만들기 위해 우선 디스코드 계정이 필요하다. &lt;a href=&quot;https://discord.com/login&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;디스코드 로그인 페이지&lt;/a&gt;에 들어가 다음과 같이 가입하기를 누른다.&lt;/p&gt;
+&lt;div class=&quot;picture&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a93e8c1ebef79486cf67dda57f4b1ebf/d1882/discord_login_page.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB9UlEQVQoz3WSW28SURDH9wNZysJeWPbCrSyUy3LbVqCQ1vrkrW3ESGxcarkZSx+oSXnR+GUUfdHP9HfmIARNfPjlTM458ztnJiMlUjn4B20Uy3XU/Zag2T5Gfr8CVbehGwmBFnMEHPN+VDURYZQ4YUL5c1diIQtqjSYOm10cdU/RPjqBmytvBNsomoWsW0IweIerq2tMJu8xHk/RIoccNSAZZgrJdB6pzD7iVlpI+HVm/bNtIe+XvAbm8zlub2cYDALc3HzA+cUr7IQ1SJyg6hYl2vS6Sa/EqARDwPE2fC+qWigUa+j3+wiCANfDIabTKZ49P0eIhbF4EqaTEaUw3B9O/Bc+W/+e+z2bzYS01+vh8vINnjw9I6G+ElpUqkKNjTKq9V9YyGI372E4GuNtMMBoNMHd3Ue8OHu5+qFiOHhg2ghZDkJxE2FFRlgOYZeQI2t2iR2SxUjKvXQ2E1GtN1GpHcJJZkV1UjzhY8//Isg2PsMt36PkL+AdLOB6C+QqvN4jV/0EO/2YkmJI7xXQ7jwSNGjkeDoKpfpqbOxUF/XOd2KJSvcHise/4J8s8fB0Ca/1DV6b+Ypq5yeS7msSanBSefB0ZLIF5AsVmHZGYFD7JN2wKdChEa4RRdOQoVLZESUCVYtAUdfI0HRjM9ir6bD/inn9DSx9dgpKviGyAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a93e8c1ebef79486cf67dda57f4b1ebf/8ac56/discord_login_page.webp 240w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/d3be9/discord_login_page.webp 480w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/e46b2/discord_login_page.webp 960w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/f992d/discord_login_page.webp 1440w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/3626e/discord_login_page.webp 1562w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a93e8c1ebef79486cf67dda57f4b1ebf/8ff5a/discord_login_page.png 240w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/e85cb/discord_login_page.png 480w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/d9199/discord_login_page.png 960w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/07a9c/discord_login_page.png 1440w,
+/static/a93e8c1ebef79486cf67dda57f4b1ebf/d1882/discord_login_page.png 1562w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a93e8c1ebef79486cf67dda57f4b1ebf/d9199/discord_login_page.png&quot;
+            alt=&quot;discord_login_page.png&quot;
+            title=&quot;discord_login_page.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;그 후 이메일, 닉네임, 비밀번호, 생년월일을 입력하여 가입을 완료한다.&lt;/p&gt;
+&lt;div class=&quot;picture&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 882px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d587048022d552d084fd171a84b7fa6e/90712/discord_create_account.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 116.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAACyElEQVQ4y61VTVMTQRDdP6Rkv3dnP5JsdvOxSQHJBiKCEJIIolWgpVzwwEEv/kVLRS8q6NXzs3s2C4tIWUYPr7q3e+ZNT7+ZWcV2qyhgOeGlrxkellfWcPLyFOPJHg6PXuDo2TE66SoMy0d5XhmKaYdyAJNZJVKORXEHs70nGK5vYne6j+3xQ9SiFkw7uCzgGpgwrCVIewM4onatwoK0ojnQTY8qFuS7l2S/Bc1X3FobtW4GPUig+TEhmSOGTtYImjKXoylj2g3QPMoZXgMKf6hUyZJqUgX2grCwpLvQmJBZVVpFFY18JW8xMIessFpvoZ/dQyPpyv5wL2/t0R9BPWQhHEGKEZlmuCSAWAg817R96iGpd2fJoB5aeS/Uv0c+z5TEVGEgjwez/wvysxxAieIUo43t/9RDOtjMrOoONJKd7WLI5xqWB4X3fbdiyj4sfg5t2Uu+UYrr1RFUY7DlLRf3MveD0l0NSrErn215rFJvtDEYbsiHgFcoyIrLnwsWXHsEyvmid8UYhUk44IeJFES3vDkRrxxS9QlE0JCL8UNRvExshR8hIjEdubt8YRJF0AABV7D09LIYFky2pi2/XY+r4YNLfVZ1il/lbUdIW9EMGWMuxREtuH4Gx18lO4AbDKQVYSZ92+vDsPuwBOeyG3kxB+eYS4m7bzDa/4G16Reszc7nuJB2ODnH1uMLPD/9jsOTb9h8RLHpfEzZTj9LDuZSGp1XWJ98RbbzFsOd91cYf8BgfIbR7AwHx58we/oR6+RnFMt2f8H4nSyikb6mX0B9GXpvCm3lQFq9OyFMYSYb1L8ONTylLacwnVT67m3wu7DpCVQsUsgIYxjVFll6dUlthkkKWg4rzj+kHOzfDi+/yz4diXrURkikjIC+AyLUmxm05hCV3gM4SR96Z4RKdwtaewQ1vY8gWUat3kY16iCsteTFsJwqfgKF3SvUBitZOwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d587048022d552d084fd171a84b7fa6e/8ac56/discord_create_account.webp 240w,
+/static/d587048022d552d084fd171a84b7fa6e/d3be9/discord_create_account.webp 480w,
+/static/d587048022d552d084fd171a84b7fa6e/9d646/discord_create_account.webp 882w&quot;
+              sizes=&quot;(max-width: 882px) 100vw, 882px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d587048022d552d084fd171a84b7fa6e/8ff5a/discord_create_account.png 240w,
+/static/d587048022d552d084fd171a84b7fa6e/e85cb/discord_create_account.png 480w,
+/static/d587048022d552d084fd171a84b7fa6e/90712/discord_create_account.png 882w&quot;
+            sizes=&quot;(max-width: 882px) 100vw, 882px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d587048022d552d084fd171a84b7fa6e/90712/discord_create_account.png&quot;
+            alt=&quot;discord_create_account.png&quot;
+            title=&quot;discord_create_account.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;가입 후 바로 이용 가능하지만 이메일 인증을 필수로 받길 바란다.&lt;/p&gt;
+&lt;h3 id=&quot;디스코드-앱-정보-등록&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%EC%95%B1-%EC%A0%95%EB%B3%B4-%EB%93%B1%EB%A1%9D&quot; aria-label=&quot;디스코드 앱 정보 등록 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 앱 정보 등록&lt;/h3&gt;
+&lt;p&gt;가입과 이메일 인증이 끝난 후 &lt;a href=&quot;https://discord.com/developers&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;디스코드 개발자 페이지&lt;/a&gt;로 바로 들어가거나 &lt;a href=&quot;https://discord.com&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;디스코드 메인 페이지&lt;/a&gt;로 들어가 제일 하단에 있는 개발자 부분을 클릭한다.&lt;/p&gt;
+&lt;div class=&quot;picture&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/83feb5782dafa44baaf1649af6e5ec82/0f7bd/discord_developer_page.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 26.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA4UlEQVQY021Py27DMAzLlwxtXrbsxI84iJsEw1Zgw8677Rv6/3dWVpGihx0EihZNSlVvd4zzH4z/hgk/IP+FRlk0eoCyE+peC+/Ic0/cG/QmChZeNC1rHzqDKsxXpPWXDTwPSjmcO4IePNKy4dQqKOPgU5a+1RZ+WgQLT3nHsr1zyCgB1ZwvyPuG/eMTLiY2UzLoaQCNnrkW8RiS9A0buWVFzVgzD3NmXXhuXBVR2ejxYASP4XFiqZbrxHOrCLd1woUIb/wvsmEJlLBy8qvBf0YHl2LeMV5jhLMDB5Cc/qq9A7jvlXAysoRhAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/83feb5782dafa44baaf1649af6e5ec82/8ac56/discord_developer_page.webp 240w,
+/static/83feb5782dafa44baaf1649af6e5ec82/d3be9/discord_developer_page.webp 480w,
+/static/83feb5782dafa44baaf1649af6e5ec82/e46b2/discord_developer_page.webp 960w,
+/static/83feb5782dafa44baaf1649af6e5ec82/f992d/discord_developer_page.webp 1440w,
+/static/83feb5782dafa44baaf1649af6e5ec82/882b9/discord_developer_page.webp 1920w,
+/static/83feb5782dafa44baaf1649af6e5ec82/6c65e/discord_developer_page.webp 2540w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/83feb5782dafa44baaf1649af6e5ec82/8ff5a/discord_developer_page.png 240w,
+/static/83feb5782dafa44baaf1649af6e5ec82/e85cb/discord_developer_page.png 480w,
+/static/83feb5782dafa44baaf1649af6e5ec82/d9199/discord_developer_page.png 960w,
+/static/83feb5782dafa44baaf1649af6e5ec82/07a9c/discord_developer_page.png 1440w,
+/static/83feb5782dafa44baaf1649af6e5ec82/29114/discord_developer_page.png 1920w,
+/static/83feb5782dafa44baaf1649af6e5ec82/0f7bd/discord_developer_page.png 2540w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/83feb5782dafa44baaf1649af6e5ec82/d9199/discord_developer_page.png&quot;
+            alt=&quot;discord_developer_page.png&quot;
+            title=&quot;discord_developer_page.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;그리고 좌측 메뉴 상단에 &lt;strong&gt;Application&lt;/strong&gt;을 클릭하고&lt;/p&gt;
+&lt;div class=&quot;picture&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7b78b95a81d93a2d9242afa406244bf4/f058b/discord_left_menu.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAABz0lEQVQ4y5WTy27TQBSG/TY08Xh8TZyUpE0UJ3HjxE5MLiJBSgWVQqm6R22BSkhcFuyRuBYBG56AV+AZIBsWlfoQ/BzPJNAImjaLz//x2P7neM45ipsvwnLySKkGYSLNTBFL/RtrugPdzIIbGaEXobx6/Q5HD47h1QKEURd+I0TU6SFoddAMY4RtuebmN/6YLjV88/YEDx89hr8V4UZvKEy7pC3SqNNHOx6IuLDhgQlD9wJk9go3bOiGhbU0E6RUDddSKlKz+zlM0+kDC1w3/0/ik2RoOh4Mpw4z48Mi5mplfdjujKzEytRpvS71PPTMtEsyw3D0DaPdnxhOfmA0mWJ0d0rxFP07U8RjYvsSxt/RvX2KanQCjWtQejtnOHwGHL8ADp4CR8+B+0+AvQNgMAGG95Zzc/cXbu0DQf8rGFeheM2XqISfUWq8Rzn4AC/8RLtJau2r8BF+/AVF75C6wIDCOMNmqYByZRPXi3kqkEYFSIvdmKbKeCnyHY1zWRRuZJFbL6NSDag1qnS46+CiDXIr4sqizPsnmQbG7X8aNXl22XQsNLZhuWISan6LNBIErRiNZpuy3lrdMLlYTk7Mc4JpL8armM3OMINlrPrbvwHV3fySTUv8BwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7b78b95a81d93a2d9242afa406244bf4/8ac56/discord_left_menu.webp 240w,
+/static/7b78b95a81d93a2d9242afa406244bf4/d3be9/discord_left_menu.webp 480w,
+/static/7b78b95a81d93a2d9242afa406244bf4/8aab1/discord_left_menu.webp 630w&quot;
+              sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7b78b95a81d93a2d9242afa406244bf4/8ff5a/discord_left_menu.png 240w,
+/static/7b78b95a81d93a2d9242afa406244bf4/e85cb/discord_left_menu.png 480w,
+/static/7b78b95a81d93a2d9242afa406244bf4/f058b/discord_left_menu.png 630w&quot;
+            sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7b78b95a81d93a2d9242afa406244bf4/f058b/discord_left_menu.png&quot;
+            alt=&quot;discord_left_menu.png&quot;
+            title=&quot;discord_left_menu.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;우측 상단에 &lt;strong&gt;New Application&lt;/strong&gt; 버튼을 클릭하여 &lt;strong&gt;앱 이름&lt;/strong&gt;을 작성하고 생성한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 496px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/579a189ed0489062fce0508448d06118/bb630/discord_create_new_app.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 45.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAABx0lEQVQoz41Sy27TUBDNN9X29SOJH7Fjx3ESk9DESWqCotKXClStWkd9gFSpUMSKPasuWbOADVKpukFqfwOx4APaNOh0fN2kZQWLozMzmjn33Lk3J6sGmKIjZVk1/xtMMfiMopl3s5lObirGlCKYrBL/A2mPrNGMDokVIEh5iISpTo6fRg15o4dG7zuC6Ax+O+NqJ40zznCKev8H/NYJRJaH7YV4tp6gFQ3/FpRkGcXSMvpr1zh49wejoxtsvLrB3tsJXr+fYPfNBPvHE8rHWBsB4cIl5kQNh8cf8PPXb3z+egqr3OCOHwguobtyheXtMZ7vjbG4dY0XxC8PxlhNUiFCcoXhJvAoviBBFcn+Eb58O8fHk08w7YB0uGC2PzXvw/IS6M4IBTvlhHiHx8UZdmC4uzCcVT6sFWzUmgvkrs5zfmWRbKb3FyQNgigQ5mjJAu2VQVYYjyUmcp5CECUyYEHkj6LNxPgrh80IQb2FdhTjcTtGtz/kbNpVxIMlqg8QNrvox4uY7zzhtU73KWGAqDeAWarg/qeQoOPWoJsuPL+BklNF2avBLgfcgeeHcNwAll2BW2nwetqfxobloVproqDb5LA4+4u3GwpjFCwSnvUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/579a189ed0489062fce0508448d06118/8ac56/discord_create_new_app.webp 240w,
+/static/579a189ed0489062fce0508448d06118/d3be9/discord_create_new_app.webp 480w,
+/static/579a189ed0489062fce0508448d06118/6f16c/discord_create_new_app.webp 496w&quot;
+              sizes=&quot;(max-width: 496px) 100vw, 496px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/579a189ed0489062fce0508448d06118/8ff5a/discord_create_new_app.png 240w,
+/static/579a189ed0489062fce0508448d06118/e85cb/discord_create_new_app.png 480w,
+/static/579a189ed0489062fce0508448d06118/bb630/discord_create_new_app.png 496w&quot;
+            sizes=&quot;(max-width: 496px) 100vw, 496px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/579a189ed0489062fce0508448d06118/bb630/discord_create_new_app.png&quot;
+            alt=&quot;discord_create_new_app.png&quot;
+            title=&quot;discord_create_new_app.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 840px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/1e088/discord_create_app_name.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 85.83333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAACaUlEQVQ4y5WUy1IaURCG53kSBWacC8Pch2G43wRBEBAEFFQSY7myUpXXyTK7bPJmWfzp0zCiVpnSxVfd/999es5h5iCdjS/w5esDZhcrjM+XmC+ucbu553x5dYv1zR28oAjVcKCbHvTs/5FcL48gKMB1Q/hBxLkvNPkOewWYORfZrA2DyCaYzpadFj0CqRFb6NZCtMsec1zxKfrs9RoROhQ71ZD9k3qe/U41eEJo4TdiG62iBalFiy9nY2KEq4sJNqsFVvMJri9nOB+esJ/oh7tb3N1ccY9A1NaLKa6XM/TadR4qtSsBD1ovzrFZL7g4nwxYC3826mPQbfDw5XREnOHbZsU9w24T49MORr021Xtoleg3bBYdTE7bGBxXMem3qEhN/Samg2MsJn106zFKgYlymEPJNzmPPePJSygFOTTFkYuFCJU4Qt614TsWAtfi6Ds5eHYOoWcjClzkfZeix3kSt94+hh69lCiuo1huQdNsKK84SnLVeh/UKx2kjvD5UEEqoyFNJPEj7NeqkDKKjrSsf3jIW0ia6eM1ai7Y6+f5C4IXNbFG3CRJ9qtQvAoyQZ1R/ApkisIXWg5qVC8zsl/b9lC/QnVeS/1Ciz7xAOnILe7MMjcIVDuia+bCoCdy5PyVZkjT7gRZzmmHOhU0EhpfbsrJ1Mxt/hbG7k9CMyyomgZN16DqIpqQUru39F7EV/HpQMFhWqHPJEbWvaSjLmA4K6jZlhioI0Vv+Skm+bMhaXmvo7iCar1LO5NhhY+Y3wP3P/7i5hEoNH9C4k/mnYiBqm7xkdNyBoY9Ra3/G63hLzSHf+BE3/EPfilZgvtm7OoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/8ac56/discord_create_app_name.webp 240w,
+/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/d3be9/discord_create_app_name.webp 480w,
+/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/ed60d/discord_create_app_name.webp 840w&quot;
+              sizes=&quot;(max-width: 840px) 100vw, 840px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/8ff5a/discord_create_app_name.png 240w,
+/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/e85cb/discord_create_app_name.png 480w,
+/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/1e088/discord_create_app_name.png 840w&quot;
+            sizes=&quot;(max-width: 840px) 100vw, 840px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/68ccdb9a6da45a06e9f8d4d2f5cd09b1/1e088/discord_create_app_name.png&quot;
+            alt=&quot;discord_create_app_name.png&quot;
+            title=&quot;discord_create_app_name.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;디스코드-봇-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B4%87-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;디스코드 봇 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 봇 생성&lt;/h3&gt;
+&lt;p&gt;생성 후 이동된 페이지에서 &lt;strong&gt;좌측 메뉴 &gt; Bot&lt;/strong&gt;을 클릭하고 봇 생성한다&lt;/p&gt;
+&lt;div class=&quot;picture&quot;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 620px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5fe28b56e7177747a9fc84e2c0edcfbe/2a195/discord_after_left_menu.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 119.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAABYlAAAWJQFJUiTwAAADCklEQVQ4y5WUS08TURTHZ29cuMEEUBEM9DHTeXY6hbbTTqGdPniKSAmWRMBIFCMQI9FEV34ADZgQ49KdceXKlWt3fgsjfACjCX/PuXRIKc8ufj3n3rn933PuvedIMS0Ow3Kgmw7ZJDQjATM+KCx/axeJheoLi5idW0Ctdg93Z+ZQm6vDsofEAhZWdftcgnVSVNHByLKGW2ocN/QkemUD/VENYZqLkI3I5xOOqEJHGggr6Oq8hssdXViO9uGr0oHv/ZfwJXSFFikYiMQQInsa/P8QrYlplhCVeNDT04er13tRCffjVagLL8LdqId7G2IXQ0QZJUE5ZtKESuokHNbQKVvojsVxU7EoBaMNdCiqCYkPM5XJw80V4OV9JJ0UdLoM/QIXcRLiliemZnB7ehbz9fvwhn1w1PyRb1nV402+ff6zUVRLLIzI+mH4wVwgwONm27zBsQg55WfPX1JkJUG5OolSZQL5kTIK/ij54yiWRsW8Xx5HPDF0ZMNjgvwzmMqJKuH0uUoY9oPqaeas6A4jZPjceGe2gX/aOR2IniJo2Sk8Xd9E2h2hNCuU3jilOSl8VedyctogQaUny0gOJihtagx6DFbcIEwYpkaRRi+OEqGsNEgpbwMZfweZ4jtkS9tw/S3kylvwytvIV99fjMoWhsc+IumuQBqrfcOPn8Dmm32svYagtrLfFrMP/2F+FShMfIJUmf6Mtx/+4sHGb9Qf72FhdQ93lnYxs7TXYFeMz2TxF4n+wXB1hyrF8qhVFREz/EM0izAbkG/ESzATFZh25cC2YNhlWlOBbuUgGaaNtfU1FP0ShtJpuNkcMoSb84Sfzrj0mB06eBUxOnSlFZrXdBO2kySf+iE/1kdPNjBSrCI5xEJFunFP2KznC2s7mca7SxyD53UzCWcwSxtQLfND7ekdOKxltkyYO3aD5mbRXCXNdR2Uo6iUKeo0tpOmXVxBKuNR2iOirTFcv6eVW+sGIsLF5RXRDNLusGgAWa8oxtwUCj4fRfbMhnCk9FgwSCmoY6a5GwdirSmfxH+umjzh5TPBZQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/5fe28b56e7177747a9fc84e2c0edcfbe/8ac56/discord_after_left_menu.webp 240w,
+/static/5fe28b56e7177747a9fc84e2c0edcfbe/d3be9/discord_after_left_menu.webp 480w,
+/static/5fe28b56e7177747a9fc84e2c0edcfbe/cf77e/discord_after_left_menu.webp 620w&quot;
+              sizes=&quot;(max-width: 620px) 100vw, 620px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/5fe28b56e7177747a9fc84e2c0edcfbe/8ff5a/discord_after_left_menu.png 240w,
+/static/5fe28b56e7177747a9fc84e2c0edcfbe/e85cb/discord_after_left_menu.png 480w,
+/static/5fe28b56e7177747a9fc84e2c0edcfbe/2a195/discord_after_left_menu.png 620w&quot;
+            sizes=&quot;(max-width: 620px) 100vw, 620px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/5fe28b56e7177747a9fc84e2c0edcfbe/2a195/discord_after_left_menu.png&quot;
+            alt=&quot;discord_after_left_menu.png&quot;
+            title=&quot;discord_after_left_menu.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9d266fce135a27fd9b66651873c1d8b8/57e3f/discord_add_bot.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA2UlEQVQY05WQzQrCMBCE8072J/1JmqatLZWiXopCQTzpSRT0PXzjcbe0pSoIHj6yyWYnMxFZXiPWGWSQQIbmb3yac30Fk1Zo1i1EbEqojERtDcV1UkCb5bAW/TpnPOM7kcrgSd3jknhAe+FHFlIXcEILhxv02ieOF/dwPQpMkMNQKlRUG+oLS5Hr1QY6ySn6O+yEXSRpCWOrKeKcBVF6EuftE11+ghhf+vVPl+sd19sDQZT2dyfBwWFEDpvAoKBajM2vKEN8dtnuD9h1R2hyymfTzEx0QaL8ZS/xks+KPSftLAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/9d266fce135a27fd9b66651873c1d8b8/8ac56/discord_add_bot.webp 240w,
+/static/9d266fce135a27fd9b66651873c1d8b8/d3be9/discord_add_bot.webp 480w,
+/static/9d266fce135a27fd9b66651873c1d8b8/e46b2/discord_add_bot.webp 960w,
+/static/9d266fce135a27fd9b66651873c1d8b8/f992d/discord_add_bot.webp 1440w,
+/static/9d266fce135a27fd9b66651873c1d8b8/882b9/discord_add_bot.webp 1920w,
+/static/9d266fce135a27fd9b66651873c1d8b8/4dbdc/discord_add_bot.webp 2598w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/9d266fce135a27fd9b66651873c1d8b8/8ff5a/discord_add_bot.png 240w,
+/static/9d266fce135a27fd9b66651873c1d8b8/e85cb/discord_add_bot.png 480w,
+/static/9d266fce135a27fd9b66651873c1d8b8/d9199/discord_add_bot.png 960w,
+/static/9d266fce135a27fd9b66651873c1d8b8/07a9c/discord_add_bot.png 1440w,
+/static/9d266fce135a27fd9b66651873c1d8b8/29114/discord_add_bot.png 1920w,
+/static/9d266fce135a27fd9b66651873c1d8b8/57e3f/discord_add_bot.png 2598w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/9d266fce135a27fd9b66651873c1d8b8/d9199/discord_add_bot.png&quot;
+            alt=&quot;discord_add_bot.png&quot;
+            title=&quot;discord_add_bot.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;마치며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B0&quot; aria-label=&quot;마치며 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치며&lt;/h3&gt;
+&lt;p&gt;오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 채널 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 다리를 지나는 트럭]]></title><description><![CDATA[프로그래머스 level 2 다리를 지나는 트럭을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</guid><pubDate>Sat, 30 Jan 2021 16:33:04 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;트럭 여러 대가 강을 가로지르는 일 차선 다리를 정해진 순으로 건너려 합니다. 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다. 트럭은 1초에 1만큼 움직이며, 다리 길이는 bridge_length이고 다리는 무게 weight까지 견딥니다.
 ※ 트럭이 다리에 완전히 오르지 않은 경우, 이 트럭의 무게는 고려하지 않습니다.&lt;/p&gt;
 &lt;p&gt;예를 들어, 길이가 2이고 10kg 무게를 견디는 다리가 있습니다. 무게가 [7, 4, 5, 6]kg인 트럭이 순서대로 최단 시간 안에 다리를 건너려면 다음과 같이 건너야 합니다.&lt;/p&gt;
@@ -57,7 +435,7 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;따라서, 모든 트럭이 다리를 지나려면 최소 8초가 걸립니다.&lt;/p&gt;
-&lt;p&gt;solution 함수의 매개변수로 다리 길이 bridge_length, 다리가 견딜 수 있는 무게 weight, 트럭별 무게 truck_weights가 주어집니다. 이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 solution 함수를 완성하세요.&lt;/p&gt;
+&lt;p&gt;solution 함수의 매개변수로 다리 길이 bridge&lt;em&gt;length, 다리가 견딜 수 있는 무게 weight, 트럭별 무게 truck&lt;/em&gt;weights가 주어집니다. 이때 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 return 하도록 solution 함수를 완성하세요.&lt;/p&gt;
 &lt;h3 id=&quot;제한-사항&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%9C%ED%95%9C-%EC%82%AC%ED%95%AD&quot; aria-label=&quot;제한 사항 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;제한 사항&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;bridge_length는 1 이상 10,000 이하입니다.&lt;/li&gt;
@@ -261,21 +639,21 @@
     &lt;/div&gt;
 &lt;/div&gt;&lt;/p&gt;
 &lt;ol start=&quot;0&quot;&gt;
-&lt;li&gt;
-&lt;p&gt;움직이는 트럭의 번호(weight)와 움직임(move)를 하나의 트럭으로 취급하기로 함.&lt;/p&gt;
+&lt;li&gt;움직이는 트럭의 번호(weight)와 움직임(move)를 하나의 트럭으로 취급하기로 함.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; truck &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   weight&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; String&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  move&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Number
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
+  move&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Number&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
 &lt;li&gt;기다리는 트럭도 없고 움직이는 트럭이 없으면 현재 순차를 반환&lt;/li&gt;
 &lt;li&gt;이미 움직이는 트럭들(moving)이 있을 경우 순차적으로 트럭들의 움직임(move)을 +1&lt;/li&gt;
 &lt;li&gt;만약 다리 길이(bridge_length) 보다 크면 다리를 건넌 트럭(complete)에 추가&lt;/li&gt;
 &lt;li&gt;움직이는 트럭들(moving)에서 한 트럭이 빠졌기 때문에 이전 트럭 차례로 다시 돌림.&lt;/li&gt;
 &lt;li&gt;움직이는 트럭들(moving)의 무게의 총합을 구함(moving_weight)&lt;/li&gt;
-&lt;li&gt;다리가 견딜수 있는 무게(weight)가 5번의 값 + 대기중인 트럭들(truck_weights)의 첫번째 트럭의 무게보다 크거나 같으면 움직이는 트럭들(moving)에 대기중인 트럭들(truck_weights)의 첫번째 트럭을 추가한다.&lt;/li&gt;
+&lt;li&gt;다리가 견딜수 있는 무게(weight)가 5번의 값 + 대기중인 트럭들(truck&lt;em&gt;weights)의 첫번째 트럭의 무게보다 크거나 같으면 움직이는 트럭들(moving)에 대기중인 트럭들(truck&lt;/em&gt;weights)의 첫번째 트럭을 추가한다.&lt;/li&gt;
 &lt;li&gt;이를 무한반복 시킨다. &lt;em&gt;1번에 의해 종료조건이 맞춰지면 종료됨&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 3진법 뒤집기]]></title><description><![CDATA[프로그래머스 3진법 뒤집기를 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-practice-reverse-ternary-numeral-system</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-practice-reverse-ternary-numeral-system</guid><pubDate>Tue, 08 Dec 2020 14:09:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 3진법 뒤집기]]></title><description><![CDATA[프로그래머스 3진법 뒤집기를 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-practice-reverse-ternary-numeral-system</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-practice-reverse-ternary-numeral-system</guid><pubDate>Tue, 08 Dec 2020 05:09:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;자연수 n이 매개변수로 주어집니다. n을 3진법 상에서 앞뒤로 뒤집은 후, 이를 다시 10진법으로 표현한 수를 return 하도록 solution 함수를 완성해주세요.&lt;/p&gt;
 &lt;h3 id=&quot;제한-사항&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%9C%ED%95%9C-%EC%82%AC%ED%95%AD&quot; aria-label=&quot;제한 사항 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;제한 사항&lt;/h3&gt;
 &lt;ul&gt;
@@ -395,7 +773,7 @@
 &lt;li&gt;3번을 합치기 = ~.join(&quot;&quot;)&lt;/li&gt;
 &lt;li&gt;3진수를 10진수로 변경 = parseInt(~, 3)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;추가로 parseInt(문자열, [문자열의 진법 // default 10진법])&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 두 개 뽑아서 더하기]]></title><description><![CDATA[프로그래머스에 있는 두 개 뽑아서 더하기를 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-select-two-number-add</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-select-two-number-add</guid><pubDate>Wed, 02 Dec 2020 01:05:29 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+&lt;p&gt;추가로 parseInt(문자열, [문자열의 진법 // default 10진법])&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 두 개 뽑아서 더하기]]></title><description><![CDATA[프로그래머스에 있는 두 개 뽑아서 더하기를 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-select-two-number-add</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-select-two-number-add</guid><pubDate>Tue, 01 Dec 2020 16:05:29 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.&lt;/p&gt;
 &lt;h3 id=&quot;제한-사항&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%9C%ED%95%9C-%EC%82%AC%ED%95%AD&quot; aria-label=&quot;제한 사항 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;제한 사항&lt;/h3&gt;
 &lt;ul&gt;
@@ -521,7 +899,7 @@
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
-&lt;p&gt;그냥 간단히 처음 수 부터 순차적으로 탐색하여 다음 수를 더해 배열에 저장하고 혹시 모를 중복을 대비해서 중복을 제거했다(10번째 줄).&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 크레인 인형뽑기 게임]]></title><description><![CDATA[프로그래머스에 있는 2019 카카오 개발자 겨울 인턴쉽 문제 크레인 인형뽑기 게임을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-claw-machine-game</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-claw-machine-game</guid><pubDate>Fri, 27 Nov 2020 15:43:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+&lt;p&gt;그냥 간단히 처음 수 부터 순차적으로 탐색하여 다음 수를 더해 배열에 저장하고 혹시 모를 중복을 대비해서 중복을 제거했다(10번째 줄).&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 크레인 인형뽑기 게임]]></title><description><![CDATA[프로그래머스에 있는 2019 카카오 개발자 겨울 인턴쉽 문제 크레인 인형뽑기 게임을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-claw-machine-game</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-claw-machine-game</guid><pubDate>Fri, 27 Nov 2020 06:43:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;게임개발자인 죠르디는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.
 죠르디는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -565,7 +943,7 @@
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. &lt;/p&gt;
+&lt;p&gt;게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다.&lt;/p&gt;
 &lt;p&gt;모든 인형은 1 x 1 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -736,7 +1114,7 @@
     &lt;/div&gt;
 &lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;위의 코드를 시각화 하면 다음과 같다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/4a71052209eb0432aed4cda569ba4ac9/crane_game_solve.gif&quot; alt=&quot;crane_game_solve.gif&quot;&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리엑트 네이티브 채팅 앱 만들기 - 기획]]></title><description><![CDATA[개인 프로젝트로 진행하는 퀄리티 있는 채팅 앱 만들기 기획편]]></description><link>https://www.moong-bee.com/posts/react-native-chat-app-plan</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-native-chat-app-plan</guid><pubDate>Sun, 15 Nov 2020 18:14:00 GMT</pubDate><content:encoded>&lt;details markdown=&quot;1&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/4a71052209eb0432aed4cda569ba4ac9/crane_game_solve.gif&quot; alt=&quot;crane_game_solve.gif&quot;&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리엑트 네이티브 채팅 앱 만들기 - 기획]]></title><description><![CDATA[개인 프로젝트로 진행하는 퀄리티 있는 채팅 앱 만들기 기획편]]></description><link>https://www.moong-bee.com/posts/react-native-chat-app-plan</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-native-chat-app-plan</guid><pubDate>Sun, 15 Nov 2020 09:14:00 GMT</pubDate><content:encoded>&lt;details markdown=&quot;1&quot;&gt;
 &lt;summary&gt;목차&lt;/summary&gt;
 &lt;p&gt;
 &lt;ul&gt;
@@ -748,7 +1126,7 @@
 &lt;/ul&gt;
 &lt;p&gt;이번에 만들 앱은 리액트 네이티브로 만든 채팅 앱이다.&lt;/p&gt;
 &lt;p&gt;리스트 구현하는 것 처럼 쉽게만 생각하고 무작정 코딩하다가 뭔가 정해놓은 틀이 없어 만들고 삭제하고를 수십번 반복하다 기획부터 차근차근 들어가서 문서화 하면 이런일이 발생하지 않고 시간 낭비도 들지 않을 것이라고 판단하여 기획을 해보려고 한다.&lt;/p&gt;
-&lt;p&gt;그렇게 거창한 앱을 제작하려는 것이 아니기 때문에 간단한 문서 작성과 포스팅을 병행해서 진행 할 예정이다. 막상 어떤 내용이 필요한지, 어떻게 작성해야하는지 이런 저런 고민이 너무 많아 검색을 했다. &lt;/p&gt;
+&lt;p&gt;그렇게 거창한 앱을 제작하려는 것이 아니기 때문에 간단한 문서 작성과 포스팅을 병행해서 진행 할 예정이다. 막상 어떤 내용이 필요한지, 어떻게 작성해야하는지 이런 저런 고민이 너무 많아 검색을 했다.&lt;/p&gt;
 &lt;p&gt;찾아보니 딱히 정해진 틀이 없는 것 같아서 내가 원하는 방식으로 문서화하기로 했다.&lt;/p&gt;
 &lt;table&gt;
 &lt;tr&gt;
@@ -782,7 +1160,7 @@
 &lt;/table&gt;
 &lt;p&gt;회사에서 기획서 작성시 위와 같이 한다면 안되겠지만, 개인 프로젝트이며 심도있게 진행하지 않을 것이기 때문에 간략하게 작성하였다.&lt;/p&gt;
 &lt;p&gt;다음 포스팅은 각 기능별 flow와 화면 설계이다. 제대로 한다면 기획 다음으로 힘든 부분이지 않을까 싶다.&lt;/p&gt;
-&lt;p&gt;요즘 너무 바빠서 블로그 포스팅 및 개발에 신경을 못쓰고 있다. 시간을 쪼개서 틈틈히 개발을 해야겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Sortable) #3]]></title><description><![CDATA[드래그 앤 드롭 - Sortable이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://www.moong-bee.com/posts/react-drag-and-drop-list-sortable</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-drag-and-drop-list-sortable</guid><pubDate>Mon, 09 Nov 2020 19:54:05 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;요즘 너무 바빠서 블로그 포스팅 및 개발에 신경을 못쓰고 있다. 시간을 쪼개서 틈틈히 개발을 해야겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Sortable) #3]]></title><description><![CDATA[드래그 앤 드롭 - Sortable이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://www.moong-bee.com/posts/react-drag-and-drop-list-sortable</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-drag-and-drop-list-sortable</guid><pubDate>Mon, 09 Nov 2020 10:54:05 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list&quot;&gt;React로 Drag and Drop List 만들기 #1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-2&quot;&gt;React로 Drag and Drop List 만들기(Swap) #2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-sortable&quot;&gt;React로 Drag and Drop List 만들기(Sortable) #3&lt;/a&gt;&lt;/li&gt;
@@ -795,7 +1173,7 @@
 &lt;li&gt;transition : 변화(width, height, transform 등의 변화)에 대한 딜레이(?)를 조정한다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;transform-사용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#transform-%EC%82%AC%EC%9A%A9&quot; aria-label=&quot;transform 사용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;transform 사용&lt;/h3&gt;
-&lt;p&gt;선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move_up 클래스를, 밑으로 내려갈 경우 move_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.&lt;/p&gt;
+&lt;p&gt;선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move&lt;em&gt;up 클래스를, 밑으로 내려갈 경우 move&lt;/em&gt;down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
@@ -911,7 +1289,7 @@
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
 &lt;h3 id=&quot;생각해야하는-내용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%9D%EA%B0%81%ED%95%B4%EC%95%BC%ED%95%98%EB%8A%94-%EB%82%B4%EC%9A%A9&quot; aria-label=&quot;생각해야하는 내용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;생각해야하는 내용&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/9b968fd45fe6e760b00687123a9c694d/drag_and_drop_list_sortable.gif&quot; alt=&quot;drag_and_drop_list_sortable.gif&quot;&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/9b968fd45fe6e760b00687123a9c694d/drag_and_drop_list_sortable.gif&quot; alt=&quot;drag_and_drop_list_sortable.gif&quot;&gt;&lt;/p&gt;
 &lt;p&gt;위의 작업을 하려면 다음과 같은 조건이 필요하다. 위의 코드는 필자의 깃허브에 있다. &lt;a href=&quot;https://github.com/Moong-bee/drag_and_drop&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;자세히 보기&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;선택한 요소보다 위에 있는 요소는 밑으로 내려와야한다.&lt;/li&gt;
@@ -928,17 +1306,17 @@
 &lt;p&gt;간단히 말해 Twitter를 잡아서(e.target = Twitter) Github 위에 지나갈 경우와 Github를 이탈할 경우(e.target = Github)를 체크하면 된다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; GrabData &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragStart&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Twitter&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragStart&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Twitter&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragEnter&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Github&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragEnter&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Github&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragLeave&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Github&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onDragLeave&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// e.target is Github&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetData를 확인 할 수 있기에 이를 어떻게 활용해야하나 하다가 onDragStart에서 GrabData를 state로 저장하고, onDragEnter 에서 GrabData와 TargetData의 상하관계를 판단해서 transform을 추가하고, onDragLeave에서 추가된 transform을 지우기로 했다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
@@ -1114,7 +1492,7 @@
 &lt;/ol&gt;
 &lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/aqzsvk04/116/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 &lt;h3 id=&quot;생각해보기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%9D%EA%B0%81%ED%95%B4%EB%B3%B4%EA%B8%B0&quot; aria-label=&quot;생각해보기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;생각해보기&lt;/h3&gt;
-&lt;p&gt;우선 onDragEnter와 onDragLeave에서 transform 클래스를 추가/제거 하는 코드를 지우고 다르게 transform을 적용할 수 있는 방법을 찾다가 move_up, move_down의 정보를 따로 저장하고 return()에서 해당 값을 확인해서 랜더링 할 수 있는 방법을 생각했다.&lt;/p&gt;
+&lt;p&gt;우선 onDragEnter와 onDragLeave에서 transform 클래스를 추가/제거 하는 코드를 지우고 다르게 transform을 적용할 수 있는 방법을 찾다가 move&lt;em&gt;up, move&lt;/em&gt;down의 정보를 따로 저장하고 return()에서 해당 값을 확인해서 랜더링 할 수 있는 방법을 생각했다.&lt;/p&gt;
 &lt;h3 id=&quot;결과&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B2%B0%EA%B3%BC&quot; aria-label=&quot;결과 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;결과&lt;/h3&gt;
 &lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/aqzsvk04/268/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 &lt;h3 id=&quot;설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EB%AA%85&quot; aria-label=&quot;설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;설명&lt;/h3&gt;
@@ -1871,13 +2249,13 @@
 &lt;li&gt;선택된 요소의 position 정보(grabPosition)&lt;/li&gt;
 &lt;li&gt;상하관계를 가지는 타겟 요소의 position 정보(targetPosition)&lt;/li&gt;
 &lt;li&gt;updateList에서 선택된 요소의 position 정보(listPosition)&lt;/li&gt;
-&lt;li&gt;현재 리스트 중 move_up, move_down 클래스를 적용시킬 index 배열(move_up, move_down)&lt;/li&gt;
+&lt;li&gt;현재 리스트 중 move&lt;em&gt;up, move&lt;/em&gt;down 클래스를 적용시킬 index 배열(move&lt;em&gt;up, move&lt;/em&gt;down)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;[102-105, 111] move_up, move_down 배열과 index의 포함관계에 따라 클래스 적용&lt;/li&gt;
+&lt;li&gt;[102-105, 111] move&lt;em&gt;up, move&lt;/em&gt;down 배열과 index의 포함관계에 따라 클래스 적용&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;마치면서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C&quot; aria-label=&quot;마치면서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치면서&lt;/h3&gt;
-&lt;p&gt;좋은 라이브러리를 사용하지 않고 오로지 나의 힘으로 해당 기능을 완성했다. 처음엔 뭐가 잘못됐는지 뭐가 다른지를 찾는것에 오래 걸렸다. 하지만 아직 부족한 것이 많은 기능이기에 조금씩 더 보완하면서 지식을 다듬고 싶다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Swap) #2]]></title><description><![CDATA[드래그 앤 드롭 - Swap이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://www.moong-bee.com/posts/react-drag-and-drop-list-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-drag-and-drop-list-2</guid><pubDate>Thu, 05 Nov 2020 00:09:28 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;좋은 라이브러리를 사용하지 않고 오로지 나의 힘으로 해당 기능을 완성했다. 처음엔 뭐가 잘못됐는지 뭐가 다른지를 찾는것에 오래 걸렸다. 하지만 아직 부족한 것이 많은 기능이기에 조금씩 더 보완하면서 지식을 다듬고 싶다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기(Swap) #2]]></title><description><![CDATA[드래그 앤 드롭 - Swap이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://www.moong-bee.com/posts/react-drag-and-drop-list-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-drag-and-drop-list-2</guid><pubDate>Wed, 04 Nov 2020 15:09:28 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list&quot;&gt;React로 Drag and Drop List 만들기 #1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-2&quot;&gt;React로 Drag and Drop List 만들기(Swap) #2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-sortable&quot;&gt;React로 Drag and Drop List 만들기(Sortable) #3&lt;/a&gt;&lt;/li&gt;
@@ -2080,17 +2458,17 @@
 &lt;li&gt;_onDrop&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;함수의 호출 순서는 (1), 2, 4, 3 순으로 호출된다. 1번의 경우 밀리초 단위로 실행되기 때문에 순서에 영향이 없다.&lt;/p&gt;
-&lt;p&gt;코드의 설명은 다음과 같다. &lt;/p&gt;
+&lt;p&gt;코드의 설명은 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;[13] grab, setGrab : 현재 drag를 위해 선택된 요소를 저장하기 위해 state를 하나 더 추가했다.&lt;/li&gt;
-&lt;li&gt;[14-17] _onDragOver :  ondrop이벤트를 활성화 하기 위해 ondragover에 e.preventDefault() 설정을 했다.&lt;/li&gt;
+&lt;li&gt;[14-17] _onDragOver : ondrop이벤트를 활성화 하기 위해 ondragover에 e.preventDefault() 설정을 했다.&lt;/li&gt;
 &lt;li&gt;[19-24] _onDragStart : drag를 위해 요소를 선택하면 발생하는 함수. 여기서는 선택된 요소를 state에 저장하고, 선택된 요소에 grabbing 커서를 주는 css class를 추가한다. 그 외 e.dataTransfer에 대해서는 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/DataTransfer&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;여기&lt;/a&gt;를 통해 확인바란다.&lt;/li&gt;
 &lt;li&gt;[26-30] _onDragEnd : drop 후 발생하는 이벤트. drag를 위해 선택된 요소에 추가된 css class를 지운다. 추가적으로 grab state를 null로 바꾸는 작업을 해도 된다.&lt;/li&gt;
 &lt;li&gt;[32-40] _onDrop : drag를 위해 선택된 요소를 원하는 위치에 놓으면 발생한다. 이때 &lt;strong&gt;리스트를 서로 변경하는 코드를 작성한다.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;다음 포스트는 원하는 위치에 drop 할 경우 그 이외의 요소들이 자동적으로 정렬(?)되는 리스트를 포스팅하겠다.&lt;/p&gt;
 &lt;h3 id=&quot;미리보기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0&quot; aria-label=&quot;미리보기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;미리보기&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/9b968fd45fe6e760b00687123a9c694d/drag_and_drop_list_sortable.gif&quot; alt=&quot;drag_and_drop_list_sortable.gif&quot;&gt; &lt;em&gt;Sortable List&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기 #1]]></title><description><![CDATA[드래그 앤 드롭이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://www.moong-bee.com/posts/react-drag-and-drop-list</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-drag-and-drop-list</guid><pubDate>Tue, 03 Nov 2020 17:36:57 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;&lt;img src=&quot;/9b968fd45fe6e760b00687123a9c694d/drag_and_drop_list_sortable.gif&quot; alt=&quot;drag_and_drop_list_sortable.gif&quot;&gt; &lt;em&gt;Sortable List&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - React로 Drag and Drop List 만들기 #1]]></title><description><![CDATA[드래그 앤 드롭이 가능한 리스트를 라이브러리 없이 만들어보자.]]></description><link>https://www.moong-bee.com/posts/react-drag-and-drop-list</link><guid isPermaLink="false">https://www.moong-bee.com/posts/react-drag-and-drop-list</guid><pubDate>Tue, 03 Nov 2020 08:36:57 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list&quot;&gt;React로 Drag and Drop List 만들기 #1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-2&quot;&gt;React로 Drag and Drop List 만들기(Swap) #2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/react-drag-and-drop-list-sortable&quot;&gt;React로 Drag and Drop List 만들기(Sortable) #3&lt;/a&gt;&lt;/li&gt;
@@ -2415,9 +2793,9 @@
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
 &lt;h3 id=&quot;결과&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B2%B0%EA%B3%BC&quot; aria-label=&quot;결과 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;결과&lt;/h3&gt;
 &lt;iframe width=&quot;100%&quot; height=&quot;500&quot; style=&quot;display:block&quot; src=&quot;//jsfiddle.net/Chill_bi/p38t9ed4/93/embedded/js,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;다음 포스트에서 계속&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Github Pages로 블로그 운영하기]]></title><description><![CDATA[Github에서 제공하는 Github Pages로 블로그를 적용해보자]]></description><link>https://www.moong-bee.com/posts/how-to-create-github-pages</link><guid isPermaLink="false">https://www.moong-bee.com/posts/how-to-create-github-pages</guid><pubDate>Wed, 28 Oct 2020 11:05:57 GMT</pubDate><content:encoded>&lt;p&gt;현재 필자의 블로그 상황은 이러하다.&lt;/p&gt;
+&lt;p&gt;다음 포스트에서 계속&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Github Pages로 블로그 운영하기]]></title><description><![CDATA[Github에서 제공하는 Github Pages로 블로그를 적용해보자]]></description><link>https://www.moong-bee.com/posts/how-to-create-github-pages</link><guid isPermaLink="false">https://www.moong-bee.com/posts/how-to-create-github-pages</guid><pubDate>Wed, 28 Oct 2020 02:05:57 GMT</pubDate><content:encoded>&lt;p&gt;현재 필자의 블로그 상황은 이러하다.&lt;/p&gt;
 &lt;p&gt;tistory 블로그 운영 -&gt; github pages 운영 -&gt; aws ec2 프리티어로 이관 -&gt; github pages로 이관&lt;/p&gt;
-&lt;p&gt;처음 블로그를 운영해야겠다고 마음 먹었을 때에는 서버 운영에 대한 지식이 없어 tistory로 블로그를 처음 운영했다. &lt;/p&gt;
+&lt;p&gt;처음 블로그를 운영해야겠다고 마음 먹었을 때에는 서버 운영에 대한 지식이 없어 tistory로 블로그를 처음 운영했다.&lt;/p&gt;
 &lt;p&gt;개발 공부중 Github를 이용해 코드 관리의 개념을 알고나서 추가적인 Github의 기능을 찾다가 Github Pages를 제공한다는 것을 보고 Github Page로 운영하다가 회사에서 배운 서버 지식 및 책에서 참고한 내용을 바탕으로 AWS EC2로 블로그를 이관했다.&lt;/p&gt;
 &lt;p&gt;하지만 문제점은 프리티어이기 때문에 1코어 1기가메모리를 제공하기 때문에 블로그 빌드시 메모리 부족현상이 많이 일어났다. 그래서 다시 github pages로 넘어왔다.&lt;/p&gt;
 &lt;h3 id=&quot;github-pages-란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#github-pages-%EB%9E%80&quot; aria-label=&quot;github pages 란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Github Pages 란?&lt;/h3&gt;
@@ -2642,7 +3020,7 @@
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt; &lt;em&gt;change gh-pages branch&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;그리도 약 1분 후 &lt;a href=&quot;https://%5BGithub&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://[Github&lt;/a&gt; 유저 이름].github.io 로 들어가면 build된 react가 등록된다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[기본 정렬 알고리즘 #1]]></title><description><![CDATA[n개의 숫자가 입력 되었을 때 그 수를 여러가지 방식으로 정렬해보자. #1]]></description><link>https://www.moong-bee.com/posts/basic-sorting-algorithm-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/basic-sorting-algorithm-1</guid><pubDate>Tue, 27 Oct 2020 09:15:07 GMT</pubDate><content:encoded>&lt;p&gt;정렬 알고리즘(sorting algorithm)이란 원소들을 번호순이나 사전 순서와 같이 일정한 순서대로 열거하는 알고리즘이다.&lt;/p&gt;
+&lt;p&gt;그리도 약 1분 후 &lt;a href=&quot;https://%5BGithub&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://[Github&lt;/a&gt; 유저 이름].github.io 로 들어가면 build된 react가 등록된다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[기본 정렬 알고리즘 #1]]></title><description><![CDATA[n개의 숫자가 입력 되었을 때 그 수를 여러가지 방식으로 정렬해보자. #1]]></description><link>https://www.moong-bee.com/posts/basic-sorting-algorithm-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/basic-sorting-algorithm-1</guid><pubDate>Tue, 27 Oct 2020 00:15:07 GMT</pubDate><content:encoded>&lt;p&gt;정렬 알고리즘(sorting algorithm)이란 원소들을 번호순이나 사전 순서와 같이 일정한 순서대로 열거하는 알고리즘이다.&lt;/p&gt;
 &lt;p&gt;프로그래밍을 배우기 시작하고 또 배열과 반복문을 배우고 나서 우리가 할 수 있는 것이 바로 정렬 알고리즘의 기초인 선택 정렬(Selection Sort), 삽입 정렬(Insertion Sort) 그리고 버블 정렬(Bubble Sort)이다.&lt;/p&gt;
 &lt;h3 id=&quot;선택-정렬selection-sort&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A0%ED%83%9D-%EC%A0%95%EB%A0%ACselection-sort&quot; aria-label=&quot;선택 정렬selection sort permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;선택 정렬(Selection Sort)&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;/f20b8898585b3ca03843d93ce2c35a68/selection_sorting_anime.gif&quot; alt=&quot;selection_sorting_anime.gif&quot;&gt; &lt;em&gt;선택 정렬(Selection Sort)&lt;/em&gt;&lt;/p&gt;
@@ -3212,7 +3590,7 @@
     &lt;td&gt;n^2&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
-&lt;p&gt;이외에도 많은 정렬 알고리즘이 있다. 퀵 정렬, 힙 정렬, 병합 정렬 등 많은 정렬 알고리즘들이 존재하며 이것들에 대해서는 추후 포스팅할 예정이다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Generator Function(제네레이터 함수)란 무엇인가?]]></title><description><![CDATA[ES6 문법 중 Generator Function(제네레이터 함수)에 대해 무엇인지 그리고 사용법을 알아보자]]></description><link>https://www.moong-bee.com/posts/what-is-generator-function</link><guid isPermaLink="false">https://www.moong-bee.com/posts/what-is-generator-function</guid><pubDate>Sun, 25 Oct 2020 23:11:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;generator-함수란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#generator-%ED%95%A8%EC%88%98%EB%9E%80&quot; aria-label=&quot;generator 함수란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Generator 함수란&lt;/h3&gt;
+&lt;p&gt;이외에도 많은 정렬 알고리즘이 있다. 퀵 정렬, 힙 정렬, 병합 정렬 등 많은 정렬 알고리즘들이 존재하며 이것들에 대해서는 추후 포스팅할 예정이다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Generator Function(제네레이터 함수)란 무엇인가?]]></title><description><![CDATA[ES6 문법 중 Generator Function(제네레이터 함수)에 대해 무엇인지 그리고 사용법을 알아보자]]></description><link>https://www.moong-bee.com/posts/what-is-generator-function</link><guid isPermaLink="false">https://www.moong-bee.com/posts/what-is-generator-function</guid><pubDate>Sun, 25 Oct 2020 14:11:14 GMT</pubDate><content:encoded>&lt;h3 id=&quot;generator-함수란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#generator-%ED%95%A8%EC%88%98%EB%9E%80&quot; aria-label=&quot;generator 함수란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Generator 함수란&lt;/h3&gt;
 &lt;p&gt;제네레이터 함수는 사용자의 요구에 따라 특정 구간에서 함수를 멈춰 놓을 수 있고(yield), 다시 시작(next) 할 수도 있다.&lt;/p&gt;
 &lt;p&gt;아래와 같은 함수가 있다고 생각해보자&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
@@ -3864,7 +4242,7 @@
       &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;참 신기한 함수인 것 같다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Redux(리덕스) 사용법 (with. Redux-Saga)]]></title><description><![CDATA[상태 관리 라이브러리인 Redux를 Redux Saga라는 것을 통해 사용하는 법!]]></description><link>https://www.moong-bee.com/posts/how-to-use-redux-with-redux-saga</link><guid isPermaLink="false">https://www.moong-bee.com/posts/how-to-use-redux-with-redux-saga</guid><pubDate>Sat, 24 Oct 2020 13:57:29 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;참 신기한 함수인 것 같다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Redux(리덕스) 사용법 (with. Redux-Saga)]]></title><description><![CDATA[상태 관리 라이브러리인 Redux를 Redux Saga라는 것을 통해 사용하는 법!]]></description><link>https://www.moong-bee.com/posts/how-to-use-redux-with-redux-saga</link><guid isPermaLink="false">https://www.moong-bee.com/posts/how-to-use-redux-with-redux-saga</guid><pubDate>Sat, 24 Oct 2020 04:57:29 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/what-is-redux-with-feat-react-and-react-native&quot;&gt;Redux(리덕스)란 무엇인가? (feat. React and React Native)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/how-to-use-redux-with-redux-saga&quot;&gt;Redux(리덕스) 사용법 (with. Redux-Saga)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -4883,7 +5261,7 @@
 &lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/78233628?OzSrank=1&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;책 - 리엑트를 다루는 기술(VELOPERT)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/velopert/learning-react&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Github - 리액트를 다루는 기술 코드(VELOPERT)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/Moong-bee/bit_chart&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Github - bit_coin(Moong-bee)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Redux(리덕스)란 무엇인가? (feat. React and React Native)]]></title><description><![CDATA[React의 상태관리를 위해 Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자]]></description><link>https://www.moong-bee.com/posts/what-is-redux-with-feat-react-and-react-native</link><guid isPermaLink="false">https://www.moong-bee.com/posts/what-is-redux-with-feat-react-and-react-native</guid><pubDate>Thu, 22 Oct 2020 23:38:21 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Redux(리덕스)란 무엇인가? (feat. React and React Native)]]></title><description><![CDATA[React의 상태관리를 위해 Redux(리덕스)에 대해 알아보고 리액트에서 사용하는 법을 알아보자]]></description><link>https://www.moong-bee.com/posts/what-is-redux-with-feat-react-and-react-native</link><guid isPermaLink="false">https://www.moong-bee.com/posts/what-is-redux-with-feat-react-and-react-native</guid><pubDate>Thu, 22 Oct 2020 14:38:21 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/what-is-redux-with-feat-react-and-react-native&quot;&gt;Redux(리덕스)란 무엇인가? (feat. React and React Native)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/how-to-use-redux-with-redux-saga&quot;&gt;Redux(리덕스) 사용법 (with. Redux-Saga)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -5153,7 +5531,7 @@
 &lt;li&gt;&lt;a href=&quot;https://github.com/velopert/learning-react&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Github - 리액트를 다루는 기술 코드(VELOPERT)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://velog.io/@velopert/Redux-1-%EC%86%8C%EA%B0%9C-%EB%B0%8F-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC-zxjlta8ywt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Blog - Minjun Kim(VELOPERT) : Redux (1) 소개 및 개념정리&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.naver.com/yjdev/222123299620&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Blog - Jaden : 리덕스란?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#3]]></title><description><![CDATA[Native Base를 통해 UI 컴포넌트 활용하기.]]></description><link>https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-3</link><guid isPermaLink="false">https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-3</guid><pubDate>Thu, 15 Oct 2020 04:19:51 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#3]]></title><description><![CDATA[Native Base를 통해 UI 컴포넌트 활용하기.]]></description><link>https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-3</link><guid isPermaLink="false">https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-3</guid><pubDate>Wed, 14 Oct 2020 19:19:51 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-1&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-2&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-3&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#3&lt;/a&gt;&lt;/li&gt;
@@ -5834,7 +6212,7 @@
 &lt;h3 id=&quot;github&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#github&quot; aria-label=&quot;github permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Github&lt;/h3&gt;
 &lt;p&gt;해당 프로젝트의 Github 주소는 다음과 같다.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/Moong-bee/bit_chart&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/Moong-bee/bit_chart&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;디자인 조금 더 수정하고… 다음 프로젝트는 뭐하지?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#2]]></title><description><![CDATA[리액트 네이티브 프로젝트 생성과 비트코인 정보 가져오기.]]></description><link>https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-2</guid><pubDate>Tue, 13 Oct 2020 03:01:52 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;디자인 조금 더 수정하고… 다음 프로젝트는 뭐하지?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#2]]></title><description><![CDATA[리액트 네이티브 프로젝트 생성과 비트코인 정보 가져오기.]]></description><link>https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-2</guid><pubDate>Mon, 12 Oct 2020 18:01:52 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-1&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-2&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-3&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#3&lt;/a&gt;&lt;/li&gt;
@@ -6028,8 +6406,8 @@ react-native init &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
           /&gt;
         &lt;/picture&gt;
   &lt;/a&gt;
-    &lt;/span&gt; &lt;em&gt;코드 실행 화면&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AWS EC2 프리티어를 이용해보자]]></title><description><![CDATA[AWS EC2 프리티어를 이용해서 서버를 오픈해보자!]]></description><link>https://www.moong-bee.com/posts/how-to-use-aws-ec2-free-tier</link><guid isPermaLink="false">https://www.moong-bee.com/posts/how-to-use-aws-ec2-free-tier</guid><pubDate>Sun, 11 Oct 2020 11:16:07 GMT</pubDate><content:encoded>&lt;p&gt;클라우드 서버를 알아보다가 AWS(Amazon Web Service)에서 제공하는 EC2를 사용해보기로 했다.&lt;/p&gt;
-&lt;p&gt;이 서비스는 1년 동안 무료로 이용 가능한 프리티어(Free Tier)를 제공한다. &lt;/p&gt;
+    &lt;/span&gt; &lt;em&gt;코드 실행 화면&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AWS EC2 프리티어를 이용해보자]]></title><description><![CDATA[AWS EC2 프리티어를 이용해서 서버를 오픈해보자!]]></description><link>https://www.moong-bee.com/posts/how-to-use-aws-ec2-free-tier</link><guid isPermaLink="false">https://www.moong-bee.com/posts/how-to-use-aws-ec2-free-tier</guid><pubDate>Sun, 11 Oct 2020 02:16:07 GMT</pubDate><content:encoded>&lt;p&gt;클라우드 서버를 알아보다가 AWS(Amazon Web Service)에서 제공하는 EC2를 사용해보기로 했다.&lt;/p&gt;
+&lt;p&gt;이 서비스는 1년 동안 무료로 이용 가능한 프리티어(Free Tier)를 제공한다.&lt;/p&gt;
 &lt;h3 id=&quot;프리티어-시작하기계정-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%94%84%EB%A6%AC%ED%8B%B0%EC%96%B4-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%EA%B3%84%EC%A0%95-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;프리티어 시작하기계정 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;프리티어 시작하기(계정 생성)&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -6268,7 +6646,7 @@ react-native init &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
 &lt;h3 id=&quot;검토-및-시작&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B2%80%ED%86%A0-%EB%B0%8F-%EC%8B%9C%EC%9E%91&quot; aria-label=&quot;검토 및 시작 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;검토 및 시작&lt;/h3&gt;
 &lt;p&gt;해당 단계에서는 본인이 선택한 사항과 기본적으로 선택된 사항들을 보여주고 키페어 파일을 생성한다. 키페어 파일을 이용해 SSH 접속이 가능하다. 해당 파일은 재발급이 불가능하기 때문에 반드시 저장해야하며 분실하지 말아야한다.&lt;/p&gt;
 &lt;p&gt;생성 완료 후 상단의 서비스 &gt; EC2 &gt; 인스턴스로 들어가면 생성된 인스턴스를 확인 할 수 있으며&lt;/p&gt;
-&lt;p&gt;해당 화면에서 인스턴스를 on / off / reload / delete가 가능하다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#1]]></title><description><![CDATA[리액트 네이티브를 이용해 비트코인 차트 앱을 만들어보자.]]></description><link>https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-1</guid><pubDate>Sun, 11 Oct 2020 02:17:02 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;해당 화면에서 인스턴스를 on / off / reload / delete가 가능하다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개인 프로젝트 - Bit Coin Chart App 만들기_#1]]></title><description><![CDATA[리액트 네이티브를 이용해 비트코인 차트 앱을 만들어보자.]]></description><link>https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/bit-coin-chart-with-react-native-1</guid><pubDate>Sat, 10 Oct 2020 17:17:02 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-1&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-2&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/bit-coin-chart-with-react-native-3&quot;&gt;개인 프로젝트 - Bit Coin Chart App 만들기_#3&lt;/a&gt;&lt;/li&gt;
@@ -6333,7 +6711,7 @@ react-native init &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
 &lt;h3 id=&quot;출처-및-참고&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%9C%EC%B2%98-%EB%B0%8F-%EC%B0%B8%EA%B3%A0&quot; aria-label=&quot;출처 및 참고 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;출처 및 참고&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://iri-kang.tistory.com/3&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;거래소 별 API 정보 - 이리의 개발이야기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[cafe24? 닷홈? AWS EC2? 호스팅 서비스들의 장단점]]></title><description><![CDATA[AWS 1년 프리티어로 제공해주는 EC2를 사용해 웹 서버를 열어보자.]]></description><link>https://www.moong-bee.com/posts/differences-between-server-hosting-and-cloud-server</link><guid isPermaLink="false">https://www.moong-bee.com/posts/differences-between-server-hosting-and-cloud-server</guid><pubDate>Fri, 09 Oct 2020 13:01:57 GMT</pubDate><content:encoded>&lt;p&gt;대학교 1~2학년때에는 호스팅 서비스는 어떻게 하는지도 몰랐고 웹서버를 오픈하는건 로컬 환경에서만 가능했다. 방학 기간 동안 외부에서 나의 웹 서버에 접속하는 방법에 대해 찾아 봤고 흔히 사용하는 방법과 회사에 다니면서 얻은 방법과 각각의 장단점? 에 대해 설명하겠다.&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[cafe24? 닷홈? AWS EC2? 호스팅 서비스들의 장단점]]></title><description><![CDATA[AWS 1년 프리티어로 제공해주는 EC2를 사용해 웹 서버를 열어보자.]]></description><link>https://www.moong-bee.com/posts/differences-between-server-hosting-and-cloud-server</link><guid isPermaLink="false">https://www.moong-bee.com/posts/differences-between-server-hosting-and-cloud-server</guid><pubDate>Fri, 09 Oct 2020 04:01:57 GMT</pubDate><content:encoded>&lt;p&gt;대학교 1~2학년때에는 호스팅 서비스는 어떻게 하는지도 몰랐고 웹서버를 오픈하는건 로컬 환경에서만 가능했다. 방학 기간 동안 외부에서 나의 웹 서버에 접속하는 방법에 대해 찾아 봤고 흔히 사용하는 방법과 회사에 다니면서 얻은 방법과 각각의 장단점? 에 대해 설명하겠다.&lt;/p&gt;
 &lt;h3 id=&quot;cafe24-dothome&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#cafe24-dothome&quot; aria-label=&quot;cafe24 dothome permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;cafe24, dothome&lt;/h3&gt;
 &lt;p&gt;일반 사용자나 학생들이 가장 무난하게 사용할 수 있는 호스팅 사이트다. 초기에 설치비용(?)이 들어가지만 월 사용료가 그렇게 크지 않아 저렴한 가격으로 이용 할 수 있다.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -6428,7 +6806,7 @@ react-native init &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
 &lt;p&gt;cafe24의 단점(?)중 하나는 트래픽 용량을 초과될 경우 사이트가 닫힌다. 만약 본인 사이트가 트래픽이 많을 경우 넉넉하게 트래픽 용량을 추가 구매하거나, 가격대가 높은 서비스를 이용하기 바란다.&lt;/p&gt;
 &lt;h3 id=&quot;aws-ec2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#aws-ec2&quot; aria-label=&quot;aws ec2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AWS EC2&lt;/h3&gt;
 &lt;p&gt;AWS(Amazon Web Service)는 아마존에서 제공하는 웹 서비스를 의미한다. AWS에는 많은 서비스가 존재한다. 많은 서비스 중 가장 먼저 EC2가 제일 먼저 떠오른다.&lt;/p&gt;
-&lt;p&gt;EC2(Amazon Elastic Compute Cloud)는 클라우드 서버다. 서버 자원의 추가 삭제가 용이하다. EC2에는 다양한 프로세서, 스토리지, 운영체제를 제공한다. &lt;/p&gt;
+&lt;p&gt;EC2(Amazon Elastic Compute Cloud)는 클라우드 서버다. 서버 자원의 추가 삭제가 용이하다. EC2에는 다양한 프로세서, 스토리지, 운영체제를 제공한다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
@@ -6528,7 +6906,7 @@ react-native init &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
       &lt;/ul&gt;
     &lt;/td&gt;
   &lt;/tr&gt;
-&lt;/table&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_final]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. final Gatsby에서 제공하는 plugins!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-final</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-final</guid><pubDate>Thu, 08 Oct 2020 12:07:24 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;/table&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_final]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. final Gatsby에서 제공하는 plugins!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-final</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-final</guid><pubDate>Thu, 08 Oct 2020 03:07:24 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-0&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-1&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-2&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#2&lt;/a&gt;&lt;/li&gt;
@@ -6656,7 +7034,7 @@ react-native init &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt; 생략&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;열심히 블로그를 활성화 시켜서 구글 애드센스를 적용해보자!&lt;/p&gt;
-&lt;p&gt;이로써 블로그 관련 포스트는 끝을 짓겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#3]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #3 Gatsby를 실행하는 방법!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-3</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-3</guid><pubDate>Wed, 07 Oct 2020 00:55:12 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;이로써 블로그 관련 포스트는 끝을 짓겠습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#3]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #3 Gatsby를 실행하는 방법!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-3</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-3</guid><pubDate>Tue, 06 Oct 2020 15:55:12 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-0&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-1&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-2&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#2&lt;/a&gt;&lt;/li&gt;
@@ -6826,7 +7204,7 @@ pm2 delete &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;id 번�
 &lt;p&gt;gatsby의 경로를 모를 경우 아래의 명령어로 경로를 찾을 수 있다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;which&lt;/span&gt; gatsby
 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; ~/.nvm/versions/node/v14.2.0/bin/gatsby&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;다음 포스트에서는 기본으로 적용되어있는 plugin과 추가한 plugin들의 설명과 적용법에 대해 포스트하고 길고 긴 포스트를 끝내겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Shell Script(.sh)랑 npm 명령어랑 같이 쓰는법(?)]]></title><description><![CDATA[AWS EC2에서 git으로 pull하고 권한 오류로 chown 명령어 쓰고 또 npm build 처리를 해야하는데 어떻게 해야할까?]]></description><link>https://www.moong-bee.com/posts/shell-script-and-npm-command</link><guid isPermaLink="false">https://www.moong-bee.com/posts/shell-script-and-npm-command</guid><pubDate>Mon, 05 Oct 2020 13:23:09 GMT</pubDate><content:encoded>&lt;p&gt;현재 블로그 코드들이 전부 AWS EC2에 있고 코딩을 할때 AWS Cloud9을 활용하여 코딩중이다.&lt;/p&gt;
+&lt;p&gt;다음 포스트에서는 기본으로 적용되어있는 plugin과 추가한 plugin들의 설명과 적용법에 대해 포스트하고 길고 긴 포스트를 끝내겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Shell Script(.sh)랑 npm 명령어랑 같이 쓰는법(?)]]></title><description><![CDATA[AWS EC2에서 git으로 pull하고 권한 오류로 chown 명령어 쓰고 또 npm build 처리를 해야하는데 어떻게 해야할까?]]></description><link>https://www.moong-bee.com/posts/shell-script-and-npm-command</link><guid isPermaLink="false">https://www.moong-bee.com/posts/shell-script-and-npm-command</guid><pubDate>Mon, 05 Oct 2020 04:23:09 GMT</pubDate><content:encoded>&lt;p&gt;현재 블로그 코드들이 전부 AWS EC2에 있고 코딩을 할때 AWS Cloud9을 활용하여 코딩중이다.&lt;/p&gt;
 &lt;p&gt;Cloud9은 집에서만 접속할 수 있게 설정해놔서 외부에서 작업을 할땐 github에 파일을 push하고 자동으로 git pull 명령어를 사용해서 실행하려고 했다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# AutoPull.sh&lt;/span&gt;
 &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; /usr/share/nginx/html/&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;프로젝트명&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
@@ -6937,7 +7315,7 @@ pm2 delete &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;id 번�
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt; &lt;em&gt;Add webook 화면&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Payload URL은 webhook 발생시 해당 이벤트를 받을 주소를 적으면 된다. Webhook은 post로 작동되기 때문에 post url을 작성해주면 된다. &lt;/p&gt;
+&lt;p&gt;Payload URL은 webhook 발생시 해당 이벤트를 받을 주소를 적으면 된다. Webhook은 post로 작동되기 때문에 post url을 작성해주면 된다.&lt;/p&gt;
 &lt;p&gt;Content type 은 수신했을 때에 데이터 형식을 지정한다. 형식에는 대표적으로 2가지가 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;application/json&lt;/li&gt;
@@ -7005,7 +7383,7 @@ shell&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
           /&gt;
         &lt;/picture&gt;
   &lt;/a&gt;
-    &lt;/span&gt; &lt;em&gt;webhook 발생시 실행되는 코드&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#2]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #2 기본적인 Gatsby 사용법!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-2</guid><pubDate>Sun, 04 Oct 2020 00:22:23 GMT</pubDate><content:encoded>&lt;ul&gt;
+    &lt;/span&gt; &lt;em&gt;webhook 발생시 실행되는 코드&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#2]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #2 기본적인 Gatsby 사용법!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-2</guid><pubDate>Sat, 03 Oct 2020 15:22:23 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-0&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-1&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-2&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#2&lt;/a&gt;&lt;/li&gt;
@@ -7018,9 +7396,9 @@ shell&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;p&gt;생성된 프로젝트는 Markdown 파일을 작성하여 Gatsby plugin을 통해 html 파일로 변환 한다.&lt;/p&gt;
 &lt;details&gt;
     &lt;summary&gt;Markdown(.md 파일) 이란&lt;/summary&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;markdown은 일반 텍스트 기반의 가벼운 마크업(MarkUp) 언어다. 
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;markdown은 일반 텍스트 기반의 가벼운 마크업(MarkUp) 언어다.
 
-다른 마크업 언어에 비해 상당히 문법이 간단하고 사용하기 쉬우며 
+다른 마크업 언어에 비해 상당히 문법이 간단하고 사용하기 쉬우며
 
 HTML 파일 형식으로 손쉽게 변경이 가능하기 때문에 README 파일로 이용된다.
 
@@ -7078,7 +7456,7 @@ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt; &lt;em&gt;scripts &gt; develop 에 gatsby develop -p [원하는 포트]&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;자세히 보면 gatsby develop 앞에 yarn run clean 이 있고 하위에 &lt;/p&gt;
+&lt;p&gt;자세히 보면 gatsby develop 앞에 yarn run clean 이 있고 하위에&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;clean &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rimraf .cache public&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;이런 코드가 작성되어 있다. 이유는 develop 모드나 build 모드를 실행하면 .cache 및 public 폴더가 생성된다. 하지만 명령어를 계속 실행 할 경우 .cache 및 public 폴더에 파일이 삭제되지 않고 쌓이게 된다. 특히 build 모드에서는 public에 minify, html 변환된 파일 등 많은 파일이 생성되는데 build 명령어 실행시 기존 파일이 삭제되지 않고 계속 생성된다.&lt;/p&gt;
 &lt;p&gt;따라서 .cache 및 public 폴더를 삭제해야하기 때문에 clean 명령어를 먼저 실행해서 폴더를 삭제하고 develop/build 명렁어를 실행한다.&lt;/p&gt;
@@ -7097,7 +7475,7 @@ gatsby build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 // custom port
 gatsby serve -p &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;원하는 포트&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;추가로 필자는 pm2 라는 node 프로세스 관리 툴을 사용한다.&lt;/p&gt;
-&lt;p&gt;사용법은 다음 포스트에서 계속…&lt;/p&gt;</content:encoded></item><item><title><![CDATA[소수 찾기 알고리즘 (feat. 에라토스테네스의 체)]]></title><description><![CDATA[소수 찾기 알고리즘 중 하나인 에라토스테네스의 체에 대해 알아보자]]></description><link>https://www.moong-bee.com/posts/sieve-of-eratosthenes-algorithm</link><guid isPermaLink="false">https://www.moong-bee.com/posts/sieve-of-eratosthenes-algorithm</guid><pubDate>Sat, 03 Oct 2020 00:22:23 GMT</pubDate><content:encoded>&lt;p&gt;소수란 1과 자기 자신을 제외한 어떠한 정수로도 나눠지지 않는 수를 뜻한다.&lt;/p&gt;
+&lt;p&gt;사용법은 다음 포스트에서 계속…&lt;/p&gt;</content:encoded></item><item><title><![CDATA[소수 찾기 알고리즘 (feat. 에라토스테네스의 체)]]></title><description><![CDATA[소수 찾기 알고리즘 중 하나인 에라토스테네스의 체에 대해 알아보자]]></description><link>https://www.moong-bee.com/posts/sieve-of-eratosthenes-algorithm</link><guid isPermaLink="false">https://www.moong-bee.com/posts/sieve-of-eratosthenes-algorithm</guid><pubDate>Fri, 02 Oct 2020 15:22:23 GMT</pubDate><content:encoded>&lt;p&gt;소수란 1과 자기 자신을 제외한 어떠한 정수로도 나눠지지 않는 수를 뜻한다.&lt;/p&gt;
 &lt;p&gt;프로그래밍을 배우기 시작하고 반복문에 관련된 부분을 배우기 시작하면 문제 / 과제로 많이 나온다.&lt;/p&gt;
 &lt;p&gt;보통 코딩한 결과는 다음과 같이 나온다.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -7251,7 +7629,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt; &lt;em&gt;너무 오래 걸리는 에라토스테네스의 체&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;위의 코드로 실행 시간을 따져보면 기존에 만들었던 코드보다 훨씬 느리게 작동한다.  하지만 이런 알고리즘을 잘 활용한다면 최선의 코드를 만들 수 있다.&lt;/p&gt;
+&lt;p&gt;위의 코드로 실행 시간을 따져보면 기존에 만들었던 코드보다 훨씬 느리게 작동한다. 하지만 이런 알고리즘을 잘 활용한다면 최선의 코드를 만들 수 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;첫번째, 0으로 바뀐 수는 체크하지 않는 것.&lt;/li&gt;
 &lt;li&gt;두번째, 기준 숫자의 배수만 0으로 변경할 것.&lt;/li&gt;
@@ -7340,9 +7718,9 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
           /&gt;
         &lt;/picture&gt;
   &lt;/a&gt;
-    &lt;/span&gt; &lt;em&gt;getPrimeNumber_3가 최종 변경된 코드&lt;/em&gt;&lt;/p&gt;
+    &lt;/span&gt; &lt;em&gt;getPrimeNumber&lt;/em&gt;3가 최종 변경된 코드_&lt;/p&gt;
 &lt;p&gt;기존 코드에 누구나 생각 할 수 있는 조건을 추가해보면 엄청나게 개선된 코드를 만들 수 있다.&lt;/p&gt;
-&lt;p&gt;알고리즘 공부를 열심히 하자.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#1]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #1, Gatsby를 쓰는 이유!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-1</guid><pubDate>Fri, 02 Oct 2020 00:37:37 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;알고리즘 공부를 열심히 하자.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#1]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #1, Gatsby를 쓰는 이유!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-1</guid><pubDate>Thu, 01 Oct 2020 15:37:37 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-0&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-1&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-2&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#2&lt;/a&gt;&lt;/li&gt;
@@ -7352,7 +7730,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;React에 검색엔진 최적화(이하 SEO)와 SNS 공유를 위한 meta 태그 설정하는 방법 중 필자가 편하게 이용한 방법(Pre-render) 및 현재 블로그를 만들 수 있게 된 Gatsby 등(SSR - Server Side Rendering)에 대해 설명하겠다.&lt;/p&gt;
 &lt;p&gt;설명에 앞서 SPA, Pre-render 와 SSR(Server-Side-Rendering)은 무엇일까?&lt;/p&gt;
 &lt;h2 id=&quot;spa&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spa&quot; aria-label=&quot;spa permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SPA&lt;/h2&gt;
-&lt;p&gt;React는 SPA(Single Page Application)을 지향한다. &lt;/p&gt;
+&lt;p&gt;React는 SPA(Single Page Application)을 지향한다.&lt;/p&gt;
 &lt;p&gt;SPA는 Single Page Application의 줄임말이며, 라우팅을 클라이언트에서 담당한다.&lt;/p&gt;
 &lt;p&gt;기존의 경우 사용자가 라우팅을 요청할 때 마다 서버측에 새로운 페이지를 받아와야해서 서버측 자원이 많이 이용된다. 그에 따른 불필요한 트래픽이 빈번히 발생한다. 따라서 SPA를 이용할 시 앞서 말한 문제점들이 개선된다.&lt;/p&gt;
 &lt;p&gt;하지만 SPA도 문제점은 존재한다.&lt;/p&gt;
@@ -7384,8 +7762,8 @@ SEO를 위해 SSR을 이용하기 힘드신 분들을 위해 추천하는 기능
 &lt;p&gt;앱을 빌드 후에 snap을 찍어야한다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// package.json&lt;/span&gt;
 &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ...생략&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;postbuild&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react-snap&quot;&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ...생략&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;&quot;postbuild&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react-snap&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -7419,7 +7797,7 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
 &lt;li&gt;&lt;a href=&quot;https://blog.naver.com/yjdev/222087089670&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;SEO 관련 정보 - yjdev(Naver Blog)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://velopert.com/3425&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;prerender.io, SSR 관련 정보 - velopert(VELOPERT.LOG)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://emessell.github.io/react/2019/10/30/SSR,CSR/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;SSR, Next.js 관련 정보 - emessell(Blog)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#0]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #0 블로그를 시작해보자!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-0</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-0</guid><pubDate>Wed, 30 Sep 2020 14:34:15 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[리액트 + Gatsby 를 이용한 블로그 만들기_#0]]></title><description><![CDATA[SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용하여 블로그를 만들자. #0 블로그를 시작해보자!]]></description><link>https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-0</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-react-blog-with-gatsby-template-0</guid><pubDate>Wed, 30 Sep 2020 05:34:15 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-0&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#0&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-1&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-react-blog-with-gatsby-template-2&quot;&gt;리액트 + Gatsby 를 이용한 블로그 만들기_#2&lt;/a&gt;&lt;/li&gt;
@@ -7473,11 +7851,11 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
 &lt;p&gt;알고있는 내용을 바탕으로 sitemap.xml도 만들어보고 SEO와 SNS 공유를 위한 meta 태그를 설정했다.&lt;/p&gt;
 &lt;p&gt;하지만 리액트는 JS 기반으로 돌아가기 때문에 html 로딩 후 meta 태그를 설정하는 react-helmet으로는 og image, og description 등 여러 설정이 적용되지 않았다.&lt;/p&gt;
 &lt;p&gt;찾아보니 리액트로 작성된 코드를 미리 html로 렌더링하고 사용자에게 보여주면 해당 문제는 해결된다고 했다.&lt;/p&gt;
-&lt;p&gt;여러 방법을 제공하고 있지만 사용해본것 중에 괜찮은 것과 현재 사이트를 만든 Gatsby에 대해 다음 포스트에서 설명하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[2020년 웹 개발자 로드맵 by.kamranahmedse]]></title><description><![CDATA[웹 개발에 있어 전체적인 개발 방향과 배워야하는 기술 및 도구들을 알아보자.]]></description><link>https://www.moong-bee.com/posts/2020-web-developer-road-map</link><guid isPermaLink="false">https://www.moong-bee.com/posts/2020-web-developer-road-map</guid><pubDate>Sun, 27 Sep 2020 16:15:50 GMT</pubDate><content:encoded>&lt;p&gt;초보 개발자나 학생/성인들에게 있어 개발을 시작할 때 무엇을 해야할지 막막할 것이다.&lt;/p&gt;
+&lt;p&gt;여러 방법을 제공하고 있지만 사용해본것 중에 괜찮은 것과 현재 사이트를 만든 Gatsby에 대해 다음 포스트에서 설명하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[2020년 웹 개발자 로드맵 by.kamranahmedse]]></title><description><![CDATA[웹 개발에 있어 전체적인 개발 방향과 배워야하는 기술 및 도구들을 알아보자.]]></description><link>https://www.moong-bee.com/posts/2020-web-developer-road-map</link><guid isPermaLink="false">https://www.moong-bee.com/posts/2020-web-developer-road-map</guid><pubDate>Sun, 27 Sep 2020 07:15:50 GMT</pubDate><content:encoded>&lt;p&gt;초보 개발자나 학생/성인들에게 있어 개발을 시작할 때 무엇을 해야할지 막막할 것이다.&lt;/p&gt;
 &lt;p&gt;그런 개발자들을 위해 kamranahmedse 라는 닉네임을 가진 분이 매년 로드맵을 작성해서 공유해 주신다.&lt;/p&gt;
 &lt;p&gt;만약 본인이 개발이 하고 싶은데 어떤걸 먼저 해야할지 모르거나 앞으로 무엇을 배워야할지 의문이 들 경우 아래 사이트를 이용하길 바란다.&lt;/p&gt;
 &lt;p&gt;Github - 원본 : &lt;a href=&quot;https://github.com/kamranahmedse/developer-roadmap&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/kamranahmedse/developer-roadmap&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github - 번역 : &lt;a href=&quot;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CRA(Create React App)으로 시작하는 React.]]></title><description><![CDATA[페이스북에서 제공해주는 프론트엔드 라이브러리 React 사용해보기.]]></description><link>https://www.moong-bee.com/posts/install-create-react-app</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-create-react-app</guid><pubDate>Sat, 12 Sep 2020 13:15:19 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;Github - 번역 : &lt;a href=&quot;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CRA(Create React App)으로 시작하는 React.]]></title><description><![CDATA[페이스북에서 제공해주는 프론트엔드 라이브러리 React 사용해보기.]]></description><link>https://www.moong-bee.com/posts/install-create-react-app</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-create-react-app</guid><pubDate>Sat, 12 Sep 2020 04:15:19 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#react%EB%8A%94-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80&quot;&gt;React는 무엇인가?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#1-node-js-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot;&gt;Node JS 설치하기&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#2-npm-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8&quot;&gt;NPM 버전확인&lt;/a&gt;&lt;/li&gt;
@@ -7549,7 +7927,7 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
           /&gt;
         &lt;/picture&gt;
   &lt;/a&gt;
-    &lt;/span&gt; &lt;em&gt;create-react-app 설치 확인&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[안드로이드 에뮬레이터에서 앱 아이콘이 안보일 때]]></title><description><![CDATA[Android Studio의 에뮬레이터에서 앱아이콘이 안뜨는 현상을 해결하자]]></description><link>https://www.moong-bee.com/posts/android-emulator-app-icon-not-visibility</link><guid isPermaLink="false">https://www.moong-bee.com/posts/android-emulator-app-icon-not-visibility</guid><pubDate>Thu, 10 Sep 2020 21:36:05 GMT</pubDate><content:encoded>&lt;p&gt;Android Studio를 통해서 에뮬레이터에 테스트하는데
+    &lt;/span&gt; &lt;em&gt;create-react-app 설치 확인&lt;/em&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[안드로이드 에뮬레이터에서 앱 아이콘이 안보일 때]]></title><description><![CDATA[Android Studio의 에뮬레이터에서 앱아이콘이 안뜨는 현상을 해결하자]]></description><link>https://www.moong-bee.com/posts/android-emulator-app-icon-not-visibility</link><guid isPermaLink="false">https://www.moong-bee.com/posts/android-emulator-app-icon-not-visibility</guid><pubDate>Thu, 10 Sep 2020 12:36:05 GMT</pubDate><content:encoded>&lt;p&gt;Android Studio를 통해서 에뮬레이터에 테스트하는데
 분명 컴파일은 완료되었지만 앱 아이콘이 종종 안뜨는 경우가 있다.&lt;/p&gt;
 &lt;p&gt;필자의 경우 다음 Manifest파일에서 Scheme를 설정 했을 때 생겼다.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -7632,15 +8010,15 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt; &lt;em&gt;intent-filter를 2번 선언한다.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;intent-filter를 Scheme 용 intent-filter를 따로 분리하여 작성하면 해결된다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[iOS/Swift - WKWebView에서 쿠키 사용법 중 하나!]]></title><description><![CDATA[iOS의 WKWebview의 쿠키 사용하는 방법 중 하나를 알아보자]]></description><link>https://www.moong-bee.com/posts/ios-swift-Cookie-used</link><guid isPermaLink="false">https://www.moong-bee.com/posts/ios-swift-Cookie-used</guid><pubDate>Fri, 04 Sep 2020 16:55:34 GMT</pubDate><content:encoded>&lt;p&gt;WKWebView에서 로그인할때 쿠키로 작동한다면&lt;/p&gt;
+&lt;p&gt;intent-filter를 Scheme 용 intent-filter를 따로 분리하여 작성하면 해결된다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[iOS/Swift - WKWebView에서 쿠키 사용법 중 하나!]]></title><description><![CDATA[iOS의 WKWebview의 쿠키 사용하는 방법 중 하나를 알아보자]]></description><link>https://www.moong-bee.com/posts/ios-swift-Cookie-used</link><guid isPermaLink="false">https://www.moong-bee.com/posts/ios-swift-Cookie-used</guid><pubDate>Fri, 04 Sep 2020 07:55:34 GMT</pubDate><content:encoded>&lt;p&gt;WKWebView에서 로그인할때 쿠키로 작동한다면&lt;/p&gt;
 &lt;p&gt;쿠키를 가져오는 방법이 여러가지다.&lt;/p&gt;
 &lt;p&gt;그 중 지금 필자가 개발하는거에 가장 베스트는 userContentController 를 사용하는 방법이다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;index.html&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;html&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
-... 생략
-&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;script&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token script&quot;&gt;&lt;span class=&quot;token language-javascript&quot;&gt;
+  ... 생략
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;script&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token script&quot;&gt;&lt;span class=&quot;token language-javascript&quot;&gt;
     window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;webkit&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;messageHandlers&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;핸들러명&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;postMessage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;쿠키&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;script&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;script&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;html&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;ViewController.swift&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;swift&quot;&gt;&lt;pre class=&quot;language-swift&quot;&gt;&lt;code class=&quot;language-swift&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;loadView&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -7660,17 +8038,17 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
 &lt;p&gt;&lt;strong&gt;ViewController.swift&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;swift&quot;&gt;&lt;pre class=&quot;language-swift&quot;&gt;&lt;code class=&quot;language-swift&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;viewDidLoad&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; 생략
-    
+
     &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; cookie &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;HTTPCookie&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;self&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; cookieJar &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;HTTPCookieStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;shared
-        
+
     &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; cookie &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; cookieJar&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;cookies&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
         cookieJar&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;deleteCookie&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;cookie&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-    
+
     &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; 생략
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;이게 뭔지 모르겠지만 쿠키를 다 지워주는거같다. 하지만 웹뷰에서 쿠키를 확인했을때는 쿠키가 삭제되거나 그런일은 없다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Android&iOS FCM을 Rest API를 통해 보내기]]></title><description><![CDATA[안드로이드 및 iOS 앱으로 푸시알림을 보낼 때 RestAPI 활용하기]]></description><link>https://www.moong-bee.com/posts/fcm-push-send-structure</link><guid isPermaLink="false">https://www.moong-bee.com/posts/fcm-push-send-structure</guid><pubDate>Wed, 02 Sep 2020 09:12:01 GMT</pubDate><content:encoded>&lt;p&gt;fcm 가이드에서는 다음과 같이 쓰라고 되어있다.&lt;/p&gt;
+&lt;p&gt;이게 뭔지 모르겠지만 쿠키를 다 지워주는거같다. 하지만 웹뷰에서 쿠키를 확인했을때는 쿠키가 삭제되거나 그런일은 없다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Android&iOS FCM을 Rest API를 통해 보내기]]></title><description><![CDATA[안드로이드 및 iOS 앱으로 푸시알림을 보낼 때 RestAPI 활용하기]]></description><link>https://www.moong-bee.com/posts/fcm-push-send-structure</link><guid isPermaLink="false">https://www.moong-bee.com/posts/fcm-push-send-structure</guid><pubDate>Wed, 02 Sep 2020 00:12:01 GMT</pubDate><content:encoded>&lt;p&gt;fcm 가이드에서는 다음과 같이 쓰라고 되어있다.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token property&quot;&gt;&quot;to&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;FireBase Device Token&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;token property&quot;&gt;&quot;notification&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
