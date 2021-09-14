@@ -23,6 +23,7 @@ const onRenderBody = (
 
   setPostBodyComponents([
     <script
+      key={"kakao_adfit_script"}
       type="text/javascript"
       async
       src="//t1.daumcdn.net/kas/static/ba.min.js"

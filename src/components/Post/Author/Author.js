@@ -11,7 +11,8 @@ const Author = () => {
     <div className={styles["author"]}>
       <div className={styles["author__adfit"]}>
         <ins
-          class="kakao_ad_area"
+          key={"author_adfit"}
+          className="kakao_ad_area"
           style={{ display: "none" }}
           data-ad-unit="DAN-de34DVhFQLvzGVdF"
           data-ad-width="728"

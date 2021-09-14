@@ -23,11 +23,11 @@ const Content = ({ body, title, image, date }: Props) => {
             month: "short",
             day: "numeric",
           })}
-          {``}
         </div>
       </div>
       <div className={styles["content__adfit"]}>
         <ins
+          key={"content_adfit"}
           className="kakao_ad_area"
           style={{ display: "none" }}
           data-ad-unit="DAN-Fieee4hRo1VGYbEx"
