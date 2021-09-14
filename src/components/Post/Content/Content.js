@@ -1,17 +1,16 @@
 // @flow strict
 import React from 'react';
 import styles from './Content.module.scss';
-import {useSiteMetadata} from '../../../hooks';
+import { useSiteMetadata } from '../../../hooks';
 
 type Props = {
   body: string,
   title: string,
-  image: string,
   date: string,
 };
 
-const Content = ({body, title, image, date}: Props) => {
-  const {author} = useSiteMetadata();
+const Content = ({ body, title, date }: Props) => {
+  const { author } = useSiteMetadata();
 
   return (
     <div className={styles['content']}>
@@ -31,14 +30,15 @@ const Content = ({body, title, image, date}: Props) => {
         <ins
           key={'content_adfit'}
           className="kakao_ad_area"
-          style={{display: 'none'}}
+          style={{ display: 'none' }}
           data-ad-unit="DAN-Fieee4hRo1VGYbEx"
           data-ad-width="728"
-          data-ad-height="90"></ins>
+          data-ad-height="90"
+        ></ins>
       </div>
       <div
         className={styles['content__body']}
-        dangerouslySetInnerHTML={{__html: body}}
+        dangerouslySetInnerHTML={{ __html: body }}
       />
     </div>
   );

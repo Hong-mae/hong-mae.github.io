@@ -1,9 +1,9 @@
 // @flow strict
-import React from "react";
-import Helmet from "react-helmet";
-import type { Node as ReactNode } from "react";
-import { useSiteMetadata } from "../../hooks";
-import styles from "./Layout.module.scss";
+import React from 'react';
+import Helmet from 'react-helmet';
+import type { Node as ReactNode } from 'react';
+import { useSiteMetadata } from '../../hooks';
+import styles from './Layout.module.scss';
 
 type Props = {
   children: ReactNode,
@@ -12,7 +12,7 @@ type Props = {
   socialImage?: string,
 };
 
-const Layout = ({ children, title, description, socialImage = "" }: Props) => {
+const Layout = ({ children, title, description, socialImage = '' }: Props) => {
   const { author, url } = useSiteMetadata();
   const metaImage = socialImage || author.photo;
   const metaImageUrl = url + metaImage;
