@@ -21,13 +21,18 @@ const onRenderBody = (
     ]);
   }
 
-  setPostBodyComponents([
-    <script
-      key={"kakao_adfit_script"}
-      type="text/javascript"
-      async
-      src="//t1.daumcdn.net/kas/static/ba.min.js"
-    />,
+  setHeadComponents([
+    React.createElement("script", {
+      key: "kakao_adfit_script",
+      async: true,
+      src: "//t1.daumcdn.net/kas/static/ba.min.js",
+    }),
+    React.createElement("script", {
+      key: "kakao_adfit_script",
+      "data-ad-client": "ca-pub-8178483925350112",
+      async: true,
+      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+    }),
   ]);
 };
 

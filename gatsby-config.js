@@ -238,6 +238,7 @@ module.exports = {
         },
       },
     },
+    // "gatsby-plugin-remove-serviceworker",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-react-helmet",
     {
@@ -269,5 +270,12 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   resolve: `@isamrish/gatsby-plugin-google-adsense`,
+    //   options: {
+    //     googleAdClientId: "ca-pub-8178483925350112",
+    //     head: true,
+    //   },
+    // },
   ],
 };
