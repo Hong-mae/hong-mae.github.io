@@ -106,10 +106,12 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-netlify-cms-paths`,
     {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          `gatsby-plugin-netlify-cms-paths`,
           "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-katex",

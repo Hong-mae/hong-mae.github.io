@@ -21,7 +21,7 @@ const PostTemplate = ({ data }: Props) => {
     socialImage,
   } = frontmatter;
   const metaDescription = postDescription || siteSubtitle;
-  const socialImageUrl = socialImage?.publicURL ?? "/photo.jpg";
+  const socialImageUrl = socialImage?.publicURL;
 
   return (
     <Layout

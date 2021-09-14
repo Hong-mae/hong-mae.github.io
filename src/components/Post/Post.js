@@ -25,7 +25,7 @@ const Post = ({ post }: Props) => {
       </Link>
 
       <div className={styles["post__content"]}>
-        <Content body={html} title={title} image={socialImage.publicURL} />
+        <Content body={html} title={title} image={socialImage || "/photo.jpg"} />
       </div>
 
       <div className={styles["post__footer"]}>
