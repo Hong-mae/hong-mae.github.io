@@ -1,6 +1,6 @@
 ---
 title: Android&iOS FCM을 Rest API를 통해 보내기
-date: "2020-09-02T09:12:01.086Z"
+date: "2020-09-02 09:12:01 GTM+0900"
 template: "post"
 draft: false
 slug: "fcm-push-send-structure"

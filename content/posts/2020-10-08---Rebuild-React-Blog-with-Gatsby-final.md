@@ -1,6 +1,6 @@
 ---
 title: 리액트 + Gatsby 를 이용한 블로그 만들기_final
-date: "2020-10-08T12:07:24.000Z"
+date: "2020-10-08 12:07:24 GTM+0900"
 template: "post"
 draft: false
 slug: "create-react-blog-with-gatsby-template-final"
@@ -18,11 +18,11 @@ description: "SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용�
 socialImage: "/media/gatsby_react.png"
 ---
 
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#0](/posts/create-react-blog-with-gatsby-template-0)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#1](/posts/create-react-blog-with-gatsby-template-1)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#2](/posts/create-react-blog-with-gatsby-template-2)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#3](/posts/create-react-blog-with-gatsby-template-3)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_final](/posts/create-react-blog-with-gatsby-template-final)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#0](/posts/create-react-blog-with-gatsby-template-0)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#1](/posts/create-react-blog-with-gatsby-template-1)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#2](/posts/create-react-blog-with-gatsby-template-2)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#3](/posts/create-react-blog-with-gatsby-template-3)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_final](/posts/create-react-blog-with-gatsby-template-final)
 
 Gastby는 많은 [plugin](https://www.gatsbyjs.com/plugins)을 제공하여 보다 편하게 블로그 설정을 도와준다.
 
@@ -44,19 +44,19 @@ Gastby는 많은 [plugin](https://www.gatsbyjs.com/plugins)을 제공하여 보�
 - head 정보를 parsing 해주는 [gatsby-plugin-react-helmet](https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet)
 - sass 파일을 css 로 변환해주는 [gatsby-plugin-sass](https://www.gatsbyjs.com/plugins/gatsby-plugin-sass)
 
-이외에도 엄청 많은 플러그인들이 적용 돼있다. <del>*필자가 잘못알고 있는 내용도 있으니 주의 바람.*</del>
+이외에도 엄청 많은 플러그인들이 적용 돼있다. <del>_필자가 잘못알고 있는 내용도 있으니 주의 바람._</del>
 
 이제 필자가 간단하게 수정한 내용들을 설명하겠다.
 
 이 템플릿에는 /static/photo.png 파일이 있다. 이 사진은 메인화면 왼쪽 sidebar의 사진이지만 favicon의 역할도 한다.
 
-![photo_is_favicon](/media/photo_is_favicon.png) *photo 파일이 favicon으로 적용됨*
+![photo_is_favicon](/media/photo_is_favicon.png) _photo 파일이 favicon으로 적용됨_
 
 만약 본인만의 favicon이 존재한다면 gatsby-confing.js 파일에서 [gatsby-plugin-manifest](https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest)를 추가 및 수정하면 된다.
 
 수정 방법은 [Gatsby Automatic Mode Configuration](https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/#automatic-mode-configuration)에 나와 있다.
 
-``` javascript
+```javascript
 module.exports = {
     plugins: [
         ... 생략
@@ -99,7 +99,7 @@ module.exports = {
 
 설정 방법은 위의 링크를 통해 확인할 수 있다.
 
-``` js
+```js
 // in gatsby-config.js
 ... 생략
 {
@@ -119,7 +119,7 @@ host는 본인 사이트의 주소, sitemap은 본인 사이트의 sitemap 주�
 
 설정 방법은 다음과 같다!
 
-``` js
+```js
 ... 생략
 {
     resolve: 'gatsby-plugin-google-adsense',

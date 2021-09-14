@@ -1,6 +1,6 @@
 ---
 title: "Redux(리덕스)란 무엇인가? (feat. React and React Native)"
-date: "2020-10-22T23:38:21.000Z"
+date: "2020-10-22 23:38:21 GTM+0900"
 template: "post"
 draft: false
 slug: "what-is-redux-with-feat-react-and-react-native"
@@ -27,11 +27,13 @@ socialImage: "/media/react_redux_logo.png"
 그래서 사용하는 것이 Redux(리덕스)이다.
 
 ### Redux(리덕스)란 무엇인가?
-리덕스란 클라이언트 state를 관리하는 라이브러리이다. <del>*비슷한 방법으로 ContextAPI라는 것이 있다.*</del>
+
+리덕스란 클라이언트 state를 관리하는 라이브러리이다. <del>_비슷한 방법으로 ContextAPI라는 것이 있다._</del>
 
 리덕스는 React에서 사용률이 가장 높다. 그리고 state관련 로직들을 각각 파일로 나눠서 효율적으로 관리할 수 있다. 또한 컴포넌트에서 state에 손쉽게 접근 가능하다.
 
 ### 리덕스를 왜 사용하는 걸까?
+
 다음과 같은 컴포넌트들이 존재한다고 하자.
 
 ![state_1.png](/media/state_1.png)
@@ -48,8 +50,8 @@ F에서 어떠한 값(state)을 변경 하고 그 값을 H에게 전달하려면
 
 이것으로 리덕스에 대해 간략하게 알아봤다.
 
-
 ### 출처 및 참조
+
 - [책 - 리엑트를 다루는 기술(VELOPERT)](http://www.yes24.com/Product/Goods/78233628?OzSrank=1)
 - [Github - 리액트를 다루는 기술 코드(VELOPERT)](https://github.com/velopert/learning-react)
 - [Blog - Minjun Kim(VELOPERT) : Redux (1) 소개 및 개념정리](https://velog.io/@velopert/Redux-1-%EC%86%8C%EA%B0%9C-%EB%B0%8F-%EA%B0%9C%EB%85%90%EC%A0%95%EB%A6%AC-zxjlta8ywt)

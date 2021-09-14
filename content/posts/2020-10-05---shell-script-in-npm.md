@@ -1,6 +1,6 @@
 ---
 title: Shell Script(.sh)랑 npm 명령어랑 같이 쓰는법(?)
-date: "2020-10-05T13:23:09.000Z"
+date: "2020-10-05 13:23:09 GTM+0900"
 template: "post"
 draft: false
 slug: "shell-script-and-npm-command"
@@ -19,7 +19,7 @@ socialImage: "/media/npm_bash_logo.png"
 
 Cloud9은 집에서만 접속할 수 있게 설정해놔서 외부에서 작업을 할땐 github에 파일을 push하고 자동으로 git pull 명령어를 사용해서 실행하려고 했다.
 
-``` bash
+```bash
 # AutoPull.sh
 cd /usr/share/nginx/html/[프로젝트명]
 sudo git pull https://[깃아이디]:[2FA 토근 정보]@github.com/[repo 주소]
@@ -27,13 +27,13 @@ sudo git pull https://[깃아이디]:[2FA 토근 정보]@github.com/[repo 주소
 
 AutoPull\.sh 파일을 작성하여 crontab 으로 1분 단위로 해당 파일을 실행 시켜서 기존에 하려고 했던 행동을 실행시켰다.
 
-``` bash
+```bash
 crontab -e
 
 *   *   *   *   * sudo sh [AutoPull.sh]파일
 ```
 
-하지만 문제점은 현재 블로그 포스팅후 npm run build 또는 yarn build를 해야하는데 AutoPull\.sh 파일에서는 npm 명령어를 사용하기 까다로웠다. <del>*검색을 했는데 잘모르겠다..*</del>
+하지만 문제점은 현재 블로그 포스팅후 npm run build 또는 yarn build를 해야하는데 AutoPull\.sh 파일에서는 npm 명령어를 사용하기 까다로웠다. <del>_검색을 했는데 잘모르겠다.._</del>
 
 어떻게 처리할까 많은 고민을 하다가 이런저런 조건들을 정리해봤다.
 
@@ -48,13 +48,13 @@ crontab -e
 
 우선 Github에서 본인이 webhook을 적용할 repository에 들어가서 상단에 Settings를 클릭한다. 그러면 오른쪽 메뉴에 Webhooks가 있다 이걸 누르면 현재 등록되어있는 Webhook가 있다면 리스트를 보여준다.
 
-![github_webhook_settings_1.png](/media/github_webhook_settings_1.png) *Github repo Settings 화면*
+![github_webhook_settings_1.png](/media/github_webhook_settings_1.png) _Github repo Settings 화면_
 
 상단에 Add webhook을 누르면 아래와 같이 Webhook을 등록할 수 있는 화면으로 전환된다.
 
-![github_webhook_settings_2.png](/media/github_webhook_settings_2.png) *Add webook 화면*
+![github_webhook_settings_2.png](/media/github_webhook_settings_2.png) _Add webook 화면_
 
-Payload URL은 webhook 발생시 해당 이벤트를 받을 주소를 적으면 된다. Webhook은 post로 작동되기 때문에 post url을 작성해주면 된다. 
+Payload URL은 webhook 발생시 해당 이벤트를 받을 주소를 적으면 된다. Webhook은 post로 작동되기 때문에 post url을 작성해주면 된다.
 
 Content type 은 수신했을 때에 데이터 형식을 지정한다. 형식에는 대표적으로 2가지가 있다.
 
@@ -75,7 +75,7 @@ webhook 서버는 node.js 로 작성했으며 node.js에서 shell script를 사�
 
 해당 라이브러리를 사용하여 node.js 에서 다음과 같이 사용하면 shell script를 사용할 수 있었다.
 
-``` javascript
+```javascript
 // shellTest.js
 const shell = require('shelljs')
 
@@ -93,4 +93,4 @@ if(shell.exec(`sudo git pull 깃 주소`).code !== 0) {
 
 그렇게 작성이 완료된 코드는 다음과 같다.
 
-![webhook_code.png](/media/webhook_code.png) *webhook 발생시 실행되는 코드*
+![webhook_code.png](/media/webhook_code.png) _webhook 발생시 실행되는 코드_

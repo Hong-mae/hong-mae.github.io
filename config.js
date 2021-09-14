@@ -6,7 +6,7 @@ module.exports = {
   title: `Moong bee's Dev.log`,
   subtitle: "Moong bee의 개발 스터디 블로그.",
   copyright: "© All rights reserved.",
-  disqusShortname: "moong-bee-dev-log",
+  disqusShortname: "moong-bees-dev-log",
   postsPerPage: 4,
   googleAnalyticsId: "UA-179329350-1",
   useKatex: false,

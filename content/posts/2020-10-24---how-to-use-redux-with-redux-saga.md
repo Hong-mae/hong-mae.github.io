@@ -1,6 +1,6 @@
 ---
 title: "Redux(리덕스) 사용법 (with. Redux-Saga)"
-date: "2020-10-24T13:57:29.000Z"
+date: "2020-10-24 13:57:29 GTM+0900"
 template: "post"
 draft: false
 slug: "how-to-use-redux-with-redux-saga"
@@ -21,6 +21,7 @@ React에서 Redux를 사용하는 방법은 여러가지가 존재한다. 그중
 우선 Redux Saga를 왜 사용해야하는 것일까?
 
 ### Redux Saga 사용하는 이유
+
 Redux Saga는 다음과 같은 상황에서 유리하게 작용된다.
 
 - 불필요한 중복요청 방지
@@ -28,16 +29,17 @@ Redux Saga는 다음과 같은 상황에서 유리하게 작용된다.
 - 웹 소켓을 사용할 때
 - API 요청 실패 시 재요청해야 할 때
 
-Redux Saga를 사용하기 위해서는 ES6의 제네레이터(Generator) 함수라는 문법을 알고 있어야 한다. 일반적인 상황에서는 사용되지 않음으로 이해하기 너무 어렵다. <del>*필자도 마찬가지로 이해하기가 너무 힘들다.*</del>
+Redux Saga를 사용하기 위해서는 ES6의 제네레이터(Generator) 함수라는 문법을 알고 있어야 한다. 일반적인 상황에서는 사용되지 않음으로 이해하기 너무 어렵다. <del>_필자도 마찬가지로 이해하기가 너무 힘들다._</del>
 
 제네레이터 함수에 대해서는 [Generator Function(제네레이터 함수)란 무엇인가?](/posts/what-is-generator-function)에서 정리되어 있다.
 
 ### Redux Saga 사용법
+
 [개인 프로젝트](https://github.com/Moong-bee/bit_chart)에서 사용했던 방법으로 설명하겠다. 우선 이 프로젝트는 비트코인의 정보들을 실시간으로 가져오는 프로젝트이기 때문에 API 요청을 해야한다.
 
 `gist:Moong-bee/768fc65d066933180b49e547628fb534#client.js`
 
-axios에서 추가로 header나 무엇인가를 넣어야한다면 *export default client*위에 *client.default.~~~* 로 작업하면 된다.
+axios에서 추가로 header나 무엇인가를 넣어야한다면 *export default client*위에 _client.default.~~~_ 로 작업하면 된다.
 
 그 다음 비트코인 거래소인 빗썸의 API를 불러올 코드를 작성한다.
 
@@ -69,10 +71,8 @@ API를 호출하고 state 값을 가지고 올때는 dispatch를 통해 호출�
 
 `gist:Moong-bee/768fc65d066933180b49e547628fb534#MainScreen.js?highlights=12-13,17`
 
-
-
-
 ### 출처 및 참조
+
 - [책 - 리엑트를 다루는 기술(VELOPERT)](http://www.yes24.com/Product/Goods/78233628?OzSrank=1)
 - [Github - 리액트를 다루는 기술 코드(VELOPERT)](https://github.com/velopert/learning-react)
 - [Github - bit_coin(Moong-bee)](https://github.com/Moong-bee/bit_chart)

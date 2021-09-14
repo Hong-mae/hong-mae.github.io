@@ -1,6 +1,6 @@
 ---
 title: 리액트 + Gatsby 를 이용한 블로그 만들기_#0
-date: "2020-09-30T14:34:15.086Z"
+date: "2020-09-3014:34:15 GTM+0900"
 template: "post"
 draft: false
 slug: "create-react-blog-with-gatsby-template-0"
@@ -17,11 +17,11 @@ description: "SEO를 지원하는 블로그를 위해 리액트 + Gatsby 이용�
 socialImage: "/media/gatsby_react.png"
 ---
 
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#0](/posts/create-react-blog-with-gatsby-template-0)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#1](/posts/create-react-blog-with-gatsby-template-1)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#2](/posts/create-react-blog-with-gatsby-template-2)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_#3](/posts/create-react-blog-with-gatsby-template-3)
-- [리액트 + Gatsby 를 이용한 블로그 만들기_final](/posts/create-react-blog-with-gatsby-template-final)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#0](/posts/create-react-blog-with-gatsby-template-0)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#1](/posts/create-react-blog-with-gatsby-template-1)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#2](/posts/create-react-blog-with-gatsby-template-2)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_#3](/posts/create-react-blog-with-gatsby-template-3)
+- [리액트 + Gatsby 를 이용한 블로그 만들기\_final](/posts/create-react-blog-with-gatsby-template-final)
 
 공익 근무 중 전공을 바탕으로 공부하던 중 리액트를 배우기로 했다. 공부를 시작하기에 앞서 책을 구매했다.
 
@@ -31,7 +31,7 @@ AWS에서 1년간 무료 제공해주는 EC2와 Route 53에서 무심코 결제�
 
 그러다, 원래 github에서 이용한 개발 블로그를 React로 옮겨오자는 생각에 이 작업을 시작하였다.
 
-![github dev blog](/media/github_dev_blog.jpg)*Github Develop Blog*
+![github dev blog](/media/github_dev_blog.jpg)_Github Develop Blog_
 
 만드는 중 문득 내가 만든 블로그가 다른 개발자 블로그처럼 검색엔진에 노출되면 좋겠다는 생각이 들었다.
 

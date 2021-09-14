@@ -1,6 +1,6 @@
 ---
 title: "프로그래머스 - 두 개 뽑아서 더하기"
-date: "2020-12-02T01:05:29.000Z"
+date: "2020-12-02 01:05:29 GTM+0900"
 template: "post"
 draft: false
 slug: "programmers-select-two-number-add"
@@ -24,14 +24,15 @@ socialImage: "/media/programmers_select_two_number_add.png"
 
 ### 입출력 예
 
-|numbers|results|
-|-|-|
-|[2,1,3,4,1]|[2,3,4,5,6,7]|
-|[5,0,2,7]|[2,5,7,9,12]|
+| numbers     | results       |
+| ----------- | ------------- |
+| [2,1,3,4,1] | [2,3,4,5,6,7] |
+| [5,0,2,7]   | [2,5,7,9,12]  |
 
 ### 설명
 
 입출력 예 #1
+
 - 2 = 1 + 1 입니다. (1이 numbers에 두 개 있습니다.)
 - 3 = 2 + 1 입니다.
 - 4 = 1 + 3 입니다.
@@ -41,6 +42,7 @@ socialImage: "/media/programmers_select_two_number_add.png"
 - 따라서 [2,3,4,5,6,7] 을 return 해야 합니다.
 
 입출력 예 #2
+
 - 2 = 0 + 2 입니다.
 - 5 = 5 + 0 입니다.
 - 7 = 0 + 7 = 5 + 2 입니다.

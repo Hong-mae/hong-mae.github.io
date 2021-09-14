@@ -1,6 +1,6 @@
 ---
 title: "개인 프로젝트 - React로 Drag and Drop List 만들기(Sortable) #3"
-date: "2020-11-09T19:54:05.000Z"
+date: "2020-11-09 19:54:05 GTM+0900"
 template: "post"
 draft: false
 slug: "react-drag-and-drop-list-sortable"
@@ -27,12 +27,14 @@ socialImage: "/media/drag_and_drop_list.png"
 - transition : 변화(width, height, transform 등의 변화)에 대한 딜레이(?)를 조정한다.
 
 ### transform 사용
-선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move\_up 클래스를, 밑으로 내려갈 경우 move\_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.
+
+선택한 요소가 다른 요소 위에 들어갈 경우(ondragenter) 위아래로 움직여야하기 때문에 transform에서 translate를 이용해 위치를 이동한다. 이전에 만든 list 요소 하나의 height가 41px 이며, 위로 올라갈 경우 move_up 클래스를, 밑으로 내려갈 경우 move_down 클래스를 추가하고, transition을 통해 움직이는 느낌을 주려고 한다.
 
 `gist:Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.scss?lines=18-34`
 
 ### 생각해야하는 내용
-![drag_and_drop_list_sortable.gif](/media/drag_and_drop_list_sortable.gif) 
+
+![drag_and_drop_list_sortable.gif](/media/drag_and_drop_list_sortable.gif)
 
 위의 작업을 하려면 다음과 같은 조건이 필요하다. 위의 코드는 필자의 깃허브에 있다. [자세히 보기](https://github.com/Moong-bee/drag_and_drop)
 
@@ -49,20 +51,20 @@ socialImage: "/media/drag_and_drop_list.png"
 
 간단히 말해 Twitter를 잡아서(e.target = Twitter) Github 위에 지나갈 경우와 Github를 이탈할 경우(e.target = Github)를 체크하면 된다.
 
-``` js
+```js
 let GrabData = null;
 
-const onDragStart = e => {
-    console.log(e.target) // e.target is Twitter
-}
+const onDragStart = (e) => {
+  console.log(e.target); // e.target is Twitter
+};
 
-const onDragEnter = e => {
-    console.log(e.target) // e.target is Github
-}
+const onDragEnter = (e) => {
+  console.log(e.target); // e.target is Github
+};
 
-const onDragLeave = e => {
-    console.log(e.target) // e.target is Github
-}
+const onDragLeave = (e) => {
+  console.log(e.target); // e.target is Github
+};
 ```
 
 onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetData를 확인 할 수 있기에 이를 어떻게 활용해야하나 하다가 onDragStart에서 GrabData를 state로 저장하고, onDragEnter 에서 GrabData와 TargetData의 상하관계를 판단해서 transform을 추가하고, onDragLeave에서 추가된 transform을 지우기로 했다.
@@ -70,33 +72,37 @@ onDragStart에서 GrabData 정보를, onDragEnter / onDragLeave 에서 TargetDat
 `gist:Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#App.js?lines=58-68`
 
 ### 문제점
+
 1. GrabData가 TargetData위에 올라가면(onDragEnter) 움직이는데 움직이면서 위치가 한칸 위/아래로 움직여서 이탈처리가 된다.
-이탈이 되면 onDragLeave가 되니 원래대로 돌아온다. 이걸 계속 반복하니 이상하게 된다.
+   이탈이 되면 onDragLeave가 되니 원래대로 돌아온다. 이걸 계속 반복하니 이상하게 된다.
 2. 어느순간 Drop을 하면 뭔가 빈 리스트가 생긴다.
 3. 뭔가 순차적으로 위/아래로 이동해야 하는데 안된다.
-
 
 <iframe width="100%" height="500" style="display:block" src="//jsfiddle.net/Chill_bi/aqzsvk04/116/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ### 생각해보기
-우선 onDragEnter와 onDragLeave에서 transform 클래스를 추가/제거 하는 코드를 지우고 다르게 transform을 적용할 수 있는 방법을 찾다가 move\_up, move\_down의 정보를 따로 저장하고 return()에서 해당 값을 확인해서 랜더링 할 수 있는 방법을 생각했다.
+
+우선 onDragEnter와 onDragLeave에서 transform 클래스를 추가/제거 하는 코드를 지우고 다르게 transform을 적용할 수 있는 방법을 찾다가 move_up, move_down의 정보를 따로 저장하고 return()에서 해당 값을 확인해서 랜더링 할 수 있는 방법을 생각했다.
 
 ### 결과
+
 <iframe width="100%" height="500" style="display:block" src="//jsfiddle.net/Chill_bi/aqzsvk04/268/embedded/js,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 ### 설명
+
 `gist:Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#complete_app.js?lines`
 
-- [11-17] _initGrabData : 좀 더 상세화 된 grab 정보를 state로 저장하기 위한 기본 틀
+- [11-17] \_initGrabData : 좀 더 상세화 된 grab 정보를 state로 저장하기 위한 기본 틀
 - [22] isDrag : 현재 드래그 중인지 아닌지의 정보를 담은 state
-- [28-40] _onDragStart : 드래그를 시작하기 때문에 isDrag를 true로 변경하고, 현재 선택된 요소 정보(li tag, position 정보)를 저장하고 현재 리스트 정보를 다음 리스트(updateList)로 판단하여 저장한다.
-- [42-57] _onDragEnd : 드래그가 끝났기 때문에 isDrag를 false로 변경하고, 다음 리스트(updateList)를 현재 리스트로 변경한다.
-- [59-86] _onDragEnter : 필요한 정보를 가져오고 필요에 맞게 설정한다.
-    - 선택된 요소의 position 정보(grabPosition)
-    - 상하관계를 가지는 타겟 요소의 position 정보(targetPosition)
-    - updateList에서 선택된 요소의 position 정보(listPosition)
-    - 현재 리스트 중 move\_up, move\_down 클래스를 적용시킬 index 배열(move\_up, move\_down)
-- [102-105, 111] move\_up, move\_down 배열과 index의 포함관계에 따라 클래스 적용
+- [28-40] \_onDragStart : 드래그를 시작하기 때문에 isDrag를 true로 변경하고, 현재 선택된 요소 정보(li tag, position 정보)를 저장하고 현재 리스트 정보를 다음 리스트(updateList)로 판단하여 저장한다.
+- [42-57] \_onDragEnd : 드래그가 끝났기 때문에 isDrag를 false로 변경하고, 다음 리스트(updateList)를 현재 리스트로 변경한다.
+- [59-86] \_onDragEnter : 필요한 정보를 가져오고 필요에 맞게 설정한다.
+  - 선택된 요소의 position 정보(grabPosition)
+  - 상하관계를 가지는 타겟 요소의 position 정보(targetPosition)
+  - updateList에서 선택된 요소의 position 정보(listPosition)
+  - 현재 리스트 중 move_up, move_down 클래스를 적용시킬 index 배열(move_up, move_down)
+- [102-105, 111] move_up, move_down 배열과 index의 포함관계에 따라 클래스 적용
 
 ### 마치면서
+
 좋은 라이브러리를 사용하지 않고 오로지 나의 힘으로 해당 기능을 완성했다. 처음엔 뭐가 잘못됐는지 뭐가 다른지를 찾는것에 오래 걸렸다. 하지만 아직 부족한 것이 많은 기능이기에 조금씩 더 보완하면서 지식을 다듬고 싶다.

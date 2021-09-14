@@ -1,6 +1,6 @@
 ---
 title: CRA(Create React App)으로 시작하는 React.
-date: "2020-09-12T13:15:19.000Z"
+date: "2020-09-12 13:15:19 GTM+0900"
 template: "post"
 draft: false
 slug: "install-create-react-app"
@@ -18,7 +18,6 @@ socialImage: "/media/reactjs_logo.png"
 - [NPM 버전확인](#2-npm-버전확인)
 - [React 라이브러리 설치 - CRA](#3-react-라이브러리-설치---cra)
 - [설치 확인](#4-설치-확인)
-
 
 ## React는 무엇인가?
 
@@ -38,8 +37,7 @@ socialImage: "/media/reactjs_logo.png"
 
 부가 설명은 구글링만 해도 다 나오니 그냥 무작정 시작해보자.
 
-1\. Node JS 설치하기
-----------------
+## 1\. Node JS 설치하기
 
 [https://nodejs.org/en](https://nodejs.org/en)
 
@@ -47,8 +45,7 @@ socialImage: "/media/reactjs_logo.png"
 
 따라서 LTS 버전을 설치해준다.
 
-2\. NPM 버전확인
-------------
+## 2\. NPM 버전확인
 
 Window + R을 누르고 cmd 를 쳐서 실행시키면 명령프롬프트가 뜬다.
 
@@ -56,8 +53,7 @@ Window + R을 누르고 cmd 를 쳐서 실행시키면 명령프롬프트가 뜬
 
 무반응이거나 오류가 난다면 Node JS 설치시 NPM 설치가 실패한 것이다. 재설치를 하자.
 
-3\. React 라이브러리(?) 설치 - CRA
----------------------
+## 3\. React 라이브러리(?) 설치 - CRA
 
 npm install -g create-react-app를 입력해서 React 라이브러리를 설치하자.
 
@@ -65,9 +61,8 @@ npm install -g create-react-app를 입력해서 React 라이브러리를 설치�
 
 sudo npm install -g create-react-app 로 입력해서 설치한다.
 
-4\. 설치 확인
----------
+## 4\. 설치 확인
 
 create-react-app 을 쳐서 다음과 같이 나온다면 설치완료!
 
-![create-react-app 설치 확인](/media/reactjs_install_check.png) *create-react-app 설치 확인*
+![create-react-app 설치 확인](/media/reactjs_install_check.png) _create-react-app 설치 확인_

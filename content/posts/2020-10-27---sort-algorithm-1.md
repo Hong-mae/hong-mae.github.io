@@ -1,6 +1,6 @@
 ---
 title: "기본 정렬 알고리즘 #1"
-date: "2020-10-27T09:15:07.000Z"
+date: "2020-10-27 09:15:07 GTM+0900"
 template: "post"
 draft: false
 slug: "basic-sorting-algorithm-1"
@@ -19,7 +19,7 @@ socialImage: "/media/sorting_banner.jpg"
 
 ### 선택 정렬(Selection Sort)
 
-![selection_sorting_anime.gif](/media/selection_sorting_anime.gif) *선택 정렬(Selection Sort)*
+![selection_sorting_anime.gif](/media/selection_sorting_anime.gif) _선택 정렬(Selection Sort)_
 
 - 주어진 리스트 중에 최소값을 찾는다.
 - 그 값을 맨 앞에 위치한 값과 교체한다(패스(pass)).
@@ -29,7 +29,7 @@ socialImage: "/media/sorting_banner.jpg"
 
 ### 삽입 정렬(Insertion Sort)
 
-![insertion_sorting.gif](/media/insertion_sorting.gif) *삽입 정렬(Insertion sort)*
+![insertion_sorting.gif](/media/insertion_sorting.gif) _삽입 정렬(Insertion sort)_
 
 - 순차적으로 원소를 선택한다.
 - 선택된 원소의 이전 원소들을 순차적으로 비교한다.
@@ -39,7 +39,7 @@ socialImage: "/media/sorting_banner.jpg"
 
 ### 버블 정렬(Bubble Sort)
 
-![bubble_sorting.gif](/media/bubble_sorting.gif) *버블 정렬(Bubble sort)*
+![bubble_sorting.gif](/media/bubble_sorting.gif) _버블 정렬(Bubble sort)_
 
 - n번째 원소와 n+1번째 원소를 비교한다.(단, n+1은 배열의 최대 크기 - 1)
 - n+1번째 원소가 작으면 서로 교체한다.
@@ -47,6 +47,7 @@ socialImage: "/media/sorting_banner.jpg"
 `gist:Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#bubble_sorting.cpp`
 
 ### 정리하면서
+
 보통 어떤 알고리즘이 좋은지를 판단할때는 시간복잡도로 판단한다. 위의 3개의 정렬 알고리즘 중 **선택 정렬**과 **버블 정렬**은 보통 n^2의 시간복잡도를 가진다. **삽입 정렬**의 경우 보통은 n^2의 시간복잡도를 가지지만 정렬되어진 배열을 삽입 정렬시 n의 시간 복잡도를 가진다.
 
 <table class='sort_algorithm'>

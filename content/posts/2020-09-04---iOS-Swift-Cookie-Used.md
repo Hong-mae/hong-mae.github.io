@@ -1,6 +1,6 @@
 ---
 title: iOS/Swift - WKWebView에서 쿠키 사용법 중 하나!
-date: "2020-09-04T16:55:34.086Z"
+date: "2020-09-04 16:55:34 GTM+0900"
 template: "post"
 draft: false
 slug: "ios-swift-Cookie-used"
@@ -22,17 +22,18 @@ WKWebView에서 로그인할때 쿠키로 작동한다면
 그 중 지금 필자가 개발하는거에 가장 베스트는 userContentController 를 사용하는 방법이다.
 
 **index.html**
+
 ```html
 <html>
-... 생략
-<script>
+  ... 생략
+  <script>
     window.webkit.messageHandlers.핸들러명.postMessage(쿠키);
-</script>
+  </script>
 </html>
 ```
-    
 
 **ViewController.swift**
+
 ```swift
 override func loadView() {
     ... 생략
@@ -47,27 +48,26 @@ func userContentController(_ userContentController: WKUserContentController, did
     }
 }
 ```
-    
 
 웹에서 가져온 쿠키를 그대로 api 서버에 통신하는데 계속 쿠키가 잘못되었다고 에러를 뱉었다.
 
 해결법을 찾아봤는데 **ViewController->viewDidLoad()**에 다음의 코드를 추가하면 된다.
 
 **ViewController.swift**
-``` swift
+
+```swift
 override func viewDidLoad() {
     ... 생략
-    
+
     let cookie = HTTPCookie.self
     let cookieJar = HTTPCookieStorage.shared
-        
+
     for cookie in cookieJar.cookies! {
         cookieJar.deleteCookie(cookie)
     }
-    
+
     ... 생략
 }
 ```
-    
 
 이게 뭔지 모르겠지만 쿠키를 다 지워주는거같다. 하지만 웹뷰에서 쿠키를 확인했을때는 쿠키가 삭제되거나 그런일은 없다.

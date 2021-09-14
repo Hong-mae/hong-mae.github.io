@@ -1,6 +1,6 @@
 ---
 title: "Generator Function(제네레이터 함수)란 무엇인가?"
-date: "2020-10-25T23:11:14.000Z"
+date: "2020-10-25 23:11:14 GTM+0900"
 template: "post"
 draft: false
 slug: "what-is-generator-function"
@@ -15,6 +15,7 @@ socialImage: "/media/generator_js_logo.png"
 ---
 
 ### Generator 함수란
+
 제네레이터 함수는 사용자의 요구에 따라 특정 구간에서 함수를 멈춰 놓을 수 있고(yield), 다시 시작(next) 할 수도 있다.
 
 아래와 같은 함수가 있다고 생각해보자
@@ -25,7 +26,7 @@ socialImage: "/media/generator_js_logo.png"
 
 `gist:Moong-bee/7a8227577987890fd7644042b0aef0c1#GeneratorFunction.js?lines=8-16`
 
-제네레이터 함수는 function* 키워드를 사용한다. 위의 코드를 실행하면 다음과 같은 결과를 얻는다.
+제네레이터 함수는 function\* 키워드를 사용한다. 위의 코드를 실행하면 다음과 같은 결과를 얻는다.
 
 `gist:Moong-bee/7a8227577987890fd7644042b0aef0c1#GeneratorFunction.js?lines=19-33`
 
@@ -34,6 +35,7 @@ socialImage: "/media/generator_js_logo.png"
 `gist:Moong-bee/7a8227577987890fd7644042b0aef0c1#GeneratorFunction.js?lines=36-53`
 
 ### 이해가 안되는 것..
+
 하지만 이해가 안된다. yield를 만나면 멈추는데 next(100)을 넣으면 yield에 값이 전달된다는데 value는 undefined다. 그럼 제일 처음 next(100)을 넣으면 어떻게 되는 걸까? 결과는 undefined 다
 
 `gist:Moong-bee/df6fecb2f9249998e3e35d95707e17c5#GeneratorTest.js`
