@@ -71,3 +71,8 @@ del {
 .warning {
   color: red;
 }
+
+.picture {
+  max-width: $layout-post-width;
+  margin: 0 auto;
+}
