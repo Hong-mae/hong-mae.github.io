@@ -4,7 +4,7 @@ date: "2021-09-13 22:51:58 GMT+0900"
 template: "post"
 draft: false
 slug: "create-a-discord-bot-using-discord-js"
-category: "javascript"
+category: "JavaScript"
 tags:
   - "lostark"
   - "discord"
