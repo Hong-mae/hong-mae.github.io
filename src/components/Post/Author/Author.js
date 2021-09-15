@@ -2,23 +2,21 @@
 import React from 'react';
 import { getContactHref } from '../../../utils';
 import styles from './Author.module.scss';
-import { useSiteMetadata } from '../../../hooks';
+import { useSiteMetadata, useWindowDimensions } from '../../../hooks';
+import Adfit from '../../Adfit';
 
 const Author = () => {
   const { author } = useSiteMetadata();
+  const { width } = useWindowDimensions();
 
   return (
     <div className={styles['author']}>
-      <div className={styles['author__adfit']}>
-        <ins
-          key={'author_adfit'}
-          className="kakao_ad_area"
-          style={{ display: 'none' }}
-          data-ad-unit="DAN-de34DVhFQLvzGVdF"
-          data-ad-width="728"
-          data-ad-height="90"
-        ></ins>
-      </div>
+      {width >= 754 && (
+        <Adfit name={'author_adfit'} unit={'DAN-nQ9OyLuoBFL7XJ73'} />
+      )}
+      {width < 754 && (
+        <Adfit name={'author_adfit'} unit={'DAN-rcEzBYw0dKctf70y'} />
+      )}
       <p className={styles['author__bio']}>
         {author.bio}
         <a

@@ -5,6 +5,7 @@ const siteConfig = require('../config.js');
 
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 const katexStylesheet = require('!css-loader!../static/css/katex/katex.min.css');
+const { set } = require('lodash-es');
 
 const onRenderBody = ({ setHeadComponents }) => {
   const { useKatex } = siteConfig;
@@ -19,11 +20,6 @@ const onRenderBody = ({ setHeadComponents }) => {
   }
 
   setHeadComponents([
-    React.createElement('script', {
-      key: 'kakao_adfit_script',
-      async: true,
-      src: '//t1.daumcdn.net/kas/static/ba.min.js',
-    }),
     React.createElement('script', {
       key: 'kakao_adfit_script',
       'data-ad-client': 'ca-pub-8178483925350112',

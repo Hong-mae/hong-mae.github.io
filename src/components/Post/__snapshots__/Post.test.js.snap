@@ -16,11 +16,31 @@ exports[`Post renders correctly 1`] = `
     <div
       className="content"
     >
-      <h1
-        className="content__title"
+      <div
+        className="content__header"
       >
-        test
-      </h1>
+        <h1
+          className="content__title"
+        >
+          test
+        </h1>
+        <div
+          className="content__author"
+        >
+          Test name
+          <span
+            className="content__bar"
+          />
+          2016년 9월 1일
+        </div>
+      </div>
+      <div
+        className="adfit content_adfit"
+      >
+        <div
+          className="ad_area"
+        />
+      </div>
       <div
         className="content__body"
         dangerouslySetInnerHTML={
@@ -75,20 +95,27 @@ exports[`Post renders correctly 1`] = `
     <div
       className="author"
     >
+      <div
+        className="adfit author_adfit"
+      >
+        <div
+          className="ad_area"
+        />
+      </div>
       <p
         className="author__bio"
       >
         Test bio
         <a
           className="author__bio-twitter"
-          href="https://www.twitter.com/#"
+          href="https://github.com/#"
           rel="noopener noreferrer"
           target="_blank"
         >
           <strong>
             Test name
           </strong>
-           on Twitter
+           on Github
         </a>
       </p>
     </div>

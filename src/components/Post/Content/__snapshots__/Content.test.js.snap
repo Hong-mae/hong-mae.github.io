@@ -4,11 +4,31 @@ exports[`Content renders correctly 1`] = `
 <div
   className="content"
 >
-  <h1
-    className="content__title"
+  <div
+    className="content__header"
   >
-    test
-  </h1>
+    <h1
+      className="content__title"
+    >
+      test
+    </h1>
+    <div
+      className="content__author"
+    >
+      Test name
+      <span
+        className="content__bar"
+      />
+      2021년 9월 9일
+    </div>
+  </div>
+  <div
+    className="adfit content_adfit"
+  >
+    <div
+      className="ad_area"
+    />
+  </div>
   <div
     className="content__body"
     dangerouslySetInnerHTML={

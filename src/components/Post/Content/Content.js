@@ -1,7 +1,9 @@
 // @flow strict
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Content.module.scss';
-import { useSiteMetadata } from '../../../hooks';
+import type { Node as ReactNode } from 'react';
+import { useSiteMetadata, useWindowDimensions } from '../../../hooks';
+import Adfit from '../../Adfit';
 
 type Props = {
   body: string,
@@ -11,6 +13,7 @@ type Props = {
 
 const Content = ({ body, title, date }: Props) => {
   const { author } = useSiteMetadata();
+  const { width } = useWindowDimensions();
 
   return (
     <div className={styles['content']}>
@@ -26,16 +29,12 @@ const Content = ({ body, title, date }: Props) => {
           })}
         </div>
       </div>
-      <div className={styles['content__adfit']}>
-        <ins
-          key={'content_adfit'}
-          className="kakao_ad_area"
-          style={{ display: 'none' }}
-          data-ad-unit="DAN-Fieee4hRo1VGYbEx"
-          data-ad-width="728"
-          data-ad-height="90"
-        ></ins>
-      </div>
+      {width >= 754 && (
+        <Adfit name={'content_adfit'} unit={'DAN-ecKceu8n4NKFPXSU'} />
+      )}
+      {width < 754 && (
+        <Adfit name={'content_adfit'} unit={'DAN-Y4cOusGMi5DnNrRB'} />
+      )}
       <div
         className={styles['content__body']}
         dangerouslySetInnerHTML={{ __html: body }}
