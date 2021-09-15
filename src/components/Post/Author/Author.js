@@ -1,5 +1,5 @@
 // @flow strict
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getContactHref } from '../../../utils';
 import styles from './Author.module.scss';
 import { useSiteMetadata, useWindowDimensions } from '../../../hooks';
@@ -7,16 +7,10 @@ import Adfit from '../../Adfit';
 
 const Author = () => {
   const { author } = useSiteMetadata();
-  const { width } = useWindowDimensions();
 
   return (
     <div className={styles['author']}>
-      {width >= 754 && (
-        <Adfit name={'author_adfit'} unit={'DAN-nQ9OyLuoBFL7XJ73'} />
-      )}
-      {width < 754 && (
-        <Adfit name={'author_adfit'} unit={'DAN-rcEzBYw0dKctf70y'} />
-      )}
+      <Adfit name={'author_adfit_1'} unit={'DAN-nQ9OyLuoBFL7XJ73'} />
       <p className={styles['author__bio']}>
         {author.bio}
         <a

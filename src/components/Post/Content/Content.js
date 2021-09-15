@@ -13,7 +13,6 @@ type Props = {
 
 const Content = ({ body, title, date }: Props) => {
   const { author } = useSiteMetadata();
-  const { width } = useWindowDimensions();
 
   return (
     <div className={styles['content']}>
@@ -29,12 +28,7 @@ const Content = ({ body, title, date }: Props) => {
           })}
         </div>
       </div>
-      {width >= 754 && (
-        <Adfit name={'content_adfit'} unit={'DAN-ecKceu8n4NKFPXSU'} />
-      )}
-      {width < 754 && (
-        <Adfit name={'content_adfit'} unit={'DAN-Y4cOusGMi5DnNrRB'} />
-      )}
+      <Adfit name={'content_adfit'} unit={'DAN-ecKceu8n4NKFPXSU'} />
       <div
         className={styles['content__body']}
         dangerouslySetInnerHTML={{ __html: body }}
