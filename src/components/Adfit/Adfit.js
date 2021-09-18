@@ -10,7 +10,7 @@ type Props = {
   height: string,
 };
 
-const Adfit = ({ name, unit, width = '728', height = '90' }: Props) => {
+const Adfit = ({ name, pc, mobile, width = '728', height = '90' }: Props) => {
   useEffect(() => {
     let ins = document.createElement('ins');
     let script = document.createElement('script');
@@ -18,7 +18,11 @@ const Adfit = ({ name, unit, width = '728', height = '90' }: Props) => {
     ins.key = name;
     ins.className = 'kakao_ad_area';
     ins.style = 'display: none; width: 100%;';
-    ins.setAttribute('data-ad-unit', unit);
+    if (window.innerWidth < 756) {
+      ins.setAttribute('data-ad-unit', mobile);
+    } else {
+      ins.setAttribute('data-ad-unit', pc);
+    }
     ins.setAttribute('data-ad-width', width);
     ins.setAttribute('data-ad-height', height);
 

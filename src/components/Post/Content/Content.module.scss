@@ -34,6 +34,10 @@
     @include margin-bottom(0);
   }
 
+  &__adfit {
+    text-align: center;
+  }
+
   &__body {
     & figure {
       @include margin-bottom(1);

@@ -10,7 +10,11 @@ const Author = () => {
 
   return (
     <div className={styles['author']}>
-      <Adfit name={'author_adfit_1'} unit={'DAN-nQ9OyLuoBFL7XJ73'} />
+      <Adfit
+        name={'author_adfit_1'}
+        pc={'DAN-nQ9OyLuoBFL7XJ73'}
+        mobile={'DAN-lW6d77IqDsJ5Gpnf'}
+      />
       <p className={styles['author__bio']}>
         {author.bio}
         <a

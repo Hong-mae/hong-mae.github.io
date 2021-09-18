@@ -1,8 +1,9 @@
 // @flow strict
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Content.module.scss';
 import type { Node as ReactNode } from 'react';
 import { useSiteMetadata, useWindowDimensions } from '../../../hooks';
+import classNames from 'classnames';
 import Adfit from '../../Adfit';
 
 type Props = {
@@ -28,7 +29,11 @@ const Content = ({ body, title, date }: Props) => {
           })}
         </div>
       </div>
-      <Adfit name={'content_adfit'} unit={'DAN-ecKceu8n4NKFPXSU'} />
+      <Adfit
+        name={'content_adfit'}
+        pc={'DAN-ecKceu8n4NKFPXSU'}
+        mobile={'DAN-rFvENKyKGK9NwuNt'}
+      />
       <div
         className={styles['content__body']}
         dangerouslySetInnerHTML={{ __html: body }}
