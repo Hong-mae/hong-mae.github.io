@@ -20,11 +20,17 @@ const onRenderBody = ({ setHeadComponents }) => {
   }
 
   setHeadComponents([
+    // google adsense
     React.createElement('script', {
-      key: 'kakao_adfit_script',
+      key: 'google_adsense_script',
       'data-ad-client': 'ca-pub-8178483925350112',
       async: true,
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+    }),
+    // naver search advisor
+    React.createElement('meta', {
+      name: 'naver-site-verification',
+      content: '337f0d438d887f8221aafd251f606ba243f53b85',
     }),
   ]);
 };
