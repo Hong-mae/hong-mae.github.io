@@ -1,6 +1,6 @@
 ---
 title: '프로그래머스 - 신규 아이디 추천'
-date: '2021-09-20 02:03:24 GMT+0900'
+date: '2021-08-30 02:03:24 GMT+0900'
 template: 'post'
 draft: false
 slug: 'programmers-recommend-id'
