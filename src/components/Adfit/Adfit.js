@@ -26,6 +26,7 @@ const Adfit = ({ name, pc, mobile, width = '728', height = '90' }: Props) => {
     ins.setAttribute('data-ad-width', width);
     ins.setAttribute('data-ad-height', height);
 
+    script.key = `${name}__script`;
     script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
     script.async = true;
     script.type = 'text/javascript';
