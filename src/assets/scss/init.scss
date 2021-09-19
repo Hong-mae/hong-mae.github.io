@@ -1,78 +1,68 @@
 @charset "UTF-8";
 
-@import "variables";
-@import "mixins";
-@import "base";
+@import 'variables';
+@import 'mixins';
+@import 'base';
 
 @font-face {
-  font-family: "MapleFont";
-  font-weight: normal;
-  src: url("/fonts/MaplestoryTTFLight.ttf") format("truetype"),
-    url("/fonts/MaplestoryOTFLight.woff") format("woff");
+    font-family: 'MapleFont';
+    font-weight: normal;
+    src: url('/fonts/MaplestoryTTFLight.ttf') format('truetype'),
+        url('/fonts/MaplestoryOTFLight.woff') format('woff');
 }
 
 @font-face {
-  font-family: "MapleFont";
-  font-weight: bold;
-  src: url("/fonts/MaplestoryTTFBold.ttf") format("truetype"),
-    url("/fonts/MaplestoryOTFBold.woff") format("woff");
+    font-family: 'MapleFont';
+    font-weight: bold;
+    src: url('/fonts/MaplestoryTTFBold.ttf') format('truetype'),
+        url('/fonts/MaplestoryOTFBold.woff') format('woff');
 }
 
 * {
-  font-family: "MapleFont" !important;
+    font-family: 'MapleFont' !important;
 }
 
 span + em {
-  text-align: center;
-  display: block;
+    text-align: center;
+    display: block;
 }
 
 .about_table {
-  * {
-    margin: 0;
-  }
-
-  ul {
-    padding: 0;
-    list-style: none;
-
     * {
-      padding: 0;
+        margin: 0;
     }
-  }
 
-  tr {
-    td + td {
-      padding: 0 15px;
+    ul {
+        padding: 0;
+        list-style: none;
+
+        * {
+            padding: 0;
+        }
     }
-  }
-}
 
-.table_line {
-  // border: 1px solid;
-  border-collapse: collapse;
-
-  th,
-  td {
-    border: 1px solid;
-
-    ul,
-    ol {
-      padding: 0;
-      list-style: none;
+    tr {
+        td + td {
+            padding: 0 15px;
+        }
     }
-  }
 }
 
 del {
-  color: #bbb;
+    color: #bbb;
 }
 
 .warning {
-  color: red;
+    color: red;
 }
 
 .picture {
-  max-width: $layout-post-width;
-  margin: 0 auto;
+    max-width: $layout-post-width;
+    margin: 0 auto;
+}
+
+table {
+    td.blob-num {
+        border: 0 !important;
+    }
 }

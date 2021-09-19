@@ -1,22 +1,22 @@
 ---
-title: "리엑트 네이티브 채팅 앱 만들기 - 기획"
-date: "2020-11-15 18:14:00 GMT+0900"
-template: "post"
+title: '리엑트 네이티브 채팅 앱 만들기 - 기획'
+date: '2020-11-15 18:14:00 GMT+0900'
+template: 'post'
 draft: false
-slug: "react-native-chat-app-plan"
-category: "React Native"
+slug: 'react-native-chat-app-plan'
+category: 'React Native'
 tags:
-  - "React Native"
-  - "Chat App"
-description: "개인 프로젝트로 진행하는 퀄리티 있는 채팅 앱 만들기 기획편"
-socialImage: "/media/set_up_chat_app_plan.jpg"
+    - 'React Native'
+    - 'Chat App'
+description: '개인 프로젝트로 진행하는 퀄리티 있는 채팅 앱 만들기 기획편'
+socialImage: '/media/set_up_chat_app_plan.jpg'
 ---
 
 <details markdown="1">
 <summary>목차</summary>
 <p>
 
-- [리액트 네이티브 채팅 앱 만들기 - 기획](/posts/react-native-chat-app-plan)
+-   [리액트 네이티브 채팅 앱 만들기 - 기획](/posts/react-native-chat-app-plan)
 </p>
 </details>
 
@@ -28,12 +28,12 @@ socialImage: "/media/set_up_chat_app_plan.jpg"
 
 찾아보니 딱히 정해진 틀이 없는 것 같아서 내가 원하는 방식으로 문서화하기로 했다.
 
-<table>
+<table class='table_line'>
 <tr>
 <th>서비스 개요</th>
 <td>
 
-- P2P 채팅 서비스
+-   P2P 채팅 서비스
 
 </td>
 </tr>
@@ -41,7 +41,7 @@ socialImage: "/media/set_up_chat_app_plan.jpg"
 <th>기획 목적</th>
 <td>
 
-- 개발 지식 및 능력 향상
+-   개발 지식 및 능력 향상
 
 </td>
 </tr>
@@ -49,11 +49,11 @@ socialImage: "/media/set_up_chat_app_plan.jpg"
 <th>주요 기능</th>
 <td>
 
-- SNS / Email 회원가입 제공
-- 추가로 설정한 정보(이름, 닉네임)을 통한 정보 검색
-- 1:1, 1:N 채팅 제공
-- 텍스트, 이미지, 동영상 채팅 제공
-- 각 채팅방 별 알림 제공
+-   SNS / Email 회원가입 제공
+-   추가로 설정한 정보(이름, 닉네임)을 통한 정보 검색
+-   1:1, 1:N 채팅 제공
+-   텍스트, 이미지, 동영상 채팅 제공
+-   각 채팅방 별 알림 제공
 
 </td>
 </tr>
