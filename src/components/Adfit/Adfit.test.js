@@ -4,15 +4,14 @@ import renderer from 'react-test-renderer';
 import Adfit from './Adfit';
 
 describe('Adfit', () => {
-  const props = {
-    name: 'test',
-    unit: 'test',
-    width: '728',
-    height: '90',
-  };
+    const props = {
+        name: 'adfit_test_js',
+        pc: 'pctest',
+        mobile: 'mbtest',
+    };
 
-  it('render correctly', () => {
-    const tree = renderer.create(<Adfit {...props} />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+    it('render correctly', () => {
+        const tree = renderer.create(<Adfit {...props} />).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });
