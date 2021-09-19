@@ -16,7 +16,7 @@ type Props = {
 const Post = ({ post }: Props) => {
   const { html } = post;
   const { tagSlugs, slug } = post.fields;
-  const { tags, title, date, socialImage } = post.frontmatter;
+  const { tags, title, date, socialImage, description } = post.frontmatter;
 
   return (
     <div className={styles['post']}>
@@ -29,7 +29,7 @@ const Post = ({ post }: Props) => {
           body={html}
           title={title}
           date={date}
-          image={socialImage?.publicURL || '/photo.jpg'}
+          description={description}
         />
       </div>
 

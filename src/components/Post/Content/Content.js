@@ -10,15 +10,17 @@ type Props = {
   body: string,
   title: string,
   date: string,
+  description: String,
 };
 
-const Content = ({ body, title, date }: Props) => {
+const Content = ({ body, title, date, description }: Props) => {
   const { author } = useSiteMetadata();
 
   return (
     <div className={styles['content']}>
       <div className={styles['content__header']}>
         <h1 className={styles['content__title']}>{title}</h1>
+        <div className={styles['content__description']}>{description}</div>
         <div className={styles['content__author']}>
           {author.name}
           <span className={styles['content__bar']} />

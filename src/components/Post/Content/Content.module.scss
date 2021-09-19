@@ -38,7 +38,22 @@
     text-align: center;
   }
 
+  &__description {
+    text-align: center;
+    font-size: $typographic-base-font-size;
+  }
+
   &__body {
+    & details {
+      background-color: #00ff5a47;
+      @include padding(0.65, 0.65);
+
+      ul,
+      ol {
+        margin: 0;
+      }
+    }
+
     & figure {
       @include margin-bottom(1);
 
@@ -98,7 +113,7 @@
       font-size: $typographic-base-font-size * 3;
       @include line-height(2.25);
       @include margin-top(2.25);
-      @include margin-bottom(0);
+      @include margin-bottom(0.25);
     }
 
     &__body {
