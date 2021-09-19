@@ -1,20 +1,28 @@
 ---
-title: "Discord.js를 이용한 디스코드 봇 만들기 #1"
-date: "2021-09-13 22:51:58 GMT+0900"
-template: "post"
+title: 'Discord.js를 이용한 디스코드 봇 만들기 #1'
+date: '2021-09-13 22:51:58 GMT+0900'
+template: 'post'
 draft: false
-slug: "create-a-discord-bot-using-discord-js"
-category: "JavaScript"
+slug: 'create-a-discord-bot-with-js-1'
+category: 'JavaScript'
 tags:
-  - "lostark"
-  - "discord"
-  - "bot"
-  - "javascript"
-  - "mongodb"
-  - "moongoose"
-description: "요즘 자주하는 로스트아크용 디스코드 봇 만들기!"
-socialImage: ""
+  - 'lostark'
+  - 'discord'
+  - 'bot'
+  - 'javascript'
+  - 'mongodb'
+  - 'moongoose'
+description: '요즘 자주하는 로스트아크용 디스코드 봇 만들기!'
+socialImage: ''
 ---
+
+<details open>
+  <summary>리스트</summary>
+
+1. [디스코드 봇 만들기 #1 - 계정 및 프로필 생성](/posts/create-a-discord-bot-with-js-1)
+2. [디스코드 봇 만들기 #2 - 서버 및 기본 명령어 테스트](/posts/create-a-discord-bot-with-js-2)
+
+</details>
 
 최근 근무 후 귀찮음과 스트레스로 인해 개발은 안하고 게임만 주구장창 했다.
 
@@ -100,4 +108,4 @@ Def: 디스코드는 게이밍부터, 교육과 비즈니스영역의 커뮤니�
 
 ### 마치며
 
-오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 채널 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.
+오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 서버 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.
