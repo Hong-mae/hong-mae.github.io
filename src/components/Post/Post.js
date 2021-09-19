@@ -10,40 +10,40 @@ import styles from './Post.module.scss';
 import type { Node } from '../../types';
 
 type Props = {
-  post: Node,
+    post: Node,
 };
 
 const Post = ({ post }: Props) => {
-  const { html } = post;
-  const { tagSlugs, slug } = post.fields;
-  const { tags, title, date, socialImage, description } = post.frontmatter;
+    const { html } = post;
+    const { tagSlugs, slug } = post.fields;
+    const { tags, title, date, description } = post.frontmatter;
 
-  return (
-    <div className={styles['post']}>
-      <Link className={styles['post__home-button']} to="/">
-        All Articles
-      </Link>
+    return (
+        <div className={styles['post']}>
+            <Link className={styles['post__home-button']} to="/">
+                All Articles
+            </Link>
 
-      <div className={styles['post__content']}>
-        <Content
-          body={html}
-          title={title}
-          date={date}
-          description={description}
-        />
-      </div>
+            <div className={styles['post__content']}>
+                <Content
+                    body={html}
+                    title={title}
+                    date={date}
+                    description={description}
+                />
+            </div>
 
-      <div className={styles['post__footer']}>
-        <Meta date={date} />
-        {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
-        <Author />
-      </div>
+            <div className={styles['post__footer']}>
+                <Meta date={date} />
+                {tags && tagSlugs && <Tags tags={tags} tagSlugs={tagSlugs} />}
+                <Author />
+            </div>
 
-      <div className={styles['post__comments']}>
-        <Comments postSlug={slug} postTitle={post.frontmatter.title} />
-      </div>
-    </div>
-  );
+            <div className={styles['post__comments']}>
+                <Comments postSlug={slug} postTitle={post.frontmatter.title} />
+            </div>
+        </div>
+    );
 };
 
 export default Post;

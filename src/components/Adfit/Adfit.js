@@ -1,45 +1,49 @@
 // @flow strict
 import React, { useEffect } from 'react';
-import styles from './Adfit.module.scss';
 import classNames from 'classnames';
+import styles from './Adfit.module.scss';
 
 type Props = {
-  name: string,
-  unit: string,
-  width: string,
-  height: string,
+    name: string,
+    pc: string,
+    mobile: string,
+    width?: string,
+    height?: string,
 };
 
 const Adfit = ({ name, pc, mobile, width = '728', height = '90' }: Props) => {
-  useEffect(() => {
-    let ins = document.createElement('ins');
-    let script = document.createElement('script');
+    useEffect(() => {
+        const ins = document.createElement('ins');
+        const script = document.createElement('script');
 
-    ins.key = name;
-    ins.className = 'kakao_ad_area';
-    ins.style = 'display: none; width: 100%;';
-    if (window.innerWidth < 756) {
-      ins.setAttribute('data-ad-unit', mobile);
-    } else {
-      ins.setAttribute('data-ad-unit', pc);
-    }
-    ins.setAttribute('data-ad-width', width);
-    ins.setAttribute('data-ad-height', height);
+        ins.className = 'kakao_ad_area';
+        ins.style.display = 'none';
+        ins.style.width = '100%';
 
-    script.key = `${name}__script`;
-    script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
-    script.async = true;
-    script.type = 'text/javascript';
+        if (window.innerWidth < 756) {
+            ins.setAttribute('data-ad-unit', mobile);
+        } else {
+            ins.setAttribute('data-ad-unit', pc);
+        }
+        ins.setAttribute('data-ad-width', width);
+        ins.setAttribute('data-ad-height', height);
 
-    document.querySelector(`div.${name} > div.ad_area`).appendChild(ins);
-    document.querySelector(`div.${name} > div.ad_area`).appendChild(script);
-  }, []);
+        script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+        script.async = true;
+        script.type = 'text/javascript';
 
-  return (
-    <div className={classNames(styles['adfit'], name)}>
-      <div className={'ad_area'}></div>
-    </div>
-  );
+        const adfitArea = document.querySelector(`div.${name}.ad_area`);
+        if (adfitArea) {
+            adfitArea.append(ins);
+            adfitArea.append(script);
+        }
+    }, []);
+
+    return (
+        <div className={styles['adfit']}>
+            <div className={classNames(name, 'ad_area')}></div>
+        </div>
+    );
 };
 
 export default Adfit;

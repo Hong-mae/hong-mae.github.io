@@ -5,7 +5,7 @@ exports[`Author renders correctly 1`] = `
   className="author"
 >
   <div
-    className="adfit author_adfit"
+    className="adfit author_adfit_1"
   >
     <div
       className="ad_area"

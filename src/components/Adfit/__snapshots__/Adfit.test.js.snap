@@ -2,7 +2,7 @@
 
 exports[`Adfit render correctly 1`] = `
 <div
-  className="adfit test"
+  className="adfit adfit_test_js"
 >
   <div
     className="ad_area"

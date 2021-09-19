@@ -5,34 +5,34 @@ const siteConfig = require('../config.js');
 
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
 const katexStylesheet = require('!css-loader!../static/css/katex/katex.min.css');
-const { set } = require('lodash-es');
 
 const onRenderBody = ({ setHeadComponents }) => {
-  const { useKatex } = siteConfig;
+    const { useKatex } = siteConfig;
 
-  if (useKatex) {
+    if (useKatex) {
+        setHeadComponents([
+            React.createElement('style', {
+                key: 'katex-inline-stylesheet',
+                dangerouslySetInnerHTML: { __html: katexStylesheet.toString() },
+            }),
+        ]);
+    }
+
     setHeadComponents([
-      React.createElement('style', {
-        key: 'katex-inline-stylesheet',
-        dangerouslySetInnerHTML: { __html: katexStylesheet.toString() },
-      }),
+        // google adsense
+        React.createElement('script', {
+            key: 'google_adsense_script',
+            'data-ad-client': 'ca-pub-8178483925350112',
+            async: true,
+            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+        }),
+        // naver search advisor
+        React.createElement('meta', {
+            key: 'naver-site-verification',
+            name: 'naver-site-verification',
+            content: '337f0d438d887f8221aafd251f606ba243f53b85',
+        }),
     ]);
-  }
-
-  setHeadComponents([
-    // google adsense
-    React.createElement('script', {
-      key: 'google_adsense_script',
-      'data-ad-client': 'ca-pub-8178483925350112',
-      async: true,
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-    }),
-    // naver search advisor
-    React.createElement('meta', {
-      name: 'naver-site-verification',
-      content: '337f0d438d887f8221aafd251f606ba243f53b85',
-    }),
-  ]);
 };
 
 module.exports = onRenderBody;

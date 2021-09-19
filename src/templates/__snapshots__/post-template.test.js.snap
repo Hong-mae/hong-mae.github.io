@@ -28,6 +28,11 @@ exports[`PostTemplate renders correctly 1`] = `
             test
           </h1>
           <div
+            className="content__description"
+          >
+            test
+          </div>
+          <div
             className="content__author"
           >
             Test name
@@ -99,7 +104,7 @@ exports[`PostTemplate renders correctly 1`] = `
         className="author"
       >
         <div
-          className="adfit author_adfit"
+          className="adfit author_adfit_1"
         >
           <div
             className="ad_area"
