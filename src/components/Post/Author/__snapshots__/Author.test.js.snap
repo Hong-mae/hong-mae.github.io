@@ -5,10 +5,10 @@ exports[`Author renders correctly 1`] = `
   className="author"
 >
   <div
-    className="adfit author_adfit_1"
+    className="adfit"
   >
     <div
-      className="ad_area"
+      className="author_adfit_1 ad_area"
     />
   </div>
   <p

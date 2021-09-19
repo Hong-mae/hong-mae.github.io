@@ -26,10 +26,10 @@ exports[`Content renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="adfit content_adfit"
+    className="adfit"
   >
     <div
-      className="ad_area"
+      className="content_adfit ad_area"
     />
   </div>
   <div

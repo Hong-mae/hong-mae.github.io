@@ -43,10 +43,10 @@ exports[`PostTemplate renders correctly 1`] = `
           </div>
         </div>
         <div
-          className="adfit content_adfit"
+          className="adfit"
         >
           <div
-            className="ad_area"
+            className="content_adfit ad_area"
           />
         </div>
         <div
@@ -104,10 +104,10 @@ exports[`PostTemplate renders correctly 1`] = `
         className="author"
       >
         <div
-          className="adfit author_adfit_1"
+          className="adfit"
         >
           <div
-            className="ad_area"
+            className="author_adfit_1 ad_area"
           />
         </div>
         <p

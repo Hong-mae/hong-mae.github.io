@@ -2,10 +2,10 @@
 
 exports[`Adfit render correctly 1`] = `
 <div
-  className="adfit adfit_test_js"
+  className="adfit"
 >
   <div
-    className="ad_area"
+    className="adfit_test_js ad_area"
   />
 </div>
 `;
