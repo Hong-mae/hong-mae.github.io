@@ -1,4 +1,987 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 15 Sep 2021 15:26:51 GMT</lastBuildDate><item><title><![CDATA[Discord.js를 이용한 디스코드 봇 만들기 #1]]></title><description><![CDATA[요즘 자주하는 로스트아크용 디스코드 봇 만들기!]]></description><link>https://www.moong-bee.com/posts/create-a-discord-bot-using-discord-js</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-a-discord-bot-using-discord-js</guid><pubDate>Mon, 13 Sep 2021 13:51:58 GMT</pubDate><content:encoded>&lt;p&gt;최근 근무 후 귀찮음과 스트레스로 인해 개발은 안하고 게임만 주구장창 했다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 19 Sep 2021 16:05:29 GMT</lastBuildDate><item><title><![CDATA[Discord.js를 이용한 디스코드 봇 만들기 #2]]></title><description><![CDATA[디스코드 봇을 사용할 서버 생성과 기본 명령어를 이용해 테스트를 해보자]]></description><link>https://www.moong-bee.com/posts/create-a-discord-bot-with-js-2</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-a-discord-bot-with-js-2</guid><pubDate>Fri, 17 Sep 2021 19:57:27 GMT</pubDate><content:encoded>&lt;details open&gt;
+  &lt;summary&gt;리스트&lt;/summary&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/create-a-discord-bot-with-js-1&quot;&gt;디스코드 봇 만들기 #1 - 계정 및 프로필 생성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/create-a-discord-bot-with-js-2&quot;&gt;디스코드 봇 만들기 #2 - 서버 및 기본 명령어 테스트&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/details&gt;
+&lt;p&gt;지난 포스팅에서 디스코드 계정 생성 및 봇을 생성했다. 이번 포스트에서는 봇을 이용할 수 있는 서버과 디스코드 기본 명령어를 이용하는 방법을 알아보도록 하쟈!&lt;/p&gt;
+&lt;h3 id=&quot;디스코드-프로그램-다운로드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C&quot; aria-label=&quot;디스코드 프로그램 다운로드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 프로그램 다운로드&lt;/h3&gt;
+&lt;p&gt;디스코드 웹을 이용해도 상관은 없지만 편의를 위해 디스코드 프로그램을 이용하기로 하자. &lt;a href=&quot;https://discord.com&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;디스코드 홈페이지&lt;/a&gt;에 들어가 다음 버튼을 눌러 다운로드 및 설치한다. 버튼의 명칭은 OS에 따라 다르게 표시되니 걱정말고 다운로드한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/99b0e46293920a607ded42e445cc6c17/cbe7f/discord_download.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABYlAAAWJQFJUiTwAAACIklEQVQoz02R70tTURjH7/9UL8pNt/lrzm1u7bebyzld4PqBhpqaCYmEWBREJVkURUQwKsuUXkQxqhcGQWVZKL0JCWu71907AyPq0zm7ar348Jznx/k+z3mOksyuE+lcxxlWqfEWsfvUHbwJDWdEreSaIibuVg2HX8XWYtZKK/3LN1SmrmsoUqTaU9wRkwU1Amm34/+zHdsWtG/VSlGJYvfJRIFav1lQF1CpD5gTNgTFOWjGJNJvCP3LV7vFnagYYp9gq6FSmcqzITqti+4FMr0ljp7QyQ7oDI4ZFds7YtLdX2LifJmBkwZHhnX8Sa0iZq5IDBUQgnvdOonUbbzxRWy+DUIdKpG0RrRLI35AIyx8iYwHU0URVwm0F4Uva8zdyyfbmg3xAh0l0faB1UvHeTR+jvrwGuF0CV9KJCM6rriwUV34P4hmNgmlNwl2bBJI/cS/v0wso+GKaVS5dDJjz3GnP6JY3G940JXn1MgznO0GNU3f6U6+Z3L0E+NDS0wOLxEPLLDH+Rirc56qxnksjQ+xuBaxenTq/F9pjK5ivzdF9koOZfehz/iuGfTl/9AzUcbR/IXpwRcsP33Nq/svWZlboD9xk132IWqdg1jrjlHlOCyEZ7B4f9HT947Z2YsM3LnF3dwKSuRqmdNvf5OfW2Y09oRo9hstrWJPbQWBSq1nTXya+EFfSSD3VaIpZhDqFPvuNEgeLHLmbI4L0zM4wjp/AVym0igdaF2AAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/99b0e46293920a607ded42e445cc6c17/8ac56/discord_download.webp 240w,
+/static/99b0e46293920a607ded42e445cc6c17/d3be9/discord_download.webp 480w,
+/static/99b0e46293920a607ded42e445cc6c17/e46b2/discord_download.webp 960w,
+/static/99b0e46293920a607ded42e445cc6c17/f992d/discord_download.webp 1440w,
+/static/99b0e46293920a607ded42e445cc6c17/882b9/discord_download.webp 1920w,
+/static/99b0e46293920a607ded42e445cc6c17/bf301/discord_download.webp 2420w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/99b0e46293920a607ded42e445cc6c17/8ff5a/discord_download.png 240w,
+/static/99b0e46293920a607ded42e445cc6c17/e85cb/discord_download.png 480w,
+/static/99b0e46293920a607ded42e445cc6c17/d9199/discord_download.png 960w,
+/static/99b0e46293920a607ded42e445cc6c17/07a9c/discord_download.png 1440w,
+/static/99b0e46293920a607ded42e445cc6c17/29114/discord_download.png 1920w,
+/static/99b0e46293920a607ded42e445cc6c17/cbe7f/discord_download.png 2420w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/99b0e46293920a607ded42e445cc6c17/d9199/discord_download.png&quot;
+            alt=&quot;discord_download.png&quot;
+            title=&quot;discord_download.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;서버-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%9C%EB%B2%84-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;서버 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;서버 생성&lt;/h3&gt;
+&lt;p&gt;디스코드 프로그램을 실행 후 로그인 하면 다음과 비슷한 화면이 뜨고 좌측에 + 버튼을 이용해 서버을 생성한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/533ee8770a921b7146d9c9b39d17e4d4/be061/discord_app_main.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB70lEQVQ4y5WTy27TQBSG/QhIqBIIHCUpNKhtUnvsudiecWwnbkhVihASIBa9SJV4mXpJN1UW7NgiWHTZt6o0Vn16xuRWBQRZ/JozZ8755p8Z21LZ2XsvyL/udp2Lbs8p4iQvVH9YiDAppBoUgUoLquKCiZlUQXmIigoVD+ucz+QF9lzyNDm1vmRvv78ZjMFlERAvgGw4Rh2AjIeARYAbQCAToFzVQgCIMMcxhXx0CEn2GutyCGUGVMgbK+7YV5wQcLzw1vWE9lmksQmlNOVSM64wJ7VHw99iSsvkkxbRQV3TT0d6ND66NQYokz+sJ43NyXbPA0LD0vFExaYuHqoPPJgJ5zzCnKrn6LrCDUtT59Hol2U3mpOdLgHXD0qH8GpWaAoWkIX+kK9QpYl9A3xeA13A464AZzJ3R/xwDluGYow98TKwNdnedcEhotxzDXDaZBpMHCYQpyM4evcRIjVYcfgXoAMIQyCrll2IKMUXHkC2fwgfPp+BSvZrt/8JZCtAM+L3CAGCjdM1juyAMwcqc8nVtLCaXvqD3CI/n9dAfOWf+MqtyasddEi4RuAdLt7h4rrStUOGwKd285sgFNieCz3Czcc5/yvWFfGDa+vR4w3eefnivG03jp/ZzZNWe+ukvdlBbf1DneW6Y4zPsbd/D6c2i+NqaFJbAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/533ee8770a921b7146d9c9b39d17e4d4/8ac56/discord_app_main.webp 240w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/d3be9/discord_app_main.webp 480w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/e46b2/discord_app_main.webp 960w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/f992d/discord_app_main.webp 1440w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/882b9/discord_app_main.webp 1920w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/8d05f/discord_app_main.webp 3584w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/533ee8770a921b7146d9c9b39d17e4d4/8ff5a/discord_app_main.png 240w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/e85cb/discord_app_main.png 480w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/d9199/discord_app_main.png 960w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/07a9c/discord_app_main.png 1440w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/29114/discord_app_main.png 1920w,
+/static/533ee8770a921b7146d9c9b39d17e4d4/be061/discord_app_main.png 3584w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/533ee8770a921b7146d9c9b39d17e4d4/d9199/discord_app_main.png&quot;
+            alt=&quot;discord_app_main.png&quot;
+            title=&quot;discord_app_main.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;그 다음은 서버 목적에 맞게 선택하는 화면이 뜬다. 허나 디스코드 봇을 테스트하기 위한 서버을 만든 것이기 때문에 아무거나 선택한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 434px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/35e15fdd4ad8c36685ca1ecb27ac42d6/ade6e/discord_create_channel.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAABYlAAAWJQFJUiTwAAAD4ElEQVQ4y41VW08bRxT2X0JKXxsipVJaVVUj9bmqGoPDA0h9igHJ1zhc2uIqVQtJWqiEklSAKhVIofEFiNOglthxpZY6NeD4hnfttR2b9W3t9dcz4wt15Dgc6fN4d858c86ZOd9q+vr6YDAYodfrMTo62oGxsTEYjSaaN/DRaDRifHycfDv9rl3Tw2KxoL//AjTDw8PoZdlsFsViEZIkcfSymze/hmZgYJA/VCoVVKtV1Go1PqqqipOTE2xvb8Pr9WJjYwNOpxNCIoF6vQ5FUdr+pVKJc0xOTkIzNDQEpVrDi3AEyZSEWPwYsdgxwpEYvYviOCHyUUpnIIhJRKJxJJOptm84EkXw4BB1IpyenoZGp9Nx9lKpzHdUGGh3tjMj2g88J5IYngcP8E/gX0RjcT7XAvMtFAqco4MQqHWti6rW2/9Zqq+CGQuE2dTUFDSDgw3CqKAgnZZQVSqQ5QJB5nV9HdH/0fKzWKzsUBqEO78H8ZtPgJRKwufzwe//E6IgtAnRA9nsS+5nNltOIyzTwchKl5TPAKWZOie8qruKgpBE6Jkf0kEQmaMQkMmgnk43kHkzqkmRIlVhpsuv0b17CVi5h+zmOuTNB6huOYBdD9QdF9RHboKrB9zcr+bZArYewvzRZaph/3kgLeAPVwpeRwi5ShnhVu3Q21rzef6Tg/mD94jw/NvAUQB/b4Zx6AxCzmUh0r2ju4B6ucxaqDfIRy4UgcQxzO9fopQvf0jhbgJPdgge4DGF/+QRVPdD1Cl9lVJ5I3actM4N0ycfU4R0KMz2Dvfh8j2FnM8jnUrxItdZlLXeoHahNTnOMcE65Yp2gD985diFdv4u5GKe9+lZatiyXP6k0XpTHa3X3Vi/MuV5LWpqZ+u15OuZLwq36y/U1Cq1YIbf/lw+f6bWKxZLTUKKUKttEH63HMGnn63RnU4hFHrBEY5EmgKhdhGF04JkX+ZO1abVelVKLScz0VRxVmulzSSsnbK2eShMncvlEtfFTCaLOIknE9JYPE6CG4cgiBBJYBMJgY+SlOapFujzkMs1SmOz3aBTvqJtC2ylXOE7iqKIp3t7CAQC8Hgec+nfo2e/38+VyOf1IRwO8wNRKgpKzRrabDaW8iAeODzQW+ywfjEH8/Qsjbdww36HjzOzi5hdWMLcD0uwzy3i+pe3YZu5TeMtmD+fhYXWjFrtWFp1wGq9Ds3IyAj8+0f4Zn4JCz+uY/7+GmGV4/t7q1hc/gUra26srLtx96df6d3P7Xnmy9Z8u7CMXV8AMzN2aM6dewsTExMwmcxcz14Fe28wmPi3m32bu/mw9+zKXLz4Dv4DIlTV9v+zPO0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/35e15fdd4ad8c36685ca1ecb27ac42d6/8ac56/discord_create_channel.webp 240w,
+/static/35e15fdd4ad8c36685ca1ecb27ac42d6/e6590/discord_create_channel.webp 434w&quot;
+              sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/35e15fdd4ad8c36685ca1ecb27ac42d6/8ff5a/discord_create_channel.png 240w,
+/static/35e15fdd4ad8c36685ca1ecb27ac42d6/ade6e/discord_create_channel.png 434w&quot;
+            sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/35e15fdd4ad8c36685ca1ecb27ac42d6/ade6e/discord_create_channel.png&quot;
+            alt=&quot;discord_create_channel.png&quot;
+            title=&quot;discord_create_channel.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 434px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/55fca1db2cd6618b049e76b2327391be/ade6e/discord_create_channel_2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 91.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC0UlEQVQ4y6VU204aURTlb+y7fbT/YL9AEbzUp/6CTWyNfdDHRpsIwieYpjGmShoTGzUoonIpyG1muIxymQGZC6zus8cBkReTnmRln332OWtfZzxTU+8QCASxtbVNMoBgMIhwOExyF7u7IcbOToDvhEJhtodCocEdsd/e/s769PR7eJaXl+EuVVVRrVaRTCYhyzLy+Tyj0WiwLZ1Oo1wuI5fLIZFI8J1sNgtd1/n9xsYmPH6/n5VqrYZ4PI6Li0tEIhGcnp7h+PgYJycn/Pj6+hpHR0eIRqNs39/fpzun+HV4iEwmyxyrq5/hWVxcQq/XRzKVRr5QgqyUUamq+JvNUVQPUCpVFCWZHKp0XmN7jc5lpYLsXZ71XKHIhGtra/DMz8+zYpoGG4slCUq5AklWGIKkRIQChWKJIUkK35PJrtAbwzCeEy6wQkG+avX7/RH0CKOETzXMRA9wc3uDKqVzly9wBCIaV+YpLRG53u6gpekDaHqbynE/JPT7HMLfkQPs/fgJiVL4Qw25it/gNpEkJwlcxuKEK+TIUeexyyQuhANJLo+nbFhOSgZtRPaiUSMQqZkmET4y6XPoRDyM0O80RZEzSMRi9NhGq6XxbGmaI128rJ+Lbrc7JPT5fE7Ke98QXP+IdruNGKWXSqVwdn7Os5mg1DOZDDnrEYHbGEeKVa83xsfG6DQpzwZe2esnOHuTSiHWl5GxoTp1DZuG+Z49VmigHx7qnL6Q4tNragYk1UStYUFtWijVTHrTg2WZ402xbYs9NZst6p6OOn2/Go2FaAKT1uvQOybKdRv3LRsNnZw3bZhWn9+O1dAwTPJkk9F+kj2WlmXBHpyb6Nkm6Q7EXgQh6j74lgWhiOqW5q1EQyyiEfoQ2ov9KNySiLWy8gmepaUPrLRpQP93ra9/hWdi4g0WFhYxN+djeL1zAzhnjvS6ks5nZ70jmJmZhfhrTU6+xT/d/vZ4AZamfQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/55fca1db2cd6618b049e76b2327391be/8ac56/discord_create_channel_2.webp 240w,
+/static/55fca1db2cd6618b049e76b2327391be/e6590/discord_create_channel_2.webp 434w&quot;
+              sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/55fca1db2cd6618b049e76b2327391be/8ff5a/discord_create_channel_2.png 240w,
+/static/55fca1db2cd6618b049e76b2327391be/ade6e/discord_create_channel_2.png 434w&quot;
+            sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/55fca1db2cd6618b049e76b2327391be/ade6e/discord_create_channel_2.png&quot;
+            alt=&quot;discord_create_channel_2.png&quot;
+            title=&quot;discord_create_channel_2.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;서버 명을 입력하고 만들기를 눌러 서버를 생성한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 434px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8f9374d4227f28e18e2e9a9386ead1ed/ade6e/discord_create_channel_3.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 91.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAACxUlEQVQ4y41U2W7aQBTlq9JPSB/yFQkQJX3JQ9WHqlKlVGVLI6XrY57b535AlJAFUARUbRK22CzBgDGLbYwNtjmduSwhkKgd6Wh8x+eee2fm2J61tTVcXl7i+PgYJydRhhOcn58jkUjg4uKCIYZYLIZ4PD6bOc7OzogfjUZxdHSEZDIFv98Pz/b2CyyOfr+PdDoNURQhSRIEQUAqlcL19TVbT+Hq6gqKoizlHRwcwOP1einQNB2GYaBvmqjX65RULBaRyWSRy+WQz+dxk8lQIT7zQobRpxxN00gjEAjC4/P5KSiWKiiV71CVaqg3ZBRuReQKAsRiGZlsHoJYRkEoUZzNFdBqd1CrNyinVK6QRigU4oI+Ckaj0YP2eUK1WkOzqaAhN9kWZViWxrqXobTaD7iO4ywL2rZNolNMx/jJRl0e4TTu3K/PcYfD4bIgrzIvxmfXdRnZRuWujNNYAbEk5zgPxJ4UnHY4X50Py7Lw+88NUulfrIAJhxVZ5PCiT57h4rYHgyFUVZu4wFziPNKhf2Ibjbp8dHDxhUubH9M8EuTudhm3VJHQMyy6hKHNzs4eTeCyhBFhvH4fT9E35zr0+jbBb11kHisIZeatJgZDF6Y1ZLAfRd+0SWQ829B75sTYky3z3dQkGVK9BaWtEUnrDdDV2fkRBtBZ93rPYrsYjIVmwoyrTwSDtOVNCmSljXZXZUkGer0eGi0TFdlGtWlDkjV0VZWZvQuVXc7iR+A4c2e4seGd+dB1R3TAtu0QyZ3BofcE9o7bhPP4O+4C0xx3+D4QgGd9fYN1ZLA/isg+NYnswW2iqvoCNEK3qzNv6kgkNey86SDyRcXLtwoOvwO7u7vwbG1tk3qn06Vq/zuyt8Crd8DnQ+B10MWPn8De3gd4Vlaesf/YR0Qie7QQDkf+iVAozPhh7O+HWcyew0F8+/oJq6vP8Rd50RMbJTNYKQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8f9374d4227f28e18e2e9a9386ead1ed/8ac56/discord_create_channel_3.webp 240w,
+/static/8f9374d4227f28e18e2e9a9386ead1ed/e6590/discord_create_channel_3.webp 434w&quot;
+              sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8f9374d4227f28e18e2e9a9386ead1ed/8ff5a/discord_create_channel_3.png 240w,
+/static/8f9374d4227f28e18e2e9a9386ead1ed/ade6e/discord_create_channel_3.png 434w&quot;
+            sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8f9374d4227f28e18e2e9a9386ead1ed/ade6e/discord_create_channel_3.png&quot;
+            alt=&quot;discord_create_channel_3.png&quot;
+            title=&quot;discord_create_channel_3.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;서버 목적을 선택한 것에 따라 서버에 생성된 채팅 채널, 음성 채널이 다를 것이다. 다른 것들은 다 필요없고 우리에게 필요한 것은 채팅 채널이다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 508px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6bbf03e8165608de9b040c2346a03e0b/2fd48/discord_channel_list.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 92.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAABYlAAAWJQFJUiTwAAAB9ElEQVQ4y51U25KaQBD1bxIVBVTudwEVRVGqspdKpSrJU/4hlZf8QPKQ/z3pHhwWd91I9qGrZ4ae0z3ndDMYjlVMNQPjyQwTdQHl7FXdFOfsXzP5nePZ9LmNAQMadoAwWcH2IkTkF5Z/E6wLatJ9BtNmFgYjRYPrJ9gdagG2LU+w3QjKdN5e+JdxnCjC9EQ8VajRJqAsIQHFCKIccbIWaz4z7ejsr5vtJrCcJkafO82To2WBsrpDdbrHr99/8P3HTyTpFo6XwgtysuyFmXZM8Q94/PgFn79+w7F+oIrPFTpeQrYUPs13WBKYrMywwtZL4+otp3kNmx9mRFv6VCGTyUIwD0GcC07dgBPE8KNU7P0oo4tc8VLEM39S3QuV34+mlDVAtirFhbvHT6jqe+z2NZ3tsN2fsC4O5GtxVpBoc8N90QW812b2U4Xy8HlWVvH5ugsm1xeA3cYedxr7Vv9JMJmobWyHOMo3ZduHzN0t0O6UML+dPlRJsRBxum4nxSCB+o4fx7FozKuqW40oXKpxHh8WhgOkkn2qvHjyu+GEKotxoKYW/vgBq80e+sLpNc9XRNHEZqToIstwpIp1N7DvT0IANn3oiwlhYovyiM226vXk64DDqfj9rIpKACbZRgAyH28C7Pah9GNl9vYndyflNcL/B/AvjXNtK7XgMOAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6bbf03e8165608de9b040c2346a03e0b/8ac56/discord_channel_list.webp 240w,
+/static/6bbf03e8165608de9b040c2346a03e0b/d3be9/discord_channel_list.webp 480w,
+/static/6bbf03e8165608de9b040c2346a03e0b/7b066/discord_channel_list.webp 508w&quot;
+              sizes=&quot;(max-width: 508px) 100vw, 508px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6bbf03e8165608de9b040c2346a03e0b/8ff5a/discord_channel_list.png 240w,
+/static/6bbf03e8165608de9b040c2346a03e0b/e85cb/discord_channel_list.png 480w,
+/static/6bbf03e8165608de9b040c2346a03e0b/2fd48/discord_channel_list.png 508w&quot;
+            sizes=&quot;(max-width: 508px) 100vw, 508px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6bbf03e8165608de9b040c2346a03e0b/2fd48/discord_channel_list.png&quot;
+            alt=&quot;discord_channel_list.png&quot;
+            title=&quot;discord_channel_list.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;개발자-모드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%AA%A8%EB%93%9C&quot; aria-label=&quot;개발자 모드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;개발자 모드&lt;/h3&gt;
+&lt;p&gt;우선 계정을 개발자 모드로 전환해야한다. 디스코드 프로그램에서 왼쪽 하단 프로필 옆 [톱니바퀴 &gt; 고급 &gt; 개발자 보드 on]로 개발자 모드를 켠다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 508px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4e536cc3bede0b661d5d4e34272d1e5f/2fd48/discord_profile.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 21.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAABBUlEQVQY01WQvUrDYBSGcwlODlKUJs2Xny+/bdo0QmpaiRVRO6gFBR2cBCdxcXARFFy9Cm/AQdwEBxev6fE0gujwcn7gPOc9xzA7Dq4fEaU5bpCS6JBa++QSXZ3g6fiflLfoSy4zjigQ1cqidBRBnGG0VtvszI54fXvn8uaBa3MZOgbPagnL/xlsJBBbYNvVJoO4RzcbUkym7GuX+4M9bqshmR9grLTWmJ+c8/H5xdndFVVR8FL3uKjHKNno+eGvO1eAu+WYRIDlaEI9O+Q4DXg6nfM4LRl4GqNtKXw5NSs2cKouutvHyUdE/XV0kDTvaGB/XC5OXdTKk1eJqy3bpFI2oSz6BoYPhd2Kw2ELAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/4e536cc3bede0b661d5d4e34272d1e5f/8ac56/discord_profile.webp 240w,
+/static/4e536cc3bede0b661d5d4e34272d1e5f/d3be9/discord_profile.webp 480w,
+/static/4e536cc3bede0b661d5d4e34272d1e5f/7b066/discord_profile.webp 508w&quot;
+              sizes=&quot;(max-width: 508px) 100vw, 508px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/4e536cc3bede0b661d5d4e34272d1e5f/8ff5a/discord_profile.png 240w,
+/static/4e536cc3bede0b661d5d4e34272d1e5f/e85cb/discord_profile.png 480w,
+/static/4e536cc3bede0b661d5d4e34272d1e5f/2fd48/discord_profile.png 508w&quot;
+            sizes=&quot;(max-width: 508px) 100vw, 508px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/4e536cc3bede0b661d5d4e34272d1e5f/2fd48/discord_profile.png&quot;
+            alt=&quot;discord_profile.png&quot;
+            title=&quot;discord_profile.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/284cbaaa23547bee11086d896235ca46/be061/discord_develop_mode_on.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABqklEQVQ4y5WTu07DMBSG8yC0QBEXAUlzc+w4idMbAYFACHbKwOOQERbEwMaKysDIWyEZNea3e1EkoJTh01EUny9/fGwrjsilF5I7u01uHZeUjhuW+05Quj4taSxKQlOQzYlASEXpRKKM8D5imeY2YuI+IPzash3/ue1FSgOhgkRBoiBUvcGxYrwLOnMoSLHmvCtUmnRUFOemh6JC+G7t7nsPjmuEH3Y7lIznBghlvziRPC9kmh9IAbJ8AA5kmnTlyWFPMiYkhJIy8aGFPuEv1p7tPU4TfiJhpdPpZ52wODpTxeGpgsSQigHqwKQUSI/f1Mkq1M+p8PWbEOlUSBPl+cxIRKcwoiTro/YVT3tGxJPeckJssPLD2KTUDRiEqXV0c60uFuoNngipafiJuhSTXiyMuV442cd682/iPxPii/Oh1JoWSX8X2hBeMFolJK7ckFfTDV+GmXAEoT8TSiQcp3E2DsJ47AZsjEXLIqcHe4SD7T7hQCsNrpy5JV7AJlPGhMk/QN+btdJYo43m+g24WmmuD3dWW8MWaKxuDFsb22BrGa6w9mattZl/AWN4ijvvUDoTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/284cbaaa23547bee11086d896235ca46/8ac56/discord_develop_mode_on.webp 240w,
+/static/284cbaaa23547bee11086d896235ca46/d3be9/discord_develop_mode_on.webp 480w,
+/static/284cbaaa23547bee11086d896235ca46/e46b2/discord_develop_mode_on.webp 960w,
+/static/284cbaaa23547bee11086d896235ca46/f992d/discord_develop_mode_on.webp 1440w,
+/static/284cbaaa23547bee11086d896235ca46/882b9/discord_develop_mode_on.webp 1920w,
+/static/284cbaaa23547bee11086d896235ca46/8d05f/discord_develop_mode_on.webp 3584w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/284cbaaa23547bee11086d896235ca46/8ff5a/discord_develop_mode_on.png 240w,
+/static/284cbaaa23547bee11086d896235ca46/e85cb/discord_develop_mode_on.png 480w,
+/static/284cbaaa23547bee11086d896235ca46/d9199/discord_develop_mode_on.png 960w,
+/static/284cbaaa23547bee11086d896235ca46/07a9c/discord_develop_mode_on.png 1440w,
+/static/284cbaaa23547bee11086d896235ca46/29114/discord_develop_mode_on.png 1920w,
+/static/284cbaaa23547bee11086d896235ca46/be061/discord_develop_mode_on.png 3584w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/284cbaaa23547bee11086d896235ca46/d9199/discord_develop_mode_on.png&quot;
+            alt=&quot;discord_develop_mode_on.png&quot;
+            title=&quot;discord_develop_mode_on.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;del&gt;개발자 모드는 유저의 고유 id 또는 채널의 고유 id를 확인 할 수 있게 도와준다.&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&quot;생성된-서버에-봇-추가하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%9D%EC%84%B1%EB%90%9C-%EC%84%9C%EB%B2%84%EC%97%90-%EB%B4%87-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0&quot; aria-label=&quot;생성된 서버에 봇 추가하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;생성된 서버에 봇 추가하기&lt;/h3&gt;
+&lt;p&gt;봇을 서버에 추가하려면 봇 추가 전용 링크가 필요하다.&lt;/p&gt;
+&lt;p&gt;디스코드 봇 페이지에서 왼쪽메뉴 &gt; OAuth2를 누르고 아래의 bot 부분을 체크하면 다음과 같이 링크가 뜬다. 하지만 이 링크는 아직은 쓸모가 없다. 아래에 확인하면 봇이 가질 수 있는 권한들이 있는데 가장 높은 권한인 Administrator 권한을 클릭한 후 링크를 복사한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/27a81625c8dc03ec48a91ffdb4b5a6d9/5eb2a/create_link_bot.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABT0lEQVQoz2VRW27DMAzLcQq0seNXbMdJmr7QPYrta8BOsAvsAjtDL8xJytJu2IcgQLRJiqqKNljVFhtlEWKPNg2wPv8pFzo43/2bW7/M71jljUPdOCI0AjCpcQmqCVCmhaZe24hYdvc5lSYslwldvxOiZV4dX644XK4YT18EFHHo2yJgTZ+8Cfg47HFMHbTLIiCEJNL1E8qwlw1uhCE9woYz1VEcxjzeFNlFTf0hFxyGCY6EeDZXFHdsYBFXTYvKhQhFOarGihK74y5k2kutTIKOlO2PE54xPr+dxVvaRGuLipUW1YaDpU+seivK9Mk0eK3XyPQ50AYsyKQb5aSvqU4Ux1t3QfV7tTEWbCmTREQuFHHgqRciGkJCkA16IeRYGOeYDJEZjqvdssPZ3VoHPOcen+c93lPEhoVkvQBLH/nKWnKaw+eL85WXy8+mPL4BrOkE9Cxu7MIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/27a81625c8dc03ec48a91ffdb4b5a6d9/8ac56/create_link_bot.webp 240w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/d3be9/create_link_bot.webp 480w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/e46b2/create_link_bot.webp 960w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/f992d/create_link_bot.webp 1440w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/882b9/create_link_bot.webp 1920w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/789f0/create_link_bot.webp 3250w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/27a81625c8dc03ec48a91ffdb4b5a6d9/8ff5a/create_link_bot.png 240w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/e85cb/create_link_bot.png 480w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/d9199/create_link_bot.png 960w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/07a9c/create_link_bot.png 1440w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/29114/create_link_bot.png 1920w,
+/static/27a81625c8dc03ec48a91ffdb4b5a6d9/5eb2a/create_link_bot.png 3250w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/27a81625c8dc03ec48a91ffdb4b5a6d9/d9199/create_link_bot.png&quot;
+            alt=&quot;create_link_bot.png&quot;
+            title=&quot;create_link_bot.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;해당 링크를 브라우저에서 실행하고 다음과 같은 절차를 진행하고 본인이 만든 서버에 추가한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 386px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6386fca4cc65527c55fa3aeee6125a1a/7bc0b/discord_bot_invite.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 149.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAABYlAAAWJQFJUiTwAAAE6ElEQVRIx41WSW9bVRR+EgtAaktjx+N79vM8xfNsx7EdZ55pGtEMCklIKUoQSYNYEFW0oqKpmkARIIYINagskFiyYY1gCZQisUFIgISAih3lB3ycc5+HpEmkLD6de++797vnnO+ca0t21Q2zRYHFaodVZqgCPOf142ChvRarTVgz2ca6pNgcMJqsYsJWr9dBp9Oh3WASayazfADamhU6vQHt7SZhG+f5uyDkgdFogepwodw7jZ6RZQRCcRiMpkOe8WGroqLWP46puYvoHzkPjtJA5+seOmGgTXa7A7OX3sHG1g+4fOMeXnj1C4SjWRiEp7amd3zx+ZnnsP3uHt7/+DPc/uAu5pZeFOELD212lwgx3zWK9Te+xcrVb7Dy2le4vPUjxqc3KSxdM7/shS8Qwebrb+LnX37Fvw8f4rff/8DWW7sIx9IiBU3CQnkc6ze+w+rVr5uEE7NXDhF6/GEi+Ah/P/gH39//CX/+9QC7n3yOYDgp8q6FXM/f/OqH2Lh5n4jvYeXKl4gminVxWiHz3tmFFbxH4d68vSvs8uorrZCZUBPFDJfbh9rwEgaefgkdlD8jiWKtl0fDmswK+Ezf8CRmKXfDExegOj0tUWShcqts2vV6EaaBLuD56TNtaNMZcOp0G3lrpLI6S+sW6NuNMHGZkeV5s2warpotWkhcpJwzVt7nD2H+2QVUu3uwsLiAaLyERHaBvHW2Crxe1I2UCEIrTWTLPtAaexWJxHHr1jamZ+Zw/fo1FEqTGJ26S93hIQLLkR0kmejwkyYbnjCTFbDjtMGCaDRBnvUinkgjkcygXK2hr38AtVo3OktlkW8tbwc7SXJYFcwpeqzb2/AyYdmmR8Zigqy6EAh0wE/weAMifLZuT4Aqwi1E0sK01aEIK1UUM+CXgEAL//kfQyoUhi8UI6IOeH0hyl8abq8fTs8gvMEJeAPDCMeX4AuOU20Owx+ahGIPaznMWM0YlI2YUtpxTX0Km/azkMkDWXEQVOFNw1pkF1m3ZhUfieLQIGuvlsSqtlHuzhBOER43aXk0cQj71W9C3gfrI+OGyjSwkQd2mwqVIB8iOTkkrrdEMo2x8XOo9fSjQmoKBQ1mrYPo+0khVGZWfiCcLh/spB4raCOFub14nd86Xj8OqsMj9vEZzrHErD56QfLFKjrLvcgVKlRz/egiFDq7kcwUEUtkEU/myB6EtpZFNt9F58qipzXCQJi6oIauSp8gKZFl0nxnFal9hEchGs/QmaoAeytCZtddVLBOyp3T7acctuD2Bqmgg+K7+yjQN3GGxvxzInEyo7EkCULeFbvQVe5GT+8AMtkCypUacvmi+BahVuS38USicDJtdqcoXr5FqRcxj2VFs41WOx7150sWm1vdoHVEy1r3We0CVVxyNFRIoXC8rloWEfqh6YgkRaJ5fhgZsTeRriCeqtCYkKQxIZGu0rzAhAmhFpNlcyX09A0hkco3Sdk2x5TrZHYQlYFt9I3uYPjcDoYmdtA/to3uobeRLU5rHjIhe1au9uL5SytUPj30m5w6QBgVESSQyo2iNnIH48/sYf7iHmYW9zBx4Q56xz5FrrQIiYniyXyzpthjto1C3l9zMXpsk5kaOrvXUKyuo1BZEyhW11CqbSBNl0leeu+CHTH66xElxMQ4GGrMHwWvR+jR9R+CjxAIhvE/IxOcban0ofgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6386fca4cc65527c55fa3aeee6125a1a/8ac56/discord_bot_invite.webp 240w,
+/static/6386fca4cc65527c55fa3aeee6125a1a/23cef/discord_bot_invite.webp 386w&quot;
+              sizes=&quot;(max-width: 386px) 100vw, 386px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6386fca4cc65527c55fa3aeee6125a1a/8ff5a/discord_bot_invite.png 240w,
+/static/6386fca4cc65527c55fa3aeee6125a1a/7bc0b/discord_bot_invite.png 386w&quot;
+            sizes=&quot;(max-width: 386px) 100vw, 386px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6386fca4cc65527c55fa3aeee6125a1a/7bc0b/discord_bot_invite.png&quot;
+            alt=&quot;discord_bot_invite.png&quot;
+            title=&quot;discord_bot_invite.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 388px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fafba8ef21f31cac461c445128cd2761/96c67/discord_bot_invite_2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 149.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAABYlAAAWJQFJUiTwAAAEpElEQVRIx5VVS28bVRSeRVkgoJDYnhnb8/ZjPPE7fsSPOHGcBwlJE0AJjWhReCg00IoUUVBUukBKQQiEkJAAwQKpSEhIZUOXsKGrsuiO3wEqrGD1cc61xxmTgMri6Nx77p3vfuc7596R1KgGRY1DGXg1qiMiqwiFwoP5YD0wDoVlWpdHYuzZpOHmQTASkZFy8yjXetA0E7IcHW5W1Jjwk/VpVBuziMUNyEpsBFTyNzOzMIHlS21cOLiFy+/exdaLHyIe14fMwxEVZ54+h8+/+hZf3riJZ87vEuDRgaOAMQOh8TGsbr2F19//BXvXbmP/+s/IFVvEWhFsGPS9jz7Dr7/dw73f/8AnX3wNw06NgAYAiUE4jPr0Gbx2eEeAvnD5G1h2EgqlFaX1UFjFq/sHuPn9D/ju1o+4cvWQwOLHGR6JS6aopM8yFtb2kM4USfwIFSkmtIrICgwzgaW1Taysn4WdyFAserKG/UC/2sx0nNIPU6pOIo1E0oXtJBHXEmLfOB3CB/mpjlSZQQQQsYuSj5NplB5XOBRWsLv7Mt648iYuXbqIucevE+s27VVJU1NoOkpItI02BHuU/AOKgVOqgQcjMRQKZUx3ZlGp1tGbXyRbRqPZpA9VaieZGCpComA/Stx/DDZGYOuajI+tR/Cp+TB2LRlWOgvPyyHtZuF6WUp/knRrwWJzpmE6behm+biGUbIxVceKruID8zTeMU5jx5QRt9OiyqaVgJNM08c56FaNwBow7SkYNNaNAvqynXBTHhMp6zhF9pCiiVvCVexXmD2lqsg0jgjfN2V4NUXK3F+6YVMFTcRpbOomLJobukUt4kAjz8Z7dMMRxvG4xnFbtJFh2iLGzS851BIbT21ibf1JtNodTDXamO3Oo9nqYKbbQ63eEPGZ2Z6It6dnMNdbRKlcpQK10ZmZw8LiMq3PIUM6S7phoNGooj7VEpuYNqfoe3/sC+/PffPnvjSS5dRQqOygUCwRm6YogP+CBC3YvP9lUtKdQWf+bVRrNZHmPwHvF2hYFK5cKDwmbsV4SD6R3f8xyX8Lh8GAPkFTVe3E+MgeBuS24XKzcSv028HqtxGZ31L9dbO/Fmglf59GYwHIwWTKQ75YgZvJIZHKIJWeoEcgS/EMvGxRvDaJZAbJtEdXkK/iBDITeWRzJfFNSswLiBGwSJmble8rn8qM2TjOrPy530L8ZAkfuEX+TRJF4btamqwLVsyAmfljl8YZL09z7/6LwleG0+B2YRBOxXZSAshv2CCTf7NhUfguTuSKBJJGrjApgIQurKObFfp6pA8fxmPBmDRzEq7QW8SIBOP030NCZe1YLw4OKxnw/iPhV/1o3R5U20F08I+WksTEoQpa9PaZ9Eu0xcneqNH60dj3LrFMin+NaSdoniS2LqRiuY5KrYX5xRV0e0totrvgWGmyQTZ1zMqVJgqlElrdC1h/9g42d25j+6WfsH7uLrrLh5DyxaoA3NzaxhOrG5idWyQtKwK0UKods2K5gVx+Ap2Fqzi7B1w8+Av71/7E9ivA0saNPkPe6GVLVJzyCBj7k6xQqqBcnUejs4Nq6zlUmudp/DwqU6v4G8YfbrXzKWKIAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/fafba8ef21f31cac461c445128cd2761/8ac56/discord_bot_invite_2.webp 240w,
+/static/fafba8ef21f31cac461c445128cd2761/cebd4/discord_bot_invite_2.webp 388w&quot;
+              sizes=&quot;(max-width: 388px) 100vw, 388px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/fafba8ef21f31cac461c445128cd2761/8ff5a/discord_bot_invite_2.png 240w,
+/static/fafba8ef21f31cac461c445128cd2761/96c67/discord_bot_invite_2.png 388w&quot;
+            sizes=&quot;(max-width: 388px) 100vw, 388px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/fafba8ef21f31cac461c445128cd2761/96c67/discord_bot_invite_2.png&quot;
+            alt=&quot;discord_bot_invite_2.png&quot;
+            title=&quot;discord_bot_invite_2.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 352px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d0ff83ec868f8fb79ab3bfc805ddea61/ba1c3/discord_bot_invite_complete.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 142.08333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAcCAYAAABh2p9gAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB4klEQVRIx+1VyW7bMBD1ueilsaN93yxKpBy7y6EockyA3LoAQS9F//8nXmcoM5UsyW6R3NrDQByKfHzvcUZaBWEC2/HhuMGLxMr/D2hiOMfj0/xZgEuH/DGgyQ0zE34Qw7K90fuLgGZs2S48P0IYZXC9kMASREmOvKz1/BLoIsMgTBHGPdi15WpgZpdkpZ4f+jrcPwL8zc5Dmld6Mxd+LVqIRqFu5BPbIEpHTM9KZq9cWsxgh7cfCLwHzqICUt1osDgpJn5rwGCGIZ/MTJpWISJ5V683sG0f8X2HQggIofRaz4+nkoe0tdSsQlZswcy77gAvS5DeKoifn5A/UO6EJF9qFdW2nUp2vDFtZsaHMDgzDKIE1Y+PyO/2ePNqTb4W5GnvZZIWEx9X/GKubKpa6hKRcgfPojUbj8omg+r2pKIkD/PjnvF+YjgFNDdpNkq1Q8shOyqfVMdcE0wATzvE+Lre2LoWr9aWzk/XLDKcK3Bmm9MllZWgSxCLbXpWsunXzbWjjf/85SvFNzw+ftdMzZo5thOG7J1oO10SHFLtoXYH3BzeY7d/h4YuidnWTYdy25xnaJ5c7Lq9wr7F+nGqizw85vyc+x+dlWwfZQ0lnuYXJf/tJ/8iw2f/U/5BQPeFAX8BG4bjxxv1KLwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d0ff83ec868f8fb79ab3bfc805ddea61/8ac56/discord_bot_invite_complete.webp 240w,
+/static/d0ff83ec868f8fb79ab3bfc805ddea61/edd59/discord_bot_invite_complete.webp 352w&quot;
+              sizes=&quot;(max-width: 352px) 100vw, 352px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d0ff83ec868f8fb79ab3bfc805ddea61/8ff5a/discord_bot_invite_complete.png 240w,
+/static/d0ff83ec868f8fb79ab3bfc805ddea61/ba1c3/discord_bot_invite_complete.png 352w&quot;
+            sizes=&quot;(max-width: 352px) 100vw, 352px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d0ff83ec868f8fb79ab3bfc805ddea61/ba1c3/discord_bot_invite_complete.png&quot;
+            alt=&quot;discord_bot_invite_complete.png&quot;
+            title=&quot;discord_bot_invite_complete.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;디스코드-봇-프로젝트-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B4%87-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;디스코드 봇 프로젝트 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 봇 프로젝트 생성&lt;/h3&gt;
+&lt;p&gt;이 프로젝트는 Node.js를 이용하여 개발할 예정이고 IDE는 Visual Studio Code를 이용할 예정이다. Node.js 설치는 &lt;a href=&quot;/posts/install-node-js&quot;&gt;여기&lt;/a&gt; vscode 설치는 &lt;a href=&quot;/posts/install-vscode&quot;&gt;여기&lt;/a&gt;를 확인하면 된다.&lt;/p&gt;
+&lt;p&gt;바탕화면에 디렉토리(&lt;del&gt;필자는 디렉토리 명을 discord_bot이라고 했다&lt;/del&gt;)를 생성하고 VSCode에 해당 디렉토리를 연다.&lt;/p&gt;
+&lt;h3 id=&quot;node-기본-세팅&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#node-%EA%B8%B0%EB%B3%B8-%EC%84%B8%ED%8C%85&quot; aria-label=&quot;node 기본 세팅 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Node 기본 세팅&lt;/h3&gt;
+&lt;p&gt;해당 폴더의 terminal을 열어 Node 기본 세팅을 한다. 기본 세팅은 다음 명령어를 통해 할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm init -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그러면 package.json 파일이 생성된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// package.json&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;discord_bot&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;index.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit 1&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ISC&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;여기서 중요한 것은 main과 script이다. main의 경우 봇 실행시 처음으로 시작되는 파일을 적는다. script의 경우 node 명령어를 작성하는데 보통 develop, test 등 해당 프로젝트를 실행하는 명령어를 사용 할 수 있다.&lt;/p&gt;
+&lt;h3 id=&quot;디스코드-봇-라이브러리-설치&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C-%EB%B4%87-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98&quot; aria-label=&quot;디스코드 봇 라이브러리 설치 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;디스코드 봇 라이브러리 설치&lt;/h3&gt;
+&lt;p&gt;디스코드 봇에 관련된 라이브러리는 다음 명령어를 통해 설치할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ npm install discord.js@12.5.3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;현재 discord.js는 13버전이다 하지만 해당버전은 사용하기 까다로워 12.5.3버전을 사용한다.&lt;/p&gt;
+&lt;h3 id=&quot;정보-파일-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EB%B3%B4-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;정보 파일 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정보 파일 생성&lt;/h3&gt;
+&lt;p&gt;config.json 파일에 필요한 정보를 따로 관리할 수 있다. 예를 들면 디스코드 봇에 사용하는 키, 데이터 베이스 정보 등이 이에 해당된다.&lt;/p&gt;
+&lt;p&gt;config.json 파일을 다음과 같이 생성한다.&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist111874272&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-config-json&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-config-json-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;{&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-config-json-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;prefix&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;!&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-config-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;discord_token&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~~~&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-config-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;discord_channel_id&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~~~&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-config-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92/raw/8132623e20d90e440c63cda76215076ba6fff298/config.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-config-json&quot;&gt;config.json&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;prefix는 봇에게 명령을 할때 붙혀야 하는 기호를 뜻한다. 예를 들어 인사를 하는 명령어라고 하면 &lt;strong&gt;!인사&lt;/strong&gt;이렇게 입력할 수 있다. 느낌표외에 다른 특수문자도 가능하다.&lt;/p&gt;
+&lt;p&gt;discord_token은 &lt;a href=&quot;https://discord.com/developers/applications&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;디스코드 개발자 페이지&lt;/a&gt;에서 들어가 이전에 만든 application에 들어간다.&lt;/p&gt;
+&lt;p&gt;왼쪽 메뉴 &gt; Bot에서 중간에 나오는 Copy 버튼을 눌러 복사하고 ~~~ 대신 붙혀넣는다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/def7bc5ff23b97c61b1f4ea8428dfe51/8adb9/discord_bot_token.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60.83333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAACW0lEQVQoz22T22oTURSG50W8EMWaTg57z+yZ2XM+5zBpUtLEHoSG2kKF1AuLSCmWigjijUIVn8An8HAl+Gy/a09SWtSLj/WTzKxZ/9r/1mwZwgxzmF4C2wnBDAcdbte0mQXXTzGZ7kJSFfS/JSNYjiL8Lxq3PGz7LhJuYK1poNm+QTV03BhFWSFOSkRxgTguax2nPURJt2apy1prd+43sLd2FwO9gXs6x7reQWNFqyNg00ReOkCQD+EXG/AyqkkPYVQgWBHSR661FicFBIkGs8FWVm+jbBh+Ae7lMIIuzKgH4Wcri/9a17yohEs7tL0UTkAv0UM6l2hyl3AgyXK/P0JVbSJNu7BtHw5NbdPvqtYovULLPQel5IjNFtzmA3itNbiER9rpMHooQbUxwXA0Rbc/RpoPkJdDJFkfARERSqs9ZkUF7dP+B5zOf2Ex/YbF7AdOHv3Eyew7nu38xsLbgmcLKBeG6ULQdKp2aHK121nRRRFTQuygTkht+eVojqPuUxxkR5gnT/A4mBP72I8PsStC2JasG6g4NZmD8WQHB4fHeEiJODN1zDhHSwQwhQ8uXGhuRPuQFiRZ5yaD3londIoNwUWdvXbHQkY2Ly7f4OL1W2q6Tc1t+HkGQ9J7loAhGE1IDR15c1KG8OpprmGE5QTUXKAaT3H1+QvOX12ibfl1bp9vnmMxOsNw+z0GO1cUn11oKrwKlTlVb98SVQXtR2mDLoAMC7iUhKYhUTCGF+N3OK0uMdv6iPHeVzqgQ2h/5+660e2G3JS1Xl7L5dVk5IbTgTHCsEza4dLyH/o1n23TK2bcAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/def7bc5ff23b97c61b1f4ea8428dfe51/8ac56/discord_bot_token.webp 240w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/d3be9/discord_bot_token.webp 480w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/e46b2/discord_bot_token.webp 960w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/f992d/discord_bot_token.webp 1440w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/987f9/discord_bot_token.webp 1638w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/def7bc5ff23b97c61b1f4ea8428dfe51/8ff5a/discord_bot_token.png 240w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/e85cb/discord_bot_token.png 480w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/d9199/discord_bot_token.png 960w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/07a9c/discord_bot_token.png 1440w,
+/static/def7bc5ff23b97c61b1f4ea8428dfe51/8adb9/discord_bot_token.png 1638w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/def7bc5ff23b97c61b1f4ea8428dfe51/d9199/discord_bot_token.png&quot;
+            alt=&quot;discord_bot_token.png&quot;
+            title=&quot;discord_bot_token.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;    &lt;span class=&quot;token property&quot;&gt;&quot;discord_token&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;복사된 코드&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;discord_channel_id&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;~~~&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;실행-파일-만들기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%ED%96%89-%ED%8C%8C%EC%9D%BC-%EB%A7%8C%EB%93%A4%EA%B8%B0&quot; aria-label=&quot;실행 파일 만들기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실행 파일 만들기&lt;/h3&gt;
+&lt;p&gt;이제 실행할 수 있는 코드를 작성하도록 하자. 우선 index.js 파일을 만들고 다음과 같이 작성한다.&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist111874272&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-index-js&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; Client&lt;span class=pl-kos&gt;,&lt;/span&gt; Intents &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-en&gt;require&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;discord.js&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt; discord_token &lt;span class=pl-kos&gt;}&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-en&gt;require&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;./config.json&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;const&lt;/span&gt; &lt;span class=pl-s1&gt;client&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-k&gt;new&lt;/span&gt; &lt;span class=pl-v&gt;Client&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;{&lt;/span&gt; &lt;span class=pl-c1&gt;intents&lt;/span&gt;: &lt;span class=pl-kos&gt;[&lt;/span&gt;&lt;span class=pl-v&gt;Intents&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;FLAGS&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-c1&gt;GUILDS&lt;/span&gt;&lt;span class=pl-kos&gt;]&lt;/span&gt; &lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;client&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;once&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;ready&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;,&lt;/span&gt; &lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt; &lt;span class=pl-c1&gt;=&amp;gt;&lt;/span&gt; &lt;span class=pl-kos&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=pl-smi&gt;console&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;log&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s&gt;&amp;quot;Ready!&amp;quot;&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-kos&gt;}&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;client&lt;/span&gt;&lt;span class=pl-kos&gt;.&lt;/span&gt;&lt;span class=pl-en&gt;login&lt;/span&gt;&lt;span class=pl-kos&gt;(&lt;/span&gt;&lt;span class=pl-s1&gt;discord_token&lt;/span&gt;&lt;span class=pl-kos&gt;)&lt;/span&gt;&lt;span class=pl-kos&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92/raw/8132623e20d90e440c63cda76215076ba6fff298/index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-index-js&quot;&gt;index.js&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;그리고 package.json 파일에 script 부분을 다음과 같이 수정한다.&lt;/p&gt;
+&lt;p&gt;&lt;div id=&quot;gist111874272&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-package-json&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;{&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;...&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;script&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;start&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;node index.js&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;...&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-package-json-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92/raw/8132623e20d90e440c63cda76215076ba6fff298/package.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-package-json&quot;&gt;package.json&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;다음과 같은 명령어를 terminal에서 실행하고 올바르게 &lt;strong&gt;Ready!&lt;/strong&gt;가 뜬다면 정상적으로 실행 한 것이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// npm
+$ npm run start
+
+// yarn
+$ yarn start
+
+
+&gt; discord_bot@1.0.0 start
+&gt; node index.js
+
+Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;채팅-이벤트-잡기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B1%84%ED%8C%85-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%9E%A1%EA%B8%B0&quot; aria-label=&quot;채팅 이벤트 잡기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;채팅 이벤트 잡기&lt;/h3&gt;
+&lt;p&gt;index.js에서 다음 부분을 추가하고 봇을 재실행하자.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111874978&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-index-js&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;&lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; Client&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; Intents &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;discord.js&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; discord_token &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;./config.json&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;intents&lt;/span&gt;: &lt;span class=&quot;pl-kos&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;pl-v&quot;&gt;Intents&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;FLAGS&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;GUILDS&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;ready&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&quot;Ready!&quot;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s&quot;&gt;&apos;message&apos;&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;pl-kos&quot;&gt;{&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-smi&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;&lt;span class=&quot;pl-kos&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-index-js-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-index-js-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-en&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;discord_token&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;pl-kos&quot;&gt;;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f0c8a33bf00ffcd8191a0ff9737bc414/raw/c3eb3c8201aa92526facd983319776328401272e/index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f0c8a33bf00ffcd8191a0ff9737bc414#file-index-js&quot;&gt;index.js&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;terminal에서 ctrl + C를 누르고 다시 실행 명령어를 입력하면 재실행된다.&lt;/p&gt;
+&lt;p&gt;재실행 후 디스코드 프로그램에 채팅 채널에 아무 채팅이나 작성해보면 채팅 이벤트가 발생해 채팅 내용이 다음과 같이 출력된다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e3c18dafbdf12cbf68833ba50ef8bb9e/e17e5/discord_chat.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.416666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABSklEQVQoz31RyUoDQRScT1InmcXM0uNkMgtjEmKMQiLiguKSQ1ARUQcZl5sBr568+hcevIh48QdEUX+j7NdhQhISD0VX93tV3fVaUjQL2iwbgd3nesEZU2cTNZKq28irBhTVBJnnFAN0lvGpGY3Xe7U83xMfB6oTJNpYToDm+j5WtzrwgiqmZR1BVMFFeo3DoxNUa0vidscNYdoe2FwAk5UEJxSsojCjhwjD7fYxnp5f8fL2jtP0FjnVgufHOE9SbGzuIC4vwOCiKK7B9WJeK3PTEE4xQrEUw3Z88UphKPMYyVUXH58/+Pr+xf3DIxSdcYGPeqOJ+coi/LAMOV/ox1IGImbIxiTleGO13sLZZRfJzR1aa7sish9WsNfu4IBHbiyviDOKTcJMnK1DhkRo+CbzwdxI8NGmwXUS+jPMSO+3jKGGcZH+MyX8AdUXIrojbeuKAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/e3c18dafbdf12cbf68833ba50ef8bb9e/8ac56/discord_chat.webp 240w,
+/static/e3c18dafbdf12cbf68833ba50ef8bb9e/7f61c/discord_chat.webp 400w&quot;
+              sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/e3c18dafbdf12cbf68833ba50ef8bb9e/8ff5a/discord_chat.png 240w,
+/static/e3c18dafbdf12cbf68833ba50ef8bb9e/e17e5/discord_chat.png 400w&quot;
+            sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/e3c18dafbdf12cbf68833ba50ef8bb9e/e17e5/discord_chat.png&quot;
+            alt=&quot;discord_chat.png&quot;
+            title=&quot;discord_chat.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 808px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d12e869a73c73b8da31e69b6997121bc/3534c/discord_bot_response.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 24.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA20lEQVQY042Ou1KEQBBFCTRYSpM1AubBwo5uGQgUT4HZmG/zA0xMNDDwCzTx244j1lRZBlsGp+7t6bndHTxnF7zuQj5uLvncnfOuz3hJNzylIY865C3b8GCuqMcJO03M88w4jhRFgbWWpmlWJtcry5KgdcXQdfSV+zAMVMM9aVkj7yryumObGbZCEscxURSRJMnqvXrve8HgBnR9z3w8Yh1d23Iwew77nNtrQ641WkqUcqqU09METV1jjEGIBOWCUgjnf/jeKNdhalXvf/P3LViWBe2u8IH/hE7xBeFBkkhIhi/uAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d12e869a73c73b8da31e69b6997121bc/8ac56/discord_bot_response.webp 240w,
+/static/d12e869a73c73b8da31e69b6997121bc/d3be9/discord_bot_response.webp 480w,
+/static/d12e869a73c73b8da31e69b6997121bc/2b269/discord_bot_response.webp 808w&quot;
+              sizes=&quot;(max-width: 808px) 100vw, 808px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d12e869a73c73b8da31e69b6997121bc/8ff5a/discord_bot_response.png 240w,
+/static/d12e869a73c73b8da31e69b6997121bc/e85cb/discord_bot_response.png 480w,
+/static/d12e869a73c73b8da31e69b6997121bc/3534c/discord_bot_response.png 808w&quot;
+            sizes=&quot;(max-width: 808px) 100vw, 808px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d12e869a73c73b8da31e69b6997121bc/3534c/discord_bot_response.png&quot;
+            alt=&quot;discord_bot_response.png&quot;
+            title=&quot;discord_bot_response.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Discord.js를 이용한 디스코드 봇 만들기 #1]]></title><description><![CDATA[요즘 자주하는 로스트아크용 디스코드 봇 만들기!]]></description><link>https://www.moong-bee.com/posts/create-a-discord-bot-with-js-1</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-a-discord-bot-with-js-1</guid><pubDate>Mon, 13 Sep 2021 13:51:58 GMT</pubDate><content:encoded>&lt;details open&gt;
+  &lt;summary&gt;리스트&lt;/summary&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/create-a-discord-bot-with-js-1&quot;&gt;디스코드 봇 만들기 #1 - 계정 및 프로필 생성&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/posts/create-a-discord-bot-with-js-2&quot;&gt;디스코드 봇 만들기 #2 - 서버 및 기본 명령어 테스트&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/details&gt;
+&lt;p&gt;최근 근무 후 귀찮음과 스트레스로 인해 개발은 안하고 게임만 주구장창 했다.&lt;/p&gt;
 &lt;p&gt;허나 이번년도 초 내가 하는 게임에 문제가 생겨 &lt;del&gt;메XX 스XX, 일명 버섯 게임&lt;/del&gt; 어떤 게임을 할지 고민중에 &lt;strong&gt;로스트아크&lt;/strong&gt;라는 국산 RPG게임을 찍먹해보기로 했다.&lt;/p&gt;
 &lt;p&gt;첫 시작을 이벤트로 진행한 슈퍼 익스프레스로 진행해 게임 컨텐츠인 &lt;strong&gt;아르고스 레이드&lt;/strong&gt;, &lt;strong&gt;발탄 노말 레이드&lt;/strong&gt;등을 진행 할 수 있었고 특히 레이드의 경우 공개파티(매칭)을 플레이를 했다. 하지만 매칭을 통한 플레이의 경우 클리어가 불확실하며 유저간의 소통이 잘 안돼 기믹 수행에 문제가 많았다.&lt;/p&gt;
 &lt;p&gt;그러다 길드를 구하고 길드파티를 통해 레이드를 진행해 기믹을 배우면서 플레이를 할 수 있었다. 그때 상호간의 소통을 위해 디스코드(Discord)라는 것을 이용하여 소통을 했다.&lt;/p&gt;
@@ -376,7 +1359,7 @@
     &lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;마치며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B0&quot; aria-label=&quot;마치며 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치며&lt;/h3&gt;
-&lt;p&gt;오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 채널 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 다리를 지나는 트럭]]></title><description><![CDATA[프로그래머스 level 2 다리를 지나는 트럭을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</guid><pubDate>Sat, 30 Jan 2021 16:33:04 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+&lt;p&gt;오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 서버 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 다리를 지나는 트럭]]></title><description><![CDATA[프로그래머스 level 2 다리를 지나는 트럭을 풀어보자.]]></description><link>https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-truck-passing-the-bridge</guid><pubDate>Sat, 30 Jan 2021 16:33:04 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;트럭 여러 대가 강을 가로지르는 일 차선 다리를 정해진 순으로 건너려 합니다. 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다. 트럭은 1초에 1만큼 움직이며, 다리 길이는 bridge_length이고 다리는 무게 weight까지 견딥니다.
 ※ 트럭이 다리에 완전히 오르지 않은 경우, 이 트럭의 무게는 고려하지 않습니다.&lt;/p&gt;
 &lt;p&gt;예를 들어, 길이가 2이고 10kg 무게를 견디는 다리가 있습니다. 무게가 [7, 4, 5, 6]kg인 트럭이 순서대로 최단 시간 안에 다리를 건너려면 다음과 같이 건너야 합니다.&lt;/p&gt;
@@ -1128,7 +2111,7 @@
 &lt;p&gt;리스트 구현하는 것 처럼 쉽게만 생각하고 무작정 코딩하다가 뭔가 정해놓은 틀이 없어 만들고 삭제하고를 수십번 반복하다 기획부터 차근차근 들어가서 문서화 하면 이런일이 발생하지 않고 시간 낭비도 들지 않을 것이라고 판단하여 기획을 해보려고 한다.&lt;/p&gt;
 &lt;p&gt;그렇게 거창한 앱을 제작하려는 것이 아니기 때문에 간단한 문서 작성과 포스팅을 병행해서 진행 할 예정이다. 막상 어떤 내용이 필요한지, 어떻게 작성해야하는지 이런 저런 고민이 너무 많아 검색을 했다.&lt;/p&gt;
 &lt;p&gt;찾아보니 딱히 정해진 틀이 없는 것 같아서 내가 원하는 방식으로 문서화하기로 했다.&lt;/p&gt;
-&lt;table&gt;
+&lt;table class=&apos;table_line&apos;&gt;
 &lt;tr&gt;
 &lt;th&gt;서비스 개요&lt;/th&gt;
 &lt;td&gt;
@@ -3564,7 +4547,7 @@
 &lt;/div&gt;&lt;/p&gt;
 &lt;h3 id=&quot;정리하면서&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B4%EC%84%9C&quot; aria-label=&quot;정리하면서 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;정리하면서&lt;/h3&gt;
 &lt;p&gt;보통 어떤 알고리즘이 좋은지를 판단할때는 시간복잡도로 판단한다. 위의 3개의 정렬 알고리즘 중 &lt;strong&gt;선택 정렬&lt;/strong&gt;과 &lt;strong&gt;버블 정렬&lt;/strong&gt;은 보통 n^2의 시간복잡도를 가진다. &lt;strong&gt;삽입 정렬&lt;/strong&gt;의 경우 보통은 n^2의 시간복잡도를 가지지만 정렬되어진 배열을 삽입 정렬시 n의 시간 복잡도를 가진다.&lt;/p&gt;
-&lt;table class=&apos;sort_algorithm&apos;&gt;
+&lt;table class=&apos;table_line&apos;&gt;
   &lt;tr&gt;
     &lt;th&gt;정렬 알고리즘&lt;/th&gt;
     &lt;th&gt;최적&lt;/th&gt;
@@ -7855,7 +8838,247 @@ gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world&lt
 &lt;p&gt;그런 개발자들을 위해 kamranahmedse 라는 닉네임을 가진 분이 매년 로드맵을 작성해서 공유해 주신다.&lt;/p&gt;
 &lt;p&gt;만약 본인이 개발이 하고 싶은데 어떤걸 먼저 해야할지 모르거나 앞으로 무엇을 배워야할지 의문이 들 경우 아래 사이트를 이용하길 바란다.&lt;/p&gt;
 &lt;p&gt;Github - 원본 : &lt;a href=&quot;https://github.com/kamranahmedse/developer-roadmap&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/kamranahmedse/developer-roadmap&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github - 번역 : &lt;a href=&quot;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CRA(Create React App)으로 시작하는 React.]]></title><description><![CDATA[페이스북에서 제공해주는 프론트엔드 라이브러리 React 사용해보기.]]></description><link>https://www.moong-bee.com/posts/install-create-react-app</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-create-react-app</guid><pubDate>Sat, 12 Sep 2020 04:15:19 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;p&gt;Github - 번역 : &lt;a href=&quot;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://github.com/kamranahmedse/developer-roadmap/tree/master/translations/korean&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Visual Studio Code 설치하기]]></title><description><![CDATA[개발 툴! Visual Studio Code를 설치하자!]]></description><link>https://www.moong-bee.com/posts/install-vscode</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-vscode</guid><pubDate>Sun, 20 Sep 2020 12:50:54 GMT</pubDate><content:encoded>&lt;p&gt;개발할때 유용하게 사용되는 Visual Studio Code를 설치해보자&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;설치하기&lt;/p&gt;
+&lt;p&gt;Visual Studio Code(이하 vscode)는 &lt;a href=&quot;https://code.visualstudio.com/download&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;공식 홈페이지&lt;/a&gt;를 통해 OS별 설치가 가능하다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cae8d77991a34ec17f0a9deed70504ea/91a65/install_vscode.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB+klEQVQoz42RS2gTURSGs3Tnwp1gg2keTS2CuHDpQhBBq4KCuhB14VpXBYWuuxRpdSO1+EqmTWfajbhQQbAVNA9I1VqsGF9tqKFpmpkknefnzI2TppWAB/57zr3nnP9w/xPYvSdCMLqfWLSXSKSXYDBM194YwVCcUChGOBynu7tHxB5EvitMNLqPvr4DxKM97Dp0jh39Q+w8eJZAMjlOMiEhvI8JBSk1zeSkgqJMI8tT/yCVkkm4fQmv/kkC6fEjpESCAB3MtkwMQ8c0TQHDMNB1Hdu2xXsnC1iWRTs2dIOqqqFpGrVaTcCLq9XqFq+qKvV6ne39AcdxBLPv/8e217ZzCEL/wbBspNkyyZlVcbfc73mZ9fUKhUJBxJZb49nK7xLPX7zEtJv9PoSGdtvE6/d/MZgs+rPFaZYX+ZF/6qsrzvTsK44dOdy6e9oKDX2ykqpz/l6eCy5OjuS4OfWZzLcKx4ezXBrNcWUsw+m7OcbTy4y9WeLorbecuf2aE8MZ0m5dk9TZ1LBSNxlUPjEw8YFTd3IMyAssrtS4oSxwTZp3h81x9eF7Zr6sIWeX6R/JcvnBvBiY/1ndJPS+1RLZaVBaXWPo2Ve3qdiSQX73nYujc3xcUltSqA2DsqZTbZhblrNly5bj6dmM7b/w4rJmUKxsNJciltB5838A7T34R3XjD88AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/cae8d77991a34ec17f0a9deed70504ea/8ac56/install_vscode.webp 240w,
+/static/cae8d77991a34ec17f0a9deed70504ea/d3be9/install_vscode.webp 480w,
+/static/cae8d77991a34ec17f0a9deed70504ea/e46b2/install_vscode.webp 960w,
+/static/cae8d77991a34ec17f0a9deed70504ea/f992d/install_vscode.webp 1440w,
+/static/cae8d77991a34ec17f0a9deed70504ea/882b9/install_vscode.webp 1920w,
+/static/cae8d77991a34ec17f0a9deed70504ea/25c0f/install_vscode.webp 2476w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/cae8d77991a34ec17f0a9deed70504ea/8ff5a/install_vscode.png 240w,
+/static/cae8d77991a34ec17f0a9deed70504ea/e85cb/install_vscode.png 480w,
+/static/cae8d77991a34ec17f0a9deed70504ea/d9199/install_vscode.png 960w,
+/static/cae8d77991a34ec17f0a9deed70504ea/07a9c/install_vscode.png 1440w,
+/static/cae8d77991a34ec17f0a9deed70504ea/29114/install_vscode.png 1920w,
+/static/cae8d77991a34ec17f0a9deed70504ea/91a65/install_vscode.png 2476w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/cae8d77991a34ec17f0a9deed70504ea/d9199/install_vscode.png&quot;
+            alt=&quot;install_vscode.png&quot;
+            title=&quot;install_vscode.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;실행&lt;/p&gt;
+&lt;p&gt;실행 후 다음과 실행하면 다음과 같은 화면이 뜬다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/07faff0b802c984691efae05f0ab4ca6/a2b91/vscode_open_screen.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsTAAALEwEAmpwYAAABDElEQVQ4y62T3XKDIBCFfQ3lR5bQQgNIYy/6/k92CliJOpm0zuTiG3Fhz+5ZtFNEUIpApCta67YmohOU3As6wTmEEBXGGPq+xzAMdb3Gz1AFpZT1xTmHeZ4RY4T3HuM41njZ55vCjRyXBzq+Ebz6gJQSjDHV+hovzxKjOh4Fle1JpZvIemYnKEtFcwWTlO0OraM1wbp3fGQH1lq8xRnKRajxgeA2yTgPMrZaLZ0s1mSzvCCWYvw+461oE5SCg9lPiPCNdPtCyDPcVn7Gww7rhrqAdGE/v3vR5SLE7/pPQXm4xePh/7Dv8ImV84LiNXQDz3+FYPlzeQ1dkglJ3xD4BM8iAptOU/NyfhATfgCYlmK2N6oRFwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/07faff0b802c984691efae05f0ab4ca6/8ac56/vscode_open_screen.webp 240w,
+/static/07faff0b802c984691efae05f0ab4ca6/d3be9/vscode_open_screen.webp 480w,
+/static/07faff0b802c984691efae05f0ab4ca6/e46b2/vscode_open_screen.webp 960w,
+/static/07faff0b802c984691efae05f0ab4ca6/f992d/vscode_open_screen.webp 1440w,
+/static/07faff0b802c984691efae05f0ab4ca6/882b9/vscode_open_screen.webp 1920w,
+/static/07faff0b802c984691efae05f0ab4ca6/1ab77/vscode_open_screen.webp 3360w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/07faff0b802c984691efae05f0ab4ca6/8ff5a/vscode_open_screen.png 240w,
+/static/07faff0b802c984691efae05f0ab4ca6/e85cb/vscode_open_screen.png 480w,
+/static/07faff0b802c984691efae05f0ab4ca6/d9199/vscode_open_screen.png 960w,
+/static/07faff0b802c984691efae05f0ab4ca6/07a9c/vscode_open_screen.png 1440w,
+/static/07faff0b802c984691efae05f0ab4ca6/29114/vscode_open_screen.png 1920w,
+/static/07faff0b802c984691efae05f0ab4ca6/a2b91/vscode_open_screen.png 3360w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/07faff0b802c984691efae05f0ab4ca6/d9199/vscode_open_screen.png&quot;
+            alt=&quot;vscode_open_screen.png&quot;
+            title=&quot;vscode_open_screen.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;왼쪽 메뉴를 위에서부터 설명하자면&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;탐색기 - 폴더 또는 파일을 표시하여 빠르게 이동/수정/생성 등이 가능하다&lt;/li&gt;
+&lt;li&gt;검색 - 특정 문자를 root를 기준으로 검색한다.&lt;/li&gt;
+&lt;li&gt;버전관리 - 해당 프로젝트가 git에 연결되어있다면 활성화 되며 vscode를 통해 해당 프로젝트의 버전을 관리할 수 있다.&lt;/li&gt;
+&lt;li&gt;디버그 - 프로그래밍 후 디버깅시 해당 탭을 사용할 수 있다.&lt;/li&gt;
+&lt;li&gt;확장(마켓플레이스) - vscode에서 사용할 수 있는 plugin 들을 검색/설치 할 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;그 이외의 아이콘들은 5번에서 설치한 것들이다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Node JS 설치하기]]></title><description><![CDATA[NodeJS를 설치해보자!]]></description><link>https://www.moong-bee.com/posts/install-node-js</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-node-js</guid><pubDate>Sun, 20 Sep 2020 12:10:00 GMT</pubDate><content:encoded>&lt;p&gt;필자가 자주 사용하는 NodeJS를 설치하는 법을 알아보자!&lt;/p&gt;
+&lt;h3 id=&quot;node-js-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#node-js-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;node js 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Node JS 설치하기&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Window&lt;/p&gt;
+&lt;p&gt;윈도우의 경우 &lt;a href=&quot;https://nodejs.org/ko/download&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;공식 홈페이지&lt;/a&gt;에서 msi 파일을 다운받아 설치 할 수 있다. LTS(Long Term Support) 버전과 Current 버전이 있다. Current 버전의 경우 새로운 기술이 도입된 경우가 많은데 이 경우 버그가 많을 수 있다, 따라서 LTS 버전을 설치한다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9845b3a303aebb843d20331ed6bda3d4/3dfa7/download_nodejs_window_msi.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACfElEQVQ4y3VTuW7UUBT1l1BQAAlLSUEHUsQHQEFJE0UIOqgpAlFAQQIJKQ35gIiKCgkIAokmIcuQCUyWWW3PTMb7/uzxMod33ywJAmwd3XcX383nSZquoVarIUkS0FMUBYpBgcFgMAR///dMYk5B8n0flmUhDEOBKIrAGBOSiogCeYE8z/8CJRhmPiki2ZYNyzDhOx5s04LDdd91YeomoiCC53rc5sDiPtu2oWkaDMMAfffPDm+v3MKZ+bO4+PwKpp9dxtWX13B9eQbTT6cw9eQ8Lsyfw6WFaWyq38HyCBYzoUc6Sp0dbMjr6IXH8Pq8mZg3kziQFtcWMbt0Aw+WZnD/xU08Xr6DhTd38ejdQ8ytzuLe2zkhN9UNaFEPstuC6inY139hr1dG1TxCy2kIW9tXIfENAY0KbKeN1a8r0G2Z6z+RFTH4psReSso21iofYCWm6KgXHfMuNXiZh9efXuHL4Wc4qSMKSkZsoLP1HuXmOrZq31BubaBX+oiOK6MTdqB4MkrtbY4dtNwmdKaJD0mqvoLdTgn7WgUaG9qkKI0RHf0AO+So7iGultGv7oJl/E+n/I+nDDGPYX2SjOvRyD70kV1gpEt1zsHKUQ2H9SYaisqDswnHiBpEiTAO4QSOOAsKZbmQtC3TNxEn8cQnEQ3kVhNtVYWqKEjiWBCL+JemKbIsQ5ql4kwF+mkfXugKG/lIH58JUrfbxcHBAer1OhqNhjCObwydKYkg94jglMDwjBNyF4M/iC86pGSyLAvSjscdd0jjhSxEEAWiAI1HOsmM+1y+ijhhw0l4vETXjrqkK3j6Oo2TkszyTID0IA4QsIDvNRA+Gjcv8kn8b4btwT7wFB3bAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/9845b3a303aebb843d20331ed6bda3d4/8ac56/download_nodejs_window_msi.webp 240w,
+/static/9845b3a303aebb843d20331ed6bda3d4/d3be9/download_nodejs_window_msi.webp 480w,
+/static/9845b3a303aebb843d20331ed6bda3d4/e46b2/download_nodejs_window_msi.webp 960w,
+/static/9845b3a303aebb843d20331ed6bda3d4/f992d/download_nodejs_window_msi.webp 1440w,
+/static/9845b3a303aebb843d20331ed6bda3d4/882b9/download_nodejs_window_msi.webp 1920w,
+/static/9845b3a303aebb843d20331ed6bda3d4/bf558/download_nodejs_window_msi.webp 2028w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/9845b3a303aebb843d20331ed6bda3d4/8ff5a/download_nodejs_window_msi.png 240w,
+/static/9845b3a303aebb843d20331ed6bda3d4/e85cb/download_nodejs_window_msi.png 480w,
+/static/9845b3a303aebb843d20331ed6bda3d4/d9199/download_nodejs_window_msi.png 960w,
+/static/9845b3a303aebb843d20331ed6bda3d4/07a9c/download_nodejs_window_msi.png 1440w,
+/static/9845b3a303aebb843d20331ed6bda3d4/29114/download_nodejs_window_msi.png 1920w,
+/static/9845b3a303aebb843d20331ed6bda3d4/3dfa7/download_nodejs_window_msi.png 2028w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/9845b3a303aebb843d20331ed6bda3d4/d9199/download_nodejs_window_msi.png&quot;
+            alt=&quot;download_nodejs_window_msi.png&quot;
+            title=&quot;download_nodejs_window_msi.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;설치 후 Node 버전 확인&lt;/p&gt;
+&lt;p&gt;터미널을 열고 다음 명령어를 실행한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;C:\\~~\\user&gt; node -v
+v14.XX.XX&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MacOS(with linux 계열)&lt;/p&gt;
+&lt;p&gt;맥의 경우 NVM을 이용하여 NodeJS를 설치 할 수 있으며 NodeJS 버전 관리도 가능하다. terminal을 열어 다음 명령어를 실행한다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;설치 명령어&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ sudo curl -o- https://raw.githubusercontent.com/creationix/nvm/{버전}/install.sh | bash&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;버전의 경우 &lt;a href=&quot;https://github.com/nvm-sh/nvm&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;nvm github 페이지&lt;/a&gt;에서 확인 할 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;nvm 설치확인&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ nvm ls
+
+-bash: nvm: command not found # 설치했지만 환경 변수 설정을 안함.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;vi 또는 사용하는 에디터를 이용&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# bash
+$ vi ~/.bash_profile
+
+# zsh
+$ vi ~/.zshrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;을 입력하여 다음의 텍스트를 입력하고 저장한다&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;export NVM_DIR=&quot;$HOME/.nvm&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;amp;&amp;amp; . &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;터미널 재실행&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# bash
+source ~/.bash_profile
+
+# zsh
+ssource ~/.zshrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;nvm 설치 확인&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ nvm ls
+
+-&gt;       system
+node -&gt; stable (-&gt; N/A) (default)
+iojs -&gt; N/A (default)
+... 생략&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Node 설치&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ nvm install --lts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;설치된 Node 버전 확인&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ nvm ls
+
+-&gt;       v14.XX.X
+default -&gt; v14.XX.X
+node -&gt; stable (-&gt; N/A) (default)
+iojs -&gt; N/A (default)
+... 생략&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;설치된 버전이 뜨고 필자는 v14.17.5 버전으로 뜬다&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Node 명령어로 설치된 버전 확인하기&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ node -v
+v14.XX.XX&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[CRA(Create React App)으로 시작하는 React.]]></title><description><![CDATA[페이스북에서 제공해주는 프론트엔드 라이브러리 React 사용해보기.]]></description><link>https://www.moong-bee.com/posts/install-create-react-app</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-create-react-app</guid><pubDate>Sat, 12 Sep 2020 04:15:19 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#react%EB%8A%94-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80&quot;&gt;React는 무엇인가?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#1-node-js-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot;&gt;Node JS 설치하기&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#2-npm-%EB%B2%84%EC%A0%84%ED%99%95%EC%9D%B8&quot;&gt;NPM 버전확인&lt;/a&gt;&lt;/li&gt;
