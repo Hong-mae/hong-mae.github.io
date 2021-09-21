@@ -21,6 +21,7 @@ socialImage: ''
 
 1. [디스코드 봇 만들기 #1 - 계정 및 프로필 생성](/posts/create-a-discord-bot-with-js-1)
 2. [디스코드 봇 만들기 #2 - 서버 및 기본 명령어 테스트](/posts/create-a-discord-bot-with-js-2)
+3. [디스코드 봇 만들기 #3 - 명령어 추가 및 데이터 사용하기](/posts/create-a-discord-bot-with-js-3)
 
 </details>
 
