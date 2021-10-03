@@ -94,7 +94,7 @@ top 데이터는 가장 최신 데이터의 인덱스를 저장해야하며, 처
 
 `gist:Moong-bee/c59c91508854350e63e1c98b6c61eca3#dynamic_stack.c?lines=10-14`
 
-top은 기존과 같이 -1, capacity는 1, data는 capacit 크기 만큼 동적 메모리를 할당한다.
+top은 기존과 같이 -1, capacity는 1, data는 capacity 크기 만큼 동적 메모리를 할당한다.
 
 #### 상태 체크 - isFull
 
