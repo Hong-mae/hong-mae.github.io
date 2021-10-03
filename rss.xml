@@ -1,4 +1,2413 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 23 Sep 2021 17:36:08 GMT</lastBuildDate><item><title><![CDATA[C로 자료구조 Stack 만들기 (정적/동적 구현)]]></title><description><![CDATA[아는 동생이 알려달라고 한 C언어로 스택 구현하기]]></description><link>https://www.moong-bee.com/posts/c-stack-programming</link><guid isPermaLink="false">https://www.moong-bee.com/posts/c-stack-programming</guid><pubDate>Mon, 20 Sep 2021 16:37:33 GMT</pubDate><content:encoded>&lt;p&gt;오늘은 아는 동생이 학교에서 배운 자료구조를 C언어를 통해 만들고 싶다고 하여 작성해보는 시간을 가져보자. 맥에서 C 프로그래밍 하는 방법은 &lt;a href=&quot;/posts/c-cpp-use-vscode-in-mac&quot;&gt;여기&lt;/a&gt;를 통해 확인하자!&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Oct 2021 07:07:32 GMT</lastBuildDate><item><title><![CDATA[C로 자료구조 연결리스트(Linked List) 만들기(use Double Pointer)]]></title><description><![CDATA[자료구조 - 연결리스트에 대해 더블 포인터를 사용해알아보자!]]></description><link>https://www.moong-bee.com/posts/c-linked-list-programming</link><guid isPermaLink="false">https://www.moong-bee.com/posts/c-linked-list-programming</guid><pubDate>Wed, 22 Sep 2021 00:02:45 GMT</pubDate><content:encoded>&lt;p&gt;연결리스트는 노드가 포인터를 가지고 한 줄로 연결되어 있는 방식으로 데이터를 저장하는 자료 구조이다. - 위키백과&lt;/p&gt;
+&lt;p&gt;여기서 노드는 데이터와 포인터 정보를 담는 공간, 포인터는 다음 노드와의 연결을 뜻한다. 여기서 연결이란 다음 노드의 메모리 주소를 저장한다는 의미이다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6c8213ef73a26f2b4f7c3893d76d2d81/066f9/linked_list_base.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 96.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAEDAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHzuWhkolAD/8QAGBAAAgMAAAAAAAAAAAAAAAAAEBEgITL/2gAIAQEAAQUCpHUf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGxABAAICAwAAAAAAAAAAAAAAAQAREDEhgZH/2gAIAQEAAT8hO2awNMbpz6xKaxaax//aAAwDAQACAAMAAAAQo8gA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAGxABAQADAQEBAAAAAAAAAAAAAREAITEQQXH/2gAIAQEAAT8QKVhXbNYj0J++ICYtqAO0mUKGfTj4dCZV25//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6c8213ef73a26f2b4f7c3893d76d2d81/8ac56/linked_list_base.webp 240w,
+/static/6c8213ef73a26f2b4f7c3893d76d2d81/7f61c/linked_list_base.webp 400w&quot;
+              sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6c8213ef73a26f2b4f7c3893d76d2d81/09b79/linked_list_base.jpg 240w,
+/static/6c8213ef73a26f2b4f7c3893d76d2d81/066f9/linked_list_base.jpg 400w&quot;
+            sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6c8213ef73a26f2b4f7c3893d76d2d81/066f9/linked_list_base.jpg&quot;
+            alt=&quot;linked_list_base.jpeg&quot;
+            title=&quot;linked_list_base.jpeg&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;연결 리스트&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;구조는 root 역할을 하는 노드를 기준으로 생성된다. &lt;del&gt;root 노드를 여기서는 head라고 부르겠다.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;이 글에서 더블 포인터를 이용하는 이유는 딱히 없다. 보통 전역 변수로 head를 선언하는데 나는 전역 변수 이용하는 걸 딱히 선호하지 않기 때문이다.&lt;/p&gt;
+&lt;h3 id=&quot;포인터&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8F%AC%EC%9D%B8%ED%84%B0&quot; aria-label=&quot;포인터 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;포인터&lt;/h3&gt;
+&lt;p&gt;C언어에서 포인터(Pointer)는 메모리의 주소값을 의미한다. 해당 값을 저장하는 변수를 포인터 변수라고 하며 선언은 &lt;strong&gt;*&lt;/strong&gt;을 통해 선언한다.&lt;/p&gt;
+&lt;p&gt;int형 포인터 변수는 int&lt;em&gt;, char형 포인터 변수는 char&lt;/em&gt; 등…&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;int n = 100;
+int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 409px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/46fd772308fc6716e53294a2e83b85ce/e9a96/pointer.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 82.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHn3GpAWQAf/8QAGBABAQADAAAAAAAAAAAAAAAAAQAQESD/2gAIAQEAAQUCAcMFqeP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAXEAADAQAAAAAAAAAAAAAAAAAAEDEg/9oACAEBAAY/AnS5/8QAGxAAAwEAAwEAAAAAAAAAAAAAAAERISAxQWH/2gAIAQEAAT8hcdmJSLPgkEvwTozOH//aAAwDAQACAAMAAAAQn8g8/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAQACAgMAAAAAAAAAAAAAAREAITFBEFGh/9oACAEBAAE/EHpTrVJvFRZTKX7zhIhKYyCdLOzFqvl17wULdd48eDP/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/46fd772308fc6716e53294a2e83b85ce/8ac56/pointer.webp 240w,
+/static/46fd772308fc6716e53294a2e83b85ce/2e47f/pointer.webp 409w&quot;
+              sizes=&quot;(max-width: 409px) 100vw, 409px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/46fd772308fc6716e53294a2e83b85ce/09b79/pointer.jpg 240w,
+/static/46fd772308fc6716e53294a2e83b85ce/e9a96/pointer.jpg 409w&quot;
+            sizes=&quot;(max-width: 409px) 100vw, 409px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/46fd772308fc6716e53294a2e83b85ce/e9a96/pointer.jpg&quot;
+            alt=&quot;pinter.jpeg&quot;
+            title=&quot;pinter.jpeg&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;포인터 형태&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;포인터 변수를 선언할때 두가지 방법으로 선언 할 수 있다. &lt;strong&gt;int* ptr&lt;/strong&gt;(자료형 뒤에 *붙이기) 와 &lt;strong&gt;int *ptr&lt;/strong&gt;(변수 명 앞에 *붙이기) 둘다 같은 의미를 가지지만 변수 명만으로 봤을 때 전자는 int형인지 int형 포인터 변수인지 모르기 때문에 후자를 많이 선택하지만 나는 전자를 많이 이용했기 때문에 전자를 사용했다.&lt;/p&gt;
+&lt;h3 id=&quot;더블-포인터이중-포인터&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%8D%94%EB%B8%94-%ED%8F%AC%EC%9D%B8%ED%84%B0%EC%9D%B4%EC%A4%91-%ED%8F%AC%EC%9D%B8%ED%84%B0&quot; aria-label=&quot;더블 포인터이중 포인터 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;더블 포인터(이중 포인터)&lt;/h3&gt;
+&lt;p&gt;그렇면 포인터 변수도 메모리를 가지고 있는데, 포인터 변수를 가지고있는 포인터 변수는 없을까? 당연히 있다. 이를 &lt;strong&gt;더블 포인터(이중 포인터)&lt;/strong&gt; 라고 부른다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112155849&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-double_pointer-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;&lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;#&lt;span class=&quot;pl-k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;lt;&lt;/span&gt;stdio.h&lt;span class=&quot;pl-pds&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;main&lt;/span&gt;() {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; n = &lt;span class=&quot;pl-c1&quot;&gt;100&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt;* p = &amp;amp;n;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt;** p2 = &amp;amp;p;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;n: &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;, &amp;amp;n: &lt;span class=&quot;pl-c1&quot;&gt;%p&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, n, &amp;amp;n);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;p: &lt;span class=&quot;pl-c1&quot;&gt;%p&lt;/span&gt;, &amp;amp;p: &lt;span class=&quot;pl-c1&quot;&gt;%p&lt;/span&gt; *p: &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, p, &amp;amp;p, *p);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;p2: &lt;span class=&quot;pl-c1&quot;&gt;%p&lt;/span&gt;, &amp;amp;p2: &lt;span class=&quot;pl-c1&quot;&gt;%p&lt;/span&gt; *p2: &lt;span class=&quot;pl-c1&quot;&gt;%p&lt;/span&gt;, **p2: &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, p2, &amp;amp;p2, *p2, **p2);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-double_pointer-c-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-double_pointer-c-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/b8875e788cb77dc30df5c5bdeb5785f1/raw/d068c06b9eb2a049f2092fb684558659ac769758/double_pointer.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/b8875e788cb77dc30df5c5bdeb5785f1#file-double_pointer-c&quot;&gt;double_pointer.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/04c8afe1c3ac8f9b73c4171b7f4c0539/5b587/double_pointer.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 16.249999999999996%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAb0lEQVQI121PSQoEIRDzI654ERX3/z+tmgRsmmEOwVRMUqpijNJak1orsffmDJRSxBgjIQRxzpF773lqrf9CpZQYnHNK751FOWdq4NCBuwAeay3DKP6F+r4MwbWWjDHecnBo5xzewwsN8/XeH6LjAWmFWU2wzlYgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/04c8afe1c3ac8f9b73c4171b7f4c0539/8ac56/double_pointer.webp 240w,
+/static/04c8afe1c3ac8f9b73c4171b7f4c0539/d3be9/double_pointer.webp 480w,
+/static/04c8afe1c3ac8f9b73c4171b7f4c0539/e46b2/double_pointer.webp 960w,
+/static/04c8afe1c3ac8f9b73c4171b7f4c0539/93852/double_pointer.webp 1010w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/04c8afe1c3ac8f9b73c4171b7f4c0539/8ff5a/double_pointer.png 240w,
+/static/04c8afe1c3ac8f9b73c4171b7f4c0539/e85cb/double_pointer.png 480w,
+/static/04c8afe1c3ac8f9b73c4171b7f4c0539/d9199/double_pointer.png 960w,
+/static/04c8afe1c3ac8f9b73c4171b7f4c0539/5b587/double_pointer.png 1010w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/04c8afe1c3ac8f9b73c4171b7f4c0539/d9199/double_pointer.png&quot;
+            alt=&quot;double_pointer.png&quot;
+            title=&quot;double_pointer.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;더블 포인터&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;주소를 출력할때는 &lt;strong&gt;%p&lt;/strong&gt;를 사용하면 된다.&lt;/p&gt;
+&lt;p&gt;결과 사진을 분석해보자. 우선 4~6번째 줄을 확인하면 정수형 n을 100으로 초기화하고 포인터 p에 정수형 n의 주소값을, 더블 포인터 p2에는 포인터 p의 주소값을 선언했다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 505px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a42980cf0a9cf0f454d6d433bdbce3bc/95009/double_pointer_img.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABz6EB/8QAFhABAQEAAAAAAAAAAAAAAAAAIQAR/9oACAEBAAEFAiNL/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFxABAQEBAAAAAAAAAAAAAAAAAAEhMf/aAAgBAQABPyHhRdP/2gAMAwEAAgADAAAAEHAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxABAAICAwAAAAAAAAAAAAAAAQARMUEhUWH/2gAIAQEAAT8QQhaQ0cMBDY21jHuI9A30T//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a42980cf0a9cf0f454d6d433bdbce3bc/8ac56/double_pointer_img.webp 240w,
+/static/a42980cf0a9cf0f454d6d433bdbce3bc/d3be9/double_pointer_img.webp 480w,
+/static/a42980cf0a9cf0f454d6d433bdbce3bc/c5db7/double_pointer_img.webp 505w&quot;
+              sizes=&quot;(max-width: 505px) 100vw, 505px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a42980cf0a9cf0f454d6d433bdbce3bc/09b79/double_pointer_img.jpg 240w,
+/static/a42980cf0a9cf0f454d6d433bdbce3bc/7cc5e/double_pointer_img.jpg 480w,
+/static/a42980cf0a9cf0f454d6d433bdbce3bc/95009/double_pointer_img.jpg 505w&quot;
+            sizes=&quot;(max-width: 505px) 100vw, 505px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a42980cf0a9cf0f454d6d433bdbce3bc/95009/double_pointer_img.jpg&quot;
+            alt=&quot;double_pointer_img.jpeg&quot;
+            title=&quot;double_pointer_img.jpeg&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;p의 값을 출력하면 n의 주소값이 나오고 p가 참조하는 값(*p)을 출력하면 n의 값인 100이 나온다. 이는 p는 n을 참조하고 있기 때문이다.&lt;/p&gt;
+&lt;p&gt;p2의 값을 출력하면 p의 주소값이 나오고 p2가 참조하는 값(*p2)을 출력하면 p의 값이 나오고 p2가 참조하는 값의 참조하는 값(**p2)을 출력하면 n의 값인 100이 나온다.&lt;/p&gt;
+&lt;p&gt;이를 토대로 간단하게 표현하자면 &lt;code class=&quot;language-text&quot;&gt;포인터는 주소값을 저장하고 이를 표현하기 위해서는 \*를 붙히면 된다. 더블 포인터는 포인터를 참조하는 포인터이다.&lt;/code&gt;라고 표현할 수 있다. 근데 무슨 뜻인지 이해하기 어려울 수 있다… 근데 더 쉽게 표현할 방법을 모르겠다.&lt;/p&gt;
+&lt;h3 id=&quot;노드-구조체-선언&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%85%B8%EB%93%9C-%EA%B5%AC%EC%A1%B0%EC%B2%B4-%EC%84%A0%EC%96%B8&quot; aria-label=&quot;노드 구조체 선언 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;노드 구조체 선언&lt;/h3&gt;
+&lt;p&gt;노드를 구성하는 구조체는 다음과 같이 선언한다. 추가적인 정보가 있으면 더 넣어도 되지만 지금은 간단하게 작업할 예정이니 데이터는 int 자료형 하나만 선언한다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;struct&lt;/span&gt; Node{&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; value;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;struct&lt;/span&gt; Node* next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;} Node;&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;새로운-노드-생성&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%85%B8%EB%93%9C-%EC%83%9D%EC%84%B1&quot; aria-label=&quot;새로운 노드 생성 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;새로운 노드 생성&lt;/h3&gt;
+&lt;p&gt;새로운 노드는 생성은 다음과 같다. 동적 메모리 생성(malloc)을 통해 새로운 노드(cNode) 초기화하고 다음 노드(cNode -&gt; Next)는 NULL로 초기화 한다.&lt;/p&gt;
+&lt;p&gt;초기값이 설정된 새로운 노드(cNode)의 포인터형을 반환하는 것으로 새로운 노드 생성은 끝난다.&lt;/p&gt;
+&lt;p&gt;참고로 구조체에서 내부 변수를 접근할 때에는 화살표 접근자 &lt;strong&gt;(-&gt;)&lt;/strong&gt;를 이용하여 접근 할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* cNode = (Node*)&lt;span class=&quot;pl-c1&quot;&gt;malloc&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;sizeof&lt;/span&gt;(Node));&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    cNode -&amp;gt; next = &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt; cNode;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;기존-노드에-새로운-노드-연결하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B8%B0%EC%A1%B4-%EB%85%B8%EB%93%9C%EC%97%90-%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%85%B8%EB%93%9C-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0&quot; aria-label=&quot;기존 노드에 새로운 노드 연결하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;기존 노드에 새로운 노드 연결하기&lt;/h3&gt;
+&lt;p&gt;함수 인자로 헤드의 주소값을 받기 때문에 더블 포인터와 값을 받는다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* new_node = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;();&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    new_node -&amp;gt; value = value;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(*node == &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;        *node = new_node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    } &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;        Node* insert = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L33&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;33&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC33&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L34&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;34&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC34&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(insert -&amp;gt; next != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L35&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;35&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC35&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;            insert = insert -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L36&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;36&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC36&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;        }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L37&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;37&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;        insert -&amp;gt; next = new_node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L38&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L39&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;39&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC39&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;};&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L40&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;40&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC40&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;27번째 줄에서 새로운 노드를 생성하고, 28번째 줄에서 인자로 받은 값을 대입하여 새로운 노드를 완성시켰다.&lt;/p&gt;
+&lt;p&gt;30~31번째 줄에서 *node === NULL의 뜻은 헤드 노드가 있지만 NULL(아무것도 없는 값)이라면 새로운 노드를 헤드 노드로 적용한다.&lt;/p&gt;
+&lt;p&gt;33번째 줄에서 헤드 노드를 Node* insert로 따로 저장하는 이유는 마지막 노드에 연결하기 위해서는 노드를 계속 재선언해야하는데 이를 헤드 노드에 할 경우 이전 노드들이 사라진다. 이를 방지하기 위해 따로 저장한다.&lt;/p&gt;
+&lt;p&gt;35~37번째 줄은 마지막 노드에 새로운 노드를 연결해야하기 때문에 insert노드를 마지막 노드가 될때까지 반복해서 재선언한다.&lt;/p&gt;
+&lt;p&gt;38번째 줄에서는 마지막 노드인 insert에 다음 노드에 새로운 노드를 선언함으로 연결을 완료한다.&lt;/p&gt;
+&lt;h3 id=&quot;노드-전체-출력하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%85%B8%EB%93%9C-%EC%A0%84%EC%B2%B4-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0&quot; aria-label=&quot;노드 전체 출력하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;노드 전체 출력하기&lt;/h3&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;print_node&lt;/span&gt; (Node** node) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* print = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(print != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt; -&amp;gt; &lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, print -&amp;gt; value);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        print = print -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;NULL&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;10번째 줄에서 헤드 노드를 *print에 따로 저장후 출력한다. 위에서 말했듯이 헤드 노드의 변조를 막기 위해서이다.&lt;/p&gt;
+&lt;p&gt;12~15번째 줄에서는 print가 NULL이 될때까지 반복하고 노드의 값을 출력한다.&lt;/p&gt;
+&lt;p&gt;17번째 줄은 마지막 노드가 가르키는 다음 노드는 NULL이기 때문에 이를 표시하기 위해 만들었다. &lt;del&gt;굳이 필요없다&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&quot;특정-노드-삭제하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B9%EC%A0%95-%EB%85%B8%EB%93%9C-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0&quot; aria-label=&quot;특정 노드 삭제하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;특정 노드 삭제하기&lt;/h3&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L71&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;71&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC71&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;delete_node&lt;/span&gt; (Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; target) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L72&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;72&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC72&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* prev;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L73&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;73&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC73&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* del = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L74&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;74&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC74&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L75&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;75&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC75&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(del != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt; &amp;amp;&amp;amp; del -&amp;gt; value == target) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L76&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;76&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC76&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        *node = del -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L77&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;77&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC77&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        delete(del);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L78&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;78&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC78&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L79&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;79&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC79&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L80&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;80&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC80&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L81&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;81&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC81&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(del != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt; &amp;amp;&amp;amp; del -&amp;gt; value != target) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L82&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;82&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC82&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        prev = del;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L83&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;83&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC83&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        del = del -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L84&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;84&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC84&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L85&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;85&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC85&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L86&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;86&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC86&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(del == &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L87&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;87&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC87&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;Didn&apos;t have Node -&amp;gt; Value is &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, target);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L88&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;88&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC88&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L89&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;89&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC89&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L90&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;90&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC90&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        prev -&amp;gt; next = del -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L91&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;91&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC91&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        delete(del);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L92&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;92&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC92&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L93&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;93&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC93&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;72~73번째 줄에서 이전 노드 정보를 저장하는 prev, 전체 노드를 저장하는 del을 선언한다.&lt;/p&gt;
+&lt;p&gt;75-79번째 줄에서 만약 삭제할 특정 노드가 헤드인 경우에는 헤드 노드를 다음 노드로 연결하고 헤드 노드 정보를 지운다(delete함수). 여기서 delete 함수는 동적 메모리로 정의된 변수를 메모리 해제를 해야한다. 안그러면 사용하지 않는 메모리가 계속 자리만 차지하고 있기 때문이다.&lt;/p&gt;
+&lt;p&gt;81~84번째 줄은 특정 노드가 될 때까지 반복해서 del을 다음 노드로 재선언한다. 그와 동시에 현재 del 정보(이전 노드)를 prev에 저장한다.&lt;/p&gt;
+&lt;p&gt;86~93번째 줄에서 만약 del이 NULL이라면 특정 노드가 없는 상태이므로 찾을 수 없다고 반환하고, 그게 아니라면 이전 노드의 다음(prev -&gt; next)에 삭제 예정인 노드의 다음 노드(del -&gt; next)를 연결한다. 그리고 del 노드는 delete!&lt;/p&gt;
+&lt;h3 id=&quot;번외---중간에-새로운-노드-넣기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B2%88%EC%99%B8---%EC%A4%91%EA%B0%84%EC%97%90-%EC%83%88%EB%A1%9C%EC%9A%B4-%EB%85%B8%EB%93%9C-%EB%84%A3%EA%B8%B0&quot; aria-label=&quot;번외   중간에 새로운 노드 넣기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;번외 - 중간에 새로운 노드 넣기&lt;/h3&gt;
+&lt;p&gt;노드 출력과 삭제를 통해 생각할 수 있는건 중간에 새로운 값을 넣을 수 도 있지 않을까? 라는 생각이 들었다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L41&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;41&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC41&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;insert_new_node_middle&lt;/span&gt; (Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; tValue, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; iValue) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L42&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;42&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC42&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* search = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L43&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;43&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC43&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L44&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;44&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC44&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* new_node = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;(); &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; create new node&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L45&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;45&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC45&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    new_node -&amp;gt; value = iValue;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L46&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC46&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L47&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;47&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC47&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(search != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt; &amp;amp;&amp;amp; search -&amp;gt; value != tValue) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L48&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;48&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC48&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        search = search -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L49&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;49&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC49&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L50&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;50&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC50&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L51&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;51&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC51&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(search == &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L52&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;52&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC52&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;NOT FOUND NODE VALUE IS &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, tValue);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L53&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;53&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC53&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L54&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;54&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC54&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L55&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;55&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC55&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    next = search -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L56&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;56&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC56&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L57&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;57&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC57&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L58&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;58&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC58&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    search -&amp;gt; next = new_node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L59&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;59&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC59&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    new_node -&amp;gt; next = next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L60&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;60&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC60&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;42번째 줄은 특정 노드 검색을 위해 헤드 노드를 *search에 따로 선언한다.&lt;/p&gt;
+&lt;p&gt;43번째 줄은 특정 노드의 다음 노드(search -&gt; next)를 저장하기 위해 next를 선언한다.&lt;/p&gt;
+&lt;p&gt;44~45번째 줄은 새로운 노드(new_node)를 만들고 그 노드에 새로운 값(iValue)을 대입한다.&lt;/p&gt;
+&lt;p&gt;47~49번째 줄은 search 노드에 노드 값(search -&gt; value)이 특정 값(tValue)이랑 같을 때까지 재선언한다.&lt;/p&gt;
+&lt;p&gt;51~54번째 줄은 만약 특정 값을 가지는 노드가 없을 경우 값이 없다고 반환한다.&lt;/p&gt;
+&lt;p&gt;55번째 줄은 특정 노드의 다음 노드(search -&gt; next)를 따로 선언한 next 노드에 저장한다.&lt;/p&gt;
+&lt;p&gt;58~59번재 줄은 특정 노드의 다음 노드(search -&gt; next)에 새로운 노드(new&lt;em&gt;node)를 연결하고, new&lt;/em&gt;node에 따로 저장한 다음 노드(next)를 연결한다.&lt;/p&gt;
+&lt;h3 id=&quot;변경---헤드-노드-변경하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B3%80%EA%B2%BD---%ED%97%A4%EB%93%9C-%EB%85%B8%EB%93%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0&quot; aria-label=&quot;변경   헤드 노드 변경하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;변경 - 헤드 노드 변경하기&lt;/h3&gt;
+&lt;p&gt;이번엔 헤드 노드를 새롭게 연결해보자.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L62&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;62&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC62&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;insert_new_node_forward&lt;/span&gt;(Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; value) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L63&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;63&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC63&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* head = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;();&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L64&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;64&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC64&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    head -&amp;gt; value = value;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L65&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;65&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC65&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    head -&amp;gt; next = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L66&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;66&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC66&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L67&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;67&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC67&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    *node = head;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L68&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;68&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC68&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;63~64번째 줄은 새로운 해드 노드가 될 head를 생성하고 새로운 값을 대입한다.&lt;/p&gt;
+&lt;p&gt;65번째 줄 새로운 헤드 노드의 다음을 현재 헤드 노드로 연결한다&lt;/p&gt;
+&lt;p&gt;67번째 줄에서 현재 헤드 노드를 새롭게 만든 헤드 노드로 재선언한다.&lt;/p&gt;
+&lt;h3 id=&quot;마치며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B0&quot; aria-label=&quot;마치며 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치며&lt;/h3&gt;
+&lt;p&gt;C언어를 배울때 많이 포기하는 부분인 포인터, 구조체를 이용해 선형 연결리스트를 만들어 봤다. 이 이외에 원형, 이중, 이중 원형 리스트가 있다.&lt;/p&gt;
+&lt;p&gt;이는 선형 연결리스트 마지막 노드를 헤드 노드로 연결하면 원형 연결리스트, 노드에 이전 노드 정보까지 같이 저장하면 이중 연결리스트, 헤드 노드의 이전 노드에 마지막 노드를, 마지막 노드에 다음 노드를 헤드 노드에 연결하면 이중 원형 연결리스트가 된다.&lt;/p&gt;
+&lt;p&gt;이번 포스트를 제대로 이해했다면 방금 설명을 바탕으로 금방 코딩할 수 있을 것이다.&lt;/p&gt;
+&lt;h3 id=&quot;전체-코드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C&quot; aria-label=&quot;전체 코드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;전체 코드&lt;/h3&gt;
+&lt;p&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;#&lt;span class=&quot;pl-k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;lt;&lt;/span&gt;stdio.h&lt;span class=&quot;pl-pds&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;#&lt;span class=&quot;pl-k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;lt;&lt;/span&gt;stdlib.h&lt;span class=&quot;pl-pds&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;struct&lt;/span&gt; Node{&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; value;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;struct&lt;/span&gt; Node* next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;} Node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;print_node&lt;/span&gt; (Node** node) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* print = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(print != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt; -&amp;gt; &lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, print -&amp;gt; value);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        print = print -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;NULL&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;Node* &lt;span class=&quot;pl-en&quot;&gt;create_node&lt;/span&gt; () {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* cNode = (Node*)&lt;span class=&quot;pl-c1&quot;&gt;malloc&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;sizeof&lt;/span&gt;(Node));&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    cNode -&amp;gt; next = &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt; cNode;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;insert_new_node_last&lt;/span&gt; (Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; value) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* new_node = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;();&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    new_node -&amp;gt; value = value;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(*node == &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        *node = new_node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    } &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        Node* insert = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L33&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;33&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC33&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L34&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;34&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC34&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(insert -&amp;gt; next != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L35&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;35&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC35&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            insert = insert -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L36&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;36&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC36&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L37&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;37&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC37&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        insert -&amp;gt; next = new_node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L38&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L39&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;39&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC39&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;};&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L40&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;40&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC40&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L41&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;41&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC41&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;insert_new_node_middle&lt;/span&gt; (Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; tValue, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; iValue) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L42&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;42&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC42&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* search = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L43&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;43&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC43&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L44&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;44&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC44&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* new_node = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;(); &lt;span class=&quot;pl-c&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;//&lt;/span&gt; create new node&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L45&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;45&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC45&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    new_node -&amp;gt; value = iValue;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L46&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;46&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC46&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L47&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;47&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC47&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(search != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt; &amp;amp;&amp;amp; search -&amp;gt; value != tValue) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L48&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;48&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC48&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        search = search -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L49&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;49&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC49&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L50&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;50&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC50&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L51&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;51&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC51&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(search == &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L52&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;52&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC52&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;NOT FOUND NODE VALUE IS &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, tValue);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L53&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;53&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC53&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L54&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;54&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC54&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L55&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;55&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC55&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    next = search -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L56&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;56&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC56&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L57&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;57&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC57&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L58&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;58&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC58&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    search -&amp;gt; next = new_node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L59&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;59&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC59&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    new_node -&amp;gt; next = next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L60&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;60&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC60&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L61&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;61&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC61&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L62&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;62&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC62&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;insert_new_node_forward&lt;/span&gt;(Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; value) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L63&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;63&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC63&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* head = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;();&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L64&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;64&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC64&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    head -&amp;gt; value = value;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L65&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;65&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC65&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    head -&amp;gt; next = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L66&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;66&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC66&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L67&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;67&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC67&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    *node = head;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L68&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;68&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC68&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L69&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;69&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC69&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L70&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;70&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC70&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L71&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;71&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC71&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;delete_node&lt;/span&gt; (Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; target) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L72&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;72&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC72&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* prev;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L73&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;73&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC73&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* del = *node;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L74&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;74&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC74&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L75&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;75&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC75&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(del != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt; &amp;amp;&amp;amp; del -&amp;gt; value == target) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L76&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;76&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC76&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        *node = del -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L77&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;77&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC77&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        delete(del);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L78&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;78&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC78&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L79&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;79&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC79&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L80&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;80&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC80&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L81&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;81&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC81&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;while&lt;/span&gt;(del != &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt; &amp;amp;&amp;amp; del -&amp;gt; value != target) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L82&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;82&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC82&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        prev = del;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L83&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;83&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC83&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        del = del -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L84&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;84&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC84&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L85&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;85&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC85&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L86&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;86&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC86&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;if&lt;/span&gt;(del == &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;) {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L87&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;87&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC87&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;Didn&amp;#39;t have Node -&amp;gt; Value is &lt;span class=&quot;pl-c1&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, target);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L88&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;88&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC88&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L89&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;89&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC89&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;else&lt;/span&gt; {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L90&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;90&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC90&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        prev -&amp;gt; next = del -&amp;gt; next;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L91&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;91&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC91&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        delete(del);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L92&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;92&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC92&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L93&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;93&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC93&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L94&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;94&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC94&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L95&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;95&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC95&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L96&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;96&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC96&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;main&lt;/span&gt;() {&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L97&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;97&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC97&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* head = &lt;span class=&quot;pl-c1&quot;&gt;NULL&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L98&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;98&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC98&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L99&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;99&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC99&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;새로운 노드 생성...&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L100&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;100&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC100&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_last&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L101&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;101&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC101&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_last&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;2&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L102&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;102&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC102&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_last&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;3&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L103&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;103&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC103&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_last&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;4&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L104&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;104&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC104&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_last&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;5&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L105&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;105&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC105&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L106&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;106&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC106&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;print_node&lt;/span&gt;(&amp;amp;head);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L107&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;107&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC107&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L108&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;108&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC108&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L109&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;109&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC109&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;헤드 노드 삭제...&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L110&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;110&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC110&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;delete_node&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L111&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;111&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC111&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L112&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;112&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC112&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;마지막 노드 삭제...&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L113&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;113&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC113&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;delete_node&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;5&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L114&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;114&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC114&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L115&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;115&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC115&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;중간 노드 삭제(Node -&amp;gt; Value === 3)...&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L116&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;116&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC116&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;delete_node&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;3&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L117&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;117&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC117&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L118&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;118&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC118&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;print_node&lt;/span&gt;(&amp;amp;head);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L119&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;119&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC119&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L120&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;120&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC120&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L121&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;121&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC121&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;값이 2인 노드에 값이 3인 새로운 노드 연결&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L122&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;122&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC122&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_middle&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;pl-c1&quot;&gt;2&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L123&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;123&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC123&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L124&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;124&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC124&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;값이 3인 노드에 값이 2인 새로운 노드 연결&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L125&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;125&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC125&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_middle&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;pl-c1&quot;&gt;3&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L126&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;126&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC126&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L127&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;127&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC127&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;값이 4인 노드에 값이 5인 새로운 노드 연결&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L128&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;128&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC128&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_middle&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;pl-c1&quot;&gt;5&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L129&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;129&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC129&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L130&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;130&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC130&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;print_node&lt;/span&gt;(&amp;amp;head);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L131&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;131&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC131&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L132&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;132&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC132&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L133&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;133&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC133&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;헤드 노드 앞에 값이 1인 새로운 노드 연결&lt;span class=&quot;pl-cce&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L134&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;134&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC134&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;insert_new_node_forward&lt;/span&gt;(&amp;amp;head, &lt;span class=&quot;pl-c1&quot;&gt;1&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L135&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;135&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC135&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L136&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;136&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC136&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;print_node&lt;/span&gt;(&amp;amp;head);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L137&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;137&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC137&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-c1&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;pl-cce&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L138&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;138&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC138&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L139&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;139&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC139&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;0&lt;/span&gt;;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L140&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;140&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC140&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 424px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2b0e2f8c023b85110de05eb8ed14b97c/1cfa9/singly_liked_list.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 116.25000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAACVklEQVQ4y4WV2a7CMAxE+xeIHVr2fd8RiBcQ//8/vjpGE0Wl6D5ETpx0PGM7aTKZTOx8Pttut7PBYGDz+dz6/b6dTidjr9VqWaPR+Br1er3Qn2RZZuPx2EHSNLVer2ftdjv4Op2Of8yo1WpWqVTcCjQPnHS7Xf9wNBrZcDh0q/l0Og2s8e33e3u9XsY3Av1iKECYwgaLjzlym82mM8aylpKfklerlecPAOaAbTYb9/EhQLCRvGq1GsAKJZMzZCERBgDDiDUDwCImv4qUkPzFYhGqi0U2vtls5uAchBkFUVFYM8ReoA4ICPKUH4AARDoWHyoUhDlFomgER0VgSK8BiFTmHBDTw+Fg2+3W14Cs12sPonRwnj1UBEBVmQOKfL/fvQ9LpVKQqB78VzJyGDBjpGkWZMUVzFe2aDhD8kKLwBILY9gpfzQz68vl4uyv16tfVRWTwMfj0a8qbBPJBJAk00ZY1sodQTjzUfBRQ4vJyueSQSf5NPX7/fboXC/8sLzdboEtRSBv5XI55DHObWhsCkIUWKi58bGHj7VaBFB1A/vqDoYz5CDR2YQlMikKbaM9fNqDLXNSwT7p4Aw+z6FeFTbU4DocvzjL5dLZcIaAzPW8sWY4QyRBVxuSQBXj24APFfE1FREsPmfIoXxjq7rKHy1BkUh6vrllQ1HUCvkGj/2AwzC+YkVN7YAkmehKLh/TOtxh7i7Jjh8LGps92COT1DweD1/DNCFq/FLr5db/hTbCyg8A36iheWniFychXxxSEVQQLMnGB0NyzNV8Pp8eQC+3fl6S/QfyFpmHn+v4/AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2b0e2f8c023b85110de05eb8ed14b97c/8ac56/singly_liked_list.webp 240w,
+/static/2b0e2f8c023b85110de05eb8ed14b97c/96b95/singly_liked_list.webp 424w&quot;
+              sizes=&quot;(max-width: 424px) 100vw, 424px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2b0e2f8c023b85110de05eb8ed14b97c/8ff5a/singly_liked_list.png 240w,
+/static/2b0e2f8c023b85110de05eb8ed14b97c/1cfa9/singly_liked_list.png 424w&quot;
+            sizes=&quot;(max-width: 424px) 100vw, 424px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2b0e2f8c023b85110de05eb8ed14b97c/1cfa9/singly_liked_list.png&quot;
+            alt=&quot;singly_linked_list.png&quot;
+            title=&quot;singly_linked_list.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;출처-및-참조&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%9C%EC%B2%98-%EB%B0%8F-%EC%B0%B8%EC%A1%B0&quot; aria-label=&quot;출처 및 참조 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;출처 및 참조&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%97%B0%EA%B2%B0_%EB%A6%AC%EC%8A%A4%ED%8A%B8&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;위키백과_연결리스트&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[C로 자료구조 Stack 만들기 (정적/동적 구현)]]></title><description><![CDATA[아는 동생이 알려달라고 한 C언어로 스택 구현하기]]></description><link>https://www.moong-bee.com/posts/c-stack-programming</link><guid isPermaLink="false">https://www.moong-bee.com/posts/c-stack-programming</guid><pubDate>Mon, 20 Sep 2021 16:37:33 GMT</pubDate><content:encoded>&lt;p&gt;오늘은 아는 동생이 학교에서 배운 자료구조를 C언어를 통해 만들고 싶다고 하여 작성해보는 시간을 가져보자. 맥에서 C 프로그래밍 하는 방법은 &lt;a href=&quot;/posts/c-cpp-use-vscode-in-mac&quot;&gt;여기&lt;/a&gt;를 통해 확인하자!&lt;/p&gt;
 &lt;h3 id=&quot;stack&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#stack&quot; aria-label=&quot;stack permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Stack&lt;/h3&gt;
 &lt;p&gt;우선 Stack(스택)이 무엇이냐 하면. LIFO(Last-In-First-Out)의 성질을 가지고 있는 자료구조이다. &lt;del&gt;늦게 들어온 놈이 처음 나간다!&lt;/del&gt;&lt;/p&gt;
 &lt;div class=&apos;picture&apos;&gt;
