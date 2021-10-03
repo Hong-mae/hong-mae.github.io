@@ -4,7 +4,7 @@ date: '2021-09-20 20:54:38 GMT+0900'
 template: 'post'
 draft: false
 slug: 'create-a-discord-bot-with-js-3'
-category: 'JavaScript'
+category: 'AI/Bot'
 tags:
     - 'lostark'
     - 'discord'
@@ -22,6 +22,8 @@ socialImage: ''
 1. [디스코드 봇 만들기 #1 - 계정 및 프로필 생성](/posts/create-a-discord-bot-with-js-1)
 2. [디스코드 봇 만들기 #2 - 서버 및 기본 명령어 테스트](/posts/create-a-discord-bot-with-js-2)
 3. [디스코드 봇 만들기 #3 - 명령어 추가 및 데이터 사용하기](/posts/create-a-discord-bot-with-js-3)
+4. [디스코드 봇 만들기 #4 - 추가 정보 받기 및 코드 스플릿](/posts/create-a-discord-bot-with-js-4)
+
 
 </details>
 
@@ -121,4 +123,4 @@ client.on('message', message => {
 
 ### 마치며
 
-오늘은 봇에게 명령어를 추가하는 법을 배워보았다. 하지만 여기서 문제는 봇이 명령어를 7~8개 미만으로 사용한다면 문제가 없지만 그 이상일 경우와 외부 라이브러리를 활용해야할 경우 `if/else if`를 사용할 때 코드가 길어지고 보기 싫은 경우가 많다. 다음 포스팅에서는 코드를 파일로 나누어 사용하는 법을 알아보도록 하자.
+오늘은 봇에게 명령어를 추가하는 법을 배워보았다. 특정 명령어에 추가 정보를 더 받아야 하는 경우 어떻게 처리하는지와 봇이 명령어를 7~8개 미만으로 사용한다면 문제가 없지만 그 이상일 경우와 외부 라이브러리를 활용해야할 경우 `if/else if`를 사용할 때 코드가 길어지고 보기 싫은 경우가 많다. 다음 포스팅에서는 코드를 파일로 나누어 사용하는 법을 알아보도록 하자.

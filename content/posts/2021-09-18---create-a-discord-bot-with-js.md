@@ -4,7 +4,7 @@ date: '2021-09-18 04:57:27 GMT+0900'
 template: 'post'
 draft: false
 slug: 'create-a-discord-bot-with-js-2'
-category: 'JavaScript'
+category: 'AI/Bot'
 tags:
     - 'lostark'
     - 'discord'
@@ -22,6 +22,8 @@ socialImage: ''
 1. [디스코드 봇 만들기 #1 - 계정 및 프로필 생성](/posts/create-a-discord-bot-with-js-1)
 2. [디스코드 봇 만들기 #2 - 서버 및 기본 명령어 테스트](/posts/create-a-discord-bot-with-js-2)
 3. [디스코드 봇 만들기 #3 - 명령어 추가 및 데이터 사용하기](/posts/create-a-discord-bot-with-js-3)
+4. [디스코드 봇 만들기 #4 - 추가 정보 받기 및 코드 스플릿](/posts/create-a-discord-bot-with-js-4)
+
 
 </details>
 
