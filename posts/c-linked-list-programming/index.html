@@ -105,7 +105,7 @@
 <p>이 글에서 더블 포인터를 이용하는 이유는 딱히 없다. 보통 전역 변수로 head를 선언하는데 나는 전역 변수 이용하는 걸 딱히 선호하지 않기 때문이다.</p>
 <h3 id="포인터" style="position:relative;"><a href="#%ED%8F%AC%EC%9D%B8%ED%84%B0" aria-label="포인터 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>포인터</h3>
 <p>C언어에서 포인터(Pointer)는 메모리의 주소값을 의미한다. 해당 값을 저장하는 변수를 포인터 변수라고 하며 선언은 <strong>*</strong>을 통해 선언한다.</p>
-<p>int형 포인터 변수는 int<em>, char형 포인터 변수는 char</em> 등…</p>
+<p>int형 포인터 변수는 int*, char형 포인터 변수는 char* 등…</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">int n = 100;
 int* ptr = &amp;n;</code></pre></div>
 <div class='picture'>
@@ -326,7 +326,7 @@ int* ptr = &amp;n;</code></pre></div>
 </div>
 <p>p의 값을 출력하면 n의 주소값이 나오고 p가 참조하는 값(*p)을 출력하면 n의 값인 100이 나온다. 이는 p는 n을 참조하고 있기 때문이다.</p>
 <p>p2의 값을 출력하면 p의 주소값이 나오고 p2가 참조하는 값(*p2)을 출력하면 p의 값이 나오고 p2가 참조하는 값의 참조하는 값(**p2)을 출력하면 n의 값인 100이 나온다.</p>
-<p>이를 토대로 간단하게 표현하자면 <code class="language-text">포인터는 주소값을 저장하고 이를 표현하기 위해서는 \*를 붙히면 된다. 더블 포인터는 포인터를 참조하는 포인터이다.</code>라고 표현할 수 있다. 근데 무슨 뜻인지 이해하기 어려울 수 있다… 근데 더 쉽게 표현할 방법을 모르겠다.</p>
+<p>이를 토대로 간단하게 표현하자면 <code class="language-text">포인터는 주소값을 저장하고 이를 표현하기 위해서는 *를 붙히면 된다. 더블 포인터는 포인터를 참조하는 포인터이다.</code>라고 표현할 수 있다. 근데 무슨 뜻인지 이해하기 어려울 수 있다.. 근데 더 쉽게 표현할 방법을 모르겠다.</p>
 <h3 id="노드-구조체-선언" style="position:relative;"><a href="#%EB%85%B8%EB%93%9C-%EA%B5%AC%EC%A1%B0%EC%B2%B4-%EC%84%A0%EC%96%B8" aria-label="노드 구조체 선언 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>노드 구조체 선언</h3>
 <p>노드를 구성하는 구조체는 다음과 같이 선언한다. 추가적인 정보가 있으면 더 넣어도 되지만 지금은 간단하게 작업할 예정이니 데이터는 int 자료형 하나만 선언한다.</p>
 <p><html><head></head><body><div id="gist112103572" class="gist">
@@ -540,7 +540,10 @@ int* ptr = &amp;n;</code></pre></div>
       
       
       
-      
+      <tr>
+        <td id="file-singly_linked_list-c-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-singly_linked_list-c-LC19" class="blob-code blob-code-inner js-file-line">Node* <span class="pl-en">create_node</span> () {</td>
+      </tr>
       <tr>
         <td id="file-singly_linked_list-c-L20" class="blob-num js-line-number" data-line-number="20"></td>
         <td id="file-singly_linked_list-c-LC20" class="blob-code blob-code-inner js-file-line">    Node* cNode = (Node*)<span class="pl-c1">malloc</span>(<span class="pl-k">sizeof</span>(Node));</td>
@@ -557,11 +560,7 @@ int* ptr = &amp;n;</code></pre></div>
         <td id="file-singly_linked_list-c-L23" class="blob-num js-line-number" data-line-number="23"></td>
         <td id="file-singly_linked_list-c-LC23" class="blob-code blob-code-inner js-file-line">}</td>
       </tr>
-      <tr>
-        <td id="file-singly_linked_list-c-L24" class="blob-num js-line-number" data-line-number="24"></td>
-        <td id="file-singly_linked_list-c-LC24" class="blob-code blob-code-inner js-file-line">
-</td>
-      </tr>
+      
       
       
       
@@ -731,10 +730,13 @@ int* ptr = &amp;n;</code></pre></div>
       
       
       
-      
+      <tr>
+        <td id="file-singly_linked_list-c-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-singly_linked_list-c-LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-k">void</span> <span class="pl-en">insert_new_node_last</span> (Node** node, <span class="pl-k">int</span> value) {</td>
+      </tr>
       <tr>
         <td id="file-singly_linked_list-c-L26" class="blob-num js-line-number" data-line-number="26"></td>
-        <td id="file-singly_linked_list-c-LC26" class="blob-code blob-code-inner js-file-line">    Node* new_node = <span class="pl-c1">create_node</span>();</td>
+        <td id="file-singly_linked_list-c-LC26" class="blob-code blob-code-inner js-file-line highlighted">    Node* new_node = <span class="pl-c1">create_node</span>();</td>
       </tr>
       <tr>
         <td id="file-singly_linked_list-c-L27" class="blob-num js-line-number" data-line-number="27"></td>
@@ -784,17 +786,13 @@ int* ptr = &amp;n;</code></pre></div>
       </tr>
       <tr>
         <td id="file-singly_linked_list-c-L38" class="blob-num js-line-number" data-line-number="38"></td>
-        <td id="file-singly_linked_list-c-LC38" class="blob-code blob-code-inner js-file-line highlighted">    }</td>
+        <td id="file-singly_linked_list-c-LC38" class="blob-code blob-code-inner js-file-line">    }</td>
       </tr>
       <tr>
         <td id="file-singly_linked_list-c-L39" class="blob-num js-line-number" data-line-number="39"></td>
         <td id="file-singly_linked_list-c-LC39" class="blob-code blob-code-inner js-file-line">};</td>
       </tr>
-      <tr>
-        <td id="file-singly_linked_list-c-L40" class="blob-num js-line-number" data-line-number="40"></td>
-        <td id="file-singly_linked_list-c-LC40" class="blob-code blob-code-inner js-file-line">
-</td>
-      </tr>
+      
       
       
       
@@ -1603,7 +1601,7 @@ int* ptr = &amp;n;</code></pre></div>
 <p>47~49번째 줄은 search 노드에 노드 값(search -> value)이 특정 값(tValue)이랑 같을 때까지 재선언한다.</p>
 <p>51~54번째 줄은 만약 특정 값을 가지는 노드가 없을 경우 값이 없다고 반환한다.</p>
 <p>55번째 줄은 특정 노드의 다음 노드(search -> next)를 따로 선언한 next 노드에 저장한다.</p>
-<p>58~59번재 줄은 특정 노드의 다음 노드(search -> next)에 새로운 노드(new<em>node)를 연결하고, new</em>node에 따로 저장한 다음 노드(next)를 연결한다.</p>
+<p>58~59번재 줄은 특정 노드의 다음 노드(search -> next)에 새로운 노드(new_node)를 연결하고, new_node에 따로 저장한 다음 노드(next)를 연결한다.</p>
 <h3 id="변경---헤드-노드-변경하기" style="position:relative;"><a href="#%EB%B3%80%EA%B2%BD---%ED%97%A4%EB%93%9C-%EB%85%B8%EB%93%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0" aria-label="변경   헤드 노드 변경하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>변경 - 헤드 노드 변경하기</h3>
 <p>이번엔 헤드 노드를 새롭게 연결해보자.</p>
 <p><html><head></head><body><div id="gist112103572" class="gist">

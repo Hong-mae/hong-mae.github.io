@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Oct 2021 07:07:32 GMT</lastBuildDate><item><title><![CDATA[C로 자료구조 연결리스트(Linked List) 만들기(use Double Pointer)]]></title><description><![CDATA[자료구조 - 연결리스트에 대해 더블 포인터를 사용해알아보자!]]></description><link>https://www.moong-bee.com/posts/c-linked-list-programming</link><guid isPermaLink="false">https://www.moong-bee.com/posts/c-linked-list-programming</guid><pubDate>Wed, 22 Sep 2021 00:02:45 GMT</pubDate><content:encoded>&lt;p&gt;연결리스트는 노드가 포인터를 가지고 한 줄로 연결되어 있는 방식으로 데이터를 저장하는 자료 구조이다. - 위키백과&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Oct 2021 07:44:21 GMT</lastBuildDate><item><title><![CDATA[C로 자료구조 연결리스트(Linked List) 만들기(use Double Pointer)]]></title><description><![CDATA[자료구조 - 연결리스트에 대해 더블 포인터를 사용해알아보자!]]></description><link>https://www.moong-bee.com/posts/c-linked-list-programming</link><guid isPermaLink="false">https://www.moong-bee.com/posts/c-linked-list-programming</guid><pubDate>Wed, 22 Sep 2021 00:02:45 GMT</pubDate><content:encoded>&lt;p&gt;연결리스트는 노드가 포인터를 가지고 한 줄로 연결되어 있는 방식으로 데이터를 저장하는 자료 구조이다. - 위키백과&lt;/p&gt;
 &lt;p&gt;여기서 노드는 데이터와 포인터 정보를 담는 공간, 포인터는 다음 노드와의 연결을 뜻한다. 여기서 연결이란 다음 노드의 메모리 주소를 저장한다는 의미이다.&lt;/p&gt;
 &lt;div class=&apos;picture&apos;&gt;
 &lt;p&gt;&lt;span
@@ -45,7 +45,7 @@
 &lt;p&gt;이 글에서 더블 포인터를 이용하는 이유는 딱히 없다. 보통 전역 변수로 head를 선언하는데 나는 전역 변수 이용하는 걸 딱히 선호하지 않기 때문이다.&lt;/p&gt;
 &lt;h3 id=&quot;포인터&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8F%AC%EC%9D%B8%ED%84%B0&quot; aria-label=&quot;포인터 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;포인터&lt;/h3&gt;
 &lt;p&gt;C언어에서 포인터(Pointer)는 메모리의 주소값을 의미한다. 해당 값을 저장하는 변수를 포인터 변수라고 하며 선언은 &lt;strong&gt;*&lt;/strong&gt;을 통해 선언한다.&lt;/p&gt;
-&lt;p&gt;int형 포인터 변수는 int&lt;em&gt;, char형 포인터 변수는 char&lt;/em&gt; 등…&lt;/p&gt;
+&lt;p&gt;int형 포인터 변수는 int*, char형 포인터 변수는 char* 등…&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;int n = 100;
 int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&apos;picture&apos;&gt;
@@ -266,7 +266,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;p의 값을 출력하면 n의 주소값이 나오고 p가 참조하는 값(*p)을 출력하면 n의 값인 100이 나온다. 이는 p는 n을 참조하고 있기 때문이다.&lt;/p&gt;
 &lt;p&gt;p2의 값을 출력하면 p의 주소값이 나오고 p2가 참조하는 값(*p2)을 출력하면 p의 값이 나오고 p2가 참조하는 값의 참조하는 값(**p2)을 출력하면 n의 값인 100이 나온다.&lt;/p&gt;
-&lt;p&gt;이를 토대로 간단하게 표현하자면 &lt;code class=&quot;language-text&quot;&gt;포인터는 주소값을 저장하고 이를 표현하기 위해서는 \*를 붙히면 된다. 더블 포인터는 포인터를 참조하는 포인터이다.&lt;/code&gt;라고 표현할 수 있다. 근데 무슨 뜻인지 이해하기 어려울 수 있다… 근데 더 쉽게 표현할 방법을 모르겠다.&lt;/p&gt;
+&lt;p&gt;이를 토대로 간단하게 표현하자면 &lt;code class=&quot;language-text&quot;&gt;포인터는 주소값을 저장하고 이를 표현하기 위해서는 *를 붙히면 된다. 더블 포인터는 포인터를 참조하는 포인터이다.&lt;/code&gt;라고 표현할 수 있다. 근데 무슨 뜻인지 이해하기 어려울 수 있다.. 근데 더 쉽게 표현할 방법을 모르겠다.&lt;/p&gt;
 &lt;h3 id=&quot;노드-구조체-선언&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%85%B8%EB%93%9C-%EA%B5%AC%EC%A1%B0%EC%B2%B4-%EC%84%A0%EC%96%B8&quot; aria-label=&quot;노드 구조체 선언 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;노드 구조체 선언&lt;/h3&gt;
 &lt;p&gt;노드를 구성하는 구조체는 다음과 같이 선언한다. 추가적인 정보가 있으면 더 넣어도 되지만 지금은 간단하게 작업할 예정이니 데이터는 int 자료형 하나만 선언한다.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
@@ -480,7 +480,10 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       
       
       
-      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;Node* &lt;span class=&quot;pl-en&quot;&gt;create_node&lt;/span&gt; () {&lt;/td&gt;
+      &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-singly_linked_list-c-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-singly_linked_list-c-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* cNode = (Node*)&lt;span class=&quot;pl-c1&quot;&gt;malloc&lt;/span&gt;(&lt;span class=&quot;pl-k&quot;&gt;sizeof&lt;/span&gt;(Node));&lt;/td&gt;
@@ -497,11 +500,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         &lt;td id=&quot;file-singly_linked_list-c-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-singly_linked_list-c-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;}&lt;/td&gt;
       &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-singly_linked_list-c-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-singly_linked_list-c-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
-&lt;/td&gt;
-      &lt;/tr&gt;
+      
       
       
       
@@ -671,10 +670,13 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       
       
       
-      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;insert_new_node_last&lt;/span&gt; (Node** node, &lt;span class=&quot;pl-k&quot;&gt;int&lt;/span&gt; value) {&lt;/td&gt;
+      &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-singly_linked_list-c-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-singly_linked_list-c-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    Node* new_node = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;();&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    Node* new_node = &lt;span class=&quot;pl-c1&quot;&gt;create_node&lt;/span&gt;();&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-singly_linked_list-c-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
@@ -724,17 +726,13 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-singly_linked_list-c-L38&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;38&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-singly_linked_list-c-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    }&lt;/td&gt;
+        &lt;td id=&quot;file-singly_linked_list-c-LC38&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    }&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-singly_linked_list-c-L39&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;39&quot;&gt;&lt;/td&gt;
         &lt;td id=&quot;file-singly_linked_list-c-LC39&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;};&lt;/td&gt;
       &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td id=&quot;file-singly_linked_list-c-L40&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;40&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-singly_linked_list-c-LC40&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
-&lt;/td&gt;
-      &lt;/tr&gt;
+      
       
       
       
@@ -1543,7 +1541,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;47~49번째 줄은 search 노드에 노드 값(search -&gt; value)이 특정 값(tValue)이랑 같을 때까지 재선언한다.&lt;/p&gt;
 &lt;p&gt;51~54번째 줄은 만약 특정 값을 가지는 노드가 없을 경우 값이 없다고 반환한다.&lt;/p&gt;
 &lt;p&gt;55번째 줄은 특정 노드의 다음 노드(search -&gt; next)를 따로 선언한 next 노드에 저장한다.&lt;/p&gt;
-&lt;p&gt;58~59번재 줄은 특정 노드의 다음 노드(search -&gt; next)에 새로운 노드(new&lt;em&gt;node)를 연결하고, new&lt;/em&gt;node에 따로 저장한 다음 노드(next)를 연결한다.&lt;/p&gt;
+&lt;p&gt;58~59번재 줄은 특정 노드의 다음 노드(search -&gt; next)에 새로운 노드(new_node)를 연결하고, new_node에 따로 저장한 다음 노드(next)를 연결한다.&lt;/p&gt;
 &lt;h3 id=&quot;변경---헤드-노드-변경하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B3%80%EA%B2%BD---%ED%97%A4%EB%93%9C-%EB%85%B8%EB%93%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0&quot; aria-label=&quot;변경   헤드 노드 변경하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;변경 - 헤드 노드 변경하기&lt;/h3&gt;
 &lt;p&gt;이번엔 헤드 노드를 새롭게 연결해보자.&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
@@ -3832,7 +3830,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
-&lt;p&gt;top은 기존과 같이 -1, capacity는 1, data는 capacit 크기 만큼 동적 메모리를 할당한다.&lt;/p&gt;
+&lt;p&gt;top은 기존과 같이 -1, capacity는 1, data는 capacity 크기 만큼 동적 메모리를 할당한다.&lt;/p&gt;
 &lt;h4 id=&quot;상태-체크---isfull&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%83%81%ED%83%9C-%EC%B2%B4%ED%81%AC---isfull&quot; aria-label=&quot;상태 체크   isfull permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;상태 체크 - isFull&lt;/h4&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
