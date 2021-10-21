@@ -29,5 +29,16 @@
             ""
         ],
         "description": "Log output to console"
+    },
+    "Image Source": {
+        "scope": "markdown",
+        "prefix": "mdImg",
+        "body": [
+            "<div class='picture'>",
+            "",
+            "![$1](/media/$1) _$2_",
+            "",
+            "</div>"
+        ]
     }
 }
