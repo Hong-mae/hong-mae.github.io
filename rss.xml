@@ -1,4 +1,1126 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Oct 2021 09:41:01 GMT</lastBuildDate><item><title><![CDATA[Discord.js를 이용한 디스코드 봇 만들기 #4]]></title><description><![CDATA[파일 시스템을 이용한 코드 분할(Code Splitting)하기!]]></description><link>https://www.moong-bee.com/posts/create-a-discord-bot-with-js-4</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-a-discord-bot-with-js-4</guid><pubDate>Sat, 25 Sep 2021 08:02:18 GMT</pubDate><content:encoded>&lt;details open&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Moong bee`s Dev.log]]></title><description><![CDATA[Moong bee의 개발 스터디 블로그.]]></description><link>https://www.moong-bee.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 21 Oct 2021 17:15:12 GMT</lastBuildDate><item><title><![CDATA[Python을 이용한 고양이 사진 크롤러 만들기! with. Selenium]]></title><description><![CDATA[파이썬을 이용하여 크롤링에 대해 알아보고 고양이 사진 크롤러를 만들어 보자!]]></description><link>https://www.moong-bee.com/posts/python-crawling-with-selenium</link><guid isPermaLink="false">https://www.moong-bee.com/posts/python-crawling-with-selenium</guid><pubDate>Tue, 28 Sep 2021 06:09:33 GMT</pubDate><content:encoded>&lt;p&gt;이전 회사에서 전국 호텔, 객실, 가격 정보를 받아야하는 상황이 있어 찾아보다가 결국 크롤링을 하기로 했다. 그때 예약 사이트를 이용했다.&lt;/p&gt;
+&lt;p&gt;그 당시 크롤링에 대해 전혀 모르는 상태에서 시작해야 했기에 많은 어려움이 있었지만 결과를 얻고 파일로 저장하는 과정이 너무 재밌었다. 그때 그 경험을 바탕으로 이번 포스팅을 시작하겠다.&lt;/p&gt;
+&lt;h3 id=&quot;크롤링crawling이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%81%AC%EB%A1%A4%EB%A7%81crawling%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;크롤링crawling이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;크롤링(Crawling)이란?&lt;/h3&gt;
+&lt;p&gt;웹 크롤러(web crawler)는 조직적, 자동화된 방법으로 웹을 탐색하는 컴퓨터 프로그램이다. - 위키백과&lt;/p&gt;
+&lt;p&gt;설명은 뭔가 거창해보이지만 우리가 자주 이용하는 검색 엔진(네이버, 구글 등)에서도 크롤링을 한다. 우리가 만든 웹 사이트를 배포한다고 끝이 아니라 사람들에게 보여줘야 웹이 활성화 된다.&lt;/p&gt;
+&lt;p&gt;그 과정에서 네이버 서치어드바이저, 구글 서치 콘솔 등에 본인의 웹 사이트를 등록해 자동으로 웹 사이트를 읽어 검색엔진에서 보여주게 된다. &lt;del&gt;sitemap을 만드는 과정이 필요하다.&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;크롤링을 하는 방법은 여러가지가 있다. 그 중 가장 편하게 했던 방법인 &lt;strong&gt;chromedriver&lt;/strong&gt;와 &lt;strong&gt;selenium&lt;/strong&gt;을 파이썬으로 이용하는 방법이다.&lt;/p&gt;
+&lt;h3 id=&quot;chromedriver-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#chromedriver-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;chromedriver 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;chromedriver 설치하기&lt;/h3&gt;
+&lt;p&gt;Chrome이 설치 돼있다는 전제하에 설명하겠다. 우선 현재 설치된 Chrome의 버전을 알아야한다. &lt;/p&gt;
+&lt;p&gt;Chrome을 실행해 주소창에 &lt;code class=&quot;language-text&quot;&gt;chrome://version&lt;/code&gt;을 입력하면 제일 상단에 현재 Chrome의 버전을 알 수 있다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 719px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/542a7fc52c7516cbd3ea9147edfe061e/4a359/check_chrome_version.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAGABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAc2sIB//xAAXEAADAQAAAAAAAAAAAAAAAAACEBEx/9oACAEBAAEFAsGr/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFRABAQAAAAAAAAAAAAAAAAAAEDH/2gAIAQEABj8Cr//EABkQAAIDAQAAAAAAAAAAAAAAAAABEUGBkf/aAAgBAQABPyFq4zXSWf/aAAwDAQACAAMAAAAQ+C//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAgIDAAAAAAAAAAAAAAABABEhcTFBkf/aAAgBAQABPxA6XKMUFaiOt7hZ5fZ//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/542a7fc52c7516cbd3ea9147edfe061e/8ac56/check_chrome_version.webp 240w,
+/static/542a7fc52c7516cbd3ea9147edfe061e/d3be9/check_chrome_version.webp 480w,
+/static/542a7fc52c7516cbd3ea9147edfe061e/05ca6/check_chrome_version.webp 719w&quot;
+              sizes=&quot;(max-width: 719px) 100vw, 719px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/542a7fc52c7516cbd3ea9147edfe061e/09b79/check_chrome_version.jpg 240w,
+/static/542a7fc52c7516cbd3ea9147edfe061e/7cc5e/check_chrome_version.jpg 480w,
+/static/542a7fc52c7516cbd3ea9147edfe061e/4a359/check_chrome_version.jpg 719w&quot;
+            sizes=&quot;(max-width: 719px) 100vw, 719px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/542a7fc52c7516cbd3ea9147edfe061e/4a359/check_chrome_version.jpg&quot;
+            alt=&quot;check_chrome_version.jpeg&quot;
+            title=&quot;check_chrome_version.jpeg&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;chrome version 확인&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;이제 &lt;a href=&quot;https://chromedriver.chromium.org/downloads&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;chromedriver 홈페이지&lt;/a&gt;에서 본인 버전과 같은 버전 링크를 클릭해 다운로드 페이지로 들어간다. &lt;del&gt;나는 94.0.4606.61버전 이므로 해당 버전을 설치했다&lt;/del&gt;&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 818px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d3e7c02c3e25668f54b9fe101598cfb0/64d87/chromedriver_download.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACMklEQVQ4y62TyW4aQRCG5/1fIT7FUrCDOSAsxCYkvCDbLAYHsxqbRcO+LwMz3c2fqiLEysG3tFSqXr/+q7raymazSKVSKJfL6PV6SKfTqFQqiMfjSCaTKJVKKBaLuLu7QywWQyKRwO3tLfL5vPhWqwVuxhjxViQSgd/vRygUQqFQQDQaRbVaw/V1GFdXATl0c3Mj6z6fD8FgEIFAAOFwWOba7fa/QPzHdjgcYDGZO8awHRdGowOFqCh09WfjUcFJxWw2kzRwuLlcDvf39xgOh58KGQjwYS3mOAqNhgvb9qC1glKfxtDFYiGhjsdjdLtd6c/nc1mz+DFGozH6fU23uORdDAYuqfCw23l0GUOUgD3PE+hXTWsN6+zsGwGnJB1kCtmsRiaj8fSk8fFhsNkA2y3gusdDLnWWyyXW6zWtbWhti9VqJeY4Diy//ydtMpQvTSXCQEVeo1bTlCeFhwclF9m2FuBkMqEqqOLt7U3Mtm3J5alvXV5e0E07Ah7w+qqovhR5jWZTC5iNwdvt8UH6/YHUKUOazaZ4Ns4jm+Xz/SCpHh0yVIcKj49KAAxlOCvmeZ7jhxyN+lKnnU4H7+/v4hnEUO5LyI7jol439FsUnp8VXl40jbWAuF+tagIZ7PcMHFIFNP4q5DBPL81j6/z8O4WzJ5ARWCajaLOhTYY2GVKhxXOdcut0upSGX6KuXq8L5JRPNov/putyER8fhnP31S/gNp1ORdFgMBB1XItc1Dxm/xuO2r9kw/go6gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d3e7c02c3e25668f54b9fe101598cfb0/8ac56/chromedriver_download.webp 240w,
+/static/d3e7c02c3e25668f54b9fe101598cfb0/d3be9/chromedriver_download.webp 480w,
+/static/d3e7c02c3e25668f54b9fe101598cfb0/3a941/chromedriver_download.webp 818w&quot;
+              sizes=&quot;(max-width: 818px) 100vw, 818px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d3e7c02c3e25668f54b9fe101598cfb0/8ff5a/chromedriver_download.png 240w,
+/static/d3e7c02c3e25668f54b9fe101598cfb0/e85cb/chromedriver_download.png 480w,
+/static/d3e7c02c3e25668f54b9fe101598cfb0/64d87/chromedriver_download.png 818w&quot;
+            sizes=&quot;(max-width: 818px) 100vw, 818px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d3e7c02c3e25668f54b9fe101598cfb0/64d87/chromedriver_download.png&quot;
+            alt=&quot;94.0.4606.61 버전 드라이브 다운로드&quot;
+            title=&quot;94.0.4606.61 버전 드라이브 다운로드&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;94.0.4606.61 버전 chromedriver 다운로드&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;다운로드 페이지에서 현재 본인의 OS에 맞는 버전을 선택해 다운로드 받고 압축을 푼 실행 파일을 C드라이브나 본인이 기억 할 수 있는 경로에 저장한다. &lt;del&gt;나는 바탕화면에 chromedriver 폴더를 생성해 저장했다.&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&quot;python-설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#python-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;python 설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Python 설치하기&lt;/h3&gt;
+&lt;p&gt;Python 설치에 관련된 &lt;a href=&quot;/posts/install-python&quot;&gt;포스팅&lt;/a&gt;을 확인하자!&lt;/p&gt;
+&lt;h3 id=&quot;크롤링-관련-패키지-설치-및-실행&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B4%80%EB%A0%A8-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%8B%A4%ED%96%89&quot; aria-label=&quot;크롤링 관련 패키지 설치 및 실행 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;크롤링 관련 패키지 설치 및 실행&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ pip install selenium&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Selenium(셀레니움)을 설치하고 &lt;code class=&quot;language-text&quot;&gt;.py&lt;/code&gt;파일을 만들어 다음과 같이 수정한다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;&lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;chrome&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Options&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;common&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Keys&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;수정 후 실행하면 다음과 같이 새로운 크롬 창이 열린다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 818px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a18b1a9ba63ca1e478036c2cf89b7657/64d87/open_chromedriver.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 62.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABfElEQVQ4y+VQ2XaCUAzkS+rG4gIiioC4oKggggt2+d261f6Ux2lurP0C33rPmZPkJplMIgW1GkJXhdzXUJQVWG0HXddHzx/CbNkwmm1G0+z8+UbTolyHarsoV6hXqeKlUEahWIE0b+hIBhqUoIqCLGMyiREnK+S7d/j9AB3bg+P20e64sLs9uN6AY5GbhBGqNZ0HFEsyk0smFRlWDzYhipbU6KDeMFHXzbtax4dutDAYjtGybFajqDW2FVljPMiY0OOJPhyvj2A845XEqrphoUlrmUQiVIwnM16xVFYIKhOVK3dCVatDqzYYUhSnWCQZYcUK890H+8lyjdk8YX+bvyFeZEizDVbrHJvtK/dkq5zrhBCvN6S7jyCJO4TTGNNZzHazfcOciIU/HIX8n2ZbIkyZVOQEWRBMsUw3CKlf3FmcSWwlnU5nHA5HxvF4wuf+gAPZRyws/5Hd/9btKX7kRO35/IXL5Zsh4clPut1uuF6vTwMrFKRPU/j/CH8A137ki/es2JgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a18b1a9ba63ca1e478036c2cf89b7657/8ac56/open_chromedriver.webp 240w,
+/static/a18b1a9ba63ca1e478036c2cf89b7657/d3be9/open_chromedriver.webp 480w,
+/static/a18b1a9ba63ca1e478036c2cf89b7657/3a941/open_chromedriver.webp 818w&quot;
+              sizes=&quot;(max-width: 818px) 100vw, 818px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a18b1a9ba63ca1e478036c2cf89b7657/8ff5a/open_chromedriver.png 240w,
+/static/a18b1a9ba63ca1e478036c2cf89b7657/e85cb/open_chromedriver.png 480w,
+/static/a18b1a9ba63ca1e478036c2cf89b7657/64d87/open_chromedriver.png 818w&quot;
+            sizes=&quot;(max-width: 818px) 100vw, 818px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a18b1a9ba63ca1e478036c2cf89b7657/64d87/open_chromedriver.png&quot;
+            alt=&quot;open_chromedriver.png&quot;
+            title=&quot;open_chromedriver.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;chromedriver 창&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;브라우저-자동-종료-및-중복-실행-방지하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%9E%90%EB%8F%99-%EC%A2%85%EB%A3%8C-%EB%B0%8F-%EC%A4%91%EB%B3%B5-%EC%8B%A4%ED%96%89-%EB%B0%A9%EC%A7%80%ED%95%98%EA%B8%B0&quot; aria-label=&quot;브라우저 자동 종료 및 중복 실행 방지하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;브라우저 자동 종료 및 중복 실행 방지하기&lt;/h3&gt;
+&lt;p&gt;코드를 실행하다보면 웹브라우저가 켜지고 원하지 않는데 꺼지는 경우가 많다. 보통 sleep 이나 입력을 기다리게 해서 방지를 하지만 chrome을 디버깅 모드로 실행시켜 방지하는 방법도 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Windows&lt;/span&gt;
+$ &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;chrome.exe 경로&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; --remote-debugging-port&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;원하는 포트&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; --user-data-dir&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;프로젝트 경로&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# MacOS&lt;/span&gt;
+$ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt; Chrome.app/Contents/MacOS/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt; Chrome --remote-debugging-port&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9222&lt;/span&gt; --user-data-dir&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;프로젝트 경로&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위의 명령어를 실행하면 크롬 창이 하나 뜬다. 그리고 다음과 같이 코드를 작성한다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;&lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;chrome&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Options&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;common&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Keys&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Chrom Setting&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_driver_dir&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;/Users/moongbee/Downloads/chromedriver&quot;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_option&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Options&lt;/span&gt;()&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_option&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;add_experimental_option&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;debuggerAddress&apos;&lt;/span&gt;, &lt;span class=&quot;pl-s&quot;&gt;&apos;localhost:9222&apos;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-v&quot;&gt;Chrome&lt;/span&gt;(&lt;span class=&quot;pl-s1&quot;&gt;chrome_driver_dir&lt;/span&gt;, &lt;span class=&quot;pl-s1&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_option&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;원하는-페이지-열기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9B%90%ED%95%98%EB%8A%94-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%97%B4%EA%B8%B0&quot; aria-label=&quot;원하는 페이지 열기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;원하는 페이지 열기&lt;/h3&gt;
+&lt;p&gt;실행된 크롬 창을 원하는 페이지로 열려면 다음 코드를 작성하여 열 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Open Goggle&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;get&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&quot;https://google.com&quot;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2dbb67664791425e2e03609060630e2b/3c492/open_google.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAABYlAAAWJQFJUiTwAAADu0lEQVQ4y62SX0xbVRzH64vx0fjgYrbJ/w2ha1lbpIxVKNAxYep8MQvy4INPPhgfB/TBpE2kTGVi1MQIIWqUBxMvkWiDJiT6Jn8yRovJFhKnE5b+ubftpb23veecr+ecQsuGSzTxJJ+c3z3n9/v+/pxrO9Xsth17qmagx978vbOr4Vu7w6UMBC4qHd4uxeF0Kc42N8ejtJ1tV8662pVTp1uUuvpGpba2QamR1Cv2M86F4yeebmm1O222N94M2mrrmkJepxMOTys6zvkQuHAR58/3wOXuABfEGYcLDqdb2g2Np1Fb14jGpmZJS6sDnnYvTpyseaU/MGSzAbA521yhru4++Hz9Rd9zvcTl6SA9/n7S1z9A3B4v4UGEZ5d7S6tT4uY+Lk+n5esJlJ71+lDf0DR8dfTtsmDzM/Zwb98FXtkgGRx6iXHQ2zeA5wdfxKUXXob4Hrp0mduX5bmnvZNzDn5fJwt0d9Lebh+On6wbvvLaW2XBmZmZcDy+hVg8TuLxOIvF4vhtawvcxubmJmKxGNbW1rCyuo7V1TXcuLGBzZsbuPrZOrsSWaHXvl7HdCQ4LLSk4PLychjlRTjswDi8GI6evvdjib3+eYF+9auFxflPqoLRaDRMKQUhlEdQtqNaiG4UceuuCfLHHVjaNkjhDraTwC/bq2C/b4MSmVvkoSLRtXffrwouLS3JCilj0uvPFMEPMeC7n/5C/os5sJUJ3Ls9i49/Bua++RJ07iMQwxD1MkIZtSyC69enjgqKnnhO2V0iy7BnUDBNBcw0ioaK6E2Ku0kd2Mvy2tjBJKjobmrqAUFKmbjhgnLt+zJULdEgrcxT+BSLRWYR+s8VWpYFS9xIXybal0FlaMU+OBdVpVMppusGNc0Spqc/ONoyd6xUuP9IsPjwyzaR38IWVFtmorGjLVdnWPbU9/awc28Xqqbxqigy2SwSqSSSqRQM0wQOWnnYDA9XKGzTJFBVA7lsEdlMEem0yTGgckol+u8ED//YlkWh5yzousVFS9C0otyzHMti+4IPeeXFxcVwJpNBIpEguq6zfD4vMYxCBdPct/leKOQrPhzKYzA5OVkVXFhYCKf4bHZ2d0uqqpJMJsvJEE3THuD+M+HDsXgMJiYm7hN8h2dCoVCQpNJpIQ7hmOZkxYMkkxBdiLPynQYRI8jlcohEIq9KQbFGRkYCoVDo07GxsdlgMDgr9tHR0dnx8fEKY4dtfi924SsIh8Mf+v3+Nik4Pz//CNd8jPME5xjnyf+IiHmc82il5f+TvwHIDswpKS/XIQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2dbb67664791425e2e03609060630e2b/8ac56/open_google.webp 240w,
+/static/2dbb67664791425e2e03609060630e2b/d3be9/open_google.webp 480w,
+/static/2dbb67664791425e2e03609060630e2b/e46b2/open_google.webp 960w,
+/static/2dbb67664791425e2e03609060630e2b/063bf/open_google.webp 1300w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2dbb67664791425e2e03609060630e2b/8ff5a/open_google.png 240w,
+/static/2dbb67664791425e2e03609060630e2b/e85cb/open_google.png 480w,
+/static/2dbb67664791425e2e03609060630e2b/d9199/open_google.png 960w,
+/static/2dbb67664791425e2e03609060630e2b/3c492/open_google.png 1300w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2dbb67664791425e2e03609060630e2b/d9199/open_google.png&quot;
+            alt=&quot;open_google.png&quot;
+            title=&quot;open_google.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;구글 접속하기&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;특정-태그를-선택하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%8A%B9%EC%A0%95-%ED%83%9C%EA%B7%B8%EB%A5%BC-%EC%84%A0%ED%83%9D%ED%95%98%EA%B8%B0&quot; aria-label=&quot;특정 태그를 선택하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;특정 태그를 선택하기&lt;/h3&gt;
+&lt;p&gt;특정 태그를 찾을 때에는 여러가지 방법이 있다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;find_element_~~~~ : 한개만 선택&lt;/li&gt;
+&lt;li&gt;find_elements_by_~~~~ : 복수개 선택&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;태그에 id는 중복해서 작성하지 않기 때문에 1번을 class 관련해서 선택할 경우 중복이 많기 때문에 2번을 많이 사용한다.&lt;/p&gt;
+&lt;p&gt;~~~~에도 여러가지가 있다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;find_element(s)_by_id : id 속성으로 태그 검색&lt;/li&gt;
+&lt;li&gt;find_element(s)_by_class_name : class 속성으로 태그 검색&lt;/li&gt;
+&lt;li&gt;find_element(s)_by_css_selector: css 형식의 속성으로 태그 검색&lt;/li&gt;
+&lt;li&gt;find_element(s)_by_xpath : XML 요소 선택으로 태그 검색&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이 외에도 몇가지 있지만 자주 사용되는 것으로 사용할 예정이다.&lt;/p&gt;
+&lt;h3 id=&quot;고양이-검색하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B3%A0%EC%96%91%EC%9D%B4-%EA%B2%80%EC%83%89%ED%95%98%EA%B8%B0&quot; aria-label=&quot;고양이 검색하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;고양이 검색하기&lt;/h3&gt;
+&lt;p&gt;고양이를 검색하기 위해 검색어를 입력하는 input 창을 찾아야한다. input 태그의 속성을 확인하면(ctrl/cmd + shift + c 후 input창 클릭) class 등 많은 정보를 확인 할 수 있다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/560d969c4daf68c306828bcbe91806a5/de9fe/check_input_tag.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 94.16666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAABYlAAAWJQFJUiTwAAAEZklEQVQ4y51US2/cVBi1KEIgVARUajWeZDwez3ienrE9fubRSZs0LW2qDNkgFhRYILFDlC4Q/wGVv8CaHWlC0jZRkKioOoKqUAkJhTZ9kmaSel4hnca+h8+Tx6asuNLRlS373HPP952P47hXD2SS4ngqk5py3eFqsaRXVc2olg27ms0Vq0Jc2kXiPyBV+2NiNdoXe1cQEpP07k2Oe+Xtw5ZW3ChbZVRGxuC4Q8jlSyAyyOkc4mISYiKFhCS/gPC9LGeRyRZAApCSMye5Nw4e5CvHTtRPvXMWo2On/PGTp4OxE6eC46PjwcjIaGDbg0HZcAJVNQJNtwKtbO9D1e1AN9zApG9sdxjpTG6CU1WNX15ertPC6upqcOfuCvv70UP26x/32WffPmJffv0dKykFlkjnmWG6zDZtZlkuc22XDRplpmkmPTtML5UQ7Y+f4VzX5be2turYWcHujuc+Q5f22ctLiEZjGLYtjJAtA7qKiqlj1FRx3CyhohfYUV1hTjGHSCQywdm2zTebzToY0O36ge8HYGyfF4sLC+CjAjLka9EcgmsYcGwXqqpDVspIJDOMvGRx8jMej09wpmHy7U67vtncxKMHXrBW99Bod7C68aRHeHVhEdEID0lKoWgNYcB2cMw2MGrrMMs6NOcok6UkS4gJpFIpIjQNvtPp1DudFjrtBsl7hpsPtvDDzBJQf4C5n2/hdeU03ipXIRw7h8z4xygefw/psXPIjX+I3IkPWKLyPosNTEGUiNAwLb7TbtcfrjVw++5acPvOY1z/8wnu15/1FM78dAsHnE/w2vCniJ+9gHz1c2QmzyM59RWkyQuIT5xnwsQXLDryEfiYOMFZjsu3yMOHT//BL3+tB7/f9/DbvadYfrzRI7xydRGRvjjEtAJZtZHN5Hr9mSlokNJ5CIl0z0OB+jXC80RoWXybFIKq0m42A7/bxSZ52PCaO0VZJA/7YiiUdDimDZ2K4egayqqKUkGBmqd2UvIsm06DDwnDKrfbrTqjKjeb3aDZfA7P6xK2dhReuYIYnV4qO6AGhmUPwHEGoZkuCqqBIvVhoWQwhQ4UBKqy4zh8q9V6oQ/3Wmdp6UckKWZhxBJSejd2aSRTGSST6TB2LJtTmFJUKXrynsJ2fYeEBaHSEL7v7xOmdAMpRUWaMpvJKr0MhxkPQQOC0SEsly9CFKkoYVI8z6MrMwQ7K9yxvb29W5QFCKYFja5aIFKJVBHJPoiUhaQ0aXY8HBwc5FdWVp6EWfa8xrbXaPh0gL++vkH16frfT1/y46blG0MVP1/UfOo1nxT5ROQT0T7iosR4PnomrHJ0fX29s7m5iUajgVarDbKAyL2e0vn5y4hbNkpDFaToWqlsnkabAok83Btte4hGo5OcLMuH5ubmLlF73Jyenr4xMzNTm5+fr83OztauXbtWu3jxm5ogSjVJkmv9fUItEonWInxfjef7azQ0wv1GTBBrNLquHz5yxOFovUSgScsdIRz+nwj/PUR4+V/WiPyFoDHjJwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/560d969c4daf68c306828bcbe91806a5/8ac56/check_input_tag.webp 240w,
+/static/560d969c4daf68c306828bcbe91806a5/d3be9/check_input_tag.webp 480w,
+/static/560d969c4daf68c306828bcbe91806a5/e46b2/check_input_tag.webp 960w,
+/static/560d969c4daf68c306828bcbe91806a5/f992d/check_input_tag.webp 1440w,
+/static/560d969c4daf68c306828bcbe91806a5/882b9/check_input_tag.webp 1920w,
+/static/560d969c4daf68c306828bcbe91806a5/e9d87/check_input_tag.webp 2146w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/560d969c4daf68c306828bcbe91806a5/8ff5a/check_input_tag.png 240w,
+/static/560d969c4daf68c306828bcbe91806a5/e85cb/check_input_tag.png 480w,
+/static/560d969c4daf68c306828bcbe91806a5/d9199/check_input_tag.png 960w,
+/static/560d969c4daf68c306828bcbe91806a5/07a9c/check_input_tag.png 1440w,
+/static/560d969c4daf68c306828bcbe91806a5/29114/check_input_tag.png 1920w,
+/static/560d969c4daf68c306828bcbe91806a5/de9fe/check_input_tag.png 2146w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/560d969c4daf68c306828bcbe91806a5/d9199/check_input_tag.png&quot;
+            alt=&quot;check_input_tag.png&quot;
+            title=&quot;check_input_tag.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;input 태그 속성 확인&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;input 태그에 id 속성이 없기 때문에 class, css-selector, xpath 속성으로 검색해야한다. 따라서 다음의 코드로 input 태그를 선택하고 &lt;code class=&quot;language-text&quot;&gt;고양이&lt;/code&gt;로 채우고 검색한다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Search Cat&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;search_input&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;find_element_by_css_selector&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;input.gLFyf.gsfi&apos;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;search_input&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;send_keys&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;고양이&apos;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;search_input&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;send_keys&lt;/span&gt;(&lt;span class=&quot;pl-v&quot;&gt;Keys&lt;/span&gt;.&lt;span class=&quot;pl-v&quot;&gt;ENTER&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;이미지-탭-클릭하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%83%AD-%ED%81%B4%EB%A6%AD%ED%95%98%EA%B8%B0&quot; aria-label=&quot;이미지 탭 클릭하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이미지 탭 클릭하기&lt;/h3&gt;
+&lt;p&gt;이미지 탭을 클릭하기 위해 상단 “이미지” 부분의 요소를 찾아보자&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/96df83a9b83b981a16540c4a3a70fadf/cb1ac/check_image_tab_attr.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAADB0lEQVQ4y6WTS08bVxTHHR6JXXVRQpvUBns89sydx52H5409xcaUhLS7JCqRICgiUpZZYLXq5+h3aCXWIVGlFmZRdVlqsYEFyarZIGoqpUhtyPU9PTMUsskuV/rp3LOY/5xz/ufmcnisev0ry65/25xtr8dxp9eK272G4/cs2+1JstqrCLVeuSJmpPe3iD2hWlsvl6vfYP6oUCiMp3oFz2zshZEHrdkOtDvz0Io74HpRBjVsIIoOqmaCqpugaAYoqgHkfySig2G5YFruv/l8oZgKfqhRa8f1ZkDTzFOEeX7EdGplGIbNUJQ5js8sSpkkVlkYRCz0XNZ0XeY53hu8g9Nwjq7k8+VMkBCt3+l0odlusbpCeMMJuKLSDKJQTnWDC2bMJ+g8n6RdLnWXuXVjlfs3MXbvDcnsEkj+wuByLncmWBWlvkIdWP36Mbu9tgJBEIEfNiFAwqgFqqpDhYYw5X8BpH0HaHcJ3MX7YC0sQ/Dl2tC59QDM1q1B7lywJin9qNmG3d1d9sfLl3Bw8Byev3gBe3v78NvO73Dn7hKUiiXQCAFDw3nKBHRFARVz27KGlkHBNIzBlXzhvEK5H8Wfp0Ls5OQEXr8+hVev/oY/B8cwOP4LlldWQazhxw0fdGpnBgmijGbRNB9Ss5GaN7g8PnYmKMlaf25+EQ4PDxm846w9fAQyOu3NxOB4IdiOj6IGmDaa4YZDXC8gRB2Mjo6cCeLf+04Qw/c/bLDNzWf8CfLTz9t8ayvhmz8+5Qs3F7kgStwOmxyr4UK1znHuaJjOcROG6WqpGh2MjFy6aHmHYBuVqnxamhZZcarKrhUrbPKTErs6eZ2VSmWGjjOsiGE1TNNNhhVma4UP4I3jBtiydXRhikTofjrDsDUPM5/dgACjPzOHcQHbi9BlCgpW0cDFD+J21nJdUhEF8CWBTDSMyj/j42OVVDAvCOJ3rhf82nC8LSRJIYqaVMVaItakpIZMi/VE8INEd/xEVrTk+qelc7aRX4rFqQ0U/DgnCEL2/JCP3oMJ5ANk5D/OYm+bSMSOgQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/96df83a9b83b981a16540c4a3a70fadf/8ac56/check_image_tab_attr.webp 240w,
+/static/96df83a9b83b981a16540c4a3a70fadf/d3be9/check_image_tab_attr.webp 480w,
+/static/96df83a9b83b981a16540c4a3a70fadf/e46b2/check_image_tab_attr.webp 960w,
+/static/96df83a9b83b981a16540c4a3a70fadf/f992d/check_image_tab_attr.webp 1440w,
+/static/96df83a9b83b981a16540c4a3a70fadf/882b9/check_image_tab_attr.webp 1920w,
+/static/96df83a9b83b981a16540c4a3a70fadf/cb61f/check_image_tab_attr.webp 1936w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/96df83a9b83b981a16540c4a3a70fadf/8ff5a/check_image_tab_attr.png 240w,
+/static/96df83a9b83b981a16540c4a3a70fadf/e85cb/check_image_tab_attr.png 480w,
+/static/96df83a9b83b981a16540c4a3a70fadf/d9199/check_image_tab_attr.png 960w,
+/static/96df83a9b83b981a16540c4a3a70fadf/07a9c/check_image_tab_attr.png 1440w,
+/static/96df83a9b83b981a16540c4a3a70fadf/29114/check_image_tab_attr.png 1920w,
+/static/96df83a9b83b981a16540c4a3a70fadf/cb1ac/check_image_tab_attr.png 1936w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/96df83a9b83b981a16540c4a3a70fadf/d9199/check_image_tab_attr.png&quot;
+            alt=&quot;check_image_tab_attr.png&quot;
+            title=&quot;check_image_tab_attr.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;id도 없고.. class도 없고… 따라서 css-selector 또는 xpath를 이용해야한다. xpath를 이용해서 코드를 작성해보자.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Goto Image&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;image_tab&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;//*[@id=&quot;hdtb-msb&quot;]/div[1]/div/div[2]/a&apos;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;image_tab&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;click&lt;/span&gt;()&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;첫번째-이미지-정보-가져오기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B2%AB%EB%B2%88%EC%A7%B8-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0&quot; aria-label=&quot;첫번째 이미지 정보 가져오기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;첫번째 이미지 정보 가져오기&lt;/h3&gt;
+&lt;p&gt;첫번째 이미지 태그를 가져오는 코드는 다음과 같다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Get First Image&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;//*[@id=&quot;islrg&quot;]/div[1]/div[1]/a[1]/div[1]/img&apos;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;p&gt;위의 코드로 이미지 태그를 가져 올 수 있고 해당 정보를 잘 가져오는지 print를 통해 출력해보자&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Print Image src attribute&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-en&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;pl-s1&quot;&gt;image&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;get_attribute&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;src&apos;&lt;/span&gt;))&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cb6990f6d39174c21a42778f8d01155a/263f4/print_img_src.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.499999999999996%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAtklEQVQY002PyQqAQAxD54MUcQHx4EFw3zf8/z+JvMKIh0zbNGk7Lo5jJUmiKIqU57n6vldd1yqKwvgsyyzvus5QlqXwpGmqIAgUhqHpqqpS0zRyz/Poui7d923Y913neeo4DotgWRbDtm2a51nrulqcpunTwdF34zjaRVyGgCvIGUDetu1Xo/X9YRiMI/7heBjERjYgxgjg/CCA7t+jxk/to+MCCjYj8MPhfM8b/vCL+arX4HsBpxu3c8Cnpu0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/cb6990f6d39174c21a42778f8d01155a/8ac56/print_img_src.webp 240w,
+/static/cb6990f6d39174c21a42778f8d01155a/d3be9/print_img_src.webp 480w,
+/static/cb6990f6d39174c21a42778f8d01155a/e46b2/print_img_src.webp 960w,
+/static/cb6990f6d39174c21a42778f8d01155a/f992d/print_img_src.webp 1440w,
+/static/cb6990f6d39174c21a42778f8d01155a/882b9/print_img_src.webp 1920w,
+/static/cb6990f6d39174c21a42778f8d01155a/ced91/print_img_src.webp 1996w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/cb6990f6d39174c21a42778f8d01155a/8ff5a/print_img_src.png 240w,
+/static/cb6990f6d39174c21a42778f8d01155a/e85cb/print_img_src.png 480w,
+/static/cb6990f6d39174c21a42778f8d01155a/d9199/print_img_src.png 960w,
+/static/cb6990f6d39174c21a42778f8d01155a/07a9c/print_img_src.png 1440w,
+/static/cb6990f6d39174c21a42778f8d01155a/29114/print_img_src.png 1920w,
+/static/cb6990f6d39174c21a42778f8d01155a/263f4/print_img_src.png 1996w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/cb6990f6d39174c21a42778f8d01155a/d9199/print_img_src.png&quot;
+            alt=&quot;print_img_src.png&quot;
+            title=&quot;print_img_src.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;만약 src가 url형식이라면 url이 출력되고 이미지의 경우 base64 인코딩된 정보가 src에 있기 때문에 해당 정보가 뜨는 것이다.&lt;/p&gt;
+&lt;h3 id=&quot;가져온-이미지-저장하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B0%80%EC%A0%B8%EC%98%A8-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0&quot; aria-label=&quot;가져온 이미지 저장하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;가져온 이미지 저장하기&lt;/h3&gt;
+&lt;p&gt;그럼 src 정보를 바탕으로 이미지를 저장하려면 어떻게 해야하나!&lt;/p&gt;
+&lt;p&gt;urllib에 있는 기능을 이용하여 다운 받을 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
+      &lt;tbody&gt;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Print Image src attribute&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-en&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;pl-s1&quot;&gt;image&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;get_attribute&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;src&apos;&lt;/span&gt;))&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;urllib&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;urlretrieve&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      
+      
+&lt;/tbody&gt;&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;&lt;/p&gt;
+&lt;h3 id=&quot;전체-코드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C&quot; aria-label=&quot;전체 코드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;전체 코드&lt;/h3&gt;
+&lt;p&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
+    &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
+      &lt;div class=&quot;gist-data&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+  &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
+    
+  &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
+
+      
+&lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;selenium&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-s1&gt;webdriver&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;selenium&lt;/span&gt;.&lt;span class=pl-s1&gt;webdriver&lt;/span&gt;.&lt;span class=pl-s1&gt;chrome&lt;/span&gt;.&lt;span class=pl-s1&gt;options&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-v&gt;Options&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;selenium&lt;/span&gt;.&lt;span class=pl-s1&gt;webdriver&lt;/span&gt;.&lt;span class=pl-s1&gt;common&lt;/span&gt;.&lt;span class=pl-s1&gt;keys&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-v&gt;Keys&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Chrom Setting&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;chrome_driver_dir&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;/Users/moongbee/Downloads/chromedriver&amp;quot;&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;chrome_option&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;Options&lt;/span&gt;()&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;chrome_option&lt;/span&gt;.&lt;span class=pl-en&gt;add_experimental_option&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;debuggerAddress&amp;#39;&lt;/span&gt;, &lt;span class=pl-s&gt;&amp;#39;localhost:9222&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;driver&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;webdriver&lt;/span&gt;.&lt;span class=pl-v&gt;Chrome&lt;/span&gt;(&lt;span class=pl-s1&gt;chrome_driver_dir&lt;/span&gt;, &lt;span class=pl-s1&gt;options&lt;/span&gt;&lt;span class=pl-c1&gt;=&lt;/span&gt;&lt;span class=pl-s1&gt;chrome_option&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Open Goggle&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;get&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;quot;https://google.com&amp;quot;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Search Cat&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;search_input&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;find_element_by_css_selector&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;input.gLFyf.gsfi&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;search_input&lt;/span&gt;.&lt;span class=pl-en&gt;send_keys&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;고양이&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;search_input&lt;/span&gt;.&lt;span class=pl-en&gt;send_keys&lt;/span&gt;(&lt;span class=pl-v&gt;Keys&lt;/span&gt;.&lt;span class=pl-v&gt;ENTER&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Goto Image&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;image_tab&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;//*[@id=&amp;quot;hdtb-msb&amp;quot;]/div[1]/div/div[2]/a&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;image_tab&lt;/span&gt;.&lt;span class=pl-en&gt;click&lt;/span&gt;()&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Get First Image&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;image&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;//*[@id=&amp;quot;islrg&amp;quot;]/div[1]/div[1]/a[1]/div[1]/img&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC25&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L26&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Print Image src attribute&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L27&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-en&gt;print&lt;/span&gt;(&lt;span class=pl-s1&gt;image&lt;/span&gt;.&lt;span class=pl-en&gt;get_attribute&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;src&amp;#39;&lt;/span&gt;))&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L28&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC28&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L29&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;urllib&lt;/span&gt;.&lt;span class=pl-s1&gt;request&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-s1&gt;urlretrieve&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L30&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC30&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;
+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L31&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Download Image&lt;/span&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-L32&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-open_chromedriver-py-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-en&gt;urlretrieve&lt;/span&gt;(&lt;span class=pl-s1&gt;image&lt;/span&gt;.&lt;span class=pl-en&gt;get_attribute&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;src&amp;#39;&lt;/span&gt;), &lt;span class=pl-s&gt;&amp;quot;[파일 저장할 경로]/[파일명.확장자]&amp;quot;&lt;/span&gt;)&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/table&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div class=&quot;gist-meta&quot;&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e/raw/678e722884f3b93be17441e3c945bdb8ff84711f/open_chromedriver.py&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/98c30b099cc560e2590c5ad01c64604e#file-open_chromedriver-py&quot;&gt;
+          open_chromedriver.py
+        &lt;/a&gt;
+        hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&quot;출처-및-참조&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B6%9C%EC%B2%98-%EB%B0%8F-%EC%B0%B8%EC%A1%B0&quot; aria-label=&quot;출처 및 참조 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;출처 및 참조&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%9B%B9_%ED%81%AC%EB%A1%A4%EB%9F%AC&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;웹_크롤러 - 위키백과&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Discord.js를 이용한 디스코드 봇 만들기 #4]]></title><description><![CDATA[파일 시스템을 이용한 코드 분할(Code Splitting)하기!]]></description><link>https://www.moong-bee.com/posts/create-a-discord-bot-with-js-4</link><guid isPermaLink="false">https://www.moong-bee.com/posts/create-a-discord-bot-with-js-4</guid><pubDate>Sat, 25 Sep 2021 08:02:18 GMT</pubDate><content:encoded>&lt;details open&gt;
   &lt;summary&gt;리스트&lt;/summary&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;/posts/create-a-discord-bot-with-js-1&quot;&gt;디스코드 봇 만들기 #1 - 계정 및 프로필 생성&lt;/a&gt;&lt;/li&gt;
@@ -105,7 +1227,9 @@
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/index_5.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_5-js&quot;&gt;index_5.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_5-js&quot;&gt;
+          index_5.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -254,7 +1378,9 @@
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/ping.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-ping-js&quot;&gt;ping.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-ping-js&quot;&gt;
+          ping.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -459,7 +1585,9 @@
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/index_6.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_6-js&quot;&gt;index_6.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_6-js&quot;&gt;
+          index_6.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -680,7 +1808,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/b8875e788cb77dc30df5c5bdeb5785f1/raw/d068c06b9eb2a049f2092fb684558659ac769758/double_pointer.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/b8875e788cb77dc30df5c5bdeb5785f1#file-double_pointer-c&quot;&gt;double_pointer.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/b8875e788cb77dc30df5c5bdeb5785f1#file-double_pointer-c&quot;&gt;
+          double_pointer.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -954,7 +2084,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1140,7 +2272,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1356,7 +2490,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1561,7 +2697,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1804,7 +2942,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -2041,7 +3181,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -2239,7 +3381,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -2868,7 +4012,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287/raw/957ca493c330dd9b542c7db4b384298b7477b973/singly_linked_list.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;singly_linked_list.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f8247b6b3cd4242b07b0e8d6f2b69287#file-singly_linked_list-c&quot;&gt;
+          singly_linked_list.c
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3075,7 +4221,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3181,7 +4329,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3294,7 +4444,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3397,7 +4549,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3500,7 +4654,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3603,7 +4759,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -3773,7 +4931,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4108,7 +5268,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/static_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;static_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-static_stack-c&quot;&gt;
+          static_stack.c
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4227,7 +5389,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/dynamic_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;dynamic_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;
+          dynamic_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4336,7 +5500,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/dynamic_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;dynamic_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;
+          dynamic_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4439,7 +5605,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/dynamic_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;dynamic_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;
+          dynamic_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4554,7 +5722,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/dynamic_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;dynamic_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;
+          dynamic_stack.c
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4858,7 +6028,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3/raw/2378b2248c4bd08b800d680fa8ce6d2cfed80a08/dynamic_stack.c&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;dynamic_stack.c&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c59c91508854350e63e1c98b6c61eca3#file-dynamic_stack-c&quot;&gt;
+          dynamic_stack.c
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -4890,15 +6062,15 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;table class=&quot;highlight tab-size js-file-line-container&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot;&gt;
       &lt;tbody&gt;&lt;tr&gt;
         &lt;td id=&quot;file-package-json-L1&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-package-json-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;...&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-ii&quot;&gt;...&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-package-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;script&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: {&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-ent&quot;&gt;&quot;script&quot;&lt;/span&gt;: {&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-package-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;start&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;nodemon ./index.js&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;    &lt;span class=&quot;pl-ent&quot;&gt;&quot;start&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;nodemon ./index.js&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
@@ -4906,7 +6078,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-package-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;...&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-ii&quot;&gt;...&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
 &lt;/tbody&gt;&lt;/table&gt;
 
@@ -4919,7 +6091,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/package.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-package-json&quot;&gt;package.json&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-package-json&quot;&gt;
+          package.json
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -5017,7 +6191,9 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/index_1.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_1-js&quot;&gt;index_1.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_1-js&quot;&gt;
+          index_1.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -5156,7 +6332,9 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/index_2.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_2-js&quot;&gt;index_2.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_2-js&quot;&gt;
+          index_2.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -5272,7 +6450,9 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/index_3.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_3-js&quot;&gt;index_3.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_3-js&quot;&gt;
+          index_3.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -5381,7 +6561,9 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26/raw/9eb99ca4a86d2ed6007d2f2a3195600499c4fcb5/index_4.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_4-js&quot;&gt;index_4.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/db5af16c0cafde0c2679b2fd2e944a26#file-index_4-js&quot;&gt;
+          index_4.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6016,15 +7198,15 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-config-json-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-config-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;prefix&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;!&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;prefix&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;!&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-config-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-config-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;discord_token&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~~~&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;discord_token&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~~~&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-config-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-config-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;discord_channel_id&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~~~&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-config-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;	&lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;discord_channel_id&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;~~~&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-config-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
@@ -6041,7 +7223,9 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92/raw/8132623e20d90e440c63cda76215076ba6fff298/config.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-config-json&quot;&gt;config.json&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-config-json&quot;&gt;
+          config.json
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6165,7 +7349,9 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92/raw/8132623e20d90e440c63cda76215076ba6fff298/index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-index-js&quot;&gt;index.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-index-js&quot;&gt;
+          index.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6191,11 +7377,11 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-package-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;script&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: {&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;script&amp;quot;&lt;/span&gt;: {&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-package-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;start&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;node index.js&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-package-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;start&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;node index.js&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-package-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
@@ -6220,7 +7406,9 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92/raw/8132623e20d90e440c63cda76215076ba6fff298/package.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-package-json&quot;&gt;package.json&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/43c06d5cecec2fd08937abc1b55d3a92#file-package-json&quot;&gt;
+          package.json
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6320,7 +7508,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/f0c8a33bf00ffcd8191a0ff9737bc414/raw/c3eb3c8201aa92526facd983319776328401272e/index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/f0c8a33bf00ffcd8191a0ff9737bc414#file-index-js&quot;&gt;index.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/f0c8a33bf00ffcd8191a0ff9737bc414#file-index-js&quot;&gt;
+          index.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6576,7 +7766,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a/raw/19d1b7c391447605a7ede29db71d3c8e622253d0/helloworld.cpp&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a#file-helloworld-cpp&quot;&gt;helloworld.cpp&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a#file-helloworld-cpp&quot;&gt;
+          helloworld.cpp
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6599,11 +7791,11 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;version&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;2.0.0&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;2.0.0&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;tasks&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: [&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;  &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;tasks&amp;quot;&lt;/span&gt;: [&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
@@ -6611,19 +7803,19 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;type&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;cppbuild&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;cppbuild&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;label&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;C/C++: clang++ 활성 파일 빌드&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;label&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;C/C++: clang++ 활성 파일 빌드&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;command&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;/usr/bin/clang++&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;command&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;/usr/bin/clang++&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;args&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: [&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;: [&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
@@ -6647,11 +7839,11 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;options&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: {&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;options&amp;quot;&lt;/span&gt;: {&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;cwd&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;${fileDirname}&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;cwd&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;${fileDirname}&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
@@ -6659,19 +7851,19 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;problemMatcher&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: [&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;$gcc&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;],&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;problemMatcher&amp;quot;&lt;/span&gt;: [&lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;$gcc&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;],&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;group&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: {&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;group&amp;quot;&lt;/span&gt;: {&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;kind&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;build&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;build&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;isDefault&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;true&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;isDefault&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;true&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L21&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
@@ -6679,7 +7871,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L22&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-task-json-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;detail&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;컴파일러: /usr/bin/clang++&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-task-json-LC22&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;&amp;quot;detail&amp;quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;컴파일러: /usr/bin/clang++&lt;span class=&quot;pl-pds&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-task-json-L23&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
@@ -6704,7 +7896,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a/raw/19d1b7c391447605a7ede29db71d3c8e622253d0/task.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a#file-task-json&quot;&gt;task.json&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a#file-task-json&quot;&gt;
+          task.json
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -6872,23 +8066,23 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L2&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;IntelliSense를&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;사용하여&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;가능한&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;특성에&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;대해&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;알아보세요.&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;// IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L3&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;기존&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;특성에&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;대한&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;설명을&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;보려면&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;가리킵니다.&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;// 기존 특성에 대한 설명을 보려면 가리킵니다.&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L4&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;자세한&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;내용을&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;보려면&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;https&lt;/span&gt;:&lt;span class=&quot;pl-ii&quot;&gt;//go.microsoft.com/fwlink/?linkid=&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;830387&lt;/span&gt;&lt;span class=&quot;pl-ii&quot;&gt;을(를)&lt;/span&gt; &lt;span class=&quot;pl-ii&quot;&gt;방문하세요.&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC4&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ii&quot;&gt;// 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L5&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;version&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;pl-ii&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;0.2.0&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ent&quot;&gt;&quot;version&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;0.2.0&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L6&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;configurations&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: [&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;    &lt;span class=&quot;pl-ent&quot;&gt;&quot;configurations&quot;&lt;/span&gt;: [&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L7&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
@@ -6896,47 +8090,47 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L8&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;name&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;clang++ - 활성 파일 빌드 및 디버그&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;name&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;clang++ - 활성 파일 빌드 및 디버그&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L9&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;type&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;lldb&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;lldb&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L10&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;request&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;launch&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC10&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;request&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;launch&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L11&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;program&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;${fileDirname}/${fileBasenameNoExtension}&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;program&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;${fileDirname}/${fileBasenameNoExtension}&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L12&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;args&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: [],&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;args&quot;&lt;/span&gt;: [],&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L13&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;stopAtEntry&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC13&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;stopAtEntry&quot;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L14&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;cwd&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;${fileDirname}&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;cwd&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;${fileDirname}&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L15&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;environment&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: [],&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;environment&quot;&lt;/span&gt;: [],&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L16&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;externalConsole&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;externalConsole&quot;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;false&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L17&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;MIMode&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;lldb&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;MIMode&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;lldb&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;,&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L18&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-launch-json-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;            &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;preLaunchTask&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;C/C++: clang++ 활성 파일 빌드&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td id=&quot;file-launch-json-LC18&quot; class=&quot;blob-code blob-code-inner js-file-line highlighted&quot;&gt;            &lt;span class=&quot;pl-ent&quot;&gt;&quot;preLaunchTask&quot;&lt;/span&gt;: &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;C/C++: clang++ 활성 파일 빌드&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-launch-json-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
@@ -6961,7 +8155,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a/raw/19d1b7c391447605a7ede29db71d3c8e622253d0/launch.json&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a#file-launch-json&quot;&gt;launch.json&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/d1e226f323b140eb16bf67e5e5557c4a#file-launch-json&quot;&gt;
+          launch.json
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -7399,7 +8595,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/19ed2dfc0bf0e07a9287be2890f99497/raw/5a1c22be05f1f2a83053b7053e6dfd47647db7bc/press_keypad.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/19ed2dfc0bf0e07a9287be2890f99497#file-press_keypad-js&quot;&gt;press_keypad.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/19ed2dfc0bf0e07a9287be2890f99497#file-press_keypad-js&quot;&gt;
+          press_keypad.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -7804,7 +9002,95 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;마치며&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A7%88%EC%B9%98%EB%A9%B0&quot; aria-label=&quot;마치며 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;마치며&lt;/h3&gt;
-&lt;p&gt;오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 서버 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 신규 아이디 추천]]></title><description><![CDATA[프로그래머스 Lv.1 신규 아이디 추천 풀이]]></description><link>https://www.moong-bee.com/posts/programmers-recommend-id</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-recommend-id</guid><pubDate>Sun, 29 Aug 2021 17:03:24 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
+&lt;p&gt;오늘은 디스코드 계정 생성 및 봇을 만들었다. 다음 포스트에서는 봇을 활용할 수 있는 서버 생성, 필요한 정보 복사 및 개발 환경 변수용 파일 생성을 다루도록 하겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Python 설치하기]]></title><description><![CDATA[Python을 설치해보자!]]></description><link>https://www.moong-bee.com/posts/install-python</link><guid isPermaLink="false">https://www.moong-bee.com/posts/install-python</guid><pubDate>Fri, 10 Sep 2021 11:41:03 GMT</pubDate><content:encoded>&lt;p&gt;일하는 곳에서 다른 프로젝트로 Python을 사용하는 일이 생겼다. 그래서 오늘은 Python을 설치/실행하는 시간을 가져보자!&lt;/p&gt;
+&lt;h3 id=&quot;설치하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&quot; aria-label=&quot;설치하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;설치하기&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;window&lt;/p&gt;
+&lt;p&gt;우선 윈도우의 경우에는 &lt;a href=&quot;https://python.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Python 홈페이지&lt;/a&gt;에서 설치 파일을 다운받아 실행한다.&lt;/p&gt;
+&lt;div class=&apos;picture&apos;&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/53d827522d56e2794694cd3a2b3ee312/e454f/python_download.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 44.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBBAX/xAAVAQEBAAAAAAAAAAAAAAAAAAABA//aAAwDAQACEAMQAAABXey5pJIwT//EABkQAAMAAwAAAAAAAAAAAAAAAAECAxMgMf/aAAgBAQABBQKCChwzVe6f/8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Bp//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/AYf/xAAcEAACAAcAAAAAAAAAAAAAAAAAAQIREiAhQXH/2gAIAQEABj8Cir0Np56Ts//EABsQAQACAgMAAAAAAAAAAAAAAAEAIRExEEFR/9oACAEBAAE/IS6lMdRxgAUj0LYbjrj/2gAMAwEAAgADAAAAEEc//8QAFxEBAAMAAAAAAAAAAAAAAAAAAAERYf/aAAgBAwEBPxCMLf/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAgBAgEBPxCmP//EAB0QAAICAgMBAAAAAAAAAAAAAAERADEhcRBB0eH/2gAIAQEAAT8QRIFQ5N+QphGBPXyBinYcSrUs1x//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/53d827522d56e2794694cd3a2b3ee312/8ac56/python_download.webp 240w,
+/static/53d827522d56e2794694cd3a2b3ee312/d3be9/python_download.webp 480w,
+/static/53d827522d56e2794694cd3a2b3ee312/e46b2/python_download.webp 960w,
+/static/53d827522d56e2794694cd3a2b3ee312/f992d/python_download.webp 1440w,
+/static/53d827522d56e2794694cd3a2b3ee312/882b9/python_download.webp 1920w,
+/static/53d827522d56e2794694cd3a2b3ee312/055f0/python_download.webp 2384w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/53d827522d56e2794694cd3a2b3ee312/09b79/python_download.jpg 240w,
+/static/53d827522d56e2794694cd3a2b3ee312/7cc5e/python_download.jpg 480w,
+/static/53d827522d56e2794694cd3a2b3ee312/6a068/python_download.jpg 960w,
+/static/53d827522d56e2794694cd3a2b3ee312/644c5/python_download.jpg 1440w,
+/static/53d827522d56e2794694cd3a2b3ee312/0f98f/python_download.jpg 1920w,
+/static/53d827522d56e2794694cd3a2b3ee312/e454f/python_download.jpg 2384w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/53d827522d56e2794694cd3a2b3ee312/6a068/python_download.jpg&quot;
+            alt=&quot;python_download.jpeg&quot;
+            title=&quot;python_download.jpeg&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt; &lt;em&gt;Python 홈페이지&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mac OS(Linux)&lt;/p&gt;
+&lt;p&gt;보통 해당 Max OS나 Linux에는 Python이 깔려있고 2.7 버전일 경우가 많다.&lt;/p&gt;
+&lt;p&gt;하지만 버전이 낮기 때문에 새 버전을 설치해야한다. 윈도우 설치와 똑같이 다운로드 해도 상관없지만 &lt;code class=&quot;language-text&quot;&gt;Homebrew&lt;/code&gt;를 통해 설치하는 방법을 알아보자.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Homebrew 설치 확인&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ brew --versionl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;우선 설치가 되어있는지 확인을 위해 Homebrew의 버전을 확인해 본다. 설치가 되어있다면 3번, 아니라면 2번으로 진행하면 된다!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Homebrew 설치하기&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위의 명령어로 설치할 수 있으며 &lt;a href=&quot;https://brew.sh/index_ko&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Homebrew 홈페이지&lt;/a&gt;에서 정보를 확인할 수 있다. 설치 후 다시 버전확인을 해본다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Homebrew 업데이트&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ brew update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;해당 명령어는 brew를 통해 설치된 모든 시스템을 업데이트 한다. 방금 Homebrew를 설치해서 최신 버전이겠지만 그래도 한번 업데이트 해주자!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python 설치하기&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ brew install python3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위의 명령어를 통해 파이썬을 설치할 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python 버전 업그레이드&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;$ brew upgrade python3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;3번에서 했던 명령어를 그대로 사용할 수 있지만 위의 명령어는 Python 자체만 업데이트한다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[프로그래머스 - 신규 아이디 추천]]></title><description><![CDATA[프로그래머스 Lv.1 신규 아이디 추천 풀이]]></description><link>https://www.moong-bee.com/posts/programmers-recommend-id</link><guid isPermaLink="false">https://www.moong-bee.com/posts/programmers-recommend-id</guid><pubDate>Sun, 29 Aug 2021 17:03:24 GMT</pubDate><content:encoded>&lt;h3 id=&quot;문제-설명&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%AC%B8%EC%A0%9C-%EC%84%A4%EB%AA%85&quot; aria-label=&quot;문제 설명 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;문제 설명&lt;/h3&gt;
 &lt;p&gt;카카오에 입사한 신입 개발자 네오는 “카카오계정개발팀”에 배치되어, 카카오 서비스에 가입하는 유저들의 아이디를 생성하는 업무를 담당하게 되었습니다. “네오”에게 주어진 첫 업무는 새로 가입하는 유저들이 카카오 아이디 규칙에 맞지 않는 아이디를 입력했을 때, 입력된 아이디와 유사하면서 규칙에 맞는 아이디를 추천해주는 프로그램을 개발하는 것입니다.
 다음은 카카오 아이디의 규칙입니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -7982,7 +9268,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7179067a7fc401eedec8bbb7c2f43a62/raw/9ab51ab148040589296fb23252f569e16550f08b/recommend_new_id.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7179067a7fc401eedec8bbb7c2f43a62#file-recommend_new_id-js&quot;&gt;recommend_new_id.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7179067a7fc401eedec8bbb7c2f43a62#file-recommend_new_id-js&quot;&gt;
+          recommend_new_id.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8091,7 +9379,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e/raw/4c05d5d16bfbb8dbe5f8b3cfbc245330a3241012/checkbox.html&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox-html&quot;&gt;checkbox.html&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox-html&quot;&gt;
+          checkbox.html
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8157,7 +9447,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e/raw/4c05d5d16bfbb8dbe5f8b3cfbc245330a3241012/checkbox.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox-js&quot;&gt;checkbox.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox-js&quot;&gt;
+          checkbox.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8216,7 +9508,9 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e/raw/4c05d5d16bfbb8dbe5f8b3cfbc245330a3241012/checkbox_2.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox_2-js&quot;&gt;checkbox_2.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox_2-js&quot;&gt;
+          checkbox_2.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8335,7 +9629,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e/raw/4c05d5d16bfbb8dbe5f8b3cfbc245330a3241012/checkbox.html&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox-html&quot;&gt;checkbox.html&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox-html&quot;&gt;
+          checkbox.html
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8432,7 +9728,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e/raw/4c05d5d16bfbb8dbe5f8b3cfbc245330a3241012/checkbox_3.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox_3-js&quot;&gt;checkbox_3.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/81ead546cd49f7da12e45ce91c75265e#file-checkbox_3-js&quot;&gt;
+          checkbox_3.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8693,7 +9991,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/059b099bf35bc57f6d80e7f1b5cd381c/raw/5bc94ff1b948df7f2895fd2fb05dccf4c2f359b3/move_truck.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/059b099bf35bc57f6d80e7f1b5cd381c#file-move_truck-js&quot;&gt;move_truck.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/059b099bf35bc57f6d80e7f1b5cd381c#file-move_truck-js&quot;&gt;
+          move_truck.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8821,7 +10121,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/be6b3e0585e1932c483541a5ecf20ca5/raw/83ea14f6c1f99dc812670a394a7db9a328bfafb8/calc.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/be6b3e0585e1932c483541a5ecf20ca5#file-calc-js&quot;&gt;calc.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/be6b3e0585e1932c483541a5ecf20ca5#file-calc-js&quot;&gt;
+          calc.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -8953,7 +10255,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/da3a093f172f915963346c187e99a2e1/raw/94fd24fc074e57fb4a881cb2c9f8405ad60d55cd/calc.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/da3a093f172f915963346c187e99a2e1#file-calc-js&quot;&gt;calc.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/da3a093f172f915963346c187e99a2e1#file-calc-js&quot;&gt;
+          calc.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -9168,7 +10472,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/222aa313588e183361cb76af28d42c7a/raw/76693a47f950d4c9d0fbaa777837a2238b616db1/crane_game_answer.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/222aa313588e183361cb76af28d42c7a#file-crane_game_answer-js&quot;&gt;crane_game_answer.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/222aa313588e183361cb76af28d42c7a#file-crane_game_answer-js&quot;&gt;
+          crane_game_answer.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -9267,7 +10573,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-scss-L19&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-app-scss-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-c1&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;cursor&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;grab&lt;/span&gt;;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;      &lt;span class=&quot;pl-ent&quot;&gt;cursor&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;grab&lt;/span&gt;;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-scss-L20&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
@@ -9287,7 +10593,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-scss-L24&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
-        &lt;td id=&quot;file-app-scss-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-c1&quot;&gt;&lt;span class=&quot;pl-c1&quot;&gt;cursor&lt;/span&gt;&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;grabbing&lt;/span&gt;;&lt;/td&gt;
+        &lt;td id=&quot;file-app-scss-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;        &lt;span class=&quot;pl-ent&quot;&gt;cursor&lt;/span&gt;: &lt;span class=&quot;pl-c1&quot;&gt;grabbing&lt;/span&gt;;&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
         &lt;td id=&quot;file-app-scss-L25&quot; class=&quot;blob-num js-line-number&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
@@ -9342,7 +10648,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/App.scss&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-scss&quot;&gt;App.scss&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-scss&quot;&gt;
+          App.scss
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -9537,7 +10845,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/App.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-js&quot;&gt;App.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-app-js&quot;&gt;
+          App.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -10293,7 +11603,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a/raw/20a127be264e6500ba1c733794187127c44bd32b/complete_app.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-complete_app-js&quot;&gt;complete_app.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/2e0f22cc5c9ab3e3a3cbc0e0cf08c87a#file-complete_app-js&quot;&gt;
+          complete_app.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -10503,7 +11815,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/fe59b01412daea0807dd39c45cf52fd8/raw/114de9f948ff8083e2c411513ff36d9ed3b8ff43/drag_and_drop_list_swap.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/fe59b01412daea0807dd39c45cf52fd8#file-drag_and_drop_list_swap-js&quot;&gt;drag_and_drop_list_swap.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/fe59b01412daea0807dd39c45cf52fd8#file-drag_and_drop_list_swap-js&quot;&gt;
+          drag_and_drop_list_swap.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -10660,7 +11974,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013/raw/480e58c5853effc3791cd347de687bfb2741150c/drag_and_drop_list.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#file-drag_and_drop_list-js&quot;&gt;drag_and_drop_list.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#file-drag_and_drop_list-js&quot;&gt;
+          drag_and_drop_list.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -10845,7 +12161,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013/raw/480e58c5853effc3791cd347de687bfb2741150c/drag_and_drop_list_2.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#file-drag_and_drop_list_2-js&quot;&gt;drag_and_drop_list_2.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/28b1b6fca6dba6c11c8cbf3214a6d013#file-drag_and_drop_list_2-js&quot;&gt;
+          drag_and_drop_list_2.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -11282,7 +12600,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d/raw/64b27c0c06348c56aca8d4ec1e801229d72a7592/selection_sorting.cpp&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#file-selection_sorting-cpp&quot;&gt;selection_sorting.cpp&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#file-selection_sorting-cpp&quot;&gt;
+          selection_sorting.cpp
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -11453,7 +12773,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d/raw/64b27c0c06348c56aca8d4ec1e801229d72a7592/insertion_sorting.cpp&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#file-insertion_sorting-cpp&quot;&gt;insertion_sorting.cpp&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#file-insertion_sorting-cpp&quot;&gt;
+          insertion_sorting.cpp
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -11617,7 +12939,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d/raw/64b27c0c06348c56aca8d4ec1e801229d72a7592/bubble_sorting.cpp&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#file-bubble_sorting-cpp&quot;&gt;bubble_sorting.cpp&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7925d91a2d1ab2ebbf9093ff2ce5494d#file-bubble_sorting-cpp&quot;&gt;
+          bubble_sorting.cpp
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -11745,7 +13069,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;
+          GeneratorFunction.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -11853,7 +13179,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;
+          GeneratorFunction.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -11980,7 +13308,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;
+          GeneratorFunction.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12117,7 +13447,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1/raw/9bd824c0fd65bfe2bd31b9d1577bbcc8c9cb3797/GeneratorFunction.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;GeneratorFunction.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7a8227577987890fd7644042b0aef0c1#file-generatorfunction-js&quot;&gt;
+          GeneratorFunction.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12207,7 +13539,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/df6fecb2f9249998e3e35d95707e17c5/raw/65f1eef6d06ccd9ef1dc2ab8d7564da6617eadae/GeneratorTest.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/df6fecb2f9249998e3e35d95707e17c5#file-generatortest-js&quot;&gt;GeneratorTest.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/df6fecb2f9249998e3e35d95707e17c5#file-generatortest-js&quot;&gt;
+          GeneratorTest.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12297,7 +13631,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/c6cc0e89c68c824d96b0159b26e5bb87/raw/045226e9133be2806dc69fc7e0d23ddd18205bfa/GeneratorTest_solve.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/c6cc0e89c68c824d96b0159b26e5bb87#file-generatortest_solve-js&quot;&gt;GeneratorTest_solve.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/c6cc0e89c68c824d96b0159b26e5bb87#file-generatortest_solve-js&quot;&gt;
+          GeneratorTest_solve.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12367,7 +13703,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/client.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-client-js&quot;&gt;client.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-client-js&quot;&gt;
+          client.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12420,7 +13758,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/bitcoins.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-bitcoins-js&quot;&gt;bitcoins.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-bitcoins-js&quot;&gt;
+          bitcoins.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12625,7 +13965,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/bitCoinCharts.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-bitcoincharts-js&quot;&gt;bitCoinCharts.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-bitcoincharts-js&quot;&gt;
+          bitCoinCharts.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12793,7 +14135,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/createRequestSaga.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-createrequestsaga-js&quot;&gt;createRequestSaga.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-createrequestsaga-js&quot;&gt;
+          createRequestSaga.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -12928,7 +14272,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/loading.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-loading-js&quot;&gt;loading.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-loading-js&quot;&gt;
+          loading.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -13022,7 +14368,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/index.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-index-js&quot;&gt;index.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-index-js&quot;&gt;
+          index.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -13187,7 +14535,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/App.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-app-js&quot;&gt;App.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-app-js&quot;&gt;
+          App.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -13310,7 +14660,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534/raw/baecda1a98fb5ee9cbad319e176d69a3430bb5cc/MainScreen.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-mainscreen-js&quot;&gt;MainScreen.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/768fc65d066933180b49e547628fb534#file-mainscreen-js&quot;&gt;
+          MainScreen.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -13446,7 +14798,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/625d6e1c8128623aef51a06cee53116c/raw/5216fb0150bcbb02c755e7bdedff824d66a84dbc/Counter.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/625d6e1c8128623aef51a06cee53116c#file-counter-js&quot;&gt;Counter.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/625d6e1c8128623aef51a06cee53116c#file-counter-js&quot;&gt;
+          Counter.js
+        &lt;/a&gt;
         hosted with &amp;#10084; by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -13861,7 +15215,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498/raw/976d2df3e57d7b5a9983e1e09d5387315f908045/MainScreen.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498#file-mainscreen-js&quot;&gt;MainScreen.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498#file-mainscreen-js&quot;&gt;
+          MainScreen.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -14061,7 +15417,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498/raw/976d2df3e57d7b5a9983e1e09d5387315f908045/MainScreen.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498#file-mainscreen-js&quot;&gt;MainScreen.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/7208e24adb4f7002c20717dc69e4e498#file-mainscreen-js&quot;&gt;
+          MainScreen.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -14222,7 +15580,9 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;gist-meta&quot;&gt;
         &lt;a href=&quot;https://gist.github.com/Moong-bee/e5b97239cb06ec1103b2bbc9921fad2b/raw/4792b92c23f780ed4352158c2e788e0894f6aa42/ChartItem.js&quot; style=&quot;float:right&quot;&gt;view raw&lt;/a&gt;
-        &lt;a href=&quot;https://gist.github.com/Moong-bee/e5b97239cb06ec1103b2bbc9921fad2b#file-chartitem-js&quot;&gt;ChartItem.js&lt;/a&gt;
+        &lt;a href=&quot;https://gist.github.com/Moong-bee/e5b97239cb06ec1103b2bbc9921fad2b#file-chartitem-js&quot;&gt;
+          ChartItem.js
+        &lt;/a&gt;
         hosted with ❤ by &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
