@@ -23,7 +23,7 @@ socialImage: "/media/image-2.jpg"
                     <a target="_blank" rel="noopener noreferrer"  href='mailto:qkrgksqls9@gmail.com'>email - qkrgksqls9@gmail.com</a></br>
                 </li>
                 <li>
-                    <a target="_blank" rel="noopener noreferrer"  href='https://www.instagram.com/h.____bin'>instagrem - dev.__bin</a><br>
+                    <a target="_blank" rel="noopener noreferrer"  href='https://www.instagram.com/h.____bin'>instagrem - h.____bin</a><br>
                 </li>
                 <li>
                     <a target="_blank" rel="noopener noreferrer"  href='https://github.com/Moong-bee'>github - Moong-bee</a>

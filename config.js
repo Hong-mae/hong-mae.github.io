@@ -27,6 +27,10 @@ module.exports = {
             label: 'About me',
             path: '/pages/about',
         },
+        {
+            label: 'Portfolio',
+            path: '/portfolio',
+        },
     ],
     author: {
         name: 'Colin Park (Moong bee)',
