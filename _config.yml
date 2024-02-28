@@ -1,11 +1,11 @@
 # Setup
 title: Moong-bee's Dev.log
-description:
+description: 나의 개발 블로그
 url: https://moong-bee.com
 avatar: ./assets/img/avatar.jpg
 paginate: 5
 permalink: pretty
-cover_image: ./assets/img/bg.png
+cover_image: ./assets/img/bg2.jpg
 
 # Gems
 plugins:
@@ -28,15 +28,13 @@ exclude:
   - not-pure-poole.gemspec
 
 # Optimize Jekyl SEO Tag
-
-logo: /logo512.png
+logo: ./assets/img/bg2.jpg
 social:
   name: Colin Park
   links:
-    - https://www.instagram.com/h.____bin
     - https://github.com/Moong-bee
-# google_site_verification: xxxxx
 lang: ko
+# google_site_verification: xxxxx
 
 sass:
   sass_dir: _sass
