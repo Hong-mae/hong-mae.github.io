@@ -1,193 +1,212 @@
-<h1 align="center">
-    <img alt="Lumen" title="Lumen" src="https://github.com/alxshelepenok/gatsby-starter-lumen/blob/gatsby-v2/.github/logo.png" width="140"> </br>
-    Lumen
-</h1>
+# Not Pure Poole <!-- omit in toc -->
 
-<h4 align="center">
-  A constantly evolving and thoughtful architecture for creating new static blogs.
-</h4>
+<a href="https://jekyll-themes.com">
+  <img src="https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg" height="20" alt="Jekyll Themes Shield" >
+</a>
 
-<p align="center">
-    <a target="_blank" href="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen"><img src="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen.svg?style=svg"></a> <a target="_blank" href="https://codecov.io/gh/alxshelepenok/gatsby-starter-lumen"><img src="https://codecov.io/gh/alxshelepenok/gatsby-starter-lumen/branch/master/graph/badge.svg"></a> <a target="_blank" href="https://www.codacy.com/gh/alxshelepenok/gatsby-starter-lumen/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alxshelepenok/gatsby-starter-lumen&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/2d21235e36e34b758aaa27fecd3c8048"></a> <a target="_blank" href="https://codeclimate.com/github/alxshelepenok/gatsby-starter-lumen"><img src="https://img.shields.io/codeclimate/maintainability/alxshelepenok/gatsby-starter-lumen.svg"></a> <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Falxshelepenok%2Fgatsby-starter-lumen?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Falxshelepenok%2Fgatsby-starter-lumen.svg?type=shield"/></a>
-</p>
+**Not Pure Poole** is a simple, beautiful, and powerful Jekyll theme for blogs. It is built on [Poole](https://github.com/poole/poole) and [Pure](https://purecss.io/).
 
-## Table of contents
-+ [Features](http://github.com/alxshelepenok/gatsby-starter-lumen#features)
-+ [Web Performance Tests](http://github.com/alxshelepenok/gatsby-starter-lumen#web-performance-tests)
-+ [Quick Start](http://github.com/alxshelepenok/gatsby-starter-lumen#quick-start)
-+ [Deploy with Netlify](http://github.com/alxshelepenok/gatsby-starter-lumen#deploy-with-netlify)
-+ [Folder Structure](http://github.com/alxshelepenok/gatsby-starter-lumen#folder-structure)
-+ [Sponsors](http://github.com/alxshelepenok/gatsby-starter-lumen#sponsors)
-+ [Contributors](http://github.com/alxshelepenok/gatsby-starter-lumen#contributors)
-+ [License](http://github.com/alxshelepenok/gatsby-starter-lumen#license)
+> Poole explains that Jekyll has been asking for a particular chemical for days now but every time it has been fetched for him he rejects it as **not pure**. Poole also explains that he caught a glimpse of the man inside and he looked barely human.
+>
+> -- <a href="https://www.bbc.co.uk/bitesize/guides/zbtjnrd/revision/6"><cite>The death of Jekyll</cite></a>
+
+-----
+
+See Not Pure Poole in action with [the demo site](https://vszhub.github.io/not-pure-poole/).
+
+![Screenshot](screenshot.png)
+
+## Table of Contents <!-- omit in toc -->
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Configuration](#configuration)
+  - [Customizing Head](#customizing-head)
+  - [Creating Themes](#creating-themes)
+  - [Customizing Navigation](#customizing-navigation)
+  - [Customizing Cover Image](#customizing-cover-image)
+  - [Customizing Social Links](#customizing-social-links)
+  - [Enabling Posts Archive](#enabling-posts-archive)
+  - [Enabling TOC](#enabling-toc)
+  - [Enabling MathJax](#enabling-mathjax)
+  - [Something More](#something-more)
+- [Development](#development)
+- [License](#license)
 
 ## Features
-+ [Lost Grid](http://lostgrid.org).
-+ [Modern font stack](https://bitsofco.de/the-new-system-font-stack).
-+ Beautiful typography inspired by [matejlatin/Gutenberg](https://github.com/matejlatin/Gutenberg).
-+ Syntax highlighting in code blocks using [PrismJS](http://prismjs.com).
-+ [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
-+ Archive organized by tags and categories.
-+ Pagination support.
-+ [Netlify CMS](https://www.netlifycms.org) support.
-+ Google Analytics.
-+ Disqus Comments.
-+ [Flow](https://flow.org/) static type checking.
 
-## Web Performance Tests
-+ Lighthouse Report - [WebPageTest](https://www.webpagetest.org/result/190510_FE_3f2b13d0beed320f477467d433f56f43/)
-+ Visual Comparison - [WebPageTest](https://www.webpagetest.org/video/compare.php?tests=190510_KZ_1228c343ccf04148619a5d0b89a41f71,190510_RE_b3bfad442f32c690a9f420fe46025b8d,190510_RS_3b5f0bff2d95161351dc6934cadbf1cf,190510_SC_5c458c451941f81b12911ccf4171a817,190510_63_52d5edd8743773815fbacb2e9c66d228,190510_AS_741b29f5af5a6e54980d82826d7bb5bb)
+- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
+- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
+- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
+- [Jekyll Gist](https://github.com/jekyll/jekyll-gist)
+- [Google Analytics](https://analytics.google.com/)
+- [Disqus](https://disqus.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [MathJax](https://www.mathjax.org/)
+- Dark mode (enabled automatically via CSS media query)
+- Posts archive by dates, categories, and tags
+- Pagination, generated by [Jekyll Paginate](https://github.com/jekyll/jekyll-paginate)
+- TOC (generated by Vladimir "allejo" Jimenez's [jekyll-toc](https://github.com/allejo/jekyll-toc))
+- Related posts (time-based, because Jekyll) below each post
+- Mobile friendly design and development
+- Easily scalable text and component sizing with `rem` units in the CSS
+- Support for a wide gamut of HTML elements
+- Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)
 
-## Quick Start
+## Installation
 
-#### Create a Gatsby site
+You can choose one of the following methods to install Not Pure Poole:
 
-Use the Gatsby CLI to create a new site, specifying the Lumen starter.
+- Directly specify the `not-pure-poole` gem.
 
-```sh
-# Create a new Gatsby site using the Lumen starter
-gatsby new blog https://github.com/alxshelepenok/gatsby-starter-lumen
+    1. Add `gem 'not-pure-poole'` into your `Gemfile`.
+    2. Add the below lines into your `_config.yml`.
+
+        ```yml
+        plugins:
+          - not-pure-poole
+        ```
+
+- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Not Pure Poole.
+
+    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
+    2. Add the below lines into your `_config.yml`.
+
+        ```yml
+        plugins:
+          - jekyll-remote-theme
+
+        remote_theme: vszhub/not-pure-poole
+        ```
+
+## Usage
+
+You can read this [example post](https://vszhub.github.io/not-pure-poole/2020/09/29/welcome-to-not-pure-poole/) to see the rendering result in this theme, and put the [source](_posts/2020-09-29-welcome-to-not-pure-poole.md) aside to learn some basic usages.
+
+### Configuration
+
+The [`_config.yml`](_config.yml) file in this repository already contains some variables, you can try to override them in your repository.
+
+### Customizing Head
+
+Not Pure Poole leaves a placeholder to allow defining custom head, in principle, you can add anything here, e.g. favicons. All you need to do is just creating a file `_includes/custom-head.html` and put data into it.
+
+### Creating Themes
+
+If you want to make your own color schemes, modify the CSS variables in the `_sass/_variables.scss` stylesheet with a scoped data attribute or class name.
+
+For example, below we've created the beginnings of a blue theme:
+
+```scss
+// Example blue theme
+[data-theme="blue"] {
+  --body-bg: var(--blue);
+  --body-color: #fff;
+}
 ```
 
-#### Start Developing
+Then, apply the theme by adding `data-theme="blue"` to the `<html>` element.
 
-Navigate into your new site’s directory and start it up.
+### Customizing Navigation
 
-```sh
-cd blog
-gatsby develop
+You can create a file `_data/navigation.yml` to configure links to some pages. For example,
+
+```yml
+- title: Blog
+  url: /
+- title: About
+  url: /about/
 ```
 
-#### Open the source code and start editing!
+### Customizing Cover Image
 
-Your site is now running at `http://localhost:8000`!
+You can set your own cover image by modifying the `cover_image` variable in `_config.yml`, and you can also set different cover images on different pages by setting the `cover_image` variable on each page.
 
-Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
+If you discover that the contrast between the cover text color and the cover background color is not enough, you can also adjust these two variables:
 
-Open the `blog` directory in your code editor of choice and edit `src/templates/index-template.js`. Save your changes and the browser will update in real time!
-
-## Deploy with Netlify
-
-[Netlify](https://netlify.com) CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. Use the button below to build and deploy your own copy of the repository:
-
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
-
-After clicking that button, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
-
-## Deploy to Github Pages
-
-To deploy to github pages, simply do the following:
-
-- Ensure that your `package.json` file correctly reflects where this repo lives
-- Change the `pathPrefix` in your `config.js`
-- Run the standard deploy command
-
-```sh
-yarn deploy
+```yml
+cover_bg_color: rgb(40, 73, 77)
+cover_color: rgb(255, 255, 255)
 ```
 
+### Customizing Social Links
 
-#### Access Locally
-```
-$ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
-$ cd [REPO_NAME]
-$ yarn
-$ yarn develop
-```
-To test the CMS locally, you'll need run a production build of the site:
-```
-$ yarn build
-$ gatsby serve
-```
+You can set your social links in `_data/social.yml`. You can custom titles, URLs, and icons (only support [Font Awesome](https://fontawesome.com/) currently), for example:
 
-## Folder Structure
-
-```
-└── content
-    ├── pages
-    └── posts
-└── static
-    ├── admin
-    └── media
-└── src
-    ├── assets
-    │   └── scss
-    │       ├── base
-    │       └── mixins
-    ├── cms
-    │   └── preview-templates
-    ├── components
-    │   ├── Feed
-    │   ├── Icon
-    │   ├── Layout
-    │   ├── Page
-    │   ├── Pagination
-    │   ├── Post
-    │   │   ├── Author
-    │   │   ├── Comments
-    │   │   ├── Content
-    │   │   ├── Meta
-    │   │   └── Tags
-    │   └── Sidebar
-    │       ├── Author
-    │       ├── Contacts
-    │       ├── Copyright
-    │       └── Menu
-    ├── constants
-    ├── templates
-    └── utils
-
+```yml
+- title: Email
+  url: mailto://vszhub@gmail.com
+  icon: fas fa-envelope
+- title: Twitter
+  url: https://twitter.com/vszhub
+  icon: fab fa-twitter
+- title: GitHub
+  url: https://github.com/vszhub/not-pure-poole
+  icon: fab fa-github
 ```
 
-## Sponsors
+### Enabling Posts Archive
 
-Development efforts are supported by the sponsors. I'm very grateful for their donations, please check them out!
+Not Pure Poole supports posts archive by date, categories, and tags. For enabling that, you should put some data like below into `_data/archive.yml`:
 
-| <a href="https://www.browserstack.com" target="_blank"><img width="250" src="https://gist.githubusercontent.com/alxshelepenok/94cbc6dc4a2cb8167ee188ddab33893a/raw/f869c9a67db7bfd5440a49178195efe811d8f7d8/browserstack.svg"></a> | <a href="https://sentry.io" target="_blank"><img width="250" src="https://gist.githubusercontent.com/alxshelepenok/1a74dbe123b2f7ad538f41c94e2da0a2/raw/aaeb3b38ef0873bae1f23f3605696b4e65362e67/sentry.svg"></a> |
-:---: |:---: |
+```yml
+- type: dates
+  title: Dates
+  url: /dates/
+- type: categories
+  title: Categories
+  url: /categories/
+- type: tags
+  title: Tags
+  url: /tags/
+```
 
-## Contributors
-Thanks goes to these wonderful people!
+After that, the navigation to these archive pages would be shown on the top of the homepage.
 
-[<img alt="vzhou842" src="https://avatars3.githubusercontent.com/u/10209814?v=4&s=117" width="117">](https://github.com/vzhou842) |[<img alt="alehel" src="https://avatars2.githubusercontent.com/u/22277624?v=4&s=117" width="117">](https://github.com/alehel) |[<img alt="abisz" src="https://avatars3.githubusercontent.com/u/7287780?v=4&s=117" width="117">](https://github.com/abisz) |[<img alt="remi-bruguier" src="https://avatars0.githubusercontent.com/u/7031328?v=4&s=117" width="117">](https://github.com/remi-bruguier) |[<img alt="mariolopjr" src="https://avatars3.githubusercontent.com/u/2067324?v=4&s=117" width="117">](https://github.com/mariolopjr) |[<img alt="ihororlovskyi" src="https://avatars3.githubusercontent.com/u/7969737?v=4&s=117" width="117">](https://github.com/ihororlovskyi) |
-:---: |:---: |:---: |:---: |:---: |:---: |
-[vzhou842](https://github.com/vzhou842) |[alehel](https://github.com/alehel) |[abisz](https://github.com/abisz) |[remi-bruguier](https://github.com/remi-bruguier) |[mariolopjr](https://github.com/mariolopjr) |[ihororlovskyi](https://github.com/ihororlovskyi) |
+Then, you can create a category archive page, and set the below parameters on that page:
 
-[<img alt="timbroder" src="https://avatars2.githubusercontent.com/u/121503?v=4&s=117" width="117">](https://github.com/timbroder) |[<img alt="vinnymac" src="https://avatars0.githubusercontent.com/u/1832781?v=4&s=117" width="117">](https://github.com/vinnymac) |[<img alt="yodahuang" src="https://avatars2.githubusercontent.com/u/11242657?v=4&s=117" width="117">](https://github.com/yodahuang) |[<img alt="axelclark" src="https://avatars1.githubusercontent.com/u/16856928?v=4&s=117" width="117">](https://github.com/axelclark) |[<img alt="BigTony666" src="https://avatars2.githubusercontent.com/u/29159357?v=4&s=117" width="117">](https://github.com/BigTony666) |[<img alt="stigrune" src="https://avatars0.githubusercontent.com/u/1052748?v=4&s=117" width="117">](https://github.com/stigrune) |
-:---: |:---: |:---: |:---: |:---: |:---: |
-[timbroder](https://github.com/timbroder) |[vinnymac](https://github.com/vinnymac) |[yodahuang](https://github.com/yodahuang) |[axelclark](https://github.com/axelclark) |[BigTony666](https://github.com/BigTony666) |[stigrune](https://github.com/stigrune) |
+```yml
+---
+layout: archive-taxonomies
+type: categories
+---
+```
 
-[<img alt="ybbarng" src="https://avatars2.githubusercontent.com/u/1793950?v=4&s=117" width="117">](https://github.com/ybbarng) |[<img alt="marktani" src="https://avatars1.githubusercontent.com/u/1780597?v=4&s=117" width="117">](https://github.com/marktani) |[<img alt="concreted" src="https://avatars2.githubusercontent.com/u/4016897?v=4&s=117" width="117">](https://github.com/concreted) |[<img alt="chmac" src="https://avatars0.githubusercontent.com/u/690997?v=4&s=117" width="117">](https://github.com/chmac) |[<img alt="charandas" src="https://avatars2.githubusercontent.com/u/542168?v=4&s=117" width="117">](https://github.com/charandas) |[<img alt="marcelabomfim" src="https://avatars0.githubusercontent.com/u/6224547?v=4&s=117" width="117">](https://github.com/marcelabomfim) |
-:---: |:---: |:---: |:---: |:---: |:---: |
-[ybbarng](https://github.com/ybbarng) |[marktani](https://github.com/marktani) |[concreted](https://github.com/concreted) |[chmac](https://github.com/chmac) |[charandas](https://github.com/charandas) |[marcelabomfim](https://github.com/marcelabomfim) |
+Or a tag archive page:
 
-[<img alt="zollillo" src="https://avatars3.githubusercontent.com/u/8833904?v=4&s=117" width="117">](https://github.com/zollillo) |[<img alt="codejet" src="https://avatars3.githubusercontent.com/u/802203?v=4&s=117" width="117">](https://github.com/codejet) |[<img alt="reed-jones" src="https://avatars0.githubusercontent.com/u/11511864?v=4&s=117" width="117">](https://github.com/reed-jones) |[<img alt="rtveitch" src="https://avatars3.githubusercontent.com/u/25228001?v=4&s=117" width="117">](https://github.com/rtveitch) |[<img alt="SayakaOno" src="https://avatars0.githubusercontent.com/u/33141219?v=4&s=117" width="117">](https://github.com/SayakaOno) |[<img alt="swapnilmishra" src="https://avatars2.githubusercontent.com/u/875450?v=4&s=117" width="117">](https://github.com/swapnilmishra) |
-:---: |:---: |:---: |:---: |:---: |:---: |
-[zollillo](https://github.com/zollillo) |[codejet](https://github.com/codejet) |[reed-jones](https://github.com/reed-jones) |[rtveitch](https://github.com/rtveitch) |[SayakaOno](https://github.com/SayakaOno) |[swapnilmishra](https://github.com/swapnilmishra) |
+```yml
+layout: archive-taxonomies
+type: tags
+```
 
-[<img alt="vvasiloud" src="https://avatars1.githubusercontent.com/u/5891530?v=4&s=117" width="117">](https://github.com/vvasiloud) |[<img alt="vstoms" src="https://avatars2.githubusercontent.com/u/22646173?v=4&s=117" width="117">](https://github.com/vstoms) |[<img alt="wichopy" src="https://avatars2.githubusercontent.com/u/24414632?v=4&s=117" width="117">](https://github.com/wichopy) |[<img alt="yairmark" src="https://avatars1.githubusercontent.com/u/28291977?v=4&s=117" width="117">](https://github.com/yairmark) |
-:---: |:---: |:---: |:---: |
-[vvasiloud](https://github.com/vvasiloud) |[vstoms](https://github.com/vstoms) |[wichopy](https://github.com/wichopy) |[yairmark](https://github.com/yairmark) |
+Or archive by dates:
+
+```yml
+layout: archive-dates
+```
+
+### Enabling TOC
+
+If you want to show the TOC of a page on the right side, just set `toc: true` on that page.
+
+### Enabling MathJax
+
+If you want to write mathematics on a page, just set `math: true` on that page to enable MathJax.
+
+### Something More
+
+Just **hack** into the code and see what you can get.
+
+## Development
+
+To set up your environment to develop this theme, run `bundle install`.
+
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `not-pure-poole.gemspec` accordingly.
 
 ## License
-The MIT License (MIT)
 
-Copyright (c) 2016-2021 Alexander Shelepenok
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
