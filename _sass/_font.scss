@@ -1,0 +1,17 @@
+// Font
+//
+// Set custom fonts
+
+@font-face {
+  font-family: "MapleFont";
+  src: url("../assets/fonts/MaplestoryOTFBold.woff"),
+    url("../assets/fonts/MaplestoryTTFBold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "MapleFont";
+  src: url("../assets/fonts/MaplestoryOTFLight.woff"),
+    url("../assets/fonts/MaplestoryTTFLight.ttf");
+  font-weight: normal;
+}
