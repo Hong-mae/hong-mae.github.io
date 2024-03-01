@@ -1,7 +1,7 @@
 # Setup
-title: Moong-bee's Dev.log
+title: hong-mae's Dev.log
 description: 나의 개발 블로그
-url: https://moong-bee.com
+url: https://hong-mae.com
 avatar: ./assets/img/avatar.jpg
 paginate: 5
 permalink: pretty
@@ -32,7 +32,7 @@ logo: ./assets/img/bg2.jpg
 social:
   name: Colin Park
   links:
-    - https://github.com/Moong-bee
+    - https://github.com/hong-mae
 lang: ko
 # google_site_verification: xxxxx
 
@@ -51,5 +51,5 @@ sass:
 # Specify the author for blog posts
 author:
   name: Colin Park
-  url: https://github.com/Moong-bee/
+  url: https://github.com/hong-mae/
   email: qkrgksqls9@gmail.com

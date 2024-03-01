@@ -10,7 +10,7 @@ toc: true
 <table class='about_table'>
     <tr>
         <td>Name</td>
-        <td>박한빈 (Colin Park, Moong-bee)</td>
+        <td>박한빈 (Colin Park, hong-mae)</td>
     </tr>
     <tr>
         <td>Birth</td>
@@ -27,7 +27,7 @@ toc: true
                     <a target="_blank" rel="noopener noreferrer"  href='https://www.instagram.com/h.____bin'>instagrem - h.____bin</a><br>
                 </li>
                 <li>
-                    <a target="_blank" rel="noopener noreferrer"  href='https://github.com/Moong-bee'>github - Moong-bee</a>
+                    <a target="_blank" rel="noopener noreferrer"  href='https://github.com/hong-mae'>github - hong-mae</a>
                 </li>
             </ul>
         </td>
