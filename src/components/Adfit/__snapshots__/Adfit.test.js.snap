@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Adfit render correctly 1`] = `
+<div
+  className="adfit"
+>
+  <div
+    className="adfit_test_js ad_area"
+  />
+</div>
+`;
