@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = {
-    url: 'https://www.moong-bee.com',
+    url: 'https://www.Hong-mae.com',
     pathPrefix: '/',
-    title: 'Moong bee`s Dev.log',
-    subtitle: 'Moong bee의 개발 스터디 블로그.',
+    title: 'Hong mae`s Dev.log',
+    subtitle: 'Hong mae의 개발 스터디 블로그.',
     copyright: '© All rights reserved.',
-    disqusShortname: 'moong-bees-dev-log',
+    disqusShortname: 'Hong-maes-dev-log',
     postsPerPage: 4,
     googleAnalyticsId: 'UA-179329350-1',
     useKatex: false,
@@ -27,13 +27,13 @@ module.exports = {
             label: 'About me',
             path: '/pages/about',
         },
-        {
-            label: 'Portfolio',
-            path: '/portfolio',
-        },
+        // {
+        //     label: 'Portfolio',
+        //     path: '/portfolio',
+        // },
     ],
     author: {
-        name: 'Colin Park (Moong bee)',
+        name: 'Colin Park (Hong mae)',
         photo: '/photo.jpg',
         bio: 'Nothing great was ever achieved without enthusiasm. - 랠프 월도 에머슨',
         socialDefaultImg: '/static/default_og_img.png',
@@ -42,7 +42,7 @@ module.exports = {
             facebook: '',
             telegram: '',
             twitter: '',
-            github: 'Moong-bee',
+            github: 'Hong-mae',
             rss: '',
             vkontakte: '',
             linkedin: '',

@@ -1,7 +1,7 @@
 {
     "version": "3.0.7",
     "name": "gatsby-starter-lumen",
-    "description": "Moong-bee's dev.log",
+    "description": "Hong-mae's dev.log",
     "main": "n/a",
     "scripts": {
         "develop": "yarn clean && gatsby develop",
@@ -27,7 +27,7 @@
             "prettier --write"
         ]
     },
-    "repository": "https://github.com/Moong-bee/moong-bee.github.io",
+    "repository": "https://github.com/Hong-mae/Hong-mae.github.io",
     "author": "Colin Park <qkrgksqls9@gmail.com",
     "license": "MIT",
     "keywords": [

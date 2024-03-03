@@ -139,7 +139,9 @@ module.exports = {
                     {
                         resolve: 'gatsby-remark-embed-gist',
                         options: {
-                            username: 'Moong-bee',
+                            username: 'Hong-mae',
+                            gistCssUrlAddress:
+                                'https://github.githubassets.com/assets/gist-embed-5bb00a1034b4.css',
                         },
                     },
                     'gatsby-remark-autolink-headers',
