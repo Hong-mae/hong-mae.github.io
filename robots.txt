@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /tags/
 Disallow: /categories/
-Sitemap: https://www.moong-bee.com/sitemap.xml
-Host: https://www.moong-bee.com
+Sitemap: https://www.hong-mae.com/sitemap.xml
+Host: https://www.hong-mae.com
