@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="readme" title="readme" src="hhttps://github.com/Hong-mae/hong-mae.github.io/blob/master/readme_banner.png" width="140">
+    <img alt="readme" title="readme" src="https://github.com/Hong-mae/hong-mae.github.io/blob/master/readme_banner.png" width="140">
 </h1>
 
 

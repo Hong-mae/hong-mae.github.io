@@ -31,11 +31,11 @@ const Content = ({ body, title, date, description }: Props) => {
                     })}
                 </div>
             </div>
-            <Adfit
+            {/* <Adfit
                 name="content_adfit"
                 pc="DAN-ecKceu8n4NKFPXSU"
                 mobile="DAN-rFvENKyKGK9NwuNt"
-            />
+            /> */}
             <div
                 className={styles['content__body']}
                 dangerouslySetInnerHTML={{ __html: body }}

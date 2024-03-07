@@ -8,7 +8,7 @@ module.exports = {
     copyright: '© All rights reserved.',
     disqusShortname: 'Hong-maes-dev-log',
     postsPerPage: 4,
-    googleAnalyticsId: 'UA-179329350-1',
+    // googleAnalyticsId: 'UA-179329350-1',
     useKatex: false,
     menu: [
         {

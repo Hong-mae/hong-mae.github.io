@@ -39,9 +39,9 @@ const Post = ({ post }: Props) => {
                 <Author />
             </div>
 
-            <div className={styles['post__comments']}>
+            {/* <div className={styles['post__comments']}>
                 <Comments postSlug={slug} postTitle={post.frontmatter.title} />
-            </div>
+            </div> */}
         </div>
     );
 };
