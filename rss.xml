@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Hong mae`s Dev.log]]></title><description><![CDATA[Hong mae의 개발 스터디 블로그.]]></description><link>https://www.Hong-mae.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 03 Mar 2024 16:08:48 GMT</lastBuildDate><item><title><![CDATA[Python을 이용한 고양이 사진 크롤러 만들기! with. Selenium]]></title><description><![CDATA[파이썬을 이용하여 크롤링에 대해 알아보고 고양이 사진 크롤러를 만들어 보자!]]></description><link>https://www.Hong-mae.com/posts/python-crawling-with-selenium</link><guid isPermaLink="false">https://www.Hong-mae.com/posts/python-crawling-with-selenium</guid><pubDate>Tue, 28 Sep 2021 06:09:33 GMT</pubDate><content:encoded>&lt;p&gt;이전 회사에서 전국 호텔, 객실, 가격 정보를 받아야하는 상황이 있어 찾아보다가 결국 크롤링을 하기로 했다. 그때 예약 사이트를 이용했다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Hong mae`s Dev.log]]></title><description><![CDATA[Hong mae의 개발 스터디 블로그.]]></description><link>https://www.Hong-mae.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 06 Apr 2024 06:17:55 GMT</lastBuildDate><item><title><![CDATA[Spring Boot와 React(Next JS)를 이용한 프로젝트 - 개요]]></title><description><![CDATA[Spring Boot, React(Next.js)로 여러 웹 프로젝트 만들기]]></description><link>https://www.Hong-mae.com/posts/spring-boot-with-react</link><guid isPermaLink="false">https://www.Hong-mae.com/posts/spring-boot-with-react</guid><pubDate>Mon, 04 Mar 2024 04:43:13 GMT</pubDate><content:encoded>&lt;p&gt;최근 Spring Boot를 공부하게 되어 배운 것을 기반으로 어떤 프로젝트를 할까 고민 중&lt;/p&gt;
+&lt;p&gt;책에서 추천한 프로젝트를 진행 해보기로 했다. 프로젝트의 큰 틀은 총 3가지이며 각 규칙에 따라 프로젝트를 진행할 예정이다.&lt;/p&gt;
+&lt;h3 id=&quot;스트리밍-서비스&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D-%EC%84%9C%EB%B9%84%EC%8A%A4&quot; aria-label=&quot;스트리밍 서비스 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;스트리밍 서비스&lt;/h3&gt;
+&lt;p&gt;영화 목록 및 예고편을 볼 수 있는 프로젝트&lt;/p&gt;
+&lt;h4 id=&quot;규칙&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%9C%EC%B9%99&quot; aria-label=&quot;규칙 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;규칙&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.themoviedb.org&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;The Movie DB&lt;/a&gt;의 영화 목록을 보여줘야 함.&lt;/li&gt;
+&lt;li&gt;API Key 등을 이용하여 데이터 받아오기&lt;/li&gt;
+&lt;li&gt;예고편이 제공되는 경우 재생할 수 있어야 함.&lt;/li&gt;
+&lt;li&gt;포스터 등 이미지 제공시 보여줘야 함.&lt;/li&gt;
+&lt;li&gt;사용자 로그인/로그아웃할 수 있어야 함.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;실시간-채팅&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85&quot; aria-label=&quot;실시간 채팅 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;실시간 채팅&lt;/h3&gt;
+&lt;p&gt;여러 사용자와 실시간으로 채팅하는 프로젝트&lt;/p&gt;
+&lt;h4 id=&quot;규칙-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%9C%EC%B9%99-1&quot; aria-label=&quot;규칙 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;규칙&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;여러 개의 대화방을 생성할 수 있어야 함.&lt;/li&gt;
+&lt;li&gt;사용자는 대화방 이름으로 참여할 수 있어야 함.&lt;/li&gt;
+&lt;li&gt;사용자가 대화방 입장시 전체 대화 내역을 볼 수 있어야 함.&lt;/li&gt;
+&lt;li&gt;대화는 실시간으로 이루어져야 함.&lt;/li&gt;
+&lt;li&gt;추가 기능으로 사용자가 새 대화방을 만들 수 있어야 함.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;블로그&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B8%94%EB%A1%9C%EA%B7%B8&quot; aria-label=&quot;블로그 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;블로그&lt;/h3&gt;
+&lt;p&gt;SEO를 중점으로 생각한 블로그 프로젝트&lt;/p&gt;
+&lt;h4 id=&quot;규칙-2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B7%9C%EC%B9%99-2&quot; aria-label=&quot;규칙 2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;규칙&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;UI 스타일링을 TailwindCSS 이용하기.&lt;/li&gt;
+&lt;li&gt;Typescript 사용하기.&lt;/li&gt;
+&lt;li&gt;좋아하는 블로그 사이트와 비슷하게 만들기.&lt;/li&gt;
+&lt;li&gt;빌드시 페이지 정적 생성.&lt;/li&gt;
+&lt;li&gt;사용자는 로그인 후 읽기 목록에 글을 추가할 수 있어야 함.&lt;/li&gt;
+&lt;li&gt;소셜이미지, 배너 등 이미지 제공시 보여줘야 함.&lt;/li&gt;
+&lt;li&gt;Lighthouse로 SEO 측정시 100%가 되어야함.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;필요한 백엔드 시스템(회원, 대화 내용 등)은 하나로 통합하여 진행하며 시간이 될 경우 GraphQL을 이용할 예정&lt;/p&gt;
+&lt;h3 id=&quot;&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#&quot; aria-label=&quot; permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;</content:encoded></item><item><title><![CDATA[Python을 이용한 고양이 사진 크롤러 만들기! with. Selenium]]></title><description><![CDATA[파이썬을 이용하여 크롤링에 대해 알아보고 고양이 사진 크롤러를 만들어 보자!]]></description><link>https://www.Hong-mae.com/posts/python-crawling-with-selenium</link><guid isPermaLink="false">https://www.Hong-mae.com/posts/python-crawling-with-selenium</guid><pubDate>Tue, 28 Sep 2021 06:09:33 GMT</pubDate><content:encoded>&lt;p&gt;이전 회사에서 전국 호텔, 객실, 가격 정보를 받아야하는 상황이 있어 찾아보다가 결국 크롤링을 하기로 했다. 그때 예약 사이트를 이용했다.&lt;/p&gt;
 &lt;p&gt;그 당시 크롤링에 대해 전혀 모르는 상태에서 시작해야 했기에 많은 어려움이 있었지만 결과를 얻고 파일로 저장하는 과정이 너무 재밌었다. 그때 그 경험을 바탕으로 이번 포스팅을 시작하겠다.&lt;/p&gt;
 &lt;h3 id=&quot;크롤링crawling이란&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%81%AC%EB%A1%A4%EB%A7%81crawling%EC%9D%B4%EB%9E%80&quot; aria-label=&quot;크롤링crawling이란 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;크롤링(Crawling)이란?&lt;/h3&gt;
 &lt;p&gt;웹 크롤러(web crawler)는 조직적, 자동화된 방법으로 웹을 탐색하는 컴퓨터 프로그램이다. - 위키백과&lt;/p&gt;
@@ -104,7 +139,7 @@
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -137,15 +172,15 @@
   &lt;table data-hpc=&quot;&quot; class=&quot;highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot; data-tagsearch-lang=&quot;Python&quot; data-tagsearch-path=&quot;open_chromedriver.py&quot;&gt;
         &lt;tbody&gt;&lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L1&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium import webdriver&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L2&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;chrome&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Options&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium.webdriver.chrome.options import Options&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L3&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;common&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Keys&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium.webdriver.common.keys import Keys&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -251,7 +286,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -284,15 +319,15 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
   &lt;table data-hpc=&quot;&quot; class=&quot;highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip=&quot;&quot; data-tagsearch-lang=&quot;Python&quot; data-tagsearch-path=&quot;open_chromedriver.py&quot;&gt;
         &lt;tbody&gt;&lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L1&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium import webdriver&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L2&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;chrome&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Options&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium.webdriver.chrome.options import Options&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L3&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;selenium&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;common&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Keys&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium.webdriver.common.keys import Keys&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L4&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
@@ -301,23 +336,23 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L5&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Chrom Setting&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Chrom Setting&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L6&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_driver_dir&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&quot;/Users/moongbee/Downloads/chromedriver&quot;&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;chrome_driver_dir = &quot;/Users/moongbee/Downloads/chromedriver&quot;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L7&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_option&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-v&quot;&gt;Options&lt;/span&gt;()&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;chrome_option = Options()&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L8&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_option&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;add_experimental_option&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;debuggerAddress&apos;&lt;/span&gt;, &lt;span class=&quot;pl-s&quot;&gt;&apos;localhost:9222&apos;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;chrome_option.add_experimental_option(&apos;debuggerAddress&apos;, &apos;localhost:9222&apos;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L9&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;webdriver&lt;/span&gt;.&lt;span class=&quot;pl-v&quot;&gt;Chrome&lt;/span&gt;(&lt;span class=&quot;pl-s1&quot;&gt;chrome_driver_dir&lt;/span&gt;, &lt;span class=&quot;pl-s1&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;pl-s1&quot;&gt;chrome_option&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;driver = webdriver.Chrome(chrome_driver_dir, options=chrome_option)&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -367,7 +402,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -410,11 +445,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L11&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Open Goggle&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Open Goggle&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L12&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;get&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&quot;https://google.com&quot;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;driver.get(&quot;https://google.com&quot;)&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -571,7 +606,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -617,19 +652,19 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L14&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Search Cat&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Search Cat&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L15&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;search_input&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;find_element_by_css_selector&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;input.gLFyf.gsfi&apos;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;search_input = driver.find_element_by_css_selector(&apos;input.gLFyf.gsfi&apos;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L16&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;search_input&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;send_keys&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;고양이&apos;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;search_input.send_keys(&apos;고양이&apos;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L17&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;search_input&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;send_keys&lt;/span&gt;(&lt;span class=&quot;pl-v&quot;&gt;Keys&lt;/span&gt;.&lt;span class=&quot;pl-v&quot;&gt;ENTER&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;search_input.send_keys(Keys.ENTER)&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -721,7 +756,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -772,15 +807,15 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L19&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Goto Image&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Goto Image&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L20&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;image_tab&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;//*[@id=&quot;hdtb-msb&quot;]/div[1]/div/div[2]/a&apos;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;image_tab = driver.find_element_by_xpath(&apos;//*[@id=&quot;hdtb-msb&quot;]/div[1]/div/div[2]/a&apos;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L21&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;image_tab&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;click&lt;/span&gt;()&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;image_tab.click()&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -818,7 +853,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -873,11 +908,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L23&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Get First Image&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Get First Image&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L24&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-s1&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;driver&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;//*[@id=&quot;islrg&quot;]/div[1]/div[1]/a[1]/div[1]/img&apos;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;image = driver.find_element_by_xpath(&apos;//*[@id=&quot;islrg&quot;]/div[1]/div[1]/a[1]/div[1]/img&apos;)&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -911,7 +946,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -969,11 +1004,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L26&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Print Image src attribute&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Print Image src attribute&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L27&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-en&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;pl-s1&quot;&gt;image&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;get_attribute&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;src&apos;&lt;/span&gt;))&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;print(image.get_attribute(&apos;src&apos;))&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -1056,7 +1091,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -1114,11 +1149,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L26&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-c&quot;&gt;### Print Image src attribute&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Print Image src attribute&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L27&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-en&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;pl-s1&quot;&gt;image&lt;/span&gt;.&lt;span class=&quot;pl-en&quot;&gt;get_attribute&lt;/span&gt;(&lt;span class=&quot;pl-s&quot;&gt;&apos;src&apos;&lt;/span&gt;))&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;print(image.get_attribute(&apos;src&apos;))&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L28&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
@@ -1127,7 +1162,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L29&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=&quot;pl-k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;urllib&lt;/span&gt;.&lt;span class=&quot;pl-s1&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-s1&quot;&gt;urlretrieve&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from urllib.request import urlretrieve&lt;/td&gt;
         &lt;/tr&gt;
         
         
@@ -1156,7 +1191,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;div id=&quot;gist112201753&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-open_chromedriver-py&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-python  &quot;&gt;
@@ -1189,15 +1224,15 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
   &lt;table data-hpc class=&quot;highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file&quot; data-tab-size=&quot;8&quot; data-paste-markdown-skip data-tagsearch-lang=&quot;Python&quot; data-tagsearch-path=&quot;open_chromedriver.py&quot;&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L1&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;1&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;selenium&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-s1&gt;webdriver&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC1&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium import webdriver&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L2&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;2&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;selenium&lt;/span&gt;.&lt;span class=pl-s1&gt;webdriver&lt;/span&gt;.&lt;span class=pl-s1&gt;chrome&lt;/span&gt;.&lt;span class=pl-s1&gt;options&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-v&gt;Options&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC2&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium.webdriver.chrome.options import Options&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L3&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;3&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;selenium&lt;/span&gt;.&lt;span class=pl-s1&gt;webdriver&lt;/span&gt;.&lt;span class=pl-s1&gt;common&lt;/span&gt;.&lt;span class=pl-s1&gt;keys&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-v&gt;Keys&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC3&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from selenium.webdriver.common.keys import Keys&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L4&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;4&quot;&gt;&lt;/td&gt;
@@ -1206,23 +1241,23 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L5&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;5&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Chrom Setting&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC5&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Chrom Setting&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L6&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;6&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;chrome_driver_dir&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s&gt;&amp;quot;/Users/moongbee/Downloads/chromedriver&amp;quot;&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC6&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;chrome_driver_dir = &amp;quot;/Users/moongbee/Downloads/chromedriver&amp;quot;&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L7&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;7&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;chrome_option&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-v&gt;Options&lt;/span&gt;()&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC7&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;chrome_option = Options()&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L8&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;8&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;chrome_option&lt;/span&gt;.&lt;span class=pl-en&gt;add_experimental_option&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;debuggerAddress&amp;#39;&lt;/span&gt;, &lt;span class=pl-s&gt;&amp;#39;localhost:9222&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC8&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;chrome_option.add_experimental_option(&amp;#39;debuggerAddress&amp;#39;, &amp;#39;localhost:9222&amp;#39;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L9&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;9&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;driver&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;webdriver&lt;/span&gt;.&lt;span class=pl-v&gt;Chrome&lt;/span&gt;(&lt;span class=pl-s1&gt;chrome_driver_dir&lt;/span&gt;, &lt;span class=pl-s1&gt;options&lt;/span&gt;&lt;span class=pl-c1&gt;=&lt;/span&gt;&lt;span class=pl-s1&gt;chrome_option&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC9&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;driver = webdriver.Chrome(chrome_driver_dir, options=chrome_option)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L10&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;10&quot;&gt;&lt;/td&gt;
@@ -1231,11 +1266,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L11&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;11&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Open Goggle&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC11&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Open Goggle&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L12&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;12&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;get&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;quot;https://google.com&amp;quot;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC12&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;driver.get(&amp;quot;https://google.com&amp;quot;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L13&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;13&quot;&gt;&lt;/td&gt;
@@ -1244,19 +1279,19 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L14&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;14&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Search Cat&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC14&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Search Cat&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L15&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;15&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;search_input&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;find_element_by_css_selector&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;input.gLFyf.gsfi&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC15&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;search_input = driver.find_element_by_css_selector(&amp;#39;input.gLFyf.gsfi&amp;#39;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L16&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;16&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;search_input&lt;/span&gt;.&lt;span class=pl-en&gt;send_keys&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;고양이&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC16&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;search_input.send_keys(&amp;#39;고양이&amp;#39;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L17&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;17&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;search_input&lt;/span&gt;.&lt;span class=pl-en&gt;send_keys&lt;/span&gt;(&lt;span class=pl-v&gt;Keys&lt;/span&gt;.&lt;span class=pl-v&gt;ENTER&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC17&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;search_input.send_keys(Keys.ENTER)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L18&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;18&quot;&gt;&lt;/td&gt;
@@ -1265,15 +1300,15 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L19&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;19&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Goto Image&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC19&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Goto Image&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L20&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;20&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;image_tab&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;//*[@id=&amp;quot;hdtb-msb&amp;quot;]/div[1]/div/div[2]/a&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC20&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;image_tab = driver.find_element_by_xpath(&amp;#39;//*[@id=&amp;quot;hdtb-msb&amp;quot;]/div[1]/div/div[2]/a&amp;#39;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L21&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;21&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;image_tab&lt;/span&gt;.&lt;span class=pl-en&gt;click&lt;/span&gt;()&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC21&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;image_tab.click()&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L22&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;22&quot;&gt;&lt;/td&gt;
@@ -1282,11 +1317,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L23&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;23&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Get First Image&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC23&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Get First Image&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L24&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;24&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-s1&gt;image&lt;/span&gt; &lt;span class=pl-c1&gt;=&lt;/span&gt; &lt;span class=pl-s1&gt;driver&lt;/span&gt;.&lt;span class=pl-en&gt;find_element_by_xpath&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;//*[@id=&amp;quot;islrg&amp;quot;]/div[1]/div[1]/a[1]/div[1]/img&amp;#39;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC24&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;image = driver.find_element_by_xpath(&amp;#39;//*[@id=&amp;quot;islrg&amp;quot;]/div[1]/div[1]/a[1]/div[1]/img&amp;#39;)&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L25&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;25&quot;&gt;&lt;/td&gt;
@@ -1295,11 +1330,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L26&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;26&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Print Image src attribute&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC26&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Print Image src attribute&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L27&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;27&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-en&gt;print&lt;/span&gt;(&lt;span class=pl-s1&gt;image&lt;/span&gt;.&lt;span class=pl-en&gt;get_attribute&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;src&amp;#39;&lt;/span&gt;))&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC27&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;print(image.get_attribute(&amp;#39;src&amp;#39;))&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L28&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;28&quot;&gt;&lt;/td&gt;
@@ -1308,7 +1343,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L29&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;29&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-k&gt;from&lt;/span&gt; &lt;span class=pl-s1&gt;urllib&lt;/span&gt;.&lt;span class=pl-s1&gt;request&lt;/span&gt; &lt;span class=pl-k&gt;import&lt;/span&gt; &lt;span class=pl-s1&gt;urlretrieve&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC29&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;from urllib.request import urlretrieve&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L30&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;30&quot;&gt;&lt;/td&gt;
@@ -1317,11 +1352,11 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L31&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;31&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-c&gt;### Download Image&lt;/span&gt;&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC31&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;### Download Image&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td id=&quot;file-open_chromedriver-py-L32&quot; class=&quot;blob-num js-line-number js-code-nav-line-number js-blob-rnum&quot; data-line-number=&quot;32&quot;&gt;&lt;/td&gt;
-          &lt;td id=&quot;file-open_chromedriver-py-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;&lt;span class=pl-en&gt;urlretrieve&lt;/span&gt;(&lt;span class=pl-s1&gt;image&lt;/span&gt;.&lt;span class=pl-en&gt;get_attribute&lt;/span&gt;(&lt;span class=pl-s&gt;&amp;#39;src&amp;#39;&lt;/span&gt;), &lt;span class=pl-s&gt;&amp;quot;[파일 저장할 경로]/[파일명.확장자]&amp;quot;&lt;/span&gt;)&lt;/td&gt;
+          &lt;td id=&quot;file-open_chromedriver-py-LC32&quot; class=&quot;blob-code blob-code-inner js-file-line&quot;&gt;urlretrieve(image.get_attribute(&amp;#39;src&amp;#39;), &amp;quot;[파일 저장할 경로]/[파일명.확장자]&amp;quot;)&lt;/td&gt;
         &lt;/tr&gt;
   &lt;/table&gt;
 &lt;/div&gt;
@@ -1360,7 +1395,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index_5-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -1582,7 +1617,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-ping-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -1664,7 +1699,7 @@ $ /Applications/Google&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index_6-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -2035,7 +2070,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112155849&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-double_pointer-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -2239,7 +2274,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -2449,7 +2484,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -2660,7 +2695,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -2907,7 +2942,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -3137,7 +3172,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -3409,7 +3444,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -3676,7 +3711,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -3900,7 +3935,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;div id=&quot;gist112103572&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-singly_linked_list-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -4640,7 +4675,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -4784,7 +4819,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -4917,7 +4952,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -5057,7 +5092,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -5187,7 +5222,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -5317,7 +5352,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -5447,7 +5482,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -5686,7 +5721,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-static_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -6006,7 +6041,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-dynamic_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -6152,7 +6187,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-dynamic_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -6288,7 +6323,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-dynamic_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -6418,7 +6453,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-dynamic_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -6560,7 +6595,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;div id=&quot;gist111981790&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-dynamic_stack-c&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -6903,7 +6938,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-package-json&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
@@ -6980,7 +7015,7 @@ int* ptr = &amp;amp;n;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index_1-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -7169,7 +7204,7 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index_2-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -7312,7 +7347,7 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index_3-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -7456,7 +7491,7 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111936537&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index_4-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -8160,7 +8195,7 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;&lt;div id=&quot;gist111874272&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-config-json&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
@@ -8288,7 +8323,7 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;&lt;div id=&quot;gist111874272&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -8385,7 +8420,7 @@ client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;&lt;div id=&quot;gist111874272&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-package-json&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
@@ -8480,7 +8515,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111874978&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -8784,7 +8819,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;div id=&quot;gist111981103&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-helloworld-cpp&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -8878,7 +8913,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;div id=&quot;gist111981103&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-task-json&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
@@ -9178,7 +9213,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111981103&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-launch-json&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-json  &quot;&gt;
@@ -9570,7 +9605,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111875784&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-press_keypad-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -10381,7 +10416,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111876535&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-recommend_new_id-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -10497,7 +10532,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;div id=&quot;gist111949100&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-checkbox-html&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-html  &quot;&gt;
@@ -10617,7 +10652,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111949100&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-checkbox-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -10712,7 +10747,7 @@ Ready!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist111949100&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-checkbox_2-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -10822,7 +10857,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist111949100&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-checkbox-html&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-html  &quot;&gt;
@@ -10940,7 +10975,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist111949100&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-checkbox_3-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -11166,7 +11201,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist108461524&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-move_truck-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -11437,7 +11472,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106932902&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-calc-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -11560,7 +11595,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106713308&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-calc-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -11758,7 +11793,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106647159&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-crane_game_answer-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -11968,7 +12003,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-app-scss&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-scss  &quot;&gt;
@@ -12139,7 +12174,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-app-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -12344,7 +12379,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106348688&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-complete_app-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -13141,7 +13176,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106309433&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-drag_and_drop_list_swap-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -13391,7 +13426,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106265902&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-drag_and_drop_list-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -13541,7 +13576,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106265902&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-drag_and_drop_list_2-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -13988,7 +14023,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106106006&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-selection_sorting-cpp&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -14220,7 +14255,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106106006&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-insertion_sorting-cpp&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -14417,7 +14452,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106106006&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-bubble_sorting-cpp&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-c  &quot;&gt;
@@ -14633,7 +14668,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -14759,7 +14794,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -14894,7 +14929,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15048,7 +15083,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106089870&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-generatorfunction-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15213,7 +15248,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090082&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-generatortest-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15330,7 +15365,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090176&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-generatortest_solve-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15462,7 +15497,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-client-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15543,7 +15578,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-bitcoins-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15622,7 +15657,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-bitcoincharts-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -15854,7 +15889,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-createrequestsaga-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -16048,7 +16083,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-loading-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -16211,7 +16246,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-index-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -16335,7 +16370,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-app-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -16524,7 +16559,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106090854&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-mainscreen-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -16684,7 +16719,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;div id=&quot;gist106035069&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-counter-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -17044,7 +17079,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106016441&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-mainscreen-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -17281,7 +17316,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106016441&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-mainscreen-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
@@ -17506,7 +17541,7 @@ false &amp;#x26;&amp;#x26; false = false&lt;/p&gt;
 &lt;p&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;gist106016581&quot; class=&quot;gist&quot;&gt;
     &lt;div class=&quot;gist-file&quot; translate=&quot;no&quot;&gt;
       &lt;div class=&quot;gist-data&quot;&gt;
-        &lt;div class=&quot;js-gist-file-update-container js-task-list-container file-box&quot;&gt;
+        &lt;div class=&quot;js-gist-file-update-container js-task-list-container&quot;&gt;
   &lt;div id=&quot;file-chartitem-js&quot; class=&quot;file my-2&quot;&gt;
     
     &lt;div itemprop=&quot;text&quot; class=&quot;Box-body p-0 blob-wrapper data type-javascript  &quot;&gt;
